@@ -8,9 +8,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/storybookjs/addon-onboarding"
+    "url": "git+https://github.com/storybookjs/addon-onboarding.git"
   },
-  "author": "@storybookjs/core",
+  "author": {
+    "name": "@storybookjs/core"
+  },
   "license": "MIT",
   "exports": {
     ".": {
@@ -48,7 +50,9 @@
     "start": "run-p build:watch 'storybook --quiet'",
     "release": "yarn build && auto shipit",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "chromatic": "npx chromatic --project-token=chpt_ec500a7ace09223",
+    "postinstall": "yarn build"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.0.0",
@@ -62,6 +66,7 @@
     "@vitejs/plugin-react": "^3.1.0",
     "auto": "^10.3.0",
     "boxen": "^5.0.1",
+    "chromatic": "^6.17.4",
     "dedent": "^0.7.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.3.1",
@@ -96,5 +101,11 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/storybookjs/addon-onboarding/issues"
+  },
+  "readme": "ERROR: No README data found!",
+  "homepage": "https://github.com/storybookjs/addon-onboarding#readme",
+  "_id": "@storybook/addon-onboarding@0.0.1"
 }

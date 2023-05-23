@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "Storybook Addon Onboarding - Introduces a new onboarding experience",
   "keywords": [
-    "storybook-addons", "addon-onboarding", "storybook-addons",
+    "storybook-addons",
     "addon-onboarding"
   ],
   "repository": {

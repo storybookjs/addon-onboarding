@@ -1,3 +1,15 @@
+# v0.0.2 (Tue May 23 2023)
+
+#### 🐛 Bug Fix
+
+- Remove unnecessary files [#1](https://github.com/storybookjs/addon-onboarding/pull/1) ([@valentinpalkovic](https://github.com/valentinpalkovic))
+
+#### Authors: 1
+
+- Valentin Palkovic ([@valentinpalkovic](https://github.com/valentinpalkovic))
+
+---
+
 # v0.0.1 (Tue May 23 2023)
 
 #### ⚠️ Pushed to `main`

@@ -1,3 +1,15 @@
+# v0.0.6 (Tue May 23 2023)
+
+#### 🐛 Bug Fix
+
+- Add minimum React Application [#3](https://github.com/storybookjs/addon-onboarding/pull/3) ([@valentinpalkovic](https://github.com/valentinpalkovic))
+
+#### Authors: 1
+
+- Valentin Palkovic ([@valentinpalkovic](https://github.com/valentinpalkovic))
+
+---
+
 # v0.0.5 (Tue May 23 2023)
 
 #### ⚠️ Pushed to `main`

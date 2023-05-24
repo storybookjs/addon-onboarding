@@ -112,6 +112,5 @@
   "homepage": "https://github.com/storybookjs/addon-onboarding#readme",
   "dependencies": {
     "@floating-ui/react": "^0.24.1"
-  },
-  "packageManager": "yarn@3.5.1"
+  }
 }

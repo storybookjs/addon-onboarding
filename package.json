@@ -55,11 +55,14 @@
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.0.0",
-    "@storybook/addon-interactions": "^7.0.0",
+    "@storybook/addon-interactions": "^7.0.17",
     "@storybook/addon-links": "^7.0.0",
+    "@storybook/jest": "^0.1.0",
     "@storybook/react": "^7.0.0",
     "@storybook/react-vite": "^7.0.0",
     "@storybook/testing-library": "^0.0.14-next.1",
+    "@storybook/theming": "^7.0.17",
+    "@storybook/types": "^7.0.17",
     "@types/node": "^18.15.0",
     "@types/react": "^18.0.34",
     "@types/react-dom": "^18.2.4",
@@ -106,5 +109,9 @@
     "url": "https://github.com/storybookjs/addon-onboarding/issues"
   },
   "readme": "ERROR: No README data found!",
-  "homepage": "https://github.com/storybookjs/addon-onboarding#readme"
+  "homepage": "https://github.com/storybookjs/addon-onboarding#readme",
+  "dependencies": {
+    "@floating-ui/react": "^0.24.1"
+  },
+  "packageManager": "yarn@3.5.1"
 }

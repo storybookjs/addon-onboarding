@@ -6,7 +6,6 @@ import {
   FloatingPortal,
   useInteractions,
   useRole,
-  useDismiss,
   arrow,
   FloatingArrow,
   offset,
@@ -18,8 +17,6 @@ import { styled } from "@storybook/theming";
 
 interface TooltipProps extends Partial<UseFloatingOptions<ReferenceType>> {
   anchorElement: Element;
-  /** Closes the floating element when a dismissal is requested — by default, when the user presses the escape key or outside of the floating element. */
-  dismiss?: boolean;
   children: React.ReactNode;
 }
 
@@ -62,9 +59,7 @@ export function Tooltip({
     role: "tooltip",
   });
 
-  const dismiss = useDismiss(context);
-
-  const { getFloatingProps } = useInteractions([role, dismiss]);
+  const { getFloatingProps } = useInteractions([role]);
 
   return tooltipOptions.open ? (
     <>

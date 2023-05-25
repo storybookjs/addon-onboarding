@@ -1,3 +1,15 @@
+# v0.0.7 (Thu May 25 2023)
+
+#### 🐛 Bug Fix
+
+- Init Storybook Theme Provider [#6](https://github.com/storybookjs/addon-onboarding/pull/6) ([@valentinpalkovic](https://github.com/valentinpalkovic))
+
+#### Authors: 1
+
+- Valentin Palkovic ([@valentinpalkovic](https://github.com/valentinpalkovic))
+
+---
+
 # v0.0.6 (Tue May 23 2023)
 
 #### 🐛 Bug Fix

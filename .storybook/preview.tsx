@@ -4,6 +4,11 @@ import React from "react";
 
 const preview: Preview = {
   parameters: {
+    options: {
+      storySort: {
+        order: ["Example", ["Introduction"]],
+      },
+    },
     backgrounds: {
       default: "light",
     },

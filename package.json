@@ -111,6 +111,7 @@
   "homepage": "https://github.com/storybookjs/addon-onboarding#readme",
   "dependencies": {
     "@radix-ui/react-dialog": "^1.0.4",
-    "react-confetti": "^6.1.0"
+    "react-confetti": "^6.1.0",
+    "react-joyride": "^2.5.4"
   }
 }

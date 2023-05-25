@@ -1,5 +1,6 @@
 import ReactDOM from "react-dom";
 import React from "react";
+import { App } from "./App";
 
 // Add a new DOM element to document.body, where we will bootstrap our React app
 const domNode = document.createElement("div");
@@ -18,4 +19,4 @@ domNode.style.visibility = "hidden";
 document.body.appendChild(domNode);
 
 // Render the React app
-ReactDOM.render(<div>Hello World</div>, domNode);
+ReactDOM.render(<App />, domNode);

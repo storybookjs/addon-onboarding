@@ -1,0 +1,34 @@
+import { Meta, StoryObj } from "@storybook/react";
+import { Modal } from "./Modal";
+import React, { useState } from "react";
+import { userEvent, within } from "@storybook/testing-library";
+const meta: Meta<typeof Modal> = {
+  component: Modal,
+};
+export default meta;
+type Story = StoryObj<typeof meta>;
+export const Default: Story = {
+  render: () => {
+    const [isOpen, setOpen] = useState(false);
+    return (
+      <>
+        <Modal width="740px" open={isOpen}>
+          {({ Title, Description, Close }) => (
+            <>
+              Hello world
+              <Title>Modal Title</Title>
+              <Description>Modal Description</Description>
+              <Close onClick={() => setOpen(false)}>Close</Close>
+            </>
+          )}
+        </Modal>
+        <button onClick={() => setOpen(true)}>Open modal</button>
+      </>
+    );
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByText("Open modal");
+    await userEvent.click(button);
+  },
+};

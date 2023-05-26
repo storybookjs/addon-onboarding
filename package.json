@@ -109,6 +109,7 @@
   "readme": "ERROR: No README data found!",
   "homepage": "https://github.com/storybookjs/addon-onboarding#readme",
   "dependencies": {
-    "react-confetti": "^6.1.0"
+    "react-confetti": "^6.1.0",
+    "@radix-ui/react-dialog": "^1.0.4"
   }
 }

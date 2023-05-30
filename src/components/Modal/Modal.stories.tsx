@@ -2,11 +2,16 @@ import { Meta, StoryObj } from "@storybook/react";
 import { Modal } from "./Modal";
 import React, { useState } from "react";
 import { userEvent, within } from "@storybook/testing-library";
+import { expect } from "@storybook/jest";
+
 const meta: Meta<typeof Modal> = {
   component: Modal,
 };
+
 export default meta;
+
 type Story = StoryObj<typeof meta>;
+
 export const Default: Story = {
   render: () => {
     const [isOpen, setOpen] = useState(false);
@@ -27,8 +32,9 @@ export const Default: Story = {
     );
   },
   play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
+    const canvas = within(canvasElement.parentElement);
     const button = canvas.getByText("Open modal");
     await userEvent.click(button);
+    await expect(canvas.findByText("Hello world")).resolves.toBeInTheDocument();
   },
 };

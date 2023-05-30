@@ -1,3 +1,16 @@
+# v0.0.10 (Tue May 30 2023)
+
+#### ⚠️ Pushed to `main`
+
+- Rename confett to Confetti ([@valentinpalkovic](https://github.com/valentinpalkovic))
+- Rename confetti to confett ([@valentinpalkovic](https://github.com/valentinpalkovic))
+
+#### Authors: 1
+
+- Valentin Palkovic ([@valentinpalkovic](https://github.com/valentinpalkovic))
+
+---
+
 # v0.0.9 (Tue May 30 2023)
 
 #### 🐛 Bug Fix

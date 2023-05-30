@@ -1,3 +1,15 @@
+# v0.0.9 (Tue May 30 2023)
+
+#### 🐛 Bug Fix
+
+- Implement bare minimum modal component [#18](https://github.com/storybookjs/addon-onboarding/pull/18) ([@valentinpalkovic](https://github.com/valentinpalkovic))
+
+#### Authors: 1
+
+- Valentin Palkovic ([@valentinpalkovic](https://github.com/valentinpalkovic))
+
+---
+
 # v0.0.8 (Tue May 30 2023)
 
 #### 🐛 Bug Fix

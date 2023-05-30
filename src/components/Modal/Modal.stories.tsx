@@ -6,6 +6,11 @@ import { expect } from "@storybook/jest";
 
 const meta: Meta<typeof Modal> = {
   component: Modal,
+  decorators: [
+    (storyFn) => (
+      <div style={{ width: "1200px", height: "800px" }}>{storyFn()}</div>
+    ),
+  ],
 };
 
 export default meta;

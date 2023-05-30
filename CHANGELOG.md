@@ -1,3 +1,15 @@
+# v0.0.8 (Tue May 30 2023)
+
+#### 🐛 Bug Fix
+
+- Implement bare minimum confetti component [#7](https://github.com/storybookjs/addon-onboarding/pull/7) ([@valentinpalkovic](https://github.com/valentinpalkovic))
+
+#### Authors: 1
+
+- Valentin Palkovic ([@valentinpalkovic](https://github.com/valentinpalkovic))
+
+---
+
 # v0.0.7 (Thu May 25 2023)
 
 #### 🐛 Bug Fix

@@ -17,6 +17,7 @@ const rainbowAnimation = keyframes`
   }
 `;
 
+// @ts-ignore FIXME
 export const ModalContentWrapper = styled.div`
   background: radial-gradient(
         circle at left,
@@ -65,7 +66,7 @@ export const ModalContentWrapper = styled.div`
   align-items: center;
   padding-top: 100px;
   padding-bottom: 20px;
-`;
+` as any;
 
 export const WelcomeModal = ({
   onSkip,

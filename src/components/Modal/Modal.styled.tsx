@@ -17,6 +17,7 @@ export const StyledOverlay = styled(Overlay)`
   height: 100%;
 })`;
 
+// @ts-ignore FIXME
 export const StyledContent = styled.div<{ width: string }>(
   ({ width }) => css`
     background-color: white;
@@ -30,8 +31,9 @@ export const StyledContent = styled.div<{ width: string }>(
     max-width: calc(100% - 40px);
     max-height: 85vh;
   `
-);
+) as any;
 
+// @ts-ignore FIXME
 export const ContentWrapper = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<typeof StyledContent> &

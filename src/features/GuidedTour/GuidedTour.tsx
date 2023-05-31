@@ -55,7 +55,7 @@ export function GuidedTour({
       ]
     : [
         {
-          target: "div:has(> div > #example-button--primary):first-of-type",
+          target: "#storybook-explorer-tree > div",
           content: (
             <TitleBody
               title="Your stories"

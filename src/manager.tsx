@@ -1,22 +1,39 @@
 import ReactDOM from "react-dom";
 import React from "react";
 import { App } from "./App";
+import { addons } from "@storybook/manager-api";
 
-// Add a new DOM element to document.body, where we will bootstrap our React app
-const domNode = document.createElement("div");
+const isDevMode = process.env.NODE_ENV !== "production";
 
-domNode.id = "addon-onboarding";
-// domNode.style.position = "absolute";
-// domNode.style.top = "0";
-// domNode.style.left = "0";
-// domNode.style.width = "0";
-// domNode.style.height = "0";
-// domNode.style.overflow = "hidden";
-// domNode.style.opacity = "0";
-// domNode.style.visibility = "hidden";
+// The addon is enabled only when:
+// 1. In dev mode
+// 2. The onboarding query parameter is present
+// 3. The example button stories are present
+if (isDevMode) {
+  addons.register("@storybook/addon-onboarding", async (api) => {
+    const isOnboarding = api.getUrlState().queryParams.onboarding;
 
-// Append the new DOM element to document.body
-document.body.appendChild(domNode);
+    if (!isOnboarding) {
+      return;
+    }
 
-// Render the React app
-ReactDOM.render(<App />, domNode);
+    let hasButtonStories = false;
+    try {
+      const response = await fetch('./index.json')
+      const index = await response.json()
+      hasButtonStories = !!index.entries['example-button--primary']
+    } catch (e) { }
+
+    if (hasButtonStories) {
+      // Add a new DOM element to document.body, where we will bootstrap our React app
+      const domNode = document.createElement("div");
+
+      domNode.id = "addon-onboarding";
+      // Append the new DOM element to document.body
+      document.body.appendChild(domNode);
+
+      // Render the React app
+      ReactDOM.render(<App api={api} />, domNode);
+    }
+  });
+}

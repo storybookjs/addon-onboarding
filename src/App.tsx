@@ -1,208 +1,154 @@
-import { ThemeProvider, ensure, themes } from "@storybook/theming";
+import {
+  ThemeProvider,
+  ensure,
+  themes,
+  styled,
+  keyframes,
+} from "@storybook/theming";
+import { Button } from "@storybook/components";
+import { type API } from "@storybook/manager-api";
 
 const theme = ensure(themes.light);
 
 import React, { useEffect, useState } from "react";
-import Joyride, { Step } from "react-joyride";
-import {
-  STORY_CHANGED,
-  STORY_ARGS_UPDATED,
-  SELECT_STORY,
-} from "@storybook/core-events";
+import { STORY_CHANGED, CURRENT_STORY_WAS_SET } from "@storybook/core-events";
+import { GuidedTour } from "./components/GuidedTour/GuidedTour";
+import { Modal } from "./components/Modal/Modal";
+import { StorybookLogo } from "./components/Icons/StorybookLogo";
 
-const TitleBody = ({
-  prefix,
-  title,
-  body,
-}: {
-  prefix?: React.ReactNode;
-  title: React.ReactNode;
-  body: React.ReactNode;
-}) => {
-  return (
-    <div>
-      {prefix}
-      <strong style={{ fontSize: 14 }}>{title}</strong>
-      <p style={{ fontSize: 14, color: "#798186", margin: 0, marginTop: 10 }}>{body}</p>
-    </div>
-  );
-};
+const rainbowAnimation = keyframes`
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+`;
 
-let INTERACTIONS_COUNT = 0;
-export const App = () => {
-  const [shouldRun, setShouldRun] = useState<boolean>(true);
-  const [channel, setChannel] = useState<any>();
-  const [stepIndex, setStepIndex] = useState<number>();
+// Styled component for the card
+const ModalContentWrapper = styled.div`
+  background: radial-gradient(
+        circle at left,
+        #ffccd2,
+        #ffdbcb,
+        #ffe9c5,
+        #fff8c0,
+        #f2ffd8,
+        #d2f8e5,
+        #b3f0f1,
+        #a1e6f0,
+        #9fd8df
+      )
+      left,
+    radial-gradient(
+        circle at right,
+        #ffccd2,
+        #ffdbcb,
+        #ffe9c5,
+        #fff8c0,
+        #f2ffd8,
+        #d2f8e5,
+        #b3f0f1,
+        #a1e6f0,
+        #9fd8df
+      )
+      right,
+    linear-gradient(
+      45deg,
+      #ffccd2,
+      #ffdbcb,
+      #ffe9c5,
+      #fff8c0,
+      #f2ffd8,
+      #d2f8e5,
+      #b3f0f1,
+      #a1e6f0,
+      #9fd8df
+    );
+  background-size: 300% 300%;
+  background-repeat: no-repeat;
+  animation: ${rainbowAnimation} 10s linear infinite;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100px;
+  padding-bottom: 20px;
+`;
+
+export const App = ({ api }: { api: API }) => {
+  const [enabled, setEnabled] = useState<boolean>(true);
+  const [showGuidedTour, setShowGuidedTour] = useState<boolean>(false);
+
+  const skipTour = () => {
+    // remove onboarding query parameter from current url
+    const url = new URL(window.location.href);
+    url.searchParams.delete("onboarding");
+    const path = decodeURIComponent(url.searchParams.get("path"));
+    url.search = `?path=${path}`;
+    history.replaceState({}, "", url.href);
+    setEnabled(false);
+  };
 
   useEffect(() => {
-    // TODO: Only get the channel once Storybook is available
-    setTimeout(() => {
-      // @ts-ignore
-      const channelInstance = window?.__STORYBOOK_ADDONS_MANAGER?.getChannel();
-
-      setChannel(channelInstance);
-      channelInstance.emit(SELECT_STORY, {
-        storyId: "example-button--primary",
-      });
-
-      // @ts-ignore
-      document.querySelector("#tabbutton-addon-controls")?.click();
-    }, 2000);
+    api.once(CURRENT_STORY_WAS_SET, ({ storyId }) => {
+      // make sure the initial state is set correctly:
+      // 1. Selected story is primary button
+      // 2. The addon panel is opened, in the bottom and the controls tab is selected
+      if (storyId !== "example-button--primary") {
+        api.selectStory("example-button--primary", undefined, {
+          ref: undefined,
+        });
+      }
+      api.togglePanel(true);
+      api.togglePanelPosition("bottom");
+      api.setSelectedPanel("addon-controls");
+    });
   }, []);
 
   useEffect(() => {
-    if (channel) {
-      channel.on(STORY_CHANGED, (storyId: string) => {
-        if (storyId === 'introduction-configure-your-project--docs') {
-          setShouldRun(false);
-        }
-      });
-
-      channel.on(STORY_ARGS_UPDATED, () => {
-        console.log("STORY_ARGS_UPDATED", { INTERACTIONS_COUNT });
-        INTERACTIONS_COUNT = INTERACTIONS_COUNT + 1;
-        if (INTERACTIONS_COUNT === 2) {
-          setStepIndex(4);
-        }
-      });
-    }
-  }, [channel]);
-
-  // Challenges
-  // Do we need to remove autodocs from button component?
-  // What if the addon panel is not open/visible?
-  // What if the addon panel is in a bad placement?
-  // HMR when testing the onboarding component
-  // Setting up Storybook to the right state as it can be in different stories, addons, etc.
-  // Defining proper selectors to the Storybook components (task in the monorepo)
-  // Deal with Storybook channel updates
-  // Detect new story (apparently there is no event for that!)
-
-  const steps: Step[] = [
-    {
-      content: (
-        <div style={{ width: '80%' }}>
-          <h2>Welcome to Storybook</h2>
-          <p>
-            Storybook helps you develop UI components. Let's learn the basics in
-            a few simple steps. It shouldn't take more than 3 minutes. Enjoy!
-          </p>
-        </div>
-      ),
-      locale: { skip: <span aria-label="skip">Skip onboarding</span> },
-      placement: "center",
-      target: "body",
-      styles: {
-        tooltip: {
-          maxWidth: '100%',
-          width: 500,
-          height: 300
-        },
-
+    api.on(STORY_CHANGED, (storyId: string) => {
+      if (storyId === "introduction-configure-your-project--docs") {
+        setEnabled(false);
       }
-    },
-    {
-      target: ".sto-1qwztpk",
-      content: (
-        <TitleBody
-          title="Your stories"
-          body="A story is a key state of your UI component. This Button component
-        has four stories."
-        />
-      ),
-      placement: "right",
-    },
-    {
-      target: "#storybook-preview-iframe",
-      content: (
-        <TitleBody
-          title="Interactive story preview"
-          body="Preview your stories here. Each time you modify a story, the changes will live update here."
-        />
-      ),
-      placement: "bottom",
-    },
-    {
-      target: "#control-primary",
-      content: (
-        <TitleBody
-          title="Interactive story update"
-          body="Update your story without having to change the code. Modify this boolean input a couple times to see how it changes the story."
-        />
-      ),
-      placement: "right",
-      spotlightPadding: 5,
-      spotlightClicks: true,
-      disableOverlay: true,
-      styles: {
-        buttonNext: {
-          display: "none",
-        },
-        spotlight: {
-          borderRadius: 200,
-        },
-      },
-    },
-    {
-      target: "#control-primary",
-      content: (
-        <TitleBody
-          prefix={<div style={{ fontSize: "50px" }}>🙌</div>}
-          title="Great progress!"
-          body="Now that you know how to control your stories interactively, let's dive deeper into how to create a story."
-        />
-      ),
-      placement: "right",
-      disableOverlay: true,
-    },
-    {
-      target: "#introduction-configure-your-project--docs",
-      content: (
-        <TitleBody title="Configure the rest of your project"
-          body="Click on your story to see the result." />
-      ),
-      placement: "right",
-      disableOverlay: true,
-      styles: {
-        buttonNext: {
-          display: "none",
-        },
-      }
-    },
-  ];
+    });
+  }, []);
+
+  if (!enabled) {
+    return null;
+  }
 
   return (
-
     <ThemeProvider theme={theme}>
-      <Joyride
-        steps={steps}
-        continuous
-        run={shouldRun}
-        stepIndex={stepIndex}
-        spotlightPadding={0}
-        hideBackButton
-        callback={(data) => console.log(data)}
-        styles={{
-          spotlight: {
-            border: "solid 2px #004c7c",
-          },
-          tooltip: {
-            maxWidth: 260
-          },
-          buttonNext: {
-            backgroundColor: "#029CFD",
-            width: "100%",
-            padding: "12px 9px",
-            margin: 0,
-          },
-          tooltipContent: {
-            paddingBottom: 0
-          },
-          options: {
-            zIndex: 10000,
-          },
-        }}
-      />
+      {!showGuidedTour && (
+        <Modal width="540px" defaultOpen>
+          {({ Title, Description, Close }) => (
+            <ModalContentWrapper>
+              <StorybookLogo />
+              <Title style={{ marginTop: 20 }}>Welcome to Storybook</Title>
+              <Description>
+                Storybook helps you develop UI components.
+                <br />
+                Learn the basics in a few simple steps.
+              </Description>
+              <Button
+                style={{ marginTop: 4 }}
+                secondary
+                onClick={() => setShowGuidedTour(true)}
+              >
+                Start 3 minute tour
+              </Button>
+              <Close style={{ marginTop: 90 }} onClick={skipTour}>
+                Skip tour
+              </Close>
+            </ModalContentWrapper>
+          )}
+        </Modal>
+      )}
+      {showGuidedTour && <GuidedTour api={api} />}
     </ThemeProvider>
   );
 };

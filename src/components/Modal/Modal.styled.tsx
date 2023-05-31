@@ -7,6 +7,7 @@ import {
   Close,
 } from "@radix-ui/react-dialog";
 import React from "react";
+import { Icons } from "@storybook/components";
 
 export const StyledOverlay = styled(Overlay)`
   background-color: rgba(0, 0, 0, 0.25);
@@ -41,6 +42,30 @@ export const ContentWrapper = React.forwardRef<
   </Content>
 ));
 
-export const StyledTitle = styled(Title)``;
-export const StyledDescription = styled(Description)``;
-export const StyledClose = styled(Close)``;
+export const StyledTitle = styled(Title)`
+  color: #000;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 20px;
+`;
+export const StyledDescription = styled(Description)`
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #454e54;
+`;
+
+const CloseButton = ({ ...props }: any) => {
+  return (
+    <Close {...props}>
+      {props.children}
+      <Icons icon="arrowright" style={{ marginLeft: 4 }} />
+    </Close>
+  );
+};
+export const StyledClose = styled(CloseButton)`
+  all: unset;
+  cursor: pointer;
+  font-size: 13px;
+  color: #798186;
+`;

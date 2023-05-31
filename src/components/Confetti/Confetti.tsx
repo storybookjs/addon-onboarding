@@ -1,15 +1,15 @@
 import ReactConfetti from "react-confetti";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { styled } from "@storybook/theming";
 import { createPortal } from "react-dom";
 import { useState } from "react";
 
 interface ConfettiProps
   extends Omit<React.ComponentProps<typeof ReactConfetti>, "drawShape"> {
-  top: number;
-  left: number;
-  width: number;
-  height: number;
+  top?: number;
+  left?: number;
+  width?: number;
+  height?: number;
 }
 
 const Wrapper = styled.div<{
@@ -32,7 +32,7 @@ export function Confetti({
   width = window.innerWidth,
   height = window.innerHeight,
   ...confettiProps
-}: ConfettiProps) {
+}: ConfettiProps): React.ReactPortal {
   const [confettiContainer] = useState(() => {
     const container = document.createElement("div");
     container.setAttribute("id", "confetti-container");

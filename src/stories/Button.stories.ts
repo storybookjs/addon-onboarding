@@ -10,6 +10,9 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     backgroundColor: { control: "color" },
   },
+  parameters: {
+    layout: "centered",
+  },
   tags: ["autodocs"],
 };
 

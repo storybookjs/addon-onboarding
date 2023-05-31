@@ -59,7 +59,7 @@ const CloseButton = ({ ...props }: any) => {
   return (
     <Close {...props}>
       {props.children}
-      <Icons icon="arrowright" style={{ marginLeft: 4 }} />
+      <Icons icon="arrowright" style={{ marginLeft: 2 }} height={10} />
     </Close>
   );
 };

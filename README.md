@@ -4,8 +4,9 @@ Storybook Addon Onboarding - Introduces a new onboarding experience
 
 ### Development scripts
 
-- `yarn start` runs babel in watch mode and starts Storybook
+- `yarn start` runs tsup in watch mode and starts Storybook
 - `yarn build` build and package your addon code
+- `yarn storybook:watch` runs nodemon in watch mode so it reruns Storybook on changes. This is useful when testing the actual addon (as we cannot have HMR for addon changes) rather than just stories in Storybook
 
 ## Release Management
 

@@ -8,11 +8,18 @@ import { STORY_CHANGED, CURRENT_STORY_WAS_SET } from "@storybook/core-events";
 import { GuidedTour } from "./features/GuidedTour/GuidedTour";
 import { WelcomeModal } from "./features/WelcomeModal/WelcomeModal";
 import { WriteStoriesModal } from "./features/WriteStoriesModal/WriteStoriesModal";
+import { Confetti } from "./components/Confetti/Confetti";
 
-type Step = "1:Welcome" | "2:StorybookTour" | "3:WriteYourStory" | "4:ConfigureYourProject"
+type Step =
+  | "1:Welcome"
+  | "2:StorybookTour"
+  | "3:WriteYourStory"
+  | "4:VisitNewStory"
+  | "5:ConfigureYourProject";
 
 export default function App({ api }: { api: API }) {
   const [enabled, setEnabled] = useState(true);
+  const [showConfetti, setShowConfetti] = useState(false);
   const [step, setStep] = useState<Step>("1:Welcome");
 
   const skipTour = useCallback(() => {
@@ -24,6 +31,22 @@ export default function App({ api }: { api: API }) {
     history.replaceState({}, "", url.href);
     setEnabled(false);
   }, [setEnabled]);
+
+  useEffect(() => {
+    let stepTimeout: NodeJS.Timeout;
+    let confettiTimeout: NodeJS.Timeout;
+    if (step === "4:VisitNewStory") {
+      stepTimeout = setTimeout(() => {
+        setShowConfetti(true);
+        setStep("5:ConfigureYourProject");
+      }, 2000);
+    }
+
+    return () => {
+      clearTimeout(stepTimeout);
+      clearTimeout(confettiTimeout);
+    };
+  }, [step]);
 
   useEffect(() => {
     api.once(CURRENT_STORY_WAS_SET, ({ storyId }) => {
@@ -61,30 +84,43 @@ export default function App({ api }: { api: API }) {
 
   return (
     <ThemeProvider theme={theme}>
-      {step === '1:Welcome' && (
+      {showConfetti && (
+        <Confetti
+          numberOfPieces={1000}
+          initialVelocityY={3}
+          recycle={false}
+          onConfettiComplete={(confetti) => {
+            confetti.reset();
+            setShowConfetti(false);
+          }}
+        />
+      )}
+      {step === "1:Welcome" && (
         <WelcomeModal
           onProceed={() => {
-            setStep('2:StorybookTour')
+            setStep("2:StorybookTour");
           }}
           onSkip={skipTour}
         />
       )}
-      {(step === '2:StorybookTour' || step === '4:ConfigureYourProject') && (
+      {(step === "2:StorybookTour" || step === "5:ConfigureYourProject") && (
         <GuidedTour
           api={api}
-          isFinalStep={step === '4:ConfigureYourProject'}
+          isFinalStep={step === "5:ConfigureYourProject"}
           onFirstTourDone={() => {
-            setStep('3:WriteYourStory')
+            setStep("3:WriteYourStory");
           }}
         />
       )}
-      {step === '3:WriteYourStory' && (
+      {step === "3:WriteYourStory" && (
         <WriteStoriesModal
           onFinish={() => {
-            setStep('4:ConfigureYourProject')
+            // TODO: enable this
+            // api.selectStory("example-button--warning");
+            setStep("4:VisitNewStory");
           }}
         />
       )}
     </ThemeProvider>
   );
-};
+}

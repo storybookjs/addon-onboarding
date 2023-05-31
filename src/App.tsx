@@ -9,12 +9,11 @@ import { GuidedTour } from "./features/GuidedTour/GuidedTour";
 import { WelcomeModal } from "./features/WelcomeModal/WelcomeModal";
 import { WriteStoriesModal } from "./features/WriteStoriesModal/WriteStoriesModal";
 
+type Step = "1:Welcome" | "2:StorybookTour" | "3:WriteYourStory" | "4:ConfigureYourProject"
+
 export const App = ({ api }: { api: API }) => {
   const [enabled, setEnabled] = useState(true);
-  const [showGuidedTour, setShowGuidedTour] = useState(false);
-  const [showWriteStoriesModal, setShowWriteStoriesModal] = useState(false);
-  const [showWelcomeModal, setShowWelcomeModal] = useState(true);
-  const [isFinalStep, setIsFinalStep] = useState(false);
+  const [step, setStep] = useState<Step>("1:Welcome");
 
   const skipTour = useCallback(() => {
     // remove onboarding query parameter from current url
@@ -45,7 +44,7 @@ export const App = ({ api }: { api: API }) => {
   useEffect(() => {
     const onStoryChanged = (storyId: string) => {
       if (storyId === "configure-your-project--docs") {
-        setEnabled(false);
+        skipTour();
       }
     };
 
@@ -62,31 +61,27 @@ export const App = ({ api }: { api: API }) => {
 
   return (
     <ThemeProvider theme={theme}>
-      {showGuidedTour && (
-        <GuidedTour
-          api={api}
-          isFinalStep={isFinalStep}
-          onFirstTourDone={() => {
-            setShowWriteStoriesModal(true);
-            setShowGuidedTour(false);
-          }}
-        />
-      )}
-      {showWelcomeModal && (
+      {step === '1:Welcome' && (
         <WelcomeModal
           onProceed={() => {
-            setShowWelcomeModal(false);
-            setShowGuidedTour(true);
+            setStep('2:StorybookTour')
           }}
           onSkip={skipTour}
         />
       )}
-      {showWriteStoriesModal && (
+      {(step === '2:StorybookTour' || step === '4:ConfigureYourProject') && (
+        <GuidedTour
+          api={api}
+          isFinalStep={step === '4:ConfigureYourProject'}
+          onFirstTourDone={() => {
+            setStep('3:WriteYourStory')
+          }}
+        />
+      )}
+      {step === '3:WriteYourStory' && (
         <WriteStoriesModal
           onFinish={() => {
-            setShowWriteStoriesModal(false);
-            setIsFinalStep(true);
-            setShowGuidedTour(true);
+            setStep('4:ConfigureYourProject')
           }}
         />
       )}

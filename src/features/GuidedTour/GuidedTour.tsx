@@ -33,7 +33,7 @@ export function GuidedTour({
   const steps: Step[] = isFinalStep
     ? [
         {
-          target: "#introduction-configure-your-project--docs",
+          target: "#configure-your-project--docs",
           content: (
             <TitleBody
               title="Continue setting up your project"

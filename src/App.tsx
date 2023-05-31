@@ -44,7 +44,7 @@ export const App = ({ api }: { api: API }) => {
 
   useEffect(() => {
     const onStoryChanged = (storyId: string) => {
-      if (storyId === "introduction-configure-your-project--docs") {
+      if (storyId === "configure-your-project--docs") {
         setEnabled(false);
       }
     };

@@ -1,7 +1,8 @@
 import ReactDOM from "react-dom";
-import React from "react";
-import { App } from "./App";
+import React, { lazy, Suspense } from "react";
 import { addons } from "@storybook/manager-api";
+
+const App = lazy(() => import("./App"));
 
 const isDevMode = process.env.NODE_ENV !== "production";
 
@@ -33,7 +34,12 @@ if (isDevMode) {
       document.body.appendChild(domNode);
 
       // Render the React app
-      ReactDOM.render(<App api={api} />, domNode);
+      ReactDOM.render(
+        <Suspense fallback={<div>Loading...</div>}>
+          <App api={api} />
+        </Suspense>,
+        domNode
+      );
     }
   });
 }

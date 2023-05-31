@@ -11,7 +11,7 @@ import { WriteStoriesModal } from "./features/WriteStoriesModal/WriteStoriesModa
 
 type Step = "1:Welcome" | "2:StorybookTour" | "3:WriteYourStory" | "4:ConfigureYourProject"
 
-export const App = ({ api }: { api: API }) => {
+export default function App({ api }: { api: API }) {
   const [enabled, setEnabled] = useState(true);
   const [step, setStep] = useState<Step>("1:Welcome");
 

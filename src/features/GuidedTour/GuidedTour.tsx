@@ -80,7 +80,7 @@ export function GuidedTour({
           placement: "bottom",
         },
         {
-          target: "#control-primary",
+          target: "#root div[role=main]",
           content: (
             <>
               <TitleBody
@@ -98,15 +98,13 @@ export function GuidedTour({
             </>
           ),
           placement: "right",
-          spotlightPadding: 5,
           spotlightClicks: true,
-          disableOverlay: true,
+          floaterProps: {
+            target: '#control-primary'
+          },
           styles: {
             buttonNext: {
               display: "none",
-            },
-            spotlight: {
-              borderRadius: 200,
             },
           },
         },

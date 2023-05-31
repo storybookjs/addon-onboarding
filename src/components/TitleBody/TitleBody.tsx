@@ -1,4 +1,23 @@
 import React from "react";
+import { styled } from "@storybook/theming";
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`;
+
+const Title = styled.strong`
+  font-size: 13px;
+`;
+
+const Body = styled.p`
+  font-size: 13px;
+  text-align: start;
+  color: #798186;
+  margin: 0;
+  margin-top: 4px;
+`;
 
 export function TitleBody({
   prefix,
@@ -10,12 +29,10 @@ export function TitleBody({
   body: React.ReactNode;
 }) {
   return (
-    <div>
+    <Wrapper>
       {prefix}
-      <strong style={{ fontSize: 14 }}>{title}</strong>
-      <p style={{ fontSize: 14, color: "#798186", margin: 0, marginTop: 10 }}>
-        {body}
-      </p>
-    </div>
+      <Title>{title}</Title>
+      <Body>{body}</Body>
+    </Wrapper>
   );
 }

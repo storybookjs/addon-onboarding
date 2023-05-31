@@ -57,11 +57,16 @@ export const StyledDescription = styled(Description)`
   color: #454e54;
 `;
 
+const StyledIcon = styled(Icons)`
+  margin-left: 2px;
+  height: 10px;
+`
+
 const CloseButton = ({ ...props }: any) => {
   return (
     <Close {...props}>
       {props.children}
-      <Icons icon="arrowright" style={{ marginLeft: 2 }} height={10} />
+      <StyledIcon icon="arrowright" />
     </Close>
   );
 };

@@ -7,7 +7,6 @@ import {
   Close,
 } from "@radix-ui/react-dialog";
 import React from "react";
-import { Icons } from "@storybook/components";
 
 export const StyledOverlay = styled(Overlay)`
   background-color: rgba(0, 0, 0, 0.25);
@@ -17,7 +16,6 @@ export const StyledOverlay = styled(Overlay)`
   height: 100%;
 })`;
 
-// @ts-ignore FIXME
 export const StyledContent = styled.div<{ width: string }>(
   ({ width }) => css`
     background-color: white;
@@ -31,9 +29,8 @@ export const StyledContent = styled.div<{ width: string }>(
     max-width: calc(100% - 40px);
     max-height: 85vh;
   `
-) as any;
+);
 
-// @ts-ignore FIXME
 export const ContentWrapper = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<typeof StyledContent> &
@@ -57,22 +54,4 @@ export const StyledDescription = styled(Description)`
   color: #454e54;
 `;
 
-const StyledIcon = styled(Icons)`
-  margin-left: 2px;
-  height: 10px;
-`
-
-const CloseButton = ({ ...props }: any) => {
-  return (
-    <Close {...props}>
-      {props.children}
-      <StyledIcon icon="arrowright" />
-    </Close>
-  );
-};
-export const StyledClose = styled(CloseButton)`
-  all: unset;
-  cursor: pointer;
-  font-size: 13px;
-  color: #798186;
-`;
+export const StyledClose = styled(Close)``;

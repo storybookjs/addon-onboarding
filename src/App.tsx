@@ -1,10 +1,8 @@
+import React, { useCallback, useEffect, useState } from "react";
 import { ThemeProvider, ensure, themes } from "@storybook/theming";
+import { STORY_CHANGED, CURRENT_STORY_WAS_SET } from "@storybook/core-events";
 import { type API } from "@storybook/manager-api";
 
-const theme = ensure(themes.light);
-
-import React, { useCallback, useEffect, useState } from "react";
-import { STORY_CHANGED, CURRENT_STORY_WAS_SET } from "@storybook/core-events";
 import { GuidedTour } from "./features/GuidedTour/GuidedTour";
 import { WelcomeModal } from "./features/WelcomeModal/WelcomeModal";
 import { WriteStoriesModal } from "./features/WriteStoriesModal/WriteStoriesModal";
@@ -16,6 +14,8 @@ type Step =
   | "3:WriteYourStory"
   | "4:VisitNewStory"
   | "5:ConfigureYourProject";
+
+const theme = ensure(themes.light);
 
 export default function App({ api }: { api: API }) {
   const [enabled, setEnabled] = useState(true);
@@ -33,10 +33,9 @@ export default function App({ api }: { api: API }) {
   }, [setEnabled]);
 
   useEffect(() => {
-    let stepTimeout: NodeJS.Timeout;
-    let confettiTimeout: NodeJS.Timeout;
+    let stepTimeout: number;
     if (step === "4:VisitNewStory") {
-      stepTimeout = setTimeout(() => {
+      stepTimeout = window.setTimeout(() => {
         setShowConfetti(true);
         setStep("5:ConfigureYourProject");
       }, 2000);
@@ -44,7 +43,6 @@ export default function App({ api }: { api: API }) {
 
     return () => {
       clearTimeout(stepTimeout);
-      clearTimeout(confettiTimeout);
     };
   }, [step]);
 

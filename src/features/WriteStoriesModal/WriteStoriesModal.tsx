@@ -3,7 +3,7 @@ import { Button } from "../../components/Button/Button";
 
 import { Modal } from "../../components/Modal/Modal";
 import { StorybookLogo } from "../../components/Icons/StorybookLogo";
-import { ModalContentWrapper } from "../WelcomeModal/WelcomeModal";
+import { ModalContentWrapper } from "../WelcomeModal/WelcomeModal.styled";
 
 export function WriteStoriesModal({ onFinish }: { onFinish: () => void }) {
   return (

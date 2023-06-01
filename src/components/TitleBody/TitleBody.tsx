@@ -1,23 +1,5 @@
 import React from "react";
-import { styled } from "@storybook/theming";
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-`;
-
-const Title = styled.strong`
-  font-size: 13px;
-`;
-
-const Body = styled.p`
-  font-size: 13px;
-  text-align: start;
-  color: #798186;
-  margin: 0;
-  margin-top: 4px;
-`;
+import { Body, Title, Wrapper } from "./TitleBody.styled";
 
 export function TitleBody({
   prefix,

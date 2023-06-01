@@ -19,13 +19,13 @@ export const Default: StoryObj<typeof meta> = {
     return (
       <>
         <List>
-          <ListItem isCompleted={workingIndex >= 1} nthItem={1}>
+          <ListItem isCompleted={workingIndex >= 1} index={1}>
             Hello World
           </ListItem>
-          <ListItem isCompleted={workingIndex >= 2} nthItem={2}>
+          <ListItem isCompleted={workingIndex >= 2} index={2}>
             Bonjour le monde
           </ListItem>
-          <ListItem isCompleted={workingIndex >= 3} nthItem={3}>
+          <ListItem isCompleted={workingIndex >= 3} index={3}>
             你好, 世界
           </ListItem>
         </List>
@@ -40,9 +40,9 @@ export const Default: StoryObj<typeof meta> = {
     const canvas = within(canvasElement.parentElement);
     const button = canvas.getByText("Complete");
 
-    expect(canvas.getAllByLabelText("complete")).toHaveLength(1);
+    await expect(canvas.getAllByLabelText("complete")).toHaveLength(1);
 
-    userEvent.click(button);
+    await userEvent.click(button);
 
     await waitFor(() =>
       expect(canvas.getAllByLabelText("complete")).toHaveLength(2)

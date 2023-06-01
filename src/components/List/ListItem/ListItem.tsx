@@ -8,18 +8,22 @@ import {
 
 interface ListItemProps {
   children: React.ReactNode;
-  nthItem: number;
+  index: number;
   isCompleted?: boolean;
 }
 
-export const ListItem = ({ children, nthItem, isCompleted }: ListItemProps) => {
+export const ListItem = ({ children, index, isCompleted }: ListItemProps) => {
   return (
     <ListItemWrapper>
       <ListItemIndexWrapper
         aria-label={isCompleted ? "complete" : "not complete"}
         isCompleted={isCompleted}
       >
-        {isCompleted ? <Icons icon="check" color="white" /> : nthItem}
+        {isCompleted ? (
+          <Icons width={10} height={10} icon="check" color="white" />
+        ) : (
+          index
+        )}
       </ListItemIndexWrapper>
       <ListItemContentWrapper>{children}</ListItemContentWrapper>
     </ListItemWrapper>

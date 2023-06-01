@@ -1,3 +1,15 @@
+# v0.0.11 (Thu Jun 01 2023)
+
+#### 🐛 Bug Fix
+
+- Add guided tour example [#5](https://github.com/storybookjs/addon-onboarding/pull/5) ([@yannbf](https://github.com/yannbf))
+
+#### Authors: 1
+
+- Yann Braga ([@yannbf](https://github.com/yannbf))
+
+---
+
 # v0.0.10 (Tue May 30 2023)
 
 #### ⚠️ Pushed to `main`

@@ -48,10 +48,11 @@ export const Small: Story = {
   },
 };
 
-export const Warning: Story = {
-  args: {
-    primary: true,
-    backgroundColor: "red",
-    label: "Delete now",
-  },
-};
+// Comment this out to test the flow
+// export const Warning: Story = {
+//   args: {
+//     primary: true,
+//     backgroundColor: "red",
+//     label: "Delete now",
+//   },
+// };

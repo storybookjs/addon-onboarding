@@ -41,6 +41,17 @@ export const ContentWrapper = React.forwardRef<
   </Content>
 ));
 
-export const StyledTitle = styled(Title)``;
-export const StyledDescription = styled(Description)``;
+export const StyledTitle = styled(Title)`
+  color: #000;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 20px;
+`;
+export const StyledDescription = styled(Description)`
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #454e54;
+`;
+
 export const StyledClose = styled(Close)``;

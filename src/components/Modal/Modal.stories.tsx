@@ -1,8 +1,9 @@
-import { Meta, StoryObj } from "@storybook/react";
-import { Modal } from "./Modal";
 import React, { useState } from "react";
+import { Meta, StoryObj } from "@storybook/react";
 import { userEvent, within } from "@storybook/testing-library";
 import { expect } from "@storybook/jest";
+
+import { Modal } from "./Modal";
 
 const meta: Meta<typeof Modal> = {
   component: Modal,

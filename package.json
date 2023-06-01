@@ -50,26 +50,45 @@
     "start": "run-p build:watch 'storybook --quiet'",
     "release": "yarn build && auto shipit",
     "storybook": "storybook dev -p 6006",
+    "storybook:watch": "nodemon",
     "build-storybook": "storybook build",
     "chromatic": "npx chromatic"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "src/stories",
+      "src/**/*.stories.*"
+    ],
+    "watch": [
+      "src",
+      ".storybook/main.ts",
+      "vite.config.ts"
+    ],
+    "ext": "js,jsx,ts,tsx",
+    "exec": "yarn storybook"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.0.0",
     "@storybook/addon-interactions": "^7.0.0",
     "@storybook/addon-links": "^7.0.0",
+    "@storybook/blocks": "^7.0.0",
+    "@storybook/components": "^7.0.0",
+    "@storybook/core-events": "^7.0.0",
+    "@storybook/manager-api": "^7.0.0",
     "@storybook/jest": "^0.1.0",
     "@storybook/react": "^7.0.0",
     "@storybook/react-vite": "^7.0.0",
     "@storybook/testing-library": "^0.0.14-next.1",
     "@storybook/theming": "^7.0.17",
     "@types/node": "^18.15.0",
-    "@types/react": "^18.0.34",
+    "@types/react": "^18.2.7",
     "@types/react-dom": "^18.2.4",
     "@vitejs/plugin-react": "^3.1.0",
     "auto": "^10.3.0",
     "boxen": "^5.0.1",
     "chromatic": "^6.17.4",
     "dedent": "^0.7.0",
+    "nodemon": "^2.0.22",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.3.1",
     "prompts": "^2.4.2",
@@ -87,7 +106,6 @@
     "@storybook/components": "^7.0.0",
     "@storybook/core-events": "^7.0.0",
     "@storybook/manager-api": "^7.0.0",
-    "@storybook/preview-api": "^7.0.0",
     "@storybook/theming": "^7.0.0",
     "@storybook/types": "^7.0.0",
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
@@ -111,6 +129,7 @@
   "homepage": "https://github.com/storybookjs/addon-onboarding#readme",
   "dependencies": {
     "@radix-ui/react-dialog": "^1.0.4",
-    "react-confetti": "^6.1.0"
+    "react-confetti": "^6.1.0",
+    "react-joyride": "^2.5.4"
   }
 }

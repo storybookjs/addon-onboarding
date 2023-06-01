@@ -10,14 +10,10 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     backgroundColor: { control: "color" },
   },
-  tags: ["autodocs"],
   parameters: {
-    myAddonParameter: `
-<MyComponent boolProp scalarProp={1} complexProp={{ foo: 1, bar: '2' }}>
-  <SomeOtherComponent funcProp={(a) => a.id} />
-</MyComponent>
-`,
+    layout: "centered",
   },
+  tags: ["autodocs"],
 };
 
 export default meta;
@@ -51,3 +47,12 @@ export const Small: Story = {
     label: "Button",
   },
 };
+
+// Comment this out to test the flow
+// export const Warning: Story = {
+//   args: {
+//     primary: true,
+//     backgroundColor: "red",
+//     label: "Delete now",
+//   },
+// };

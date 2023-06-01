@@ -1,3 +1,15 @@
+# v0.0.12 (Thu Jun 01 2023)
+
+#### 🐛 Bug Fix
+
+- Implemented bare minimum list component [#19](https://github.com/storybookjs/addon-onboarding/pull/19) ([@valentinpalkovic](https://github.com/valentinpalkovic))
+
+#### Authors: 1
+
+- Valentin Palkovic ([@valentinpalkovic](https://github.com/valentinpalkovic))
+
+---
+
 # v0.0.11 (Thu Jun 01 2023)
 
 #### 🐛 Bug Fix

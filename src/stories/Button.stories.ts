@@ -55,11 +55,3 @@ export const Warning: Story = {
     label: "Delete now",
   },
 };
-
-export const Warnings: Story = {
-  args: {
-    primary: true,
-    backgroundColor: "red",
-    label: "Delete now",
-  },
-};

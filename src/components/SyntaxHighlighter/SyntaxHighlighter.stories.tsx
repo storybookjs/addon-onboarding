@@ -1,6 +1,9 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { SyntaxHighlighter } from "./SyntaxHighlighter";
 import React from "react";
+import { fireEvent, userEvent, within } from "@storybook/testing-library";
+import { expect } from "@storybook/jest";
+import { textContentMatcher } from "../../helpers/textContentMatcher";
 
 const meta: Meta<typeof SyntaxHighlighter> = {
   component: SyntaxHighlighter,
@@ -82,5 +85,44 @@ export const Default: Story = {
     contents: newData,
     activeStep: 1,
     width: "50%",
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+
+    const resetButton = canvas.getByText("Reset");
+    const previousButton = canvas.getByText("Previous");
+    const nextButton = canvas.getByText("Next");
+
+    const firstElement = await canvas.findByText(
+      textContentMatcher(newData[0][0].content)
+    );
+    const secondElement = await canvas.findByText(
+      textContentMatcher(newData[1][0].content)
+    );
+    const thirdElement = await canvas.findByText(
+      textContentMatcher(newData[2][0].content)
+    );
+
+    await expect(
+      firstElement.closest('[aria-hidden="true"]')
+    ).toBeInTheDocument();
+    await expect(
+      secondElement.closest('[aria-hidden="true"]')
+    ).not.toBeInTheDocument();
+    await expect(
+      thirdElement.closest('[aria-hidden="true"]')
+    ).toBeInTheDocument();
+
+    await userEvent.click(nextButton);
+
+    await expect(
+      firstElement.closest('[aria-hidden="true"]')
+    ).toBeInTheDocument();
+    await expect(
+      secondElement.closest('[aria-hidden="true"]')
+    ).toBeInTheDocument();
+    await expect(
+      thirdElement.closest('[aria-hidden="true"]')
+    ).not.toBeInTheDocument();
   },
 };

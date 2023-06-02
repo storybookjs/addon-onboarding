@@ -30,6 +30,7 @@ export const Snippet = forwardRef<HTMLDivElement, Props>(
           ref={ref}
           initial="default"
           animate={active ? "active" : "default"}
+          aria-hidden={!active}
           variants={wrapperVariants}
           transition={{ ease: "easeInOut", duration: 0.6 }}
         >

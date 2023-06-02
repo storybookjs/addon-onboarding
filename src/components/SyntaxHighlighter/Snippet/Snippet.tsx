@@ -52,7 +52,7 @@ export const Snippet = forwardRef<HTMLDivElement, Props>(
                   language="javascript"
                   customStyle={{ fontSize: "0.8rem" }}
                 >
-                  {`  ...`}
+                  {`  // ...`}
                 </StorybookSyntaxHighlighter>
               )}
 

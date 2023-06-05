@@ -39,7 +39,7 @@ export function GuidedTour({
           floaterProps: {
             disableAnimation: true,
           },
-          hideNextButton: true
+          hideNextButton: true,
         },
       ]
     : [
@@ -84,7 +84,7 @@ export function GuidedTour({
           floaterProps: {
             target: "#control-primary",
           },
-          hideNextButton: true
+          hideNextButton: true,
         },
         {
           target: "#control-primary",

@@ -80,6 +80,7 @@
     "@storybook/react-vite": "^7.0.0",
     "@storybook/testing-library": "^0.0.14-next.1",
     "@storybook/theming": "^7.0.17",
+    "@types/lodash.throttle": "^4.1.7",
     "@types/node": "^18.15.0",
     "@types/react": "^18.2.7",
     "@types/react-dom": "^18.2.4",
@@ -129,7 +130,7 @@
   "homepage": "https://github.com/storybookjs/addon-onboarding#readme",
   "dependencies": {
     "@radix-ui/react-dialog": "^1.0.4",
-    "framer-motion": "^10.12.16",
+    "framer-motion": "^6.5.1",
     "react-confetti": "^6.1.0",
     "react-joyride": "^2.5.4"
   }

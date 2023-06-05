@@ -131,3 +131,16 @@ export const Circle3 = styled.div`
   animation-timing-function: ease-in-out;
   z-index: 4;
 `;
+
+export const StyledTitle = styled.h2`
+  color: #000;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 20px;
+`;
+export const StyledDescription = styled.p`
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #454e54;
+`;

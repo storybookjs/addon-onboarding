@@ -66,6 +66,7 @@ export const Snippet = forwardRef<HTMLDivElement, Props>(
                   <StorybookSyntaxHighlighter
                     language="javascript"
                     customStyle={{ fontSize: "0.8rem" }}
+                    codeTagProps={{ style: { paddingLeft: "15px" } }}
                   >
                     {content}
                   </StorybookSyntaxHighlighter>

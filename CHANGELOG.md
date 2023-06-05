@@ -1,3 +1,15 @@
+# v0.0.14 (Mon Jun 05 2023)
+
+#### 🐛 Bug Fix
+
+- Modal improvements [#22](https://github.com/storybookjs/addon-onboarding/pull/22) ([@cdedreuille](https://github.com/cdedreuille))
+
+#### Authors: 1
+
+- Charles de Dreuille ([@cdedreuille](https://github.com/cdedreuille))
+
+---
+
 # v0.0.13 (Mon Jun 05 2023)
 
 #### 🐛 Bug Fix

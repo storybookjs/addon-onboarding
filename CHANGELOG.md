@@ -1,3 +1,15 @@
+# v0.0.13 (Mon Jun 05 2023)
+
+#### 🐛 Bug Fix
+
+- Implement syntax highlighter [#20](https://github.com/storybookjs/addon-onboarding/pull/20) ([@valentinpalkovic](https://github.com/valentinpalkovic))
+
+#### Authors: 1
+
+- Valentin Palkovic ([@valentinpalkovic](https://github.com/valentinpalkovic))
+
+---
+
 # v0.0.12 (Thu Jun 01 2023)
 
 #### 🐛 Bug Fix

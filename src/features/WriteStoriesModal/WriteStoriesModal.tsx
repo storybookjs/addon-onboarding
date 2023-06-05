@@ -7,7 +7,7 @@ import { ModalContentWrapper } from "../WelcomeModal/WelcomeModal.styled";
 
 export function WriteStoriesModal({ onFinish }: { onFinish: () => void }) {
   return (
-    <Modal width="540px" defaultOpen>
+    <Modal width={540} defaultOpen>
       {({ Title, Description }) => (
         <ModalContentWrapper data-chromatic="ignore">
           <StorybookLogo />

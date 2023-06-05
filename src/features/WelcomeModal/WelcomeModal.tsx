@@ -19,7 +19,7 @@ export const WelcomeModal = ({
   onProceed: () => void;
 }) => {
   return (
-    <Modal width="540px" defaultOpen>
+    <Modal width={540} defaultOpen>
       {({ Close }) => (
         <ModalContentWrapper data-chromatic="ignore">
           <StorybookLogo />

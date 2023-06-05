@@ -30,7 +30,7 @@ export const Default: Story = {
         <Modal {...props} open={isOpen}>
           {({ Close }) => (
             <>
-              <div>Hello world</div>
+              <div>Hello world!</div>
               <Close onClick={() => setOpen(false)}>Close</Close>
             </>
           )}
@@ -43,7 +43,9 @@ export const Default: Story = {
     const canvas = within(canvasElement.parentElement);
     const button = canvas.getByText("Open modal");
     await userEvent.click(button);
-    await expect(canvas.findByText("Hello world")).resolves.toBeInTheDocument();
+    await expect(
+      canvas.findByText("Hello world!")
+    ).resolves.toBeInTheDocument();
   },
 };
 
@@ -59,7 +61,7 @@ export const FixedWidth: Story = {
         <Modal {...props} open={isOpen}>
           {({ Close }) => (
             <>
-              <div>Hello world</div>
+              <div>Hello world!</div>
               <Close onClick={() => setOpen(false)}>Close</Close>
             </>
           )}
@@ -72,7 +74,9 @@ export const FixedWidth: Story = {
     const canvas = within(canvasElement.parentElement);
     const button = canvas.getByText("Open modal");
     await userEvent.click(button);
-    await expect(canvas.findByText("Hello world")).resolves.toBeInTheDocument();
+    await expect(
+      canvas.findByText("Hello world!")
+    ).resolves.toBeInTheDocument();
   },
 };
 
@@ -88,7 +92,7 @@ export const FixedHeight: Story = {
         <Modal {...props} open={isOpen}>
           {({ Close }) => (
             <>
-              <div>Hello world</div>
+              <div>Hello world!</div>
               <Close onClick={() => setOpen(false)}>Close</Close>
             </>
           )}
@@ -101,7 +105,9 @@ export const FixedHeight: Story = {
     const canvas = within(canvasElement.parentElement);
     const button = canvas.getByText("Open modal");
     await userEvent.click(button);
-    await expect(canvas.findByText("Hello world")).resolves.toBeInTheDocument();
+    await expect(
+      canvas.findByText("Hello world!")
+    ).resolves.toBeInTheDocument();
   },
 };
 
@@ -118,7 +124,7 @@ export const FixedWidthAndHeight: Story = {
         <Modal {...props} open={isOpen}>
           {({ Close }) => (
             <>
-              <div>Hello world</div>
+              <div>Hello world!</div>
               <Close onClick={() => setOpen(false)}>Close</Close>
             </>
           )}
@@ -131,6 +137,8 @@ export const FixedWidthAndHeight: Story = {
     const canvas = within(canvasElement.parentElement);
     const button = canvas.getByText("Open modal");
     await userEvent.click(button);
-    await expect(canvas.findByText("Hello world")).resolves.toBeInTheDocument();
+    await expect(
+      canvas.findByText("Hello world!")
+    ).resolves.toBeInTheDocument();
   },
 };

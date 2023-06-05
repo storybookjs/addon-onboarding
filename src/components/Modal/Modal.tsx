@@ -6,7 +6,8 @@ type ContentProps = React.ComponentProps<typeof ContentWrapper>;
 
 interface ModalProps
   extends Omit<React.ComponentProps<typeof Dialog.Root>, "children"> {
-  width?: string;
+  width?: number;
+  height?: number;
   children: (props: {
     Title: typeof Dialog.Title;
     Description: typeof Dialog.Description;
@@ -19,6 +20,7 @@ interface ModalProps
 export function Modal({
   children,
   width,
+  height,
   onEscapeKeyDown,
   onInteractOutside = (ev) => ev.preventDefault(),
   ...rootProps
@@ -29,6 +31,7 @@ export function Modal({
         <StyledOverlay />
         <ContentWrapper
           width={width}
+          height={height}
           onInteractOutside={onInteractOutside}
           onEscapeKeyDown={onEscapeKeyDown}
         >

@@ -19,16 +19,18 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: () => {
+  args: {
+    width: undefined,
+    height: undefined,
+  },
+  render: (props) => {
     const [isOpen, setOpen] = useState(false);
     return (
       <>
-        <Modal open={isOpen}>
-          {({ Title, Description, Close }) => (
+        <Modal {...props} open={isOpen}>
+          {({ Close }) => (
             <>
-              Hello world
-              <Title>Modal Title</Title>
-              <Description>Modal Description</Description>
+              <div>Hello world</div>
               <Close onClick={() => setOpen(false)}>Close</Close>
             </>
           )}
@@ -46,16 +48,77 @@ export const Default: Story = {
 };
 
 export const FixedWidth: Story = {
-  render: () => {
+  args: {
+    ...Default.args,
+    width: 1024,
+  },
+  render: (props) => {
     const [isOpen, setOpen] = useState(false);
     return (
       <>
-        <Modal width="740px" open={isOpen}>
-          {({ Title, Description, Close }) => (
+        <Modal {...props} open={isOpen}>
+          {({ Close }) => (
             <>
-              Hello world
-              <Title>Modal Title</Title>
-              <Description>Modal Description</Description>
+              <div>Hello world</div>
+              <Close onClick={() => setOpen(false)}>Close</Close>
+            </>
+          )}
+        </Modal>
+        <button onClick={() => setOpen(true)}>Open modal</button>
+      </>
+    );
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement.parentElement);
+    const button = canvas.getByText("Open modal");
+    await userEvent.click(button);
+    await expect(canvas.findByText("Hello world")).resolves.toBeInTheDocument();
+  },
+};
+
+export const FixedHeight: Story = {
+  args: {
+    ...Default.args,
+    height: 430,
+  },
+  render: (props) => {
+    const [isOpen, setOpen] = useState(false);
+    return (
+      <>
+        <Modal {...props} open={isOpen}>
+          {({ Close }) => (
+            <>
+              <div>Hello world</div>
+              <Close onClick={() => setOpen(false)}>Close</Close>
+            </>
+          )}
+        </Modal>
+        <button onClick={() => setOpen(true)}>Open modal</button>
+      </>
+    );
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement.parentElement);
+    const button = canvas.getByText("Open modal");
+    await userEvent.click(button);
+    await expect(canvas.findByText("Hello world")).resolves.toBeInTheDocument();
+  },
+};
+
+export const FixedWidthAndHeight: Story = {
+  args: {
+    ...Default.args,
+    width: 1024,
+    height: 430,
+  },
+  render: (props) => {
+    const [isOpen, setOpen] = useState(false);
+    return (
+      <>
+        <Modal {...props} open={isOpen}>
+          {({ Close }) => (
+            <>
+              <div>Hello world</div>
               <Close onClick={() => setOpen(false)}>Close</Close>
             </>
           )}

@@ -1,23 +1,17 @@
 import React from "react";
-
 import * as Dialog from "@radix-ui/react-dialog";
-import {
-  ContentWrapper,
-  StyledClose,
-  StyledDescription,
-  StyledOverlay,
-  StyledTitle,
-} from "./Modal.styled";
+import { ContentWrapper, StyledOverlay } from "./Modal.styled";
 
 type ContentProps = React.ComponentProps<typeof ContentWrapper>;
 
 interface ModalProps
   extends Omit<React.ComponentProps<typeof Dialog.Root>, "children"> {
-  width?: string;
+  width?: number;
+  height?: number;
   children: (props: {
-    Title: typeof StyledTitle;
-    Description: typeof StyledDescription;
-    Close: typeof StyledClose;
+    Title: typeof Dialog.Title;
+    Description: typeof Dialog.Description;
+    Close: typeof Dialog.Close;
   }) => React.ReactNode;
   onEscapeKeyDown?: ContentProps["onEscapeKeyDown"];
   onInteractOutside?: ContentProps["onInteractOutside"];
@@ -26,6 +20,7 @@ interface ModalProps
 export function Modal({
   children,
   width,
+  height,
   onEscapeKeyDown,
   onInteractOutside = (ev) => ev.preventDefault(),
   ...rootProps
@@ -36,13 +31,14 @@ export function Modal({
         <StyledOverlay />
         <ContentWrapper
           width={width}
+          height={height}
           onInteractOutside={onInteractOutside}
           onEscapeKeyDown={onEscapeKeyDown}
         >
           {children({
-            Title: StyledTitle,
-            Description: StyledDescription,
-            Close: StyledClose,
+            Title: Dialog.Title,
+            Description: Dialog.Description,
+            Close: Dialog.Close,
           })}
         </ContentWrapper>
       </Dialog.Portal>

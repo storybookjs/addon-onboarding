@@ -7,6 +7,8 @@ import {
   ModalContentWrapper,
   SkipButton,
   StyledIcon,
+  Title,
+  Description,
 } from "./WelcomeModal.styled";
 
 export const WelcomeModal = ({
@@ -17,8 +19,8 @@ export const WelcomeModal = ({
   onProceed: () => void;
 }) => {
   return (
-    <Modal width="540px" defaultOpen>
-      {({ Title, Description, Close }) => (
+    <Modal width={540} defaultOpen>
+      {({ Close }) => (
         <ModalContentWrapper data-chromatic="ignore">
           <StorybookLogo />
           <Title style={{ marginTop: 20 }}>Welcome to Storybook</Title>

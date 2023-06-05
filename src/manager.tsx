@@ -8,7 +8,7 @@ const App = lazy(() => import("./App"));
 // 1. The onboarding query parameter is present
 // 2. The example button stories are present
 addons.register("@storybook/addon-onboarding", async (api) => {
-  const isOnboarding = api.getUrlState().queryParams.onboarding;
+  const isOnboarding = api.getUrlState().path === '/onboarding';
 
   if (!isOnboarding) {
     return;

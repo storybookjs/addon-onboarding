@@ -1,20 +1,14 @@
 import { css, styled } from "@storybook/theming";
-import {
-  Overlay,
-  Content,
-  Title,
-  Description,
-  Close,
-} from "@radix-ui/react-dialog";
+import * as Dialog from "@radix-ui/react-dialog";
 import React from "react";
 
-export const StyledOverlay = styled(Overlay)`
-  background-color: rgba(0, 0, 0, 0.25);
+export const StyledOverlay = styled(Dialog.Overlay)`
+  background-color: rgba(27, 28, 29, 0.48);
   position: fixed;
   inset: 0px;
   width: 100%;
   height: 100%;
-})`;
+`;
 
 export const StyledContent = styled.div<{ width: string }>(
   ({ width }) => css`
@@ -34,24 +28,9 @@ export const StyledContent = styled.div<{ width: string }>(
 export const ContentWrapper = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<typeof StyledContent> &
-    React.ComponentProps<typeof Content>
+    React.ComponentProps<typeof Dialog.Content>
 >(({ width, children, ...contentProps }, ref) => (
-  <Content ref={ref} asChild {...contentProps}>
+  <Dialog.Content ref={ref} asChild {...contentProps}>
     <StyledContent width={width}>{children}</StyledContent>
-  </Content>
+  </Dialog.Content>
 ));
-
-export const StyledTitle = styled(Title)`
-  color: #000;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 20px;
-`;
-export const StyledDescription = styled(Description)`
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
-  color: #454e54;
-`;
-
-export const StyledClose = styled(Close)``;

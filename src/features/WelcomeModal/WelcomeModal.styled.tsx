@@ -1,6 +1,21 @@
 import { Icons } from "@storybook/components";
 import { keyframes, styled } from "@storybook/theming";
 
+export const Title = styled.h1`
+  color: #2e3438;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 20px;
+`;
+
+export const Description = styled.p`
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #454e54;
+`;
+
 export const rainbowAnimation = keyframes`
   0% {
     background-position: 0% 50%;

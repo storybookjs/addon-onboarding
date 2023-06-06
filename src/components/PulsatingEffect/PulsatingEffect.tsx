@@ -7,6 +7,7 @@ export function PulsatingEffect({
 }): JSX.Element {
   useEffect(() => {
     const element = document.querySelector<HTMLElement>(targetSelector);
+
     if (element) {
       element.style.animation = "pulsate 3s infinite";
       element.style.transformOrigin = "center";
@@ -35,7 +36,14 @@ export function PulsatingEffect({
       const styleElement = document.querySelector(
         "#sb-onboarding-pulsating-effect"
       );
-      styleElement?.remove();
+
+      if (styleElement) {
+        styleElement.remove();
+      }
+
+      if (element) {
+        element.style.animation = "auto";
+      }
     };
   }, [targetSelector]);
 

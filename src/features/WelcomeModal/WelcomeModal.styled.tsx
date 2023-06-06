@@ -1,19 +1,59 @@
 import { Icons } from "@storybook/components";
 import { keyframes, styled } from "@storybook/theming";
 
+export const ModalContentWrapper = styled.div`
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: space-between;
+`;
+
+export const TopContent = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const Title = styled.h1`
-  color: #2e3438;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 20px;
+  margin: 0;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  color: ${({ theme }) => theme.color.darkest};
+  font-weight: ${({ theme }) => theme.typography.weight.bold};
+  font-size: ${({ theme }) => theme.typography.size.m1}px;
+  line-height: ${({ theme }) => theme.typography.size.m3}px;
 `;
 
 export const Description = styled.p`
+  margin: 0;
+  margin-bottom: 20px;
+  max-width: 320px;
   text-align: center;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
-  color: #454e54;
+  font-size: ${({ theme }) => theme.typography.size.s2}px;
+  font-weight: ${({ theme }) => theme.typography.weight.regular};
+  line-height: ${({ theme }) => theme.typography.size.m1}px;
+  color: ${({ theme }) => theme.color.darker};
+`;
+
+export const SkipButton = styled.button`
+  all: unset;
+  cursor: pointer;
+  font-size: 13px;
+  color: #798186;
+  padding-bottom: 20px;
+
+  &:focus-visible {
+    outline: auto;
+  }
+`;
+
+export const StyledIcon = styled(Icons)`
+  margin-left: 2px;
+  height: 10px;
 `;
 
 export const Background = styled.div`
@@ -90,29 +130,4 @@ export const Circle3 = styled.div`
   animation: ${circle3Anim} 4s linear infinite;
   animation-timing-function: ease-in-out;
   z-index: 4;
-`;
-
-export const ModalContentWrapper = styled.div`
-  border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 100px;
-  padding-bottom: 20px;
-`;
-
-export const StyledIcon = styled(Icons)`
-  margin-left: 2px;
-  height: 10px;
-`;
-
-export const SkipButton = styled.button`
-  all: unset;
-  margin-top: 90px;
-  cursor: pointer;
-  font-size: 13px;
-  color: #798186;
-  :focus-visible {
-    outline: auto;
-  }
 `;

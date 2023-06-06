@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "../../components/Button/Button";
 
 import { Modal } from "../../components/Modal/Modal";
-import { StorybookLogo } from "../../components/Icons/StorybookLogo";
+import { StorybookLogo } from "../WelcomeModal/StorybookLogo";
 import { ModalContentWrapper } from "../WelcomeModal/WelcomeModal.styled";
 
 export function WriteStoriesModal({ onFinish }: { onFinish: () => void }) {

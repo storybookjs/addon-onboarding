@@ -1,81 +1,54 @@
 import { Icons } from "@storybook/components";
 import { keyframes, styled } from "@storybook/theming";
 
-export const Title = styled.h1`
-  color: #2e3438;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 20px;
-`;
-
-export const Description = styled.p`
-  text-align: center;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
-  color: #454e54;
-`;
-
-export const rainbowAnimation = keyframes`
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-`;
-
 export const ModalContentWrapper = styled.div`
-  background: radial-gradient(
-        circle at left,
-        #ffccd2,
-        #ffdbcb,
-        #ffe9c5,
-        #fff8c0,
-        #f2ffd8,
-        #d2f8e5,
-        #b3f0f1,
-        #a1e6f0,
-        #9fd8df
-      )
-      left,
-    radial-gradient(
-        circle at right,
-        #ffccd2,
-        #ffdbcb,
-        #ffe9c5,
-        #fff8c0,
-        #f2ffd8,
-        #d2f8e5,
-        #b3f0f1,
-        #a1e6f0,
-        #9fd8df
-      )
-      right,
-    linear-gradient(
-      45deg,
-      #ffccd2,
-      #ffdbcb,
-      #ffe9c5,
-      #fff8c0,
-      #f2ffd8,
-      #d2f8e5,
-      #b3f0f1,
-      #a1e6f0,
-      #9fd8df
-    );
-  background-size: 300% 300%;
-  background-repeat: no-repeat;
-  animation: ${rainbowAnimation} 10s linear infinite;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 100px;
+  height: 100%;
+  justify-content: space-between;
+`;
+
+export const TopContent = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const Title = styled.h1`
+  margin: 0;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  color: ${({ theme }) => theme.color.darkest};
+  font-weight: ${({ theme }) => theme.typography.weight.bold};
+  font-size: ${({ theme }) => theme.typography.size.m1}px;
+  line-height: ${({ theme }) => theme.typography.size.m3}px;
+`;
+
+export const Description = styled.p`
+  margin: 0;
+  margin-bottom: 20px;
+  max-width: 320px;
+  text-align: center;
+  font-size: ${({ theme }) => theme.typography.size.s2}px;
+  font-weight: ${({ theme }) => theme.typography.weight.regular};
+  line-height: ${({ theme }) => theme.typography.size.m1}px;
+  color: ${({ theme }) => theme.color.darker};
+`;
+
+export const SkipButton = styled.button`
+  all: unset;
+  cursor: pointer;
+  font-size: 13px;
+  color: #798186;
   padding-bottom: 20px;
+
+  &:focus-visible {
+    outline: auto;
+  }
 `;
 
 export const StyledIcon = styled(Icons)`
@@ -83,13 +56,78 @@ export const StyledIcon = styled(Icons)`
   height: 10px;
 `;
 
-export const SkipButton = styled.button`
-  all: unset;
-  margin-top: 90px;
-  cursor: pointer;
-  font-size: 13px;
-  color: #798186;
-  :focus-visible {
-    outline: auto;
-  }
+export const Background = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+`;
+
+export const circle1Anim = keyframes`
+  0% { transform: translate(0px, 0px) }
+  50% { transform: translate(-200px, 0px) }
+  100% { transform: translate(0px, 0px) }
+`;
+
+export const Circle1 = styled.div`
+  position: absolute;
+  width: 1200px;
+  height: 1200px;
+  left: -200px;
+  top: -900px;
+  background: radial-gradient(
+    circle at center,
+    rgba(253, 255, 147, 1) 0%,
+    rgba(253, 255, 147, 0) 70%
+  );
+  animation: ${circle1Anim} 4s linear infinite;
+  animation-timing-function: ease-in-out;
+  z-index: 3;
+`;
+
+export const circle2Anim = keyframes`
+  0% { transform: translate(0px, 0px) }
+  50% { transform: translate(400px, 0px) }
+  100% { transform: translate(0px, 0px) }
+`;
+
+export const Circle2 = styled.div`
+  position: absolute;
+  width: 1200px;
+  height: 1200px;
+  left: -600px;
+  top: -840px;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 119, 119, 1) 0%,
+    rgba(255, 119, 119, 0) 70%
+  );
+  animation: ${circle2Anim} 6s linear infinite;
+  animation-timing-function: ease-in-out;
+  z-index: 2;
+`;
+
+export const circle3Anim = keyframes`
+  0% { transform: translate(600px, -40px) }
+  50% { transform: translate(600px, -200px) }
+  100% { transform: translate(600px, -40px) }
+`;
+
+export const Circle3 = styled.div`
+  position: absolute;
+  width: 1200px;
+  height: 1200px;
+  left: -600px;
+  top: -840px;
+  background: radial-gradient(
+    circle at center,
+    rgba(119, 255, 247, 0.8) 0%,
+    rgba(119, 255, 247, 0) 70%
+  );
+  animation: ${circle3Anim} 4s linear infinite;
+  animation-timing-function: ease-in-out;
+  z-index: 4;
 `;

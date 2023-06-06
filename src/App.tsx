@@ -48,6 +48,7 @@ export default function App({ api }: { api: API }) {
 
   useEffect(() => {
     api.once(CURRENT_STORY_WAS_SET, ({ storyId }) => {
+      api.setQueryParams({ onboarding: "true" });
       // make sure the initial state is set correctly:
       // 1. Selected story is primary button
       // 2. The addon panel is opened, in the bottom and the controls tab is selected

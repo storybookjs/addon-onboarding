@@ -12,6 +12,7 @@ import {
   Background,
   Circle1,
   Circle2,
+  Circle3,
 } from "./WelcomeModal.styled";
 
 export const WelcomeModal = ({
@@ -44,6 +45,7 @@ export const WelcomeModal = ({
           <Background>
             <Circle1 />
             <Circle2 />
+            <Circle3 />
           </Background>
         </ModalContentWrapper>
       )}

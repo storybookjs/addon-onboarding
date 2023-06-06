@@ -45,7 +45,7 @@ export const Circle1 = styled.div`
   );
   animation: ${circle1Anim} 4s linear infinite;
   animation-timing-function: ease-in-out;
-  z-index: 2;
+  z-index: 3;
 `;
 
 export const circle2Anim = keyframes`
@@ -67,7 +67,29 @@ export const Circle2 = styled.div`
   );
   animation: ${circle2Anim} 6s linear infinite;
   animation-timing-function: ease-in-out;
-  z-index: 1;
+  z-index: 2;
+`;
+
+export const circle3Anim = keyframes`
+  0% { transform: translate(600px, -40px) }
+  50% { transform: translate(600px, -200px) }
+  100% { transform: translate(600px, -40px) }
+`;
+
+export const Circle3 = styled.div`
+  position: absolute;
+  width: 1200px;
+  height: 1200px;
+  left: -600px;
+  top: -840px;
+  background: radial-gradient(
+    circle at center,
+    rgba(119, 255, 247, 0.8) 0%,
+    rgba(119, 255, 247, 0) 70%
+  );
+  animation: ${circle3Anim} 4s linear infinite;
+  animation-timing-function: ease-in-out;
+  z-index: 4;
 `;
 
 export const ModalContentWrapper = styled.div`

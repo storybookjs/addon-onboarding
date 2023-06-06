@@ -1,3 +1,16 @@
+# v0.0.16 (Tue Jun 06 2023)
+
+#### 🐛 Bug Fix
+
+- Improve guided tour [#35](https://github.com/storybookjs/addon-onboarding/pull/35) ([@cdedreuille](https://github.com/cdedreuille) [@yannbf](https://github.com/yannbf))
+
+#### Authors: 2
+
+- Charles de Dreuille ([@cdedreuille](https://github.com/cdedreuille))
+- Yann Braga ([@yannbf](https://github.com/yannbf))
+
+---
+
 # v0.0.15 (Tue Jun 06 2023)
 
 #### 🐛 Bug Fix

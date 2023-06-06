@@ -9,6 +9,9 @@ import {
   StyledIcon,
   Title,
   Description,
+  Background,
+  Circle1,
+  Circle2,
 } from "./WelcomeModal.styled";
 
 export const WelcomeModal = ({
@@ -38,6 +41,10 @@ export const WelcomeModal = ({
               <StyledIcon icon="arrowright" />
             </SkipButton>
           </Close>
+          <Background>
+            <Circle1 />
+            <Circle2 />
+          </Background>
         </ModalContentWrapper>
       )}
     </Modal>

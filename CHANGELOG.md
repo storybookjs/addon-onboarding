@@ -1,3 +1,17 @@
+# v0.0.15 (Tue Jun 06 2023)
+
+#### 🐛 Bug Fix
+
+- Trigger via `/onboarding` path instead of query parameter [#21](https://github.com/storybookjs/addon-onboarding/pull/21) ([@yannbf](https://github.com/yannbf))
+- Welcome modal animation [#34](https://github.com/storybookjs/addon-onboarding/pull/34) ([@cdedreuille](https://github.com/cdedreuille))
+
+#### Authors: 2
+
+- Charles de Dreuille ([@cdedreuille](https://github.com/cdedreuille))
+- Yann Braga ([@yannbf](https://github.com/yannbf))
+
+---
+
 # v0.0.14 (Mon Jun 05 2023)
 
 #### 🐛 Bug Fix

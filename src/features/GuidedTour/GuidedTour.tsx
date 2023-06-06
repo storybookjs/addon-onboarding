@@ -3,11 +3,8 @@ import Joyride, { CallBackProps, STATUS, Step } from "react-joyride";
 
 import { PulsatingEffect } from "../../components/PulsatingEffect/PulsatingEffect";
 import { Confetti } from "../../components/Confetti/Confetti";
-import { TitleBody } from "../../components/TitleBody/TitleBody";
 import { API } from "@storybook/manager-api";
 import { STORY_ARGS_UPDATED } from "@storybook/core-events";
-import { useTheme } from "@storybook/theming";
-import { getStyles } from "./GuidedTour.styled";
 import { Tooltip } from "./Tooltip";
 
 let INTERACTIONS_COUNT = 0;
@@ -22,7 +19,6 @@ export function GuidedTour({
   onFirstTourDone: () => void;
 }) {
   const [stepIndex, setStepIndex] = useState<number>();
-  const theme = useTheme();
 
   useEffect(() => {
     api.on(STORY_ARGS_UPDATED, () => {
@@ -37,20 +33,12 @@ export function GuidedTour({
     ? [
         {
           target: "#configure-your-project--docs",
-          content: (
-            <TitleBody
-              title="Continue setting up your project"
-              body="You nailed the basics. Now get started writing stories for your own components."
-            />
-          ),
+          title: "Continue setting up your project",
+          content:
+            "You nailed the basics. Now get started writing stories for your own components.",
           placement: "right",
           disableOverlay: true,
           disableBeacon: true,
-          styles: {
-            buttonNext: {
-              display: "none",
-            },
-          },
           floaterProps: {
             disableAnimation: true,
           },
@@ -59,12 +47,9 @@ export function GuidedTour({
     : [
         {
           target: "#storybook-explorer-tree > div",
-          content: (
-            <TitleBody
-              title="Storybook is built from stories"
-              body="Storybook uses stories to represent the key states supported by each of your components. For example: this Button component has four stories."
-            />
-          ),
+          title: "Storybook is built from stories",
+          content:
+            "Storybook uses stories to represent the key states supported by each of your components. For example: this Button component has four stories.",
           placement: "right",
           disableBeacon: true,
           styles: {
@@ -78,29 +63,21 @@ export function GuidedTour({
         },
         {
           target: "#storybook-preview-iframe",
-          content: (
-            <TitleBody
-              title="Storybook previews are interactive"
-              body="Whenever you modify code or stories, Storybook automatically updates how it previews your components."
-            />
-          ),
+          title: "Storybook previews are interactive",
+          content:
+            "Whenever you modify code or stories, Storybook automatically updates how it previews your components.",
           placement: "bottom",
         },
         {
           target: "#root div[role=main]",
+          title: "Interactive story playground",
           content: (
             <>
-              <TitleBody
-                title="Interactive story playground"
-                body={
-                  <>
-                    See how a story renders with different data and state
-                    without touching code.
-                    <br />
-                    Try it out by pressing this button.
-                  </>
-                }
-              />
+              See how a story renders with different data and state without
+              touching code.
+              <br />
+              <br />
+              Try it out by pressing this button.
               <PulsatingEffect targetSelector="#control-primary" />
             </>
           ),
@@ -109,21 +86,15 @@ export function GuidedTour({
           floaterProps: {
             target: "#control-primary",
           },
-          styles: {
-            buttonNext: {
-              display: "none",
-            },
-          },
         },
         {
           target: "#control-primary",
+          title: "Congratulations!",
           content: (
             <>
+              You've learned how to control your stories interactively. Now:
+              let's explore how to write your first story.
               <Confetti numberOfPieces={100} />
-              <TitleBody
-                title="Congratulations!"
-                body="You've learned how to control your stories interactively. Now: let's explore how to write your first story."
-              />
             </>
           ),
           placement: "right",
@@ -161,26 +132,13 @@ export function GuidedTour({
           },
         },
       }}
-      // tooltipComponent={Tooltip}
+      tooltipComponent={Tooltip}
       styles={{
         spotlight: {
           border: "solid 2px #004c7c",
         },
-        tooltip: {
-          maxWidth: 260,
-          borderRadius: 4,
-          padding: 15,
-        },
         overlay: {
           backgroundColor: "rgba(0, 0, 0, 0.48)",
-        },
-        buttonNext: {
-          ...getStyles(theme),
-          marginTop: 5,
-        },
-        tooltipContent: {
-          paddingTop: 4,
-          padding: 0,
         },
         options: {
           zIndex: 10000,

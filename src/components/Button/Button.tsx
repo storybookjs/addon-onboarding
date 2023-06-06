@@ -1,22 +1,70 @@
-import React from "react";
+import { css, styled } from "@storybook/theming";
+import React, { FC } from "react";
 
-export const buttonStyles: React.ComponentProps<"button">["style"] = {
-  border: 0,
-  cursor: "pointer",
-  fontSize: 13,
-  lineHeight: 1,
-  padding: "9px 12px",
-  backgroundColor: "#029CFD",
-  borderRadius: 4,
-  color: "#fff",
-  fontWeight: 700,
-};
-
-export function Button(props: React.ComponentProps<"button">) {
-  const style = {
-    ...buttonStyles,
-    ...(props.style || {}),
-  };
-
-  return <button type="button" {...props} style={style} />;
+export interface ButtonProps {
+  children: string;
+  onClick?: () => void;
 }
+
+const Container = styled.button`
+  all: unset;
+  border: 0;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.75rem;
+  background: ${({ theme }) => theme.color.secondary};
+  color: ${({ theme }) => theme.color.lightest};
+  height: 32px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  font-family: ${({ theme }) => theme.typography.fonts.base};
+  transition: all 0.16s ease-in-out;
+  text-decoration: none;
+
+  &:hover {
+    background-color: #0b94eb;
+  }
+
+  &:focus {
+    box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.1);
+  }
+`;
+
+export const getStyles = (theme: any) => css`
+  all: unset;
+  border: 0;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.75rem;
+  /* background: ${theme.color.secondary}; */
+  background: red;
+  color: ${theme.color.lightest};
+  height: 32px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  font-family: ${theme.typography.fonts.base};
+  transition: all 0.16s ease-in-out;
+  text-decoration: none;
+
+  &:hover {
+    background-color: #0b94eb;
+  }
+
+  &:focus {
+    box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.1);
+  }
+`;
+
+export const Button: FC<ButtonProps> = ({ children, onClick, ...rest }) => {
+  return (
+    <Container onClick={onClick} {...rest}>
+      {children}
+    </Container>
+  );
+};

@@ -65,7 +65,7 @@
       "vite.config.ts"
     ],
     "ext": "js,jsx,ts,tsx",
-    "exec": "yarn storybook"
+    "exec": "yarn storybook --ci"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.0.0",

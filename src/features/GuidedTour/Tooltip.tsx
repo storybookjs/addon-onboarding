@@ -36,20 +36,18 @@ const TooltipFooter = styled.div`
   margin-top: 15px;
 `;
 
-export const Tooltip = ({
-  step,
-  primaryProps,
-  tooltipProps,
-}: TooltipRenderProps) => {
-  console.log(step);
+type TooltipProps = TooltipRenderProps & {
+  step: TooltipRenderProps["step"] & { hideNextButton?: boolean };
+};
+
+export const Tooltip = ({ step, primaryProps, tooltipProps }: TooltipProps) => {
   return (
     <TooltipBody {...tooltipProps}>
       <Wrapper>
         {step.title && <TooltipTitle>{step.title}</TooltipTitle>}
         <TooltipContent>{step.content}</TooltipContent>
       </Wrapper>
-      {(step.title !== "Interactive story playground" ||
-        step.title !== "Continue setting up your project") && (
+      {!step.hideNextButton && (
         <TooltipFooter id="buttonNext">
           <Button {...primaryProps}>Next</Button>
         </TooltipFooter>

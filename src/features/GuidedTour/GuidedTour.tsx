@@ -7,7 +7,7 @@ import { API } from "@storybook/manager-api";
 import { STORY_ARGS_UPDATED } from "@storybook/core-events";
 import { Tooltip } from "./Tooltip";
 
-let INTERACTIONS_COUNT = 0;
+type GuidedTourStep = Step & { hideNextButton?: boolean };
 
 export function GuidedTour({
   api,
@@ -21,15 +21,12 @@ export function GuidedTour({
   const [stepIndex, setStepIndex] = useState<number>();
 
   useEffect(() => {
-    api.on(STORY_ARGS_UPDATED, () => {
-      INTERACTIONS_COUNT = INTERACTIONS_COUNT + 1;
-      if (INTERACTIONS_COUNT === 2) {
-        setStepIndex(3);
-      }
+    api.once(STORY_ARGS_UPDATED, () => {
+      setStepIndex(3);
     });
   }, []);
 
-  const steps: Step[] = isFinalStep
+  const steps: GuidedTourStep[] = isFinalStep
     ? [
         {
           target: "#configure-your-project--docs",
@@ -42,6 +39,7 @@ export function GuidedTour({
           floaterProps: {
             disableAnimation: true,
           },
+          hideNextButton: true
         },
       ]
     : [
@@ -86,6 +84,7 @@ export function GuidedTour({
           floaterProps: {
             target: "#control-primary",
           },
+          hideNextButton: true
         },
         {
           target: "#control-primary",
@@ -99,9 +98,6 @@ export function GuidedTour({
           ),
           placement: "right",
           disableOverlay: true,
-          locale: {
-            last: "Next",
-          },
         },
       ];
 

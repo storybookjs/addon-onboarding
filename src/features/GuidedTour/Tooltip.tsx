@@ -1,7 +1,7 @@
-import { styled } from "@storybook/theming";
 import React from "react";
-import { Button } from "src/components/Button/Button";
+import { styled } from "@storybook/theming";
 import { TooltipRenderProps } from "react-joyride";
+import { Button } from "../../components/Button/Button";
 
 const TooltipBody = styled.div`
   background: #fff;

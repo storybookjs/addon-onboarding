@@ -1,19 +1,19 @@
 export default [
   [
     {
-      content: `// Button.stories.tsx`,
+      code: `// Button.stories.tsx`,
     },
   ],
   [
     {
-      content: `import type { Meta, StoryObj } from '@storybook/nextjs';
+      code: `import type { Meta, StoryObj } from '@storybook/nextjs';
     
     import { Button } from './Button';`,
     },
   ],
   [
     {
-      content: `const meta: Meta<typeof Button> = {
+      code: `const meta: Meta<typeof Button> = {
       title: 'Example/Button',
       component: Button,
       // ...
@@ -23,20 +23,20 @@ export default [
     },
   ],
   [
-    { content: `export const Primary: Story = {` },
+    { code: `export const Primary: Story = {` },
     {
-      content: `args: {
+      code: `args: {
         primary: true,
         label: 'Click',
         background: 'red'
       }`,
       toggle: true,
     },
-    { content: `};` },
+    { code: `};` },
   ],
   [
     {
-      content: `// Copy the code below
+      code: `// Copy the code below
 export const Warning: Story = {
   args: {
     primary: true,

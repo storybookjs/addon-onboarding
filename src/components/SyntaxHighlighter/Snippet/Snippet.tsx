@@ -6,7 +6,7 @@ import { SyntaxHighlighter as StorybookSyntaxHighlighter } from "@storybook/comp
 import { ThemeProvider, ensure, themes } from "@storybook/theming";
 
 interface Props {
-  contents: { content: string; toggle?: boolean }[];
+  content: { code: string; toggle?: boolean }[];
   active: boolean;
   open?: boolean;
 }
@@ -23,7 +23,7 @@ const wrapperVariants = {
 };
 
 export const Snippet = forwardRef<HTMLDivElement, Props>(
-  ({ active, contents, open }, ref) => {
+  ({ active, content, open }, ref) => {
     return (
       <ThemeProvider theme={ensure(themes.dark)}>
         <SnippetWrapper
@@ -34,21 +34,21 @@ export const Snippet = forwardRef<HTMLDivElement, Props>(
           variants={wrapperVariants}
           transition={{ ease: "easeInOut", duration: 0.6 }}
         >
-          {contents.map(({ toggle, content }, i) => (
+          {content.map(({ toggle, code }, i) => (
             <Fragment key={i}>
               {toggle === undefined && (
                 <StorybookSyntaxHighlighter
                   language="javascript"
-                  customStyle={{ fontSize: "0.8rem" }}
+                  customStyle={{ fontSize: "0.8125rem" }}
                 >
-                  {content}
+                  {code}
                 </StorybookSyntaxHighlighter>
               )}
 
               {toggle && !open && (
                 <StorybookSyntaxHighlighter
                   language="javascript"
-                  customStyle={{ fontSize: "0.8rem" }}
+                  customStyle={{ fontSize: "0.8125rem" }}
                 >
                   {`  // ...`}
                 </StorybookSyntaxHighlighter>
@@ -62,10 +62,10 @@ export const Snippet = forwardRef<HTMLDivElement, Props>(
                 >
                   <StorybookSyntaxHighlighter
                     language="javascript"
-                    customStyle={{ fontSize: "0.8rem" }}
+                    customStyle={{ fontSize: "0.8125rem" }}
                     codeTagProps={{ style: { paddingLeft: "15px" } }}
                   >
-                    {content}
+                    {code}
                   </StorybookSyntaxHighlighter>
                 </motion.div>
               )}

@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { SyntaxHighlighter } from "./SyntaxHighlighter";
 import React from "react";
-import { fireEvent, userEvent, within } from "@storybook/testing-library";
+import { userEvent, within } from "@storybook/testing-library";
 import { expect } from "@storybook/jest";
 import { textContentMatcher } from "../../helpers/textContentMatcher";
 
@@ -19,19 +19,19 @@ type Story = StoryObj<typeof SyntaxHighlighter>;
 const newData = [
   [
     {
-      content: `// Button.stories.tsx`,
+      code: `// Button.stories.tsx`,
     },
   ],
   [
     {
-      content: `import type { Meta, StoryObj } from '@storybook/react';
+      code: `import type { Meta, StoryObj } from '@storybook/react';
 
 import { Button } from './Button';`,
     },
   ],
   [
     {
-      content: `const meta: Meta<typeof Button> = {
+      code: `const meta: Meta<typeof Button> = {
   title: 'Example/Button',
   component: Button,
   // ...
@@ -41,20 +41,20 @@ export default meta;`,
     },
   ],
   [
-    { content: `export const Primary: Story = {` },
+    { code: `export const Primary: Story = {` },
     {
-      content: `args: {
+      code: `args: {
     primary: true,
     label: 'Click',
     background: 'red'
   }`,
       toggle: true,
     },
-    { content: `};` },
+    { code: `};` },
   ],
   [
     {
-      content: `// Copy the code below
+      code: `// Copy the code below
 
 export const Warning: Story = {
   args: {
@@ -82,9 +82,9 @@ export const Default: Story = {
     );
   },
   args: {
-    contents: newData,
+    data: newData,
     activeStep: 1,
-    width: "50%",
+    width: 480,
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
@@ -92,13 +92,13 @@ export const Default: Story = {
     const nextButton = canvas.getByText("Next");
 
     const firstElement = await canvas.findByText(
-      textContentMatcher(newData[0][0].content)
+      textContentMatcher(newData[0][0].code)
     );
     const secondElement = await canvas.findByText(
-      textContentMatcher(newData[1][0].content)
+      textContentMatcher(newData[1][0].code)
     );
     const thirdElement = await canvas.findByText(
-      textContentMatcher(newData[2][0].content)
+      textContentMatcher(newData[2][0].code)
     );
 
     await expect(

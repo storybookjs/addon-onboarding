@@ -1,17 +1,17 @@
 export default [
   [
     {
-      content: `// Button.stories.jsx`,
+      code: `// Button.stories.jsx`,
     },
   ],
   [
     {
-      content: `import { Button } from './Button';`,
+      code: `import { Button } from './Button';`,
     },
   ],
   [
     {
-      content: `const meta = {
+      code: `const meta = {
       title: 'Example/Button',
       component: Button,
       // ...
@@ -21,20 +21,20 @@ export default [
     },
   ],
   [
-    { content: `export const Primary = {` },
+    { code: `export const Primary = {` },
     {
-      content: `args: {
+      code: `args: {
         primary: true,
         label: 'Click',
         background: 'red'
       }`,
       toggle: true,
     },
-    { content: `};` },
+    { code: `};` },
   ],
   [
     {
-      content: `// Copy the code below
+      code: `// Copy the code below
 export const Warning = {
   args: {
     primary: true,

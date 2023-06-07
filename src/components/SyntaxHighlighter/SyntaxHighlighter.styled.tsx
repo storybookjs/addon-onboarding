@@ -6,11 +6,11 @@ export const Code = styled(motion.div)`
   z-index: 2;
 `;
 
-export const Container = styled.div<{ width: string }>`
+export const Container = styled.div<{ width: number }>`
   position: relative;
   box-sizing: border-box;
   background: #171c23;
-  width: ${({ width }) => width};
+  width: ${({ width }) => width}px;
   height: 100%;
   overflow: hidden;
   padding-left: 15px;

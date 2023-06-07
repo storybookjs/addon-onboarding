@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import { Button } from "../../components/Button/Button";
 
 import { Modal } from "../../components/Modal/Modal";
@@ -27,6 +27,9 @@ import dataTypescript from "./code/typescript";
 import dataTypescriptNextjs from "./code/nextjs-typescript";
 import { useGetProject } from "./hooks/useGetFrameworkName";
 import { API, AddonStore } from "@storybook/manager-api";
+
+// TODO: Add warning if backdropBoundary && !warningButtonStatus?.data is not true.
+// backdropBoundary && !warningButtonStatus?.data
 
 export function WriteStoriesModal({
   onFinish,
@@ -66,7 +69,7 @@ export function WriteStoriesModal({
     : dataTypescript;
 
   const copyWarningStory = () => {
-    const warningContent = data[4][0].content;
+    const warningContent = data[4][0].code;
     navigator.clipboard.writeText(
       warningContent.replace("// Copy the code below", "")
     );
@@ -82,15 +85,15 @@ export function WriteStoriesModal({
   };
 
   return (
-    <Modal width={738} height={445} defaultOpen>
+    <Modal width={740} height={430} defaultOpen>
       {({ Title, Description: DefaultDescription, Close }) => (
         <ModalContent>
           <div style={{ height: "445px", backgroundColor: "#171c23" }}>
             {data ? (
               <SyntaxHighlighter
                 activeStep={stepIndex[step] || 1}
-                contents={data}
-                width="445px"
+                data={data}
+                width={445}
               />
             ) : null}
             {backdropBoundary && !warningButtonStatus?.data && (

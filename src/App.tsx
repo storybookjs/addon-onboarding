@@ -22,7 +22,7 @@ export default function App({ api }: { api: API }) {
   const [showConfetti, setShowConfetti] = useState(false);
   const [step, setStep] = useState<Step>("1:Welcome");
 
-  const skipTour = useCallback(() => {
+  const skipOnboarding = useCallback(() => {
     // remove onboarding query parameter from current url
     const url = new URL(window.location.href);
     url.searchParams.delete("onboarding");
@@ -66,7 +66,7 @@ export default function App({ api }: { api: API }) {
   useEffect(() => {
     const onStoryChanged = (storyId: string) => {
       if (storyId === "configure-your-project--docs") {
-        skipTour();
+        skipOnboarding();
       }
     };
 
@@ -76,10 +76,6 @@ export default function App({ api }: { api: API }) {
       api.off(STORY_CHANGED, onStoryChanged);
     };
   }, []);
-
-  if (!enabled) {
-    return null;
-  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -94,14 +90,11 @@ export default function App({ api }: { api: API }) {
           }}
         />
       )}
-      {step === "1:Welcome" && (
-        <WelcomeModal
-          onProceed={() => {
-            setStep("2:StorybookTour");
-          }}
-          onSkip={skipTour}
-        />
-      )}
+      <WelcomeModal
+        onProceed={() => setStep("2:StorybookTour")}
+        isOpen={enabled && step === "1:Welcome"}
+        skipOnboarding={skipOnboarding}
+      />
       {(step === "2:StorybookTour" || step === "5:ConfigureYourProject") && (
         <GuidedTour
           api={api}
@@ -111,16 +104,16 @@ export default function App({ api }: { api: API }) {
           }}
         />
       )}
-      {step === "3:WriteYourStory" && (
-        <WriteStoriesModal
-          api={api}
-          addonsStore={addons}
-          onFinish={() => {
-            api.selectStory("example-button--warning");
-            setStep("4:VisitNewStory");
-          }}
-        />
-      )}
+      <WriteStoriesModal
+        api={api}
+        addonsStore={addons}
+        onFinish={() => {
+          api.selectStory("example-button--warning");
+          setStep("4:VisitNewStory");
+        }}
+        isOpen={enabled && step === "3:WriteYourStory"}
+        skipOnboarding={skipOnboarding}
+      />
     </ThemeProvider>
   );
 }

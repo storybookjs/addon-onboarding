@@ -15,7 +15,6 @@ export function useGetButtonPath() {
           error: null,
         });
       } catch (e) {
-        console.log({ e });
         setButtonPath({
           data: null,
           error: e,

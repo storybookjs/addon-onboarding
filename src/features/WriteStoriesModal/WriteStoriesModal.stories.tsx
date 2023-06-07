@@ -59,22 +59,24 @@ export const DefaultPlayed: Story = {
   args: {
     ...Default.args,
   },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement.parentElement);
     const importsText = await canvas.findByText("Imports");
-    await waitFor(() => {
-      expect(importsText).toBeVisible();
+    await step("Wait for modal to be visible", async () => {
+      const modal = await canvas.findByRole("dialog");
+      await waitFor(async () => expect(modal).toBeVisible());
     });
-    canvas.getByRole("button", { name: /Next/i }).click();
+    await expect(importsText).toBeVisible();
+    await canvas.getByRole("button", { name: /Next/i }).click();
     const metaText = await canvas.findAllByText("Meta");
-    expect(metaText?.[0]).toBeVisible();
-    canvas.getByRole("button", { name: /Next/i }).click();
+    await expect(metaText?.[0]).toBeVisible();
+    await canvas.getByRole("button", { name: /Next/i }).click();
     const storyText = await canvas.findAllByText("Story");
-    expect(storyText?.[0]).toBeVisible();
-    canvas.getByRole("button", { name: /Next/i }).click();
+    await expect(storyText?.[0]).toBeVisible();
+    await canvas.getByRole("button", { name: /Next/i }).click();
     const argsText = await canvas.findAllByText("Args");
-    expect(argsText?.[0]).toBeVisible();
-    canvas.getByRole("button", { name: /Next/i }).click();
+    await expect(argsText?.[0]).toBeVisible();
+    await canvas.getByRole("button", { name: /Next/i }).click();
     (await canvas.findByRole("button", { name: /Copy code/i })).click();
     storyIndexInvalidatedCb();
     await waitFor(() =>

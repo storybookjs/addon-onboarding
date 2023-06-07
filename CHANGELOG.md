@@ -1,3 +1,15 @@
+# v0.0.18 (Wed Jun 07 2023)
+
+#### 🐛 Bug Fix
+
+- Implement "How to write your Story" flow [#33](https://github.com/storybookjs/addon-onboarding/pull/33) ([@valentinpalkovic](https://github.com/valentinpalkovic))
+
+#### Authors: 1
+
+- Valentin Palkovic ([@valentinpalkovic](https://github.com/valentinpalkovic))
+
+---
+
 # v0.0.17 (Wed Jun 07 2023)
 
 #### 🐛 Bug Fix

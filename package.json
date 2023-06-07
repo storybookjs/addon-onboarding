@@ -6,14 +6,18 @@
     "storybook-addons",
     "addon-onboarding"
   ],
+  "homepage": "https://github.com/storybookjs/addon-onboarding#readme",
+  "bugs": {
+    "url": "https://github.com/storybookjs/addon-onboarding/issues"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/storybookjs/addon-onboarding.git"
   },
+  "license": "MIT",
   "author": {
     "name": "@storybookjs/core"
   },
-  "license": "MIT",
   "exports": {
     ".": {
       "require": "./dist/index.js",
@@ -55,6 +59,8 @@
     "chromatic": "npx chromatic"
   },
   "nodemonConfig": {
+    "exec": "yarn storybook --ci",
+    "ext": "js,jsx,ts,tsx",
     "ignore": [
       "src/stories",
       "src/**/*.stories.*"
@@ -63,9 +69,15 @@
       "src",
       ".storybook/main.ts",
       "vite.config.ts"
-    ],
-    "ext": "js,jsx,ts,tsx",
-    "exec": "yarn storybook --ci"
+    ]
+  },
+  "dependencies": {
+    "@radix-ui/react-dialog": "^1.0.4",
+    "@storybook/telemetry": "^7.0.18",
+    "framer-motion": "^6.5.1",
+    "react-confetti": "^6.1.0",
+    "react-joyride": "^2.5.4",
+    "react-use-measure": "^2.1.1"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.0.18",
@@ -78,9 +90,9 @@
     "@storybook/manager-api": "^7.0.18",
     "@storybook/react": "^7.0.18",
     "@storybook/react-vite": "^7.0.18",
-    "@storybook/telemetry": "^7.0.18",
     "@storybook/testing-library": "^0.0.14-next.1",
     "@storybook/theming": "^7.0.17",
+    "@storybook/types": "^7.0.17",
     "@types/lodash.throttle": "^4.1.7",
     "@types/node": "^18.15.0",
     "@types/react": "^18.2.7",
@@ -104,13 +116,6 @@
     "vite": "^4.1.4"
   },
   "peerDependencies": {
-    "@storybook/blocks": "next",
-    "@storybook/components": "next",
-    "@storybook/core-events": "next",
-    "@storybook/manager-api": "next",
-    "@storybook/telemetry": "next",
-    "@storybook/theming": "next",
-    "@storybook/types": "next",
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
     "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
   },
@@ -125,16 +130,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "bugs": {
-    "url": "https://github.com/storybookjs/addon-onboarding/issues"
-  },
-  "readme": "ERROR: No README data found!",
-  "homepage": "https://github.com/storybookjs/addon-onboarding#readme",
-  "dependencies": {
-    "@radix-ui/react-dialog": "^1.0.4",
-    "framer-motion": "^6.5.1",
-    "react-confetti": "^6.1.0",
-    "react-joyride": "^2.5.4",
-    "react-use-measure": "^2.1.1"
-  }
+  "readme": "ERROR: No README data found!"
 }

@@ -11,7 +11,7 @@ export default [
   ],
   [
     {
-      code: `export default meta = {
+      code: `export default {
       title: 'Example/Button',
       component: Button,
       // ...

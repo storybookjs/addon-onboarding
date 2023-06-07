@@ -1,3 +1,15 @@
+# v0.0.19 (Wed Jun 07 2023)
+
+#### 🐛 Bug Fix
+
+- Improve write a story modal [#38](https://github.com/storybookjs/addon-onboarding/pull/38) ([@cdedreuille](https://github.com/cdedreuille))
+
+#### Authors: 1
+
+- Charles de Dreuille ([@cdedreuille](https://github.com/cdedreuille))
+
+---
+
 # v0.0.18 (Wed Jun 07 2023)
 
 #### 🐛 Bug Fix

@@ -15,24 +15,25 @@ export const Main = styled.div`
 `;
 
 export const Header = styled.div`
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: ${({ theme }) => theme.color.darkest};
-  padding: 1em;
+  padding: 0 15px;
   border-bottom: 1px solid ${({ theme }) => theme.appBorderColor};
+  height: 40px;
+`;
 
-  h2 {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    font-size: 13px;
-    font-weight: bold;
-  }
+export const ModalTitle = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  font-weight: bold;
+  color: ${({ theme }) => theme.color.darkest};
 
-  svg {
-    margin-right: 0.5em;
+  span {
+    margin-top: 2px;
   }
 `;
 

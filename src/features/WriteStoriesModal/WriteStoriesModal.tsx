@@ -9,6 +9,7 @@ import {
   Image,
   Main,
   ModalContent,
+  ModalTitle,
   SpanHighlight,
 } from "./WriteStoriesModal.styled";
 import { SyntaxHighlighter } from "../../components/SyntaxHighlighter/SyntaxHighlighter";
@@ -115,12 +116,14 @@ export function WriteStoriesModal({
           )}
           <Main>
             <Header>
-              <Title>
-                <Icons icon="bookmarkhollow" />{" "}
-                <span>How to write a story</span>
+              <Title asChild>
+                <ModalTitle>
+                  <Icons icon="bookmarkhollow" width={13} />
+                  <span>How to write a story</span>
+                </ModalTitle>
               </Title>
               <Close asChild>
-                <Icons style={{ cursor: "pointer" }} icon="closeAlt" />
+                <Icons style={{ cursor: "pointer" }} icon="cross" width={13} />
               </Close>
             </Header>
             <DefaultDescription asChild>

@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useMemo } from "react";
+import React, {
+  createRef,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { Backdrop, Code, Container } from "./SyntaxHighlighter.styled";
 import { Snippet } from "./Snippet/Snippet";
 
@@ -8,6 +14,13 @@ type SyntaxHighlighterProps = {
   width: number;
 };
 
+type StepsProps = {
+  yPos: number;
+  backdropHeight: number;
+  index: number;
+  open: boolean;
+};
+
 const OFFSET = 49;
 
 export const SyntaxHighlighter = ({
@@ -15,12 +28,10 @@ export const SyntaxHighlighter = ({
   data,
   width,
 }: SyntaxHighlighterProps) => {
-  const [steps, setSteps] = React.useState<
-    { yPos: number; height: number; index: number; open: boolean }[]
-  >([]);
+  const [steps, setSteps] = useState<StepsProps[]>([]);
 
   const refs = useMemo(
-    () => data.map(() => React.createRef<HTMLDivElement>()),
+    () => data.map(() => createRef<HTMLDivElement>()),
     [data]
   );
 
@@ -34,11 +45,11 @@ export const SyntaxHighlighter = ({
 
   const setNewSteps = useCallback(() => {
     const newSteps = data.flatMap((content, i) => {
-      const height = refs[i].current!.getBoundingClientRect().height;
+      const backdropHeight = refs[i].current!.getBoundingClientRect().height;
       const finalSteps = [
         {
           yPos: getYPos(i) + OFFSET - 7,
-          height,
+          backdropHeight,
           index: i,
           open: false,
         },
@@ -47,7 +58,7 @@ export const SyntaxHighlighter = ({
       if (content.length > 1) {
         finalSteps.push({
           yPos: getYPos(i) + OFFSET - 7,
-          height,
+          backdropHeight,
           index: i,
           open: true,
         });
@@ -95,7 +106,7 @@ export const SyntaxHighlighter = ({
         ))}
       </Code>
       <Backdrop
-        animate={{ height: steps[activeStep]?.height ?? 0 }}
+        animate={{ height: steps[activeStep]?.backdropHeight ?? 0 }}
         transition={{ ease: "easeInOut", duration: 0.6 }}
         style={{ top: OFFSET }}
         className="syntax-highlighter-backdrop"

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "../../components/Button/Button";
 
 import { Modal } from "../../components/Modal/Modal";
@@ -40,11 +40,19 @@ export function WriteStoriesModal({
   api: API;
   addonsStore: AddonStore;
 }) {
-  const [step, setStep] = React.useState<
+  const [step, setStep] = useState<
     "imports" | "meta" | "story" | "args" | "customStory"
   >("imports");
 
-  const [isWarningStoryCopied, setWarningStoryCopied] = React.useState(false);
+  const stepIndex = {
+    imports: 1,
+    meta: 2,
+    story: 3,
+    args: 4,
+    customStory: 5,
+  };
+
+  const [isWarningStoryCopied, setWarningStoryCopied] = useState(false);
 
   const [clipboardButtonRef, clipboardButtonBounds] = useMeasure();
 
@@ -74,14 +82,6 @@ export function WriteStoriesModal({
       warningContent.replace("// Copy the code below", "")
     );
     setWarningStoryCopied(true);
-  };
-
-  const stepIndex = {
-    imports: 1,
-    meta: 2,
-    story: 3,
-    args: 4,
-    customStory: 5,
   };
 
   return (

@@ -16,7 +16,7 @@ export default meta;
 
 type Story = StoryObj<typeof SyntaxHighlighter>;
 
-const newData = [
+const data = [
   [
     {
       code: `// Button.stories.tsx`,
@@ -70,11 +70,17 @@ export const Default: Story = {
   render: (args) => {
     const [activeStep, setActiveStep] = React.useState(1);
 
+    console.log(activeStep);
+
     return (
       <div>
         <SyntaxHighlighter {...args} activeStep={activeStep} />
         <button onClick={() => setActiveStep(0)}>Reset</button>
-        <button onClick={() => setActiveStep((step) => step - 1)}>
+        <button
+          onClick={() =>
+            setActiveStep((step) => (activeStep > 0 ? step - 1 : 0))
+          }
+        >
           Previous
         </button>
         <button onClick={() => setActiveStep((step) => step + 1)}>Next</button>
@@ -82,7 +88,7 @@ export const Default: Story = {
     );
   },
   args: {
-    data: newData,
+    data: data,
     activeStep: 1,
     width: 480,
   },
@@ -92,13 +98,13 @@ export const Default: Story = {
     const nextButton = canvas.getByText("Next");
 
     const firstElement = await canvas.findByText(
-      textContentMatcher(newData[0][0].code)
+      textContentMatcher(data[0][0].code)
     );
     const secondElement = await canvas.findByText(
-      textContentMatcher(newData[1][0].code)
+      textContentMatcher(data[1][0].code)
     );
     const thirdElement = await canvas.findByText(
-      textContentMatcher(newData[2][0].code)
+      textContentMatcher(data[2][0].code)
     );
 
     await expect(

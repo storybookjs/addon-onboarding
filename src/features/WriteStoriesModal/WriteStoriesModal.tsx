@@ -158,7 +158,11 @@ export function WriteStoriesModal({
                         component's stories. The title field controls where
                         stories appear in the sidebar.
                       </p>
-                      <Image width="204" src={titleSidebarImg} />
+                      <Image
+                        width="204"
+                        alt="Title property pointing to Storybook's sidebar"
+                        src={titleSidebarImg}
+                      />
                     </div>
                     <Button
                       style={{ marginTop: 4 }}
@@ -179,7 +183,11 @@ export function WriteStoriesModal({
                         the story is rendered in addition to other configuration
                         options.
                       </p>
-                      <Image width="190" src={storyNameSidebarImg} />
+                      <Image
+                        width="190"
+                        alt="Story export pointing to the sidebar entry of the story"
+                        src={storyNameSidebarImg}
+                      />
                     </div>
                     <Button
                       style={{ marginTop: 4 }}
@@ -201,7 +209,11 @@ export function WriteStoriesModal({
                         states. In React, args = props. They also specify the
                         initial control settings for the story.
                       </p>
-                      <Image width="253" src={argsImg} />
+                      <Image
+                        alt="Args mapped to their controls in Storybook"
+                        width="253"
+                        src={argsImg}
+                      />
                     </div>
                     <Button
                       style={{ marginTop: 4 }}

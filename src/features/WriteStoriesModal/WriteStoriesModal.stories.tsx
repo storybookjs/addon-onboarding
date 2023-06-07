@@ -49,9 +49,16 @@ type Story = StoryObj<typeof meta>;
 
 let storyIndexInvalidatedCb: () => void;
 
-export const Default: Story = {};
+export const Default: Story = {
+  args: {
+    isOpen: true,
+  },
+};
 
 export const DefaultPlayed: Story = {
+  args: {
+    ...Default.args,
+  },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement.parentElement);
 

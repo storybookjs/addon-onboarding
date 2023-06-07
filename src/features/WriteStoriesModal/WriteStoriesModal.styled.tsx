@@ -3,6 +3,7 @@ import { styled } from "@storybook/theming";
 export const ModalContent = styled.div`
   display: flex;
   flex-direction: row;
+  height: 100%;
   max-height: 85vh;
 `;
 

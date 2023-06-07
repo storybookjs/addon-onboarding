@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Button } from "../../components/Button/Button";
-
 import { Modal } from "../../components/Modal/Modal";
 import { Icons } from "@storybook/components";
 import useMeasure from "react-use-measure";
@@ -21,7 +20,6 @@ import { useGetBackdropBoundary } from "./hooks/useGetBackdropBoundary";
 import titleSidebarImg from "./assets/01-title-sidebar.png";
 import storyNameSidebarImg from "./assets/02-story-name-sidebar.png";
 import argsImg from "./assets/03-args.png";
-
 import dataJavascript from "./code/javascript";
 import dataTypescript from "./code/typescript";
 import dataTypescriptNextjs from "./code/nextjs-typescript";
@@ -88,35 +86,33 @@ export function WriteStoriesModal({
     <Modal width={740} height={430} defaultOpen>
       {({ Title, Description: DefaultDescription, Close }) => (
         <ModalContent>
-          <div style={{ height: "445px", backgroundColor: "#171c23" }}>
-            {data ? (
-              <SyntaxHighlighter
-                activeStep={stepIndex[step] || 1}
-                data={data}
-                width={445}
-              />
-            ) : null}
-            {backdropBoundary && !warningButtonStatus?.data && (
-              <Button
-                ref={clipboardButtonRef}
-                onClick={() => {
-                  copyWarningStory();
-                }}
-                style={{
-                  position: "absolute",
-                  top: backdropBoundary.top + backdropBoundary.height - 45,
-                  left:
-                    backdropBoundary.left +
-                    backdropBoundary.width -
-                    (clipboardButtonBounds.width ?? 0) -
-                    10,
-                  zIndex: 1000,
-                }}
-              >
-                {isWarningStoryCopied ? "Copied to clipboard" : "Copy code"}
-              </Button>
-            )}
-          </div>
+          {data ? (
+            <SyntaxHighlighter
+              activeStep={stepIndex[step] || 1}
+              data={data}
+              width={480}
+            />
+          ) : null}
+          {backdropBoundary && !warningButtonStatus?.data && (
+            <Button
+              ref={clipboardButtonRef}
+              onClick={() => {
+                copyWarningStory();
+              }}
+              style={{
+                position: "absolute",
+                top: backdropBoundary.top + backdropBoundary.height - 45,
+                left:
+                  backdropBoundary.left +
+                  backdropBoundary.width -
+                  (clipboardButtonBounds.width ?? 0) -
+                  10,
+                zIndex: 1000,
+              }}
+            >
+              {isWarningStoryCopied ? "Copied to clipboard" : "Copy code"}
+            </Button>
+          )}
           <Main>
             <Header>
               <Title>

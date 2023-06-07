@@ -77,7 +77,7 @@ export const SyntaxHighlighter = ({
     });
 
     refs.forEach((ref) => {
-      resizeObserver.observe(ref.current!);
+      if (ref.current) resizeObserver.observe(ref.current!);
     });
 
     return () => {

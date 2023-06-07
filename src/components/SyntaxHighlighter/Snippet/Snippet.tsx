@@ -24,6 +24,11 @@ const wrapperVariants = {
 
 export const Snippet = forwardRef<HTMLDivElement, Props>(
   ({ active, content, open }, ref) => {
+    const customStyle = {
+      fontSize: "0.8125rem",
+      lineHeight: "1.1875rem",
+    };
+
     return (
       <ThemeProvider theme={ensure(themes.dark)}>
         <SnippetWrapper
@@ -39,7 +44,7 @@ export const Snippet = forwardRef<HTMLDivElement, Props>(
               {toggle === undefined && (
                 <StorybookSyntaxHighlighter
                   language="javascript"
-                  customStyle={{ fontSize: "0.8125rem" }}
+                  customStyle={customStyle}
                 >
                   {code}
                 </StorybookSyntaxHighlighter>
@@ -48,7 +53,7 @@ export const Snippet = forwardRef<HTMLDivElement, Props>(
               {toggle && !open && (
                 <StorybookSyntaxHighlighter
                   language="javascript"
-                  customStyle={{ fontSize: "0.8125rem" }}
+                  customStyle={customStyle}
                 >
                   {`  // ...`}
                 </StorybookSyntaxHighlighter>
@@ -62,7 +67,7 @@ export const Snippet = forwardRef<HTMLDivElement, Props>(
                 >
                   <StorybookSyntaxHighlighter
                     language="javascript"
-                    customStyle={{ fontSize: "0.8125rem" }}
+                    customStyle={customStyle}
                     codeTagProps={{ style: { paddingLeft: "15px" } }}
                   >
                     {code}

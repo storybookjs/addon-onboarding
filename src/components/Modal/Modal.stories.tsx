@@ -24,19 +24,22 @@ export const Default: Story = {
     height: undefined,
   },
   render: (props) => {
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
 
     return (
-      <Modal {...props} open={open} onOpenChange={setOpen}>
-        {({ Close }) => (
-          <div style={{ padding: 15 }}>
-            <div>Hello world!</div>
-            <Close asChild>
-              <button>Close modal</button>
-            </Close>
-          </div>
-        )}
-      </Modal>
+      <>
+        <Modal {...props} isOpen={open} setOpen={setOpen}>
+          {({ Close }) => (
+            <div style={{ padding: 15 }}>
+              <div>Hello world!</div>
+              <Close asChild>
+                <button>Close modal</button>
+              </Close>
+            </div>
+          )}
+        </Modal>
+        <button onClick={() => setOpen(true)}>Open modal</button>
+      </>
     );
   },
   play: async ({ canvasElement }) => {
@@ -55,19 +58,22 @@ export const FixedWidth: Story = {
     width: 1024,
   },
   render: (props) => {
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
 
     return (
-      <Modal {...props} open={open} onOpenChange={setOpen}>
-        {({ Close }) => (
-          <div style={{ padding: 15 }}>
-            <div>Hello world!</div>
-            <Close asChild>
-              <button>Close modal</button>
-            </Close>
-          </div>
-        )}
-      </Modal>
+      <>
+        <Modal {...props} isOpen={open} setOpen={setOpen}>
+          {({ Close }) => (
+            <div style={{ padding: 15 }}>
+              <div>Hello world!</div>
+              <Close asChild>
+                <button>Close modal</button>
+              </Close>
+            </div>
+          )}
+        </Modal>
+        <button onClick={() => setOpen(true)}>Open modal</button>
+      </>
     );
   },
   play: async ({ canvasElement }) => {
@@ -86,19 +92,22 @@ export const FixedHeight: Story = {
     height: 430,
   },
   render: (props) => {
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
 
     return (
-      <Modal {...props} open={open} onOpenChange={setOpen}>
-        {({ Close }) => (
-          <div style={{ padding: 15 }}>
-            <div>Hello world!</div>
-            <Close asChild>
-              <button>Close modal</button>
-            </Close>
-          </div>
-        )}
-      </Modal>
+      <>
+        <Modal {...props} isOpen={open} setOpen={setOpen}>
+          {({ Close }) => (
+            <div style={{ padding: 15 }}>
+              <div>Hello world!</div>
+              <Close asChild>
+                <button>Close modal</button>
+              </Close>
+            </div>
+          )}
+        </Modal>
+        <button onClick={() => setOpen(true)}>Open modal</button>
+      </>
     );
   },
   play: async ({ canvasElement }) => {
@@ -118,19 +127,22 @@ export const FixedWidthAndHeight: Story = {
     height: 430,
   },
   render: (props) => {
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
 
     return (
-      <Modal {...props} open={open} onOpenChange={setOpen}>
-        {({ Close }) => (
-          <div style={{ padding: 15 }}>
-            <div>Hello world!</div>
-            <Close asChild>
-              <button>Close modal</button>
-            </Close>
-          </div>
-        )}
-      </Modal>
+      <>
+        <Modal {...props} isOpen={open} setOpen={setOpen}>
+          {({ Close }) => (
+            <div style={{ padding: 15 }}>
+              <div>Hello world!</div>
+              <Close asChild>
+                <button>Close modal</button>
+              </Close>
+            </div>
+          )}
+        </Modal>
+        <button onClick={() => setOpen(true)}>Open modal</button>
+      </>
     );
   },
   play: async ({ canvasElement }) => {

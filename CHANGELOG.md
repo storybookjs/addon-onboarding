@@ -1,3 +1,15 @@
+# v0.0.17 (Wed Jun 07 2023)
+
+#### 🐛 Bug Fix
+
+- use onboarding parameter in conjunction with onboarding path [#37](https://github.com/storybookjs/addon-onboarding/pull/37) ([@yannbf](https://github.com/yannbf))
+
+#### Authors: 1
+
+- Yann Braga ([@yannbf](https://github.com/yannbf))
+
+---
+
 # v0.0.16 (Tue Jun 06 2023)
 
 #### 🐛 Bug Fix

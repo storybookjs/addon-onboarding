@@ -132,6 +132,7 @@
     "@radix-ui/react-dialog": "^1.0.4",
     "framer-motion": "^6.5.1",
     "react-confetti": "^6.1.0",
-    "react-joyride": "^2.5.4"
+    "react-joyride": "^2.5.4",
+    "react-use-measure": "^2.1.1"
   }
 }

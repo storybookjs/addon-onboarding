@@ -11,20 +11,6 @@ import {
 
 const meta: Meta<typeof WriteStoriesModal> = {
   component: WriteStoriesModal,
-  decorators: [
-    (storyFn) => (
-      <div style={{ width: "1200px", height: "800px" }}>{storyFn()}</div>
-    ),
-  ],
-};
-
-export default meta;
-
-type Story = StoryObj<typeof meta>;
-
-let storyIndexInvalidatedCb: () => void;
-
-export const Default: Story = {
   args: {
     api: {
       getData: () => ({ some: "data" }),
@@ -50,6 +36,22 @@ export const Default: Story = {
       getData: () => ({ some: "data" }),
     } as any,
   },
+  decorators: [
+    (storyFn) => (
+      <div style={{ width: "1200px", height: "800px" }}>{storyFn()}</div>
+    ),
+  ],
+};
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+let storyIndexInvalidatedCb: () => void;
+
+export const Default: Story = {};
+
+export const DefaultPlayed: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement.parentElement);
 

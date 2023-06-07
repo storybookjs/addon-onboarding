@@ -1,12 +1,12 @@
 import { styled } from "@storybook/theming";
-import React, { FC } from "react";
+import React, { FC, forwardRef } from "react";
 
 export interface ButtonProps {
   children: string;
   onClick?: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void;
 }
 
-const Container = styled.button`
+export const Button = styled.button`
   all: unset;
   border: 0;
   border-radius: 0.25rem;
@@ -32,11 +32,3 @@ const Container = styled.button`
     box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.1);
   }
 `;
-
-export const Button: FC<ButtonProps> = ({ children, onClick, ...rest }) => {
-  return (
-    <Container onClick={onClick} {...rest}>
-      {children}
-    </Container>
-  );
-};

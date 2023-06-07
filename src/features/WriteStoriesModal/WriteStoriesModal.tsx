@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Button } from "../../components/Button/Button";
 
 import { Modal } from "../../components/Modal/Modal";
 import { Icons } from "@storybook/components";
+import useMeasure from "react-use-measure";
 import {
   Description,
   Header,
@@ -42,8 +43,10 @@ export function WriteStoriesModal({
 
   const [isWarningStoryCopied, setWarningStoryCopied] = React.useState(false);
 
+  const [clipboardButtonRef, clipboardButtonBounds] = useMeasure();
+
   const buttonPath = useGetButtonPath();
-  const doesWarningButtonExist = useGetWarningButtonStatus(
+  const warningButtonStatus = useGetWarningButtonStatus(
     step === "customStory",
     api,
     addonsStore
@@ -70,34 +73,29 @@ export function WriteStoriesModal({
     setWarningStoryCopied(true);
   };
 
+  const stepIndex = {
+    imports: 1,
+    meta: 2,
+    story: 3,
+    args: 4,
+    customStory: 5,
+  };
+
   return (
-    <Modal width={738} defaultOpen>
+    <Modal width={738} height={445} defaultOpen>
       {({ Title, Description: DefaultDescription, Close }) => (
         <ModalContent>
-          <div style={{ maxHeight: "450px" }}>
+          <div style={{ height: "445px", backgroundColor: "#171c23" }}>
             {data ? (
               <SyntaxHighlighter
-                activeStep={
-                  step === "imports"
-                    ? 1
-                    : step === "meta"
-                    ? 2
-                    : step === "story"
-                    ? 3
-                    : step === "args"
-                    ? 4
-                    : step === "customStory"
-                    ? 5
-                    : 1
-                }
+                activeStep={stepIndex[step] || 1}
                 contents={data}
                 width="445px"
               />
-            ) : (
-              <div>loading...</div>
-            )}
-            {backdropBoundary && !doesWarningButtonExist?.data && (
+            ) : null}
+            {backdropBoundary && !warningButtonStatus?.data && (
               <Button
+                ref={clipboardButtonRef}
                 onClick={() => {
                   copyWarningStory();
                 }}
@@ -107,11 +105,12 @@ export function WriteStoriesModal({
                   left:
                     backdropBoundary.left +
                     backdropBoundary.width -
-                    (isWarningStoryCopied ? 115 : 100),
+                    (clipboardButtonBounds.width ?? 0) -
+                    10,
                   zIndex: 1000,
                 }}
               >
-                {isWarningStoryCopied ? <>Code copied </> : "Copy code"}
+                {isWarningStoryCopied ? "Copied to clipboard" : "Copy code"}
               </Button>
             )}
           </div>
@@ -215,7 +214,7 @@ export function WriteStoriesModal({
                   </>
                 )}
                 {step === "customStory" &&
-                  (!doesWarningButtonExist?.error ? (
+                  (!warningButtonStatus?.error ? (
                     <>
                       <div>
                         <h3>Create your first story</h3>
@@ -226,15 +225,14 @@ export function WriteStoriesModal({
                         <List>
                           <ListItem
                             isCompleted={
-                              isWarningStoryCopied ||
-                              doesWarningButtonExist?.data
+                              isWarningStoryCopied || warningButtonStatus?.data
                             }
                             index={1}
                           >
                             Copy the Warning story
                           </ListItem>
                           <ListItem
-                            isCompleted={doesWarningButtonExist?.data}
+                            isCompleted={warningButtonStatus?.data}
                             index={2}
                           >
                             Open{" "}
@@ -246,14 +244,14 @@ export function WriteStoriesModal({
                             in your current working directory
                           </ListItem>
                           <ListItem
-                            isCompleted={doesWarningButtonExist?.data}
+                            isCompleted={warningButtonStatus?.data}
                             index={3}
                           >
                             Paste it at the bottom of the file
                           </ListItem>
                         </List>
                       </div>
-                      {doesWarningButtonExist?.data ? (
+                      {warningButtonStatus?.data ? (
                         <Button
                           onClick={() => {
                             onFinish();

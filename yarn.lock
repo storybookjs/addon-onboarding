@@ -2256,7 +2256,7 @@
     remark-slug "^6.0.0"
     ts-dedent "^2.0.0"
 
-"@storybook/addon-essentials@^7.0.0":
+"@storybook/addon-essentials@^7.0.18":
   version "7.0.18"
   resolved "https://registry.yarnpkg.com/@storybook/addon-essentials/-/addon-essentials-7.0.18.tgz#20c9a4b43e3e173dbfc0d742eb3e6bc7ba42b4c9"
   integrity sha512-0XXu7xhtRefA1WxxorKk6BWeeB+7gQ+r2+bG1zQEfBgDYPR06YbPw4H79IZ8JiR97aJRsZBK5UUhOZMDrc5zcQ==
@@ -2285,7 +2285,7 @@
     "@storybook/global" "^5.0.0"
     "@storybook/preview-api" "7.0.18"
 
-"@storybook/addon-interactions@^7.0.0":
+"@storybook/addon-interactions@^7.0.18":
   version "7.0.18"
   resolved "https://registry.yarnpkg.com/@storybook/addon-interactions/-/addon-interactions-7.0.18.tgz#c363517f10dd5a2e6c78c6a0ac690799158ab9ec"
   integrity sha512-V3OD5lSj6Te6Kzc//2k2S79dLPk6Zu1pAbqWAN4RrdXyKj6YCiZ666GmVdiaG+24Qp5UuMeAkd1D05osJlOteA==
@@ -2304,7 +2304,7 @@
     polished "^4.2.2"
     ts-dedent "^2.2.0"
 
-"@storybook/addon-links@^7.0.0":
+"@storybook/addon-links@^7.0.18":
   version "7.0.18"
   resolved "https://registry.yarnpkg.com/@storybook/addon-links/-/addon-links-7.0.18.tgz#3c7f72f1a5b241718a57132991272e0bcc2ba7f4"
   integrity sha512-xEwflt7bp9FRoZVeqPGb6d3s2Gh+/jaSmnyIxMxrBy2oovKIqu9ptolqz1AhjFOXfaLs9c2RAmJUuFZJtETLxA==
@@ -2373,7 +2373,7 @@
     memoizerific "^1.11.3"
     prop-types "^15.7.2"
 
-"@storybook/blocks@7.0.18", "@storybook/blocks@^7.0.0":
+"@storybook/blocks@7.0.18", "@storybook/blocks@^7.0.18":
   version "7.0.18"
   resolved "https://registry.yarnpkg.com/@storybook/blocks/-/blocks-7.0.18.tgz#996651ac813de2a810ba442ab77266961721d324"
   integrity sha512-HLsuzmUdVIeFXEP5v5vyjnEePRNYjzltwTjCKQhHAlt8/aQZmREiIMOfoMoAa1Rd+On8Ib2DUd2cN10VS18H8A==
@@ -2547,7 +2547,7 @@
     prettier "^2.8.0"
     recast "^0.23.1"
 
-"@storybook/components@7.0.18", "@storybook/components@^7.0.0":
+"@storybook/components@7.0.18", "@storybook/components@^7.0.18":
   version "7.0.18"
   resolved "https://registry.yarnpkg.com/@storybook/components/-/components-7.0.18.tgz#74ab115342e576b7644c83667a9daef5758fc3c8"
   integrity sha512-Jn1CbF9UAKt8BVaZtuhmthpcZ02VMaCFXR0ISfDXCpiMKnylmpP0+WfXcoKLzz6yS+EW8EW5S9+Qq8xgQY8H7A==
@@ -2594,7 +2594,7 @@
     resolve-from "^5.0.0"
     ts-dedent "^2.0.0"
 
-"@storybook/core-events@7.0.18", "@storybook/core-events@^7.0.0":
+"@storybook/core-events@7.0.18", "@storybook/core-events@^7.0.18":
   version "7.0.18"
   resolved "https://registry.yarnpkg.com/@storybook/core-events/-/core-events-7.0.18.tgz#429e0b092c645bd283adb4836ac0a945e813f085"
   integrity sha512-7gxHBQDezdKOeq/u1LL80Bwjfcwsv7XOS3yWQElcgqp+gLaYB6OwwgtkCB2yV6a6l4nep9IdPWE8G3TxIzn9xw==
@@ -2728,7 +2728,7 @@
     "@testing-library/jest-dom" "^5.16.2"
     jest-mock "^27.3.0"
 
-"@storybook/manager-api@7.0.18", "@storybook/manager-api@^7.0.0":
+"@storybook/manager-api@7.0.18", "@storybook/manager-api@^7.0.18":
   version "7.0.18"
   resolved "https://registry.yarnpkg.com/@storybook/manager-api/-/manager-api-7.0.18.tgz#9e0e011df04271b0ed7216a22f9c965e3b7ac4b9"
   integrity sha512-anQkm09twL96YkKGXHa+LI0+yMaY6Jxs1lRaetHdMlIqN4VHBHhizHaMgtGfH6xCTuO3WdrKTN7cZii5RH7PBQ==
@@ -2805,7 +2805,7 @@
   resolved "https://registry.yarnpkg.com/@storybook/react-dom-shim/-/react-dom-shim-7.0.18.tgz#d2ac94c50c48b92417338823c8a7eabace308771"
   integrity sha512-O1FRypR8q1katjbznnxI+NtALd2gaWa7KnTwbIDf+ddZltXHMZ8xMiEGEtAMrfXlIuqIr9UvmLRfKZC/ysuA+g==
 
-"@storybook/react-vite@^7.0.0":
+"@storybook/react-vite@^7.0.18":
   version "7.0.18"
   resolved "https://registry.yarnpkg.com/@storybook/react-vite/-/react-vite-7.0.18.tgz#a744057c0a30614b40ccb86322ae58575eede788"
   integrity sha512-rxJwp/b0dPazn15xLIeRgwrdZGWmoqoLhU7Mm+AXKToXvbe77i2bjHhkFbz34dpKFtD0i/ajcZSpmsxpxfB0HA==
@@ -2819,7 +2819,7 @@
     magic-string "^0.27.0"
     react-docgen "6.0.0-alpha.3"
 
-"@storybook/react@7.0.18", "@storybook/react@^7.0.0":
+"@storybook/react@7.0.18", "@storybook/react@^7.0.18":
   version "7.0.18"
   resolved "https://registry.yarnpkg.com/@storybook/react/-/react-7.0.18.tgz#d6f4919e22e169062e794b8a742f1b1978abf0ab"
   integrity sha512-lumUbHYeuL3qa4SZR9K2YC4UIt1hwW19GuI/6f2HEV5gR9QHHSJHg9HD9pjcxv4fQaiG81ACZ0Sg6lyUkcJvuQ==
@@ -2855,7 +2855,7 @@
     memoizerific "^1.11.3"
     qs "^6.10.0"
 
-"@storybook/telemetry@7.0.18":
+"@storybook/telemetry@7.0.18", "@storybook/telemetry@^7.0.18":
   version "7.0.18"
   resolved "https://registry.yarnpkg.com/@storybook/telemetry/-/telemetry-7.0.18.tgz#ccf52de6c82a54953eb2a30270edc5d7caf12cd1"
   integrity sha512-JP5Z7lGU+oKjNmz2cZW5J7EerwyWBBPOU+NvvooZsymIx02ZvJ4ClmFtolJnBM7m4KoAy50JxV5NQWi+q8PicQ==

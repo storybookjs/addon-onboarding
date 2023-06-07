@@ -7,6 +7,7 @@ import { GuidedTour } from "./features/GuidedTour/GuidedTour";
 import { WelcomeModal } from "./features/WelcomeModal/WelcomeModal";
 import { WriteStoriesModal } from "./features/WriteStoriesModal/WriteStoriesModal";
 import { Confetti } from "./components/Confetti/Confetti";
+import { STORYBOOK_ADDON_ONBOARDING_CHANNEL } from "./constants";
 
 type Step =
   | "1:Welcome"
@@ -31,6 +32,22 @@ export default function App({ api }: { api: API }) {
     history.replaceState({}, "", url.href);
     setEnabled(false);
   }, [setEnabled]);
+
+  // for some reason the api.emit event is not ready in the very first beginning.
+  // Therefore we wait for a CURRENT_STORY_WAS_SET event to fire the initial step tracking once
+  useEffect(() => {
+    api.once(CURRENT_STORY_WAS_SET, () => {
+      api.emit(STORYBOOK_ADDON_ONBOARDING_CHANNEL, {
+        step: "1:Welcome",
+      });
+    });
+  }, []);
+
+  useEffect(() => {
+    api.emit(STORYBOOK_ADDON_ONBOARDING_CHANNEL, {
+      step,
+    });
+  }, [api, step]);
 
   useEffect(() => {
     let stepTimeout: number;
@@ -67,6 +84,9 @@ export default function App({ api }: { api: API }) {
     const onStoryChanged = (storyId: string) => {
       if (storyId === "configure-your-project--docs") {
         skipTour();
+        api.emit(STORYBOOK_ADDON_ONBOARDING_CHANNEL, {
+          step: "6:FinishedOnboarding",
+        });
       }
     };
 
@@ -99,7 +119,14 @@ export default function App({ api }: { api: API }) {
           onProceed={() => {
             setStep("2:StorybookTour");
           }}
-          onSkip={skipTour}
+          onSkip={() => {
+            skipTour();
+
+            api.emit(STORYBOOK_ADDON_ONBOARDING_CHANNEL, {
+              step: "X:SkippedOnboarding",
+              where: "WelcomeModal",
+            });
+          }}
         />
       )}
       {(step === "2:StorybookTour" || step === "5:ConfigureYourProject") && (

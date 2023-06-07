@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { Button } from "../../components/Button/Button";
 import { Modal } from "../../components/Modal/Modal";
 import { Icons } from "@storybook/components";
@@ -30,6 +30,7 @@ import dataTypescript from "./code/typescript";
 import dataTypescriptNextjs from "./code/nextjs-typescript";
 import { useGetProject } from "./hooks/useGetFrameworkName";
 import { API, AddonStore } from "@storybook/manager-api";
+import { STORYBOOK_ADDON_ONBOARDING_CHANNEL } from "../../constants";
 
 // TODO: Add warning if backdropBoundary && !warningButtonStatus?.data is not true.
 // backdropBoundary && !warningButtonStatus?.data
@@ -87,6 +88,12 @@ export function WriteStoriesModal({
     setWarningStoryCopied(true);
   };
 
+  const onModalClose = useCallback(() => {
+    api.emit(STORYBOOK_ADDON_ONBOARDING_CHANNEL, {
+      step: "X:SkippedOnboarding",
+      where: `HowToWriteAStoryModal:${step}`,
+    });
+  }, [api, step]);
   return (
     <Modal width={740} height={430} defaultOpen>
       {({ Title, Description, Close }) => (
@@ -126,7 +133,7 @@ export function WriteStoriesModal({
                   <span>How to write a story</span>
                 </ModalTitle>
               </Title>
-              <Close asChild>
+              <Close onClick={onModalClose} asChild>
                 <Icons style={{ cursor: "pointer" }} icon="cross" width={13} />
               </Close>
             </Header>

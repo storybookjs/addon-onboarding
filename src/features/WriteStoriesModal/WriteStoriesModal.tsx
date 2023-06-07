@@ -4,7 +4,7 @@ import { Modal } from "../../components/Modal/Modal";
 import { Icons } from "@storybook/components";
 import useMeasure from "react-use-measure";
 import {
-  Description,
+  Content,
   Header,
   Image,
   Main,
@@ -85,7 +85,7 @@ export function WriteStoriesModal({
 
   return (
     <Modal width={740} height={430} defaultOpen>
-      {({ Title, Description: DefaultDescription, Close }) => (
+      {({ Title, Description, Close }) => (
         <ModalContent>
           {data ? (
             <SyntaxHighlighter
@@ -126,8 +126,8 @@ export function WriteStoriesModal({
                 <Icons style={{ cursor: "pointer" }} icon="cross" width={13} />
               </Close>
             </Header>
-            <DefaultDescription asChild>
-              <Description>
+            <Description asChild>
+              <Content>
                 {step === "imports" && (
                   <>
                     <div>
@@ -276,8 +276,8 @@ export function WriteStoriesModal({
                       ) : null}
                     </>
                   ) : null)}
-              </Description>
-            </DefaultDescription>
+              </Content>
+            </Description>
           </Main>
         </ModalContent>
       )}

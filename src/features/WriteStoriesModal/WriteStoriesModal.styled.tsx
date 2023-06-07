@@ -37,9 +37,9 @@ export const ModalTitle = styled.div`
   }
 `;
 
-export const Description = styled.div`
+export const Content = styled.div`
   font-size: 13px;
-  padding: 1em;
+  padding: 15px;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -53,11 +53,6 @@ export const Description = styled.div`
     padding: 0;
     margin: 0;
   }
-`;
-
-export const ContentWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
 `;
 
 export const SpanHighlight = styled.span`

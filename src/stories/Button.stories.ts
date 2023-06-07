@@ -47,12 +47,3 @@ export const Small: Story = {
     label: "Button",
   },
 };
-
-// Comment this out to test the flow
-// export const Warning: Story = {
-//   args: {
-//     primary: true,
-//     backgroundColor: "red",
-//     label: "Delete now",
-//   },
-// };

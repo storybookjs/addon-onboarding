@@ -23,6 +23,7 @@ export const StyledContent = styled.div<{ width: number; height: number }>(
     height: ${height ? `${height}px` : "auto"};
     max-width: calc(100% - 40px);
     max-height: 85vh;
+    overflow: hidden;
   `
 );
 

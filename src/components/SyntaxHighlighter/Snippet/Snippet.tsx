@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { forwardRef } from "react";
+import { Fragment, forwardRef } from "react";
 import { SnippetWrapper } from "./Snippet.styled";
 import React from "react";
 import { SyntaxHighlighter as StorybookSyntaxHighlighter } from "@storybook/components";
@@ -35,10 +35,9 @@ export const Snippet = forwardRef<HTMLDivElement, Props>(
           transition={{ ease: "easeInOut", duration: 0.6 }}
         >
           {contents.map(({ toggle, content }, i) => (
-            <>
+            <Fragment key={i}>
               {toggle === undefined && (
                 <StorybookSyntaxHighlighter
-                  key={i}
                   language="javascript"
                   customStyle={{ fontSize: "0.8rem" }}
                 >
@@ -48,7 +47,6 @@ export const Snippet = forwardRef<HTMLDivElement, Props>(
 
               {toggle && !open && (
                 <StorybookSyntaxHighlighter
-                  key={i}
                   language="javascript"
                   customStyle={{ fontSize: "0.8rem" }}
                 >
@@ -58,7 +56,6 @@ export const Snippet = forwardRef<HTMLDivElement, Props>(
 
               {toggle && open && (
                 <motion.div
-                  key={i}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.4 }}
@@ -72,7 +69,7 @@ export const Snippet = forwardRef<HTMLDivElement, Props>(
                   </StorybookSyntaxHighlighter>
                 </motion.div>
               )}
-            </>
+            </Fragment>
           ))}
         </SnippetWrapper>
       </ThemeProvider>

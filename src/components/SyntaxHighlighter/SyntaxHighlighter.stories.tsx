@@ -56,12 +56,12 @@ export default meta;`,
     {
       content: `// Copy the code below
 
-  export const Warning: Story = {
-    args: {
-      backgroundColor: 'red',
-      label: 'Delete now'
-    }
-  };`,
+export const Warning: Story = {
+  args: {
+    backgroundColor: 'red',
+    label: 'Delete now'
+  }
+};`,
     },
   ],
 ];

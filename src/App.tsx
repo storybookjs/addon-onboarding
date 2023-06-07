@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { ThemeProvider, ensure, themes } from "@storybook/theming";
 import { STORY_CHANGED, CURRENT_STORY_WAS_SET } from "@storybook/core-events";
-import { type API } from "@storybook/manager-api";
+import { addons, type API } from "@storybook/manager-api";
 
 import { GuidedTour } from "./features/GuidedTour/GuidedTour";
 import { WelcomeModal } from "./features/WelcomeModal/WelcomeModal";
@@ -35,8 +35,8 @@ export default function App({ api }: { api: API }) {
   useEffect(() => {
     let stepTimeout: number;
     if (step === "4:VisitNewStory") {
+      setShowConfetti(true);
       stepTimeout = window.setTimeout(() => {
-        setShowConfetti(true);
         setStep("5:ConfigureYourProject");
       }, 2000);
     }
@@ -113,9 +113,10 @@ export default function App({ api }: { api: API }) {
       )}
       {step === "3:WriteYourStory" && (
         <WriteStoriesModal
+          api={api}
+          addonsStore={addons}
           onFinish={() => {
-            // TODO: enable this
-            // api.selectStory("example-button--warning");
+            api.selectStory("example-button--warning");
             setStep("4:VisitNewStory");
           }}
         />

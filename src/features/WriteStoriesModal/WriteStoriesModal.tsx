@@ -93,8 +93,6 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
     setWarningStoryCopied(true);
   };
 
-  console.log("Write Stories Modal", isOpen);
-
   return (
     <Modal width={740} height={430} isOpen={isOpen} setOpen={skipOnboarding}>
       {({ Title, Description, Close }) => (

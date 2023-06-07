@@ -4,6 +4,10 @@ import { Modal } from "../../components/Modal/Modal";
 import { Icons } from "@storybook/components";
 import useMeasure from "react-use-measure";
 import {
+  Background,
+  Circle1,
+  Circle2,
+  Circle3,
   Content,
   Header,
   Image,
@@ -278,6 +282,11 @@ export function WriteStoriesModal({
                   ) : null)}
               </Content>
             </Description>
+            <Background>
+              <Circle1 />
+              <Circle2 />
+              <Circle3 />
+            </Background>
           </Main>
         </ModalContent>
       )}

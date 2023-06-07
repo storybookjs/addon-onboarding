@@ -61,31 +61,22 @@ export const DefaultPlayed: Story = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement.parentElement);
-
     const importsText = await canvas.findByText("Imports");
-    await expect(importsText).toBeVisible();
-
-    await canvas.getByRole("button", { name: /Next/i }).click();
-
+    await waitFor(() => {
+      expect(importsText).toBeVisible();
+    });
+    canvas.getByRole("button", { name: /Next/i }).click();
     const metaText = await canvas.findAllByText("Meta");
-    await expect(metaText?.[0]).toBeVisible();
-
-    await canvas.getByRole("button", { name: /Next/i }).click();
-
+    expect(metaText?.[0]).toBeVisible();
+    canvas.getByRole("button", { name: /Next/i }).click();
     const storyText = await canvas.findAllByText("Story");
-    await expect(storyText?.[0]).toBeVisible();
-
-    await canvas.getByRole("button", { name: /Next/i }).click();
-
+    expect(storyText?.[0]).toBeVisible();
+    canvas.getByRole("button", { name: /Next/i }).click();
     const argsText = await canvas.findAllByText("Args");
-    await expect(argsText?.[0]).toBeVisible();
-
-    await canvas.getByRole("button", { name: /Next/i }).click();
-
+    expect(argsText?.[0]).toBeVisible();
+    canvas.getByRole("button", { name: /Next/i }).click();
     (await canvas.findByRole("button", { name: /Copy code/i })).click();
-
-    await storyIndexInvalidatedCb();
-
+    storyIndexInvalidatedCb();
     await waitFor(() =>
       expect(canvas.getAllByLabelText("complete")).toHaveLength(3)
     );

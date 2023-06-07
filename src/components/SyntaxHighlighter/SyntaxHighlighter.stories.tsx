@@ -70,8 +70,6 @@ export const Default: Story = {
   render: (args) => {
     const [activeStep, setActiveStep] = React.useState(1);
 
-    console.log(activeStep);
-
     return (
       <div>
         <SyntaxHighlighter {...args} activeStep={activeStep} />

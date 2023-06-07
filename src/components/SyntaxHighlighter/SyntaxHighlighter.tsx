@@ -1,7 +1,7 @@
 import React, {
   createRef,
   useCallback,
-  useEffect,
+  useLayoutEffect,
   useMemo,
   useState,
 } from "react";
@@ -70,14 +70,14 @@ export const SyntaxHighlighter = ({
     setSteps(newSteps);
   }, [data]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     // Call setNewSteps every time height of the refs elements changes
     const resizeObserver = new ResizeObserver(() => {
       setNewSteps();
     });
 
     refs.forEach((ref) => {
-      if (ref.current) resizeObserver.observe(ref.current!);
+      resizeObserver.observe(ref.current!);
     });
 
     return () => {

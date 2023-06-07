@@ -2,6 +2,7 @@ import { css, styled } from "@storybook/theming";
 import * as Dialog from "@radix-ui/react-dialog";
 import React from "react";
 import { motion } from "framer-motion";
+import { animate, exit, initial } from "./Modal";
 
 export const StyledOverlay = styled(motion.div)`
   background-color: rgba(27, 28, 29, 0.48);
@@ -40,9 +41,9 @@ export const ContentWrapper = React.forwardRef<
     <StyledContent
       width={width}
       height={height}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { duration: 0 } }}
-      exit={{ opacity: 0, transition: { duration: 0.4 } }}
+      initial={initial}
+      animate={animate}
+      exit={exit}
     >
       {children}
     </StyledContent>

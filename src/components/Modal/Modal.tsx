@@ -19,6 +19,10 @@ interface ModalProps {
   onInteractOutside?: ContentProps["onInteractOutside"];
 }
 
+export const initial = { opacity: 0 };
+export const animate = { opacity: 1, transition: { duration: 0.3 } };
+export const exit = { opacity: 0, transition: { duration: 0.3 } };
+
 export function Modal({
   children,
   width,
@@ -31,14 +35,10 @@ export function Modal({
   return (
     <Dialog.Root open={isOpen} onOpenChange={setOpen}>
       <AnimatePresence>
-        {open && (
+        {isOpen && (
           <Dialog.Portal forceMount>
             <Dialog.Overlay asChild>
-              <StyledOverlay
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1, transition: { duration: 0 } }}
-                exit={{ opacity: 0, transition: { duration: 0.4 } }}
-              />
+              <StyledOverlay initial={initial} animate={animate} exit={exit} />
             </Dialog.Overlay>
             <ContentWrapper
               width={width}

@@ -1,15 +1,19 @@
-import React, { useRef } from "react";
+import React, { useState } from "react";
 import { Button } from "../../components/Button/Button";
-
 import { Modal } from "../../components/Modal/Modal";
 import { Icons } from "@storybook/components";
 import useMeasure from "react-use-measure";
 import {
-  Description,
+  Background,
+  Circle1,
+  Circle2,
+  Circle3,
+  Content,
   Header,
   Image,
   Main,
   ModalContent,
+  ModalTitle,
   SpanHighlight,
 } from "./WriteStoriesModal.styled";
 import { SyntaxHighlighter } from "../../components/SyntaxHighlighter/SyntaxHighlighter";
@@ -21,12 +25,14 @@ import { useGetBackdropBoundary } from "./hooks/useGetBackdropBoundary";
 import titleSidebarImg from "./assets/01-title-sidebar.png";
 import storyNameSidebarImg from "./assets/02-story-name-sidebar.png";
 import argsImg from "./assets/03-args.png";
-
 import dataJavascript from "./code/javascript";
 import dataTypescript from "./code/typescript";
 import dataTypescriptNextjs from "./code/nextjs-typescript";
 import { useGetProject } from "./hooks/useGetFrameworkName";
 import { API, AddonStore } from "@storybook/manager-api";
+
+// TODO: Add warning if backdropBoundary && !warningButtonStatus?.data is not true.
+// backdropBoundary && !warningButtonStatus?.data
 
 export function WriteStoriesModal({
   onFinish,
@@ -37,11 +43,19 @@ export function WriteStoriesModal({
   api: API;
   addonsStore: AddonStore;
 }) {
-  const [step, setStep] = React.useState<
+  const [step, setStep] = useState<
     "imports" | "meta" | "story" | "args" | "customStory"
   >("imports");
 
-  const [isWarningStoryCopied, setWarningStoryCopied] = React.useState(false);
+  const stepIndex = {
+    imports: 1,
+    meta: 2,
+    story: 3,
+    args: 4,
+    customStory: 5,
+  };
+
+  const [isWarningStoryCopied, setWarningStoryCopied] = useState(false);
 
   const [clipboardButtonRef, clipboardButtonBounds] = useMeasure();
 
@@ -66,66 +80,58 @@ export function WriteStoriesModal({
     : dataTypescript;
 
   const copyWarningStory = () => {
-    const warningContent = data[4][0].content;
+    const warningContent = data[4][0].code;
     navigator.clipboard.writeText(
       warningContent.replace("// Copy the code below", "")
     );
     setWarningStoryCopied(true);
   };
 
-  const stepIndex = {
-    imports: 1,
-    meta: 2,
-    story: 3,
-    args: 4,
-    customStory: 5,
-  };
-
   return (
-    <Modal width={738} height={445} defaultOpen>
-      {({ Title, Description: DefaultDescription, Close }) => (
+    <Modal width={740} height={430} defaultOpen>
+      {({ Title, Description, Close }) => (
         <ModalContent>
-          <div style={{ height: "445px", backgroundColor: "#171c23" }}>
-            {data ? (
-              <SyntaxHighlighter
-                activeStep={stepIndex[step] || 1}
-                contents={data}
-                width="445px"
-              />
-            ) : null}
-            {backdropBoundary && !warningButtonStatus?.data && (
-              <Button
-                ref={clipboardButtonRef}
-                onClick={() => {
-                  copyWarningStory();
-                }}
-                style={{
-                  position: "absolute",
-                  top: backdropBoundary.top + backdropBoundary.height - 45,
-                  left:
-                    backdropBoundary.left +
-                    backdropBoundary.width -
-                    (clipboardButtonBounds.width ?? 0) -
-                    10,
-                  zIndex: 1000,
-                }}
-              >
-                {isWarningStoryCopied ? "Copied to clipboard" : "Copy code"}
-              </Button>
-            )}
-          </div>
+          {data ? (
+            <SyntaxHighlighter
+              activeStep={stepIndex[step] || 1}
+              data={data}
+              width={480}
+            />
+          ) : null}
+          {backdropBoundary && !warningButtonStatus?.data && (
+            <Button
+              ref={clipboardButtonRef}
+              onClick={() => {
+                copyWarningStory();
+              }}
+              style={{
+                position: "absolute",
+                top: backdropBoundary.top + backdropBoundary.height - 45,
+                left:
+                  backdropBoundary.left +
+                  backdropBoundary.width -
+                  (clipboardButtonBounds.width ?? 0) -
+                  10,
+                zIndex: 1000,
+              }}
+            >
+              {isWarningStoryCopied ? "Copied to clipboard" : "Copy code"}
+            </Button>
+          )}
           <Main>
             <Header>
-              <Title>
-                <Icons icon="bookmarkhollow" />{" "}
-                <span>How to write a story</span>
+              <Title asChild>
+                <ModalTitle>
+                  <Icons icon="bookmarkhollow" width={13} />
+                  <span>How to write a story</span>
+                </ModalTitle>
               </Title>
               <Close asChild>
-                <Icons style={{ cursor: "pointer" }} icon="closeAlt" />
+                <Icons style={{ cursor: "pointer" }} icon="cross" width={13} />
               </Close>
             </Header>
-            <DefaultDescription asChild>
-              <Description>
+            <Description asChild>
+              <Content>
                 {step === "imports" && (
                   <>
                     <div>
@@ -274,8 +280,13 @@ export function WriteStoriesModal({
                       ) : null}
                     </>
                   ) : null)}
-              </Description>
-            </DefaultDescription>
+              </Content>
+            </Description>
+            <Background>
+              <Circle1 />
+              <Circle2 />
+              <Circle3 />
+            </Background>
           </Main>
         </ModalContent>
       )}

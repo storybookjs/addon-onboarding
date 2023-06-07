@@ -1,27 +1,38 @@
-import React, { useCallback, useEffect, useLayoutEffect, useMemo } from "react";
+import React, {
+  createRef,
+  useCallback,
+  useLayoutEffect,
+  useMemo,
+  useState,
+} from "react";
 import { Backdrop, Code, Container } from "./SyntaxHighlighter.styled";
 import { Snippet } from "./Snippet/Snippet";
 
 type SyntaxHighlighterProps = {
-  contents: { content: string; toggle?: boolean }[][];
+  data: { code: string; toggle?: boolean }[][];
   activeStep: number;
-  width: string;
+  width: number;
+};
+
+type StepsProps = {
+  yPos: number;
+  backdropHeight: number;
+  index: number;
+  open: boolean;
 };
 
 const OFFSET = 49;
 
 export const SyntaxHighlighter = ({
   activeStep,
-  contents,
+  data,
   width,
 }: SyntaxHighlighterProps) => {
-  const [steps, setSteps] = React.useState<
-    { yPos: number; height: number; index: number; open: boolean }[]
-  >([]);
+  const [steps, setSteps] = useState<StepsProps[]>([]);
 
   const refs = useMemo(
-    () => contents.map(() => React.createRef<HTMLDivElement>()),
-    [contents]
+    () => data.map(() => createRef<HTMLDivElement>()),
+    [data]
   );
 
   const getYPos = (idx: number) => {
@@ -33,12 +44,12 @@ export const SyntaxHighlighter = ({
   };
 
   const setNewSteps = useCallback(() => {
-    const newSteps = contents.flatMap((content, i) => {
-      const height = refs[i].current!.getBoundingClientRect().height;
+    const newSteps = data.flatMap((content, i) => {
+      const backdropHeight = refs[i].current!.getBoundingClientRect().height;
       const finalSteps = [
         {
           yPos: getYPos(i) + OFFSET - 7,
-          height,
+          backdropHeight,
           index: i,
           open: false,
         },
@@ -47,7 +58,7 @@ export const SyntaxHighlighter = ({
       if (content.length > 1) {
         finalSteps.push({
           yPos: getYPos(i) + OFFSET - 7,
-          height,
+          backdropHeight,
           index: i,
           open: true,
         });
@@ -57,9 +68,9 @@ export const SyntaxHighlighter = ({
     });
 
     setSteps(newSteps);
-  }, [contents]);
+  }, [data]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     // Call setNewSteps every time height of the refs elements changes
     const resizeObserver = new ResizeObserver(() => {
       setNewSteps();
@@ -75,33 +86,31 @@ export const SyntaxHighlighter = ({
   }, []);
 
   return (
-    <>
-      <Container width={width}>
-        <Code
-          animate={{ y: steps[activeStep]?.yPos ?? 0 }}
-          transition={{ ease: "easeInOut", duration: 0.6 }}
-        >
-          {contents.map((content, idx: number) => (
-            <Snippet
-              key={idx}
-              ref={refs[idx]}
-              active={steps[activeStep]?.index === idx}
-              open={
-                steps[activeStep]?.index > idx
-                  ? true
-                  : steps[activeStep]?.open ?? false
-              }
-              contents={content}
-            />
-          ))}
-        </Code>
-        <Backdrop
-          animate={{ height: steps[activeStep]?.height ?? 0 }}
-          transition={{ ease: "easeInOut", duration: 0.6 }}
-          style={{ top: OFFSET }}
-          className="syntax-highlighter-backdrop"
-        />
-      </Container>
-    </>
+    <Container width={width}>
+      <Code
+        animate={{ y: steps[activeStep]?.yPos ?? 0 }}
+        transition={{ ease: "easeInOut", duration: 0.6 }}
+      >
+        {data.map((content, idx: number) => (
+          <Snippet
+            key={idx}
+            ref={refs[idx]}
+            active={steps[activeStep]?.index === idx}
+            open={
+              steps[activeStep]?.index > idx
+                ? true
+                : steps[activeStep]?.open ?? false
+            }
+            content={content}
+          />
+        ))}
+      </Code>
+      <Backdrop
+        animate={{ height: steps[activeStep]?.backdropHeight ?? 0 }}
+        transition={{ ease: "easeInOut", duration: 0.6 }}
+        style={{ top: OFFSET }}
+        className="syntax-highlighter-backdrop"
+      />
+    </Container>
   );
 };

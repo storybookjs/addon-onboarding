@@ -11,13 +11,11 @@ export default [
   ],
   [
     {
-      code: `const meta = {
+      code: `export default meta = {
       title: 'Example/Button',
       component: Button,
       // ...
-    };
-        
-    export default meta;`,
+    };`,
     },
   ],
   [

@@ -4,7 +4,7 @@ import Joyride, { CallBackProps, STATUS, Step } from "react-joyride";
 import { PulsatingEffect } from "../../components/PulsatingEffect/PulsatingEffect";
 import { Confetti } from "../../components/Confetti/Confetti";
 import { API } from "@storybook/manager-api";
-import { STORY_ARGS_UPDATED } from "@storybook/core-events";
+import { UPDATE_STORY_ARGS } from "@storybook/core-events";
 import { Tooltip } from "./Tooltip";
 
 type GuidedTourStep = Step & { hideNextButton?: boolean };
@@ -21,7 +21,7 @@ export function GuidedTour({
   const [stepIndex, setStepIndex] = useState<number>();
 
   useEffect(() => {
-    api.once(STORY_ARGS_UPDATED, () => {
+    api.once(UPDATE_STORY_ARGS, () => {
       setStepIndex(3);
     });
   }, []);
@@ -124,9 +124,7 @@ export function GuidedTour({
       floaterProps={{
         styles: {
           floater: {
-            padding: 0,
-            paddingLeft: 8,
-            paddingTop: 8,
+            padding: "8px 0 0 8px",
             filter:
               "drop-shadow(0px 5px 5px rgba(0,0,0,0.05)) drop-shadow(0 1px 3px rgba(0,0,0,0.1))",
           },

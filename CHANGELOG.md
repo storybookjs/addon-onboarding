@@ -1,3 +1,16 @@
+# v0.0.22 (Thu Jun 08 2023)
+
+#### 🐛 Bug Fix
+
+- Improve confetti colors and shapes [#43](https://github.com/storybookjs/addon-onboarding/pull/43) ([@yannbf](https://github.com/yannbf) [@cdedreuille](https://github.com/cdedreuille))
+
+#### Authors: 2
+
+- Charles de Dreuille ([@cdedreuille](https://github.com/cdedreuille))
+- Yann Braga ([@yannbf](https://github.com/yannbf))
+
+---
+
 # v0.0.21 (Thu Jun 08 2023)
 
 #### 🐛 Bug Fix

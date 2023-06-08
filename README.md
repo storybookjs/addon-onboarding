@@ -1,62 +1,50 @@
 # Storybook Addon Addon Onboarding
 
-Storybook Addon Onboarding - Introduces a new onboarding experience
+This addon provides a guided tour in some of Storybook's features, helping you get to know about the basics of Storybook and learn how to write stories!
 
-### Development scripts
+![](./.github/assets/onboarding-intro.png)
 
-- `yarn start` runs tsup in watch mode and starts Storybook
-- `yarn build` build and package your addon code
-- `yarn storybook:watch` runs nodemon in watch mode so it reruns Storybook on changes. This is useful when testing the actual addon (as we cannot have HMR for addon changes) rather than just stories in Storybook
+## Triggering the onboarding
 
-## Release Management
+This addon comes installed by default in Storybook projects and should trigger automatically.
+If you want to retrigger the addon, you should make sure that your Storybook still contains the example stories that come when initializing Storybook, and you can then navigate to http://localhost:6006/?path=/onboarding after running Storybook.
 
-### Setup
+## Uninstalling
 
-This project is configured to use [auto](https://github.com/intuit/auto) for release management. It generates a changelog and pushes it to both GitHub and npm. Therefore, you need to configure access to both:
+This addon serves to provide you a guided experience on the basics of Storybook. Once you are done, the addon is therefore not needed anymore and will not get activated (unless triggered manually), so you can freely remove it. Here's how to do so:
 
-- [`NPM_TOKEN`](https://docs.npmjs.com/creating-and-viewing-access-tokens#creating-access-tokens) Create a token with both _Read and Publish_ permissions.
-- [`GH_TOKEN`](https://github.com/settings/tokens) Create a token with the `repo` scope.
+### 1. Remove the dependency
 
-Then open your `package.json` and edit the following fields:
+yarn:
 
-- `name`
-- `author`
-- `repository`
-
-#### Local
-
-To use `auto` locally create a `.env` file at the root of your project and add your tokens to it:
-
-```bash
-GH_TOKEN=<value you just got from GitHub>
-NPM_TOKEN=<value you just got from npm>
+```zsh
+yarn remove -D @storybook/addon-onboarding
 ```
 
-Lastly, **create labels on GitHub**. You’ll use these labels in the future when making changes to the package.
+npm:
 
-```bash
-npx auto create-labels
+```zsh
+npm uninstall -D @storybook/addon-onboarding
 ```
 
-If you check on GitHub, you’ll now see a set of labels that `auto` would like you to use. Use these to tag future pull requests.
+pnpm:
 
-#### GitHub Actions
-
-This template comes with GitHub actions already set up to publish your addon anytime someone pushes to your repository.
-
-Go to `Settings > Secrets`, click `New repository secret`, and add your `NPM_TOKEN`.
-
-### Creating a release
-
-To create a release locally you can run the following command, otherwise the GitHub action will make the release for you.
-
-```sh
-yarn release
+```zsh
+pnpm remove -D @storybook/addon-onboarding
 ```
 
-That will:
+### 2. Remove the addon in your `.storybook/main.js` file
 
-- Build and package the addon code
-- Bump the version
-- Push a release to GitHub and npm
-- Push a changelog to GitHub
+```diff
+const config = {
+  stories: [
+    "../stories/**/*.stories.mdx",
+    "../stories/**/*.stories.@(js|jsx|ts|tsx)",
+  ],
+  addons: [
+    "@storybook/addon-essentials",
+-   "@storybook/addon-onboarding"
+  ],
+};
+export default config;
+```

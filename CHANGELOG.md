@@ -1,3 +1,15 @@
+# v0.0.26 (Thu Jun 08 2023)
+
+#### 🐛 Bug Fix
+
+- Remove animation modal [#47](https://github.com/storybookjs/addon-onboarding/pull/47) ([@cdedreuille](https://github.com/cdedreuille))
+
+#### Authors: 1
+
+- Charles de Dreuille ([@cdedreuille](https://github.com/cdedreuille))
+
+---
+
 # v0.0.25 (Thu Jun 08 2023)
 
 #### 🐛 Bug Fix

@@ -81,9 +81,9 @@ export default function App({ api }: { api: API }) {
     <ThemeProvider theme={theme}>
       {showConfetti && (
         <Confetti
-          numberOfPieces={1000}
-          initialVelocityY={3}
+          numberOfPieces={800}
           recycle={false}
+          tweenDuration={20000}
           onConfettiComplete={(confetti) => {
             confetti.reset();
             setShowConfetti(false);

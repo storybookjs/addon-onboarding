@@ -7,7 +7,6 @@ import { GuidedTour } from "./features/GuidedTour/GuidedTour";
 import { WelcomeModal } from "./features/WelcomeModal/WelcomeModal";
 import { WriteStoriesModal } from "./features/WriteStoriesModal/WriteStoriesModal";
 import { Confetti } from "./components/Confetti/Confetti";
-import { PulsatingEffect } from "./components/PulsatingEffect/PulsatingEffect";
 
 type Step =
   | "1:Welcome"
@@ -60,20 +59,6 @@ export default function App({ api }: { api: API }) {
     }
   }, []);
 
-  useEffect(() => {
-    const onStoryChanged = (storyId: string) => {
-      if (storyId === "configure-your-project--docs") {
-        skipOnboarding();
-      }
-    };
-
-    api.on(STORY_CHANGED, onStoryChanged);
-
-    return () => {
-      api.off(STORY_CHANGED, onStoryChanged);
-    };
-  }, []);
-
   return (
     <ThemeProvider theme={theme}>
       {enabled && showConfetti && (
@@ -98,6 +83,10 @@ export default function App({ api }: { api: API }) {
           isFinalStep={step === "5:ConfigureYourProject"}
           onFirstTourDone={() => {
             setStep("3:WriteYourStory");
+          }}
+          onLastTourDone={() => {
+            api.selectStory("configure-your-project--docs");
+            skipOnboarding();
           }}
         />
       )}

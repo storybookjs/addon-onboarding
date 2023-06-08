@@ -25,12 +25,12 @@ export default function App({ api }: { api: API }) {
   const skipOnboarding = useCallback(() => {
     // remove onboarding query parameter from current url
     const url = new URL(window.location.href);
-    url.searchParams.delete("onboarding");
     const path = decodeURIComponent(url.searchParams.get("path"));
-    url.search = `?path=${path}`;
+    url.search = `?path=${path}&onboarding=false`;
     history.replaceState({}, "", url.href);
+    api.setQueryParams({ onboarding: "false" });
     setEnabled(false);
-  }, [setEnabled]);
+  }, [setEnabled, api]);
 
   useEffect(() => {
     let stepTimeout: number;

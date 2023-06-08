@@ -3,17 +3,19 @@ import { Meta, StoryObj } from "@storybook/react";
 
 import { WriteStoriesModal } from "./WriteStoriesModal";
 import { waitFor, within } from "@storybook/testing-library";
-import { expect } from "@storybook/jest";
+import { expect, jest } from "@storybook/jest";
 import {
   STORY_INDEX_INVALIDATED,
   STORY_RENDERED,
 } from "@storybook/core-events";
 
+const getData = jest.fn()
+
 const meta: Meta<typeof WriteStoriesModal> = {
   component: WriteStoriesModal,
   args: {
     api: {
-      getData: () => ({ some: "data" }),
+      getData,
     } as any,
     addonsStore: {
       getChannel: () => {
@@ -31,15 +33,21 @@ const meta: Meta<typeof WriteStoriesModal> = {
             storyIndexInvalidatedCb = cb;
           }
         },
-        off: () => {},
+        off: () => { },
       }),
-      getData: () => ({ some: "data" }),
     } as any,
   },
   decorators: [
-    (storyFn) => (
-      <div style={{ width: "1200px", height: "800px" }}>{storyFn()}</div>
-    ),
+    (storyFn, context) => {
+      (context.args.api.getData as typeof getData)
+        // do not respond to the first call, this would only return the data correctly if the story already exists
+        // which is not the case in this story, it only makes sense in the real scenario
+        .mockReturnValueOnce(null)
+        .mockReturnValueOnce({ some: "data" })
+      return (
+        <div style={{ width: "1200px", height: "800px" }}>{storyFn()}</div>
+      )
+    },
   ],
 };
 

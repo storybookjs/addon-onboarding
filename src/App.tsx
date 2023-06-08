@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { ThemeProvider, ensure, themes } from "@storybook/theming";
-import { STORY_CHANGED, CURRENT_STORY_WAS_SET } from "@storybook/core-events";
+import { STORY_CHANGED } from "@storybook/core-events";
 import { addons, type API } from "@storybook/manager-api";
 
 import { GuidedTour } from "./features/GuidedTour/GuidedTour";
@@ -47,39 +47,21 @@ export default function App({ api }: { api: API }) {
   }, [step]);
 
   useEffect(() => {
-    api.once(CURRENT_STORY_WAS_SET, ({ storyId }) => {
-      api.setQueryParams({ onboarding: "true" });
-      // make sure the initial state is set correctly:
-      // 1. Selected story is primary button
-      // 2. The addon panel is opened, in the bottom and the controls tab is selected
-      if (storyId !== "example-button--primary") {
-        api.selectStory("example-button--primary", undefined, {
-          ref: undefined,
-        });
-      }
-      api.togglePanel(true);
-      api.togglePanelPosition("bottom");
-      api.setSelectedPanel("addon-controls");
-    });
-  }, []);
-
-  useEffect(() => {
-    const onStoryChanged = (storyId: string) => {
-      if (storyId === "configure-your-project--docs") {
-        skipOnboarding();
-      }
-    };
-
-    api.on(STORY_CHANGED, onStoryChanged);
-
-    return () => {
-      api.off(STORY_CHANGED, onStoryChanged);
-    };
+    const storyId = api.getCurrentStoryData()?.id;
+    api.setQueryParams({ onboarding: "true" });
+    // make sure the initial state is set correctly:
+    // 1. Selected story is primary button
+    // 2. The addon panel is opened, in the bottom and the controls tab is selected
+    if (storyId !== "example-button--primary") {
+      api.selectStory("example-button--primary", undefined, {
+        ref: undefined,
+      });
+    }
   }, []);
 
   return (
     <ThemeProvider theme={theme}>
-      {showConfetti && (
+      {enabled && showConfetti && (
         <Confetti
           numberOfPieces={800}
           recycle={false}
@@ -90,32 +72,34 @@ export default function App({ api }: { api: API }) {
           }}
         />
       )}
-      {enabled && step === "1:Welcome" && (
-        <WelcomeModal
-          onProceed={() => setStep("2:StorybookTour")}
-          skipOnboarding={skipOnboarding}
-        />
-      )}
-      {(step === "2:StorybookTour" || step === "5:ConfigureYourProject") && (
+      <WelcomeModal
+        onProceed={() => setStep("2:StorybookTour")}
+        isOpen={enabled && step === "1:Welcome"}
+        skipOnboarding={skipOnboarding}
+      />
+      {enabled && (step === "2:StorybookTour" || step === "5:ConfigureYourProject") && (
         <GuidedTour
           api={api}
           isFinalStep={step === "5:ConfigureYourProject"}
           onFirstTourDone={() => {
             setStep("3:WriteYourStory");
           }}
-        />
-      )}
-      {enabled && step === "3:WriteYourStory" && (
-        <WriteStoriesModal
-          api={api}
-          addonsStore={addons}
-          onFinish={() => {
-            api.selectStory("example-button--warning");
-            setStep("4:VisitNewStory");
+          onLastTourDone={() => {
+            api.selectStory("configure-your-project--docs");
+            skipOnboarding();
           }}
-          skipOnboarding={skipOnboarding}
         />
       )}
+      <WriteStoriesModal
+        api={api}
+        addonsStore={addons}
+        onFinish={() => {
+          api.selectStory("example-button--warning");
+          setStep("4:VisitNewStory");
+        }}
+        isOpen={enabled && step === "3:WriteYourStory"}
+        skipOnboarding={skipOnboarding}
+      />
     </ThemeProvider>
   );
 }

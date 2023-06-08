@@ -5,18 +5,20 @@ import { PulsatingEffect } from "../../components/PulsatingEffect/PulsatingEffec
 import { Confetti } from "../../components/Confetti/Confetti";
 import { API } from "@storybook/manager-api";
 import { UPDATE_STORY_ARGS } from "@storybook/core-events";
-import { Tooltip } from "./Tooltip";
+import { Tooltip, TooltipProps } from "./Tooltip";
 
-type GuidedTourStep = Step & { hideNextButton?: boolean };
+type GuidedTourStep = TooltipProps['step'];
 
 export function GuidedTour({
   api,
   isFinalStep,
   onFirstTourDone,
+  onLastTourDone,
 }: {
   api: API;
   isFinalStep?: boolean;
   onFirstTourDone: () => void;
+  onLastTourDone: () => void;
 }) {
   const [stepIndex, setStepIndex] = useState<number>();
 
@@ -29,17 +31,19 @@ export function GuidedTour({
   const steps: GuidedTourStep[] = isFinalStep
     ? [
         {
-          target: "#configure-your-project--docs",
-          title: "Continue setting up your project",
+          target: "#example-button--warning",
+          title: "Congratulations!",
           content:
-            "You nailed the basics. Now get started writing stories for your own components.",
+            "You just created your first story. You nailed the basics. Continue setting up your project and start writing stories for your components.",
           placement: "right",
           disableOverlay: true,
           disableBeacon: true,
           floaterProps: {
             disableAnimation: true,
           },
-          hideNextButton: true,
+          onNextButtonClick() {
+            onLastTourDone();
+          },
         },
       ]
     : [

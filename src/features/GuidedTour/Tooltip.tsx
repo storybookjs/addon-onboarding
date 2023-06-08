@@ -36,8 +36,8 @@ const TooltipFooter = styled.div`
   margin-top: 15px;
 `;
 
-type TooltipProps = TooltipRenderProps & {
-  step: TooltipRenderProps["step"] & { hideNextButton?: boolean };
+export type TooltipProps = TooltipRenderProps & {
+  step: TooltipRenderProps["step"] & { hideNextButton?: boolean; onNextButtonClick?: () => void };
 };
 
 export const Tooltip = ({ step, primaryProps, tooltipProps }: TooltipProps) => {
@@ -49,7 +49,10 @@ export const Tooltip = ({ step, primaryProps, tooltipProps }: TooltipProps) => {
       </Wrapper>
       {!step.hideNextButton && (
         <TooltipFooter id="buttonNext">
-          <Button {...primaryProps}>Next</Button>
+          <Button {...{
+            ...primaryProps,
+            ...(step.onNextButtonClick ? { onClick: step.onNextButtonClick } : {})
+          }}>Next</Button>
         </TooltipFooter>
       )}
     </TooltipBody>

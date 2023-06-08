@@ -93,7 +93,11 @@ export function GuidedTour({
             <>
               You've learned how to control your stories interactively. Now:
               let's explore how to write your first story.
-              <Confetti numberOfPieces={100} />
+              <Confetti
+                numberOfPieces={800}
+                recycle={false}
+                tweenDuration={20000}
+              />
             </>
           ),
           placement: "right",

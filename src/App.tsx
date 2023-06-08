@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { ThemeProvider, ensure, themes } from "@storybook/theming";
-import { STORY_CHANGED } from "@storybook/core-events";
 import { addons, type API } from "@storybook/manager-api";
 
 import { GuidedTour } from "./features/GuidedTour/GuidedTour";
@@ -72,34 +71,37 @@ export default function App({ api }: { api: API }) {
           }}
         />
       )}
-      <WelcomeModal
-        onProceed={() => setStep("2:StorybookTour")}
-        isOpen={enabled && step === "1:Welcome"}
-        skipOnboarding={skipOnboarding}
-      />
-      {enabled && (step === "2:StorybookTour" || step === "5:ConfigureYourProject") && (
-        <GuidedTour
-          api={api}
-          isFinalStep={step === "5:ConfigureYourProject"}
-          onFirstTourDone={() => {
-            setStep("3:WriteYourStory");
-          }}
-          onLastTourDone={() => {
-            api.selectStory("configure-your-project--docs");
-            skipOnboarding();
-          }}
+      {enabled && step === "1:Welcome" && (
+        <WelcomeModal
+          onProceed={() => setStep("2:StorybookTour")}
+          skipOnboarding={skipOnboarding}
         />
       )}
-      <WriteStoriesModal
-        api={api}
-        addonsStore={addons}
-        onFinish={() => {
-          api.selectStory("example-button--warning");
-          setStep("4:VisitNewStory");
-        }}
-        isOpen={enabled && step === "3:WriteYourStory"}
-        skipOnboarding={skipOnboarding}
-      />
+      {enabled &&
+        (step === "2:StorybookTour" || step === "5:ConfigureYourProject") && (
+          <GuidedTour
+            api={api}
+            isFinalStep={step === "5:ConfigureYourProject"}
+            onFirstTourDone={() => {
+              setStep("3:WriteYourStory");
+            }}
+            onLastTourDone={() => {
+              api.selectStory("configure-your-project--docs");
+              skipOnboarding();
+            }}
+          />
+        )}
+      {enabled && step === "3:WriteYourStory" && (
+        <WriteStoriesModal
+          api={api}
+          addonsStore={addons}
+          onFinish={() => {
+            api.selectStory("example-button--warning");
+            setStep("4:VisitNewStory");
+          }}
+          skipOnboarding={skipOnboarding}
+        />
+      )}
     </ThemeProvider>
   );
 }

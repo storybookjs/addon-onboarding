@@ -9,7 +9,7 @@ import {
   STORY_RENDERED,
 } from "@storybook/core-events";
 
-const getData = jest.fn()
+const getData = jest.fn();
 
 const meta: Meta<typeof WriteStoriesModal> = {
   component: WriteStoriesModal,
@@ -33,7 +33,7 @@ const meta: Meta<typeof WriteStoriesModal> = {
             storyIndexInvalidatedCb = cb;
           }
         },
-        off: () => { },
+        off: () => {},
       }),
     } as any,
   },
@@ -43,10 +43,10 @@ const meta: Meta<typeof WriteStoriesModal> = {
         // do not respond to the first call, this would only return the data correctly if the story already exists
         // which is not the case in this story, it only makes sense in the real scenario
         .mockReturnValueOnce(null)
-        .mockReturnValueOnce({ some: "data" })
+        .mockReturnValueOnce({ some: "data" });
       return (
         <div style={{ width: "1200px", height: "800px" }}>{storyFn()}</div>
-      )
+      );
     },
   ],
 };
@@ -57,11 +57,7 @@ type Story = StoryObj<typeof meta>;
 
 let storyIndexInvalidatedCb: () => void;
 
-export const Default: Story = {
-  args: {
-    isOpen: true,
-  },
-};
+export const Default: Story = {};
 
 export const DefaultPlayed: Story = {
   args: {

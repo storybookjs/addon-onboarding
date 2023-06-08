@@ -87,6 +87,7 @@ export default function App({ api }: { api: API }) {
         <Confetti
           numberOfPieces={800}
           recycle={false}
+          tweenDuration={20000}
           onConfettiComplete={(confetti) => {
             confetti.reset();
             setShowConfetti(false);

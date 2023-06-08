@@ -10,6 +10,9 @@ interface ConfettiProps
   left?: number;
   width?: number;
   height?: number;
+  numberOfPieces?: number;
+  recycle?: boolean;
+  colors?: string[];
 }
 
 const Wrapper = styled.div<{
@@ -31,7 +34,7 @@ export function Confetti({
   left = 0,
   width = window.innerWidth,
   height = window.innerHeight,
-  colors = ['#CA90FF', '#FC521F', '#66BF3C', '#FF4785', '#FFAE00', '#1EA7FD'],
+  colors = ["#CA90FF", "#FC521F", "#66BF3C", "#FF4785", "#FFAE00", "#1EA7FD"],
   ...confettiProps
 }: ConfettiProps): React.ReactPortal {
   const [confettiContainer] = useState(() => {
@@ -55,8 +58,7 @@ export function Confetti({
 
   return createPortal(
     <Wrapper top={top} left={left} width={width} height={height}>
-      <ReactConfetti colors={colors} {...confettiProps} drawShape={draw}
-      />
+      <ReactConfetti colors={colors} drawShape={draw} {...confettiProps} />
     </Wrapper>,
     confettiContainer
   );
@@ -86,13 +88,31 @@ function draw(context: CanvasRenderingContext2D) {
 
       context.moveTo(-width + cornerRadius, -height);
       context.lineTo(width - cornerRadius, -height);
-      context.arcTo(width, -height, width, -height + cornerRadius, cornerRadius);
+      context.arcTo(
+        width,
+        -height,
+        width,
+        -height + cornerRadius,
+        cornerRadius
+      );
       context.lineTo(width, height - cornerRadius);
       context.arcTo(width, height, width - cornerRadius, height, cornerRadius);
       context.lineTo(-width + cornerRadius, height);
-      context.arcTo(-width, height, -width, height - cornerRadius, cornerRadius);
+      context.arcTo(
+        -width,
+        height,
+        -width,
+        height - cornerRadius,
+        cornerRadius
+      );
       context.lineTo(-width, -height + cornerRadius);
-      context.arcTo(-width, -height, -width + cornerRadius, -height, cornerRadius);
+      context.arcTo(
+        -width,
+        -height,
+        -width + cornerRadius,
+        -height,
+        cornerRadius
+      );
 
       break;
     }
@@ -107,7 +127,7 @@ function draw(context: CanvasRenderingContext2D) {
       break;
     }
     case ParticleShape.Circle: {
-      context.arc(0, 0, this.radius, 0, 2 * Math.PI)
+      context.arc(0, 0, this.radius, 0, 2 * Math.PI);
       break;
     }
     case ParticleShape.Triangle: {
@@ -122,7 +142,7 @@ function draw(context: CanvasRenderingContext2D) {
       break;
     }
   }
-  
+
   context.closePath();
   context.fill();
-};
+}

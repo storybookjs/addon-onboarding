@@ -21,23 +21,41 @@ export default meta;
 
 type Story = StoryObj<typeof Confetti>;
 
-export const FullWidth: Story = {};
-
-export const Positioned: Story = {
+export const Default: Story = {
   args: {
-    top: 100,
-    left: 300,
-    width: 300,
-    height: 250,
+    recycle: true,
+    numberOfPieces: 200,
+    top: undefined,
+    left: undefined,
+    width: undefined,
+    height: undefined,
+    friction: 0.99,
+    wind: 0,
+    gravity: 0.1,
+    initialVelocityX: 4,
+    initialVelocityY: 10,
+    tweenDuration: 5000,
   },
 };
 
 export const OneTimeConfetti: Story = {
   args: {
+    ...Default.args,
     numberOfPieces: 800,
     recycle: false,
+    tweenDuration: 20000,
     onConfettiComplete: (confetti) => {
-      confetti.reset()
-    }
+      confetti.reset();
+    },
+  },
+};
+
+export const Positioned: Story = {
+  args: {
+    ...Default.args,
+    top: 100,
+    left: 300,
+    width: 300,
+    height: 250,
   },
 };

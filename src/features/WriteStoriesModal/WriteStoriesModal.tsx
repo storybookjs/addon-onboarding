@@ -38,12 +38,14 @@ interface WriteStoriesModalProps {
   onFinish: () => void;
   api: API;
   addonsStore: AddonStore;
+  skipOnboarding: () => void;
 }
 
 export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
   onFinish,
   api,
   addonsStore,
+  skipOnboarding,
 }) => {
   const [step, setStep] = useState<
     "imports" | "meta" | "story" | "args" | "customStory"
@@ -128,9 +130,13 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
                   <span>How to write a story</span>
                 </ModalTitle>
               </Title>
-              <Close asChild>
-                <Icons style={{ cursor: "pointer" }} icon="cross" width={13} />
-              </Close>
+
+              <Icons
+                style={{ cursor: "pointer" }}
+                icon="cross"
+                width={13}
+                onClick={skipOnboarding}
+              />
             </Header>
             <Description asChild>
               <Content>

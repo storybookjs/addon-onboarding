@@ -113,6 +113,7 @@ export default function App({ api }: { api: API }) {
             api.selectStory("example-button--warning");
             setStep("4:VisitNewStory");
           }}
+          skipOnboarding={skipOnboarding}
         />
       )}
     </ThemeProvider>

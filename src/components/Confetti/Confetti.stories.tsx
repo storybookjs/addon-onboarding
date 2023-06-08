@@ -31,3 +31,13 @@ export const Positioned: Story = {
     height: 250,
   },
 };
+
+export const OneTimeConfetti: Story = {
+  args: {
+    numberOfPieces: 800,
+    recycle: false,
+    onConfettiComplete: (confetti) => {
+      confetti.reset()
+    }
+  },
+};

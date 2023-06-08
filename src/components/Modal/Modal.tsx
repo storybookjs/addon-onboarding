@@ -1,15 +1,13 @@
 import React from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { ContentWrapper, StyledOverlay } from "./Modal.styled";
-import { AnimatePresence } from "framer-motion";
 
 type ContentProps = React.ComponentProps<typeof ContentWrapper>;
 
-interface ModalProps {
+interface ModalProps
+  extends Omit<React.ComponentProps<typeof Dialog.Root>, "children"> {
   width?: number;
   height?: number;
-  isOpen?: boolean;
-  setOpen?: (open: boolean) => void;
   children: (props: {
     Title: typeof Dialog.Title;
     Description: typeof Dialog.Description;
@@ -27,34 +25,29 @@ export function Modal({
   children,
   width,
   height,
-  isOpen,
-  setOpen,
   onEscapeKeyDown,
   onInteractOutside = (ev) => ev.preventDefault(),
+  ...rootProps
 }: ModalProps) {
   return (
-    <Dialog.Root open={isOpen} onOpenChange={setOpen}>
-      <AnimatePresence>
-        {isOpen && (
-          <Dialog.Portal forceMount>
-            <Dialog.Overlay asChild>
-              <StyledOverlay initial={initial} animate={animate} exit={exit} />
-            </Dialog.Overlay>
-            <ContentWrapper
-              width={width}
-              height={height}
-              onInteractOutside={onInteractOutside}
-              onEscapeKeyDown={onEscapeKeyDown}
-            >
-              {children({
-                Title: Dialog.Title,
-                Description: Dialog.Description,
-                Close: Dialog.Close,
-              })}
-            </ContentWrapper>
-          </Dialog.Portal>
-        )}
-      </AnimatePresence>
+    <Dialog.Root {...rootProps}>
+      <Dialog.Portal>
+        <Dialog.Overlay asChild>
+          <StyledOverlay />
+        </Dialog.Overlay>
+        <ContentWrapper
+          width={width}
+          height={height}
+          onInteractOutside={onInteractOutside}
+          onEscapeKeyDown={onEscapeKeyDown}
+        >
+          {children({
+            Title: Dialog.Title,
+            Description: Dialog.Description,
+            Close: Dialog.Close,
+          })}
+        </ContentWrapper>
+      </Dialog.Portal>
     </Dialog.Root>
   );
 }

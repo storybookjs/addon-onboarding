@@ -17,18 +17,16 @@ import {
 } from "./WelcomeModal.styled";
 
 interface WelcomeModalProps {
-  skipOnboarding: () => void;
   onProceed: () => void;
-  isOpen: boolean;
+  skipOnboarding: () => void;
 }
 
 export const WelcomeModal: FC<WelcomeModalProps> = ({
-  skipOnboarding,
   onProceed,
-  isOpen,
+  skipOnboarding,
 }) => {
   return (
-    <Modal width={540} height={430} isOpen={isOpen} setOpen={skipOnboarding}>
+    <Modal width={540} height={430} defaultOpen>
       {({ Close }) => (
         <ModalContentWrapper data-chromatic="ignore">
           <TopContent>
@@ -42,12 +40,10 @@ export const WelcomeModal: FC<WelcomeModalProps> = ({
               Start your 3 minute tour
             </Button>
           </TopContent>
-          <Close asChild>
-            <SkipButton>
-              Skip tour
-              <StyledIcon icon="arrowright" />
-            </SkipButton>
-          </Close>
+          <SkipButton onClick={skipOnboarding}>
+            Skip tour
+            <StyledIcon icon="arrowright" />
+          </SkipButton>
           <Background>
             <Circle1 />
             <Circle2 />

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Meta, StoryObj } from "@storybook/react";
 import { userEvent, within } from "@storybook/testing-library";
 import { expect } from "@storybook/jest";
@@ -21,30 +21,23 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    isOpen: false,
     width: undefined,
     height: undefined,
   },
   render: (props) => {
-    const [, updateArgs] = useArgs();
+    const [isOpen, setOpen] = useState(false);
 
     return (
       <>
-        <Modal
-          {...props}
-          isOpen={props.isOpen}
-          setOpen={() => updateArgs({ isOpen: !props.isOpen })}
-        >
+        <Modal {...props} open={isOpen}>
           {({ Close }) => (
             <div style={{ padding: 15 }}>
               <div>Hello world!</div>
-              <Close asChild>
-                <button>Close modal</button>
-              </Close>
+              <Close onClick={() => setOpen(false)}>Close</Close>
             </div>
           )}
         </Modal>
-        <button onClick={() => updateArgs({ isOpen: true })}>Open modal</button>
+        <button onClick={() => setOpen(true)}>Open modal</button>
       </>
     );
   },
@@ -64,25 +57,19 @@ export const FixedWidth: Story = {
     width: 1024,
   },
   render: (props) => {
-    const [, updateArgs] = useArgs();
+    const [isOpen, setOpen] = useState(false);
 
     return (
       <>
-        <Modal
-          {...props}
-          isOpen={props.isOpen}
-          setOpen={() => updateArgs({ isOpen: !props.isOpen })}
-        >
+        <Modal {...props} open={isOpen}>
           {({ Close }) => (
             <div style={{ padding: 15 }}>
               <div>Hello world!</div>
-              <Close asChild>
-                <button>Close modal</button>
-              </Close>
+              <Close onClick={() => setOpen(false)}>Close</Close>
             </div>
           )}
         </Modal>
-        <button onClick={() => updateArgs({ isOpen: true })}>Open modal</button>
+        <button onClick={() => setOpen(true)}>Open modal</button>
       </>
     );
   },
@@ -102,25 +89,19 @@ export const FixedHeight: Story = {
     height: 430,
   },
   render: (props) => {
-    const [, updateArgs] = useArgs();
+    const [isOpen, setOpen] = useState(false);
 
     return (
       <>
-        <Modal
-          {...props}
-          isOpen={props.isOpen}
-          setOpen={() => updateArgs({ isOpen: !props.isOpen })}
-        >
+        <Modal {...props} open={isOpen}>
           {({ Close }) => (
             <div style={{ padding: 15 }}>
               <div>Hello world!</div>
-              <Close asChild>
-                <button>Close modal</button>
-              </Close>
+              <Close onClick={() => setOpen(false)}>Close</Close>
             </div>
           )}
         </Modal>
-        <button onClick={() => updateArgs({ isOpen: true })}>Open modal</button>
+        <button onClick={() => setOpen(true)}>Open modal</button>
       </>
     );
   },
@@ -141,25 +122,19 @@ export const FixedWidthAndHeight: Story = {
     height: 430,
   },
   render: (props) => {
-    const [, updateArgs] = useArgs();
+    const [isOpen, setOpen] = useState(false);
 
     return (
       <>
-        <Modal
-          {...props}
-          isOpen={props.isOpen}
-          setOpen={() => updateArgs({ isOpen: !props.isOpen })}
-        >
+        <Modal {...props} open={isOpen}>
           {({ Close }) => (
             <div style={{ padding: 15 }}>
               <div>Hello world!</div>
-              <Close asChild>
-                <button>Close modal</button>
-              </Close>
+              <Close onClick={() => setOpen(false)}>Close</Close>
             </div>
           )}
         </Modal>
-        <button onClick={() => updateArgs({ isOpen: true })}>Open modal</button>
+        <button onClick={() => setOpen(true)}>Open modal</button>
       </>
     );
   },

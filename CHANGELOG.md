@@ -1,3 +1,15 @@
+# v0.0.24 (Thu Jun 08 2023)
+
+#### 🐛 Bug Fix
+
+- Use the correct event to detect args change [#45](https://github.com/storybookjs/addon-onboarding/pull/45) ([@yannbf](https://github.com/yannbf))
+
+#### Authors: 1
+
+- Yann Braga ([@yannbf](https://github.com/yannbf))
+
+---
+
 # v0.0.23 (Thu Jun 08 2023)
 
 #### 🐛 Bug Fix

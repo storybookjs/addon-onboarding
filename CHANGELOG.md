@@ -1,3 +1,15 @@
+# v0.0.25 (Thu Jun 08 2023)
+
+#### 🐛 Bug Fix
+
+- Improve addon bootstrapping [#46](https://github.com/storybookjs/addon-onboarding/pull/46) ([@yannbf](https://github.com/yannbf))
+
+#### Authors: 1
+
+- Yann Braga ([@yannbf](https://github.com/yannbf))
+
+---
+
 # v0.0.24 (Thu Jun 08 2023)
 
 #### 🐛 Bug Fix

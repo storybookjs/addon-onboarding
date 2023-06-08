@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import { Button } from "../../components/Button/Button";
 import { Modal } from "../../components/Modal/Modal";
 import { Icons } from "@storybook/components";
@@ -34,15 +34,21 @@ import { API, AddonStore } from "@storybook/manager-api";
 // TODO: Add warning if backdropBoundary && !warningButtonStatus?.data is not true.
 // backdropBoundary && !warningButtonStatus?.data
 
-export function WriteStoriesModal({
-  onFinish,
-  api,
-  addonsStore,
-}: {
+interface WriteStoriesModalProps {
   onFinish: () => void;
   api: API;
   addonsStore: AddonStore;
-}) {
+  skipOnboarding: () => void;
+  isOpen: boolean;
+}
+
+export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
+  onFinish,
+  api,
+  addonsStore,
+  skipOnboarding,
+  isOpen,
+}) => {
   const [step, setStep] = useState<
     "imports" | "meta" | "story" | "args" | "customStory"
   >("imports");
@@ -88,7 +94,7 @@ export function WriteStoriesModal({
   };
 
   return (
-    <Modal width={740} height={430} defaultOpen>
+    <Modal width={740} height={430} isOpen={isOpen} setOpen={skipOnboarding}>
       {({ Title, Description, Close }) => (
         <ModalContent>
           {data ? (
@@ -292,4 +298,4 @@ export function WriteStoriesModal({
       )}
     </Modal>
   );
-}
+};

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 
 import { Button } from "../../components/Button/Button";
 import { Modal } from "../../components/Modal/Modal";
@@ -16,15 +16,19 @@ import {
   TopContent,
 } from "./WelcomeModal.styled";
 
-export const WelcomeModal = ({
-  onSkip,
-  onProceed,
-}: {
-  onSkip: () => void;
+interface WelcomeModalProps {
+  skipOnboarding: () => void;
   onProceed: () => void;
+  isOpen: boolean;
+}
+
+export const WelcomeModal: FC<WelcomeModalProps> = ({
+  skipOnboarding,
+  onProceed,
+  isOpen,
 }) => {
   return (
-    <Modal width={540} height={430} defaultOpen>
+    <Modal width={540} height={430} isOpen={isOpen} setOpen={skipOnboarding}>
       {({ Close }) => (
         <ModalContentWrapper data-chromatic="ignore">
           <TopContent>
@@ -39,7 +43,7 @@ export const WelcomeModal = ({
             </Button>
           </TopContent>
           <Close asChild>
-            <SkipButton onClick={onSkip}>
+            <SkipButton>
               Skip tour
               <StyledIcon icon="arrowright" />
             </SkipButton>

@@ -1,8 +1,10 @@
 import { css, styled } from "@storybook/theming";
 import * as Dialog from "@radix-ui/react-dialog";
 import React from "react";
+import { motion } from "framer-motion";
+import { animate, exit, initial } from "./Modal";
 
-export const StyledOverlay = styled(Dialog.Overlay)`
+export const StyledOverlay = styled(motion.div)`
   background-color: rgba(27, 28, 29, 0.48);
   position: fixed;
   inset: 0px;
@@ -10,7 +12,10 @@ export const StyledOverlay = styled(Dialog.Overlay)`
   height: 100%;
 `;
 
-export const StyledContent = styled.div<{ width: number; height: number }>(
+export const StyledContent = styled(motion.div)<{
+  width: number;
+  height: number;
+}>(
   ({ width, height }) => css`
     background-color: white;
     border-radius: 6px;
@@ -33,7 +38,13 @@ export const ContentWrapper = React.forwardRef<
     React.ComponentProps<typeof Dialog.Content>
 >(({ width, height, children, ...contentProps }, ref) => (
   <Dialog.Content ref={ref} asChild {...contentProps}>
-    <StyledContent width={width} height={height}>
+    <StyledContent
+      width={width}
+      height={height}
+      initial={initial}
+      animate={animate}
+      exit={exit}
+    >
       {children}
     </StyledContent>
   </Dialog.Content>

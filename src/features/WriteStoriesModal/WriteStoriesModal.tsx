@@ -38,16 +38,12 @@ interface WriteStoriesModalProps {
   onFinish: () => void;
   api: API;
   addonsStore: AddonStore;
-  skipOnboarding: () => void;
-  isOpen: boolean;
 }
 
 export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
   onFinish,
   api,
   addonsStore,
-  skipOnboarding,
-  isOpen,
 }) => {
   const [step, setStep] = useState<
     "imports" | "meta" | "story" | "args" | "customStory"
@@ -94,7 +90,7 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
   };
 
   return (
-    <Modal width={740} height={430} isOpen={isOpen} setOpen={skipOnboarding}>
+    <Modal width={740} height={430} defaultOpen>
       {({ Title, Description, Close }) => (
         <ModalContent>
           {data ? (

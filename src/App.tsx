@@ -90,11 +90,12 @@ export default function App({ api }: { api: API }) {
           }}
         />
       )}
-      <WelcomeModal
-        onProceed={() => setStep("2:StorybookTour")}
-        isOpen={enabled && step === "1:Welcome"}
-        skipOnboarding={skipOnboarding}
-      />
+      {enabled && step === "1:Welcome" && (
+        <WelcomeModal
+          onProceed={() => setStep("2:StorybookTour")}
+          skipOnboarding={skipOnboarding}
+        />
+      )}
       {(step === "2:StorybookTour" || step === "5:ConfigureYourProject") && (
         <GuidedTour
           api={api}
@@ -104,16 +105,16 @@ export default function App({ api }: { api: API }) {
           }}
         />
       )}
-      <WriteStoriesModal
-        api={api}
-        addonsStore={addons}
-        onFinish={() => {
-          api.selectStory("example-button--warning");
-          setStep("4:VisitNewStory");
-        }}
-        isOpen={enabled && step === "3:WriteYourStory"}
-        skipOnboarding={skipOnboarding}
-      />
+      {enabled && step === "3:WriteYourStory" && (
+        <WriteStoriesModal
+          api={api}
+          addonsStore={addons}
+          onFinish={() => {
+            api.selectStory("example-button--warning");
+            setStep("4:VisitNewStory");
+          }}
+        />
+      )}
     </ThemeProvider>
   );
 }

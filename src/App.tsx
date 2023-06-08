@@ -1,12 +1,13 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { ThemeProvider, ensure, themes } from "@storybook/theming";
-import { STORY_CHANGED, CURRENT_STORY_WAS_SET } from "@storybook/core-events";
+import { STORY_CHANGED } from "@storybook/core-events";
 import { addons, type API } from "@storybook/manager-api";
 
 import { GuidedTour } from "./features/GuidedTour/GuidedTour";
 import { WelcomeModal } from "./features/WelcomeModal/WelcomeModal";
 import { WriteStoriesModal } from "./features/WriteStoriesModal/WriteStoriesModal";
 import { Confetti } from "./components/Confetti/Confetti";
+import { PulsatingEffect } from "./components/PulsatingEffect/PulsatingEffect";
 
 type Step =
   | "1:Welcome"
@@ -47,20 +48,16 @@ export default function App({ api }: { api: API }) {
   }, [step]);
 
   useEffect(() => {
-    api.once(CURRENT_STORY_WAS_SET, ({ storyId }) => {
-      api.setQueryParams({ onboarding: "true" });
-      // make sure the initial state is set correctly:
-      // 1. Selected story is primary button
-      // 2. The addon panel is opened, in the bottom and the controls tab is selected
-      if (storyId !== "example-button--primary") {
-        api.selectStory("example-button--primary", undefined, {
-          ref: undefined,
-        });
-      }
-      api.togglePanel(true);
-      api.togglePanelPosition("bottom");
-      api.setSelectedPanel("addon-controls");
-    });
+    const storyId = api.getCurrentStoryData()?.id;
+    api.setQueryParams({ onboarding: "true" });
+    // make sure the initial state is set correctly:
+    // 1. Selected story is primary button
+    // 2. The addon panel is opened, in the bottom and the controls tab is selected
+    if (storyId !== "example-button--primary") {
+      api.selectStory("example-button--primary", undefined, {
+        ref: undefined,
+      });
+    }
   }, []);
 
   useEffect(() => {
@@ -79,7 +76,7 @@ export default function App({ api }: { api: API }) {
 
   return (
     <ThemeProvider theme={theme}>
-      {showConfetti && (
+      {enabled && showConfetti && (
         <Confetti
           numberOfPieces={800}
           recycle={false}
@@ -95,7 +92,7 @@ export default function App({ api }: { api: API }) {
         isOpen={enabled && step === "1:Welcome"}
         skipOnboarding={skipOnboarding}
       />
-      {(step === "2:StorybookTour" || step === "5:ConfigureYourProject") && (
+      {enabled && (step === "2:StorybookTour" || step === "5:ConfigureYourProject") && (
         <GuidedTour
           api={api}
           isFinalStep={step === "5:ConfigureYourProject"}

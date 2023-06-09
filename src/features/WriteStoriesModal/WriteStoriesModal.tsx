@@ -5,6 +5,7 @@ import { Icons } from "@storybook/components";
 import useMeasure from "react-use-measure";
 import {
   Background,
+  ButtonsWrapper,
   Circle1,
   Circle2,
   Circle3,
@@ -93,7 +94,7 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
 
   return (
     <Modal width={740} height={430} defaultOpen>
-      {({ Title, Description, Close }) => (
+      {({ Title, Description }) => (
         <ModalContent>
           {data ? (
             <SyntaxHighlighter
@@ -102,26 +103,26 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
               width={480}
             />
           ) : null}
-          {backdropBoundary && !warningButtonStatus?.data && (
-            <Button
-              ref={clipboardButtonRef}
-              onClick={() => {
-                copyWarningStory();
-              }}
-              style={{
-                position: "absolute",
-                top: backdropBoundary.top + backdropBoundary.height - 45,
-                left:
-                  backdropBoundary.left +
-                  backdropBoundary.width -
-                  (clipboardButtonBounds.width ?? 0) -
-                  10,
-                zIndex: 1000,
-              }}
-            >
-              {isWarningStoryCopied ? "Copied to clipboard" : "Copy code"}
-            </Button>
-          )}
+          {step === "customStory" &&
+            backdropBoundary &&
+            !warningButtonStatus?.data && (
+              <Button
+                ref={clipboardButtonRef}
+                onClick={() => copyWarningStory()}
+                style={{
+                  position: "absolute",
+                  top: backdropBoundary.top + backdropBoundary.height - 45,
+                  left:
+                    backdropBoundary.left +
+                    backdropBoundary.width -
+                    (clipboardButtonBounds.width ?? 0) -
+                    10,
+                  zIndex: 1000,
+                }}
+              >
+                {isWarningStoryCopied ? "Copied to clipboard" : "Copy code"}
+              </Button>
+            )}
           <Main>
             <Header>
               <Title asChild>
@@ -178,14 +179,15 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
                         src={titleSidebarImg}
                       />
                     </div>
-                    <Button
-                      style={{ marginTop: 4 }}
-                      onClick={() => {
-                        setStep("story");
-                      }}
-                    >
-                      Next
-                    </Button>
+                    <ButtonsWrapper>
+                      <Button
+                        variant="secondary"
+                        onClick={() => setStep("imports")}
+                      >
+                        Previous
+                      </Button>
+                      <Button onClick={() => setStep("story")}>Next</Button>
+                    </ButtonsWrapper>
                   </>
                 )}
                 {step === "story" && (
@@ -203,14 +205,15 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
                         src={storyNameSidebarImg}
                       />
                     </div>
-                    <Button
-                      style={{ marginTop: 4 }}
-                      onClick={() => {
-                        setStep("args");
-                      }}
-                    >
-                      Next
-                    </Button>
+                    <ButtonsWrapper>
+                      <Button
+                        variant="secondary"
+                        onClick={() => setStep("meta")}
+                      >
+                        Previous
+                      </Button>
+                      <Button onClick={() => setStep("args")}>Next</Button>
+                    </ButtonsWrapper>
                   </>
                 )}
                 {step === "args" && (
@@ -229,14 +232,17 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
                         src={argsImg}
                       />
                     </div>
-                    <Button
-                      style={{ marginTop: 4 }}
-                      onClick={() => {
-                        setStep("customStory");
-                      }}
-                    >
-                      Next
-                    </Button>
+                    <ButtonsWrapper>
+                      <Button
+                        variant="secondary"
+                        onClick={() => setStep("story")}
+                      >
+                        Previous
+                      </Button>
+                      <Button onClick={() => setStep("customStory")}>
+                        Next
+                      </Button>
+                    </ButtonsWrapper>
                   </>
                 )}
                 {step === "customStory" &&
@@ -277,15 +283,19 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
                           </ListItem>
                         </List>
                       </div>
-                      {warningButtonStatus?.data ? (
+                      <ButtonsWrapper>
                         <Button
-                          onClick={() => {
-                            onFinish();
-                          }}
+                          variant="secondary"
+                          onClick={() => setStep("args")}
                         >
-                          Go to story
+                          Previous
                         </Button>
-                      ) : null}
+                        {warningButtonStatus?.data ? (
+                          <Button onClick={() => onFinish()}>
+                            Go to story
+                          </Button>
+                        ) : null}
+                      </ButtonsWrapper>
                     </>
                   ) : null)}
               </Content>

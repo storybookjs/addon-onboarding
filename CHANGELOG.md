@@ -1,3 +1,16 @@
+# v0.0.27 (Fri Jun 09 2023)
+
+#### 🐛 Bug Fix
+
+- Add previous button to write stories modal [#48](https://github.com/storybookjs/addon-onboarding/pull/48) ([@yannbf](https://github.com/yannbf) [@cdedreuille](https://github.com/cdedreuille))
+
+#### Authors: 2
+
+- Charles de Dreuille ([@cdedreuille](https://github.com/cdedreuille))
+- Yann Braga ([@yannbf](https://github.com/yannbf))
+
+---
+
 # v0.0.26 (Thu Jun 08 2023)
 
 #### 🐛 Bug Fix

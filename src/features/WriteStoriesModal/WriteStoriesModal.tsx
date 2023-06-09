@@ -5,6 +5,7 @@ import { Icons } from "@storybook/components";
 import useMeasure from "react-use-measure";
 import {
   Background,
+  ButtonsWrapper,
   Circle1,
   Circle2,
   Circle3,
@@ -80,8 +81,8 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
   const data = isJavascript
     ? dataJavascript
     : project?.data?.framework.name === "@storybook/nextjs"
-    ? dataTypescriptNextjs
-    : dataTypescript;
+      ? dataTypescriptNextjs
+      : dataTypescript;
 
   const copyWarningStory = () => {
     const warningContent = data[4][0].code;
@@ -102,7 +103,7 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
               width={480}
             />
           ) : null}
-          {backdropBoundary && !warningButtonStatus?.data && (
+          {step === 'customStory' && backdropBoundary && !warningButtonStatus?.data && (
             <Button
               ref={clipboardButtonRef}
               onClick={() => {
@@ -178,14 +179,22 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
                         src={titleSidebarImg}
                       />
                     </div>
-                    <Button
-                      style={{ marginTop: 4 }}
-                      onClick={() => {
-                        setStep("story");
-                      }}
-                    >
-                      Next
-                    </Button>
+                    <ButtonsWrapper>
+                      <Button
+                        onClick={() => {
+                          setStep("imports");
+                        }}
+                      >
+                        Previous
+                      </Button>
+                      <Button
+                        onClick={() => {
+                          setStep("story");
+                        }}
+                      >
+                        Next
+                      </Button>
+                    </ButtonsWrapper>
                   </>
                 )}
                 {step === "story" && (
@@ -203,14 +212,22 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
                         src={storyNameSidebarImg}
                       />
                     </div>
-                    <Button
-                      style={{ marginTop: 4 }}
-                      onClick={() => {
-                        setStep("args");
-                      }}
-                    >
-                      Next
-                    </Button>
+                    <ButtonsWrapper>
+                      <Button
+                        onClick={() => {
+                          setStep("meta");
+                        }}
+                      >
+                        Previous
+                      </Button>
+                      <Button
+                        onClick={() => {
+                          setStep("args");
+                        }}
+                      >
+                        Next
+                      </Button>
+                    </ButtonsWrapper>
                   </>
                 )}
                 {step === "args" && (
@@ -229,14 +246,22 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
                         src={argsImg}
                       />
                     </div>
-                    <Button
-                      style={{ marginTop: 4 }}
-                      onClick={() => {
-                        setStep("customStory");
-                      }}
-                    >
-                      Next
-                    </Button>
+                    <ButtonsWrapper>
+                      <Button
+                        onClick={() => {
+                          setStep("story");
+                        }}
+                      >
+                        Previous
+                      </Button>
+                      <Button
+                        onClick={() => {
+                          setStep("customStory");
+                        }}
+                      >
+                        Next
+                      </Button>
+                    </ButtonsWrapper>
                   </>
                 )}
                 {step === "customStory" &&
@@ -277,15 +302,24 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
                           </ListItem>
                         </List>
                       </div>
-                      {warningButtonStatus?.data ? (
+                      <ButtonsWrapper>
                         <Button
                           onClick={() => {
-                            onFinish();
+                            setStep("args");
                           }}
                         >
-                          Go to story
+                          Previous
                         </Button>
-                      ) : null}
+                        {warningButtonStatus?.data ? (
+                          <Button
+                            onClick={() => {
+                              onFinish();
+                            }}
+                          >
+                            Go to story
+                          </Button>
+                        ) : null}
+                      </ButtonsWrapper>
                     </>
                   ) : null)}
               </Content>

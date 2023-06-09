@@ -147,3 +147,12 @@ export const Circle3 = styled.div`
   animation-timing-function: ease-in-out;
   z-index: 4;
 `;
+
+export const ButtonsWrapper = styled.div`
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 4px;
+`;

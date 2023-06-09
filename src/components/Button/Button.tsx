@@ -1,5 +1,5 @@
+import React from "react";
 import { styled } from "@storybook/theming";
-import React, { FC, forwardRef } from "react";
 
 export interface ButtonProps {
   children: string;

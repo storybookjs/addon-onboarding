@@ -146,7 +146,7 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
                     <div>
                       <h3>Imports</h3>
                       <p>
-                        First, import Meta and StoryObj for type safety and
+                        First, import <SpanHighlight>Meta</SpanHighlight> and <SpanHighlight>StoryObj</SpanHighlight> for type safety and
                         autocompletion in TypeScript stories.
                       </p>
                       <p>
@@ -224,7 +224,7 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
                         Args are inputs that are passed to the component, which
                         Storybook uses to render the component in different
                         states. In React, args = props. They also specify the
-                        initial control settings for the story.
+                        initial control values for the story.
                       </p>
                       <Image
                         alt="Args mapped to their controls in Storybook"
@@ -279,7 +279,7 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
                             isCompleted={warningButtonStatus?.data}
                             index={3}
                           >
-                            Paste it at the bottom of the file
+                            Paste it at the bottom of the file and save
                           </ListItem>
                         </List>
                       </div>

@@ -1,4 +1,4 @@
-import React, { ComponentProps, FC } from "react";
+import React, { ComponentProps, FC, forwardRef } from "react";
 import { styled } from "@storybook/theming";
 
 export interface ButtonProps extends ComponentProps<"button"> {
@@ -61,15 +61,13 @@ const StyledButton = styled.button<{ variant: ButtonProps["variant"] }>`
   }
 `;
 
-export const Button: FC<ButtonProps> = ({
-  children,
-  onClick,
-  variant = "primary",
-  ...rest
-}) => {
-  return (
-    <StyledButton onClick={onClick} variant={variant} {...rest}>
-      {children}
-    </StyledButton>
-  );
-};
+export const Button: FC<ButtonProps> = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ children, onClick, variant = 'primary', ...rest }, ref) => {
+    return (
+      <StyledButton ref={ref} onClick={onClick} variant={variant} {...rest}>
+        {children}
+      </StyledButton>
+    );
+  }
+);
+

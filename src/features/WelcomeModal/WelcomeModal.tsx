@@ -33,7 +33,7 @@ export const WelcomeModal: FC<WelcomeModalProps> = ({
             <StorybookLogo />
             <Title>Welcome to Storybook</Title>
             <Description>
-              Storybook helps you develop UI components. Learn the basics in a
+              Storybook helps you develop UI components faster. Learn the basics in a
               few simple steps.
             </Description>
             <Button style={{ marginTop: 4 }} onClick={onProceed}>

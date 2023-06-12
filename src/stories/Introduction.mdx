@@ -1,15 +1,15 @@
 import { Meta } from "@storybook/blocks";
 
-import Accessibility from './assets/accessibility.svg';
-import Checkmark from './assets/checkmark.svg';
-import Document from './assets/document.svg';
-import Typography from './assets/typography.svg';
-import Github from './assets/github.svg';
-import Discord from './assets/discord.svg';
-import Youtube from './assets/youtube.svg';
-import Chromatic from './assets/chromatic.svg';
-import Figma from './assets/figma.svg';
-import Tutorials from './assets/tutorials.svg';
+import Accessibility from "./assets/accessibility.svg";
+import Checkmark from "./assets/checkmark.svg";
+import Document from "./assets/document.svg";
+import Typography from "./assets/typography.svg";
+import Github from "./assets/github.svg";
+import Discord from "./assets/discord.svg";
+import Youtube from "./assets/youtube.svg";
+import Chromatic from "./assets/chromatic.svg";
+import Figma from "./assets/figma.svg";
+import Tutorials from "./assets/tutorials.svg";
 
 <Meta title="Configure your project" />
 
@@ -25,8 +25,17 @@ Because Storybook works separately from your app, you'll need to configure Story
     />
     <div className="block">
       <h3>Add styling and CSS</h3>
-      <p>Like with web applications, there are many ways to include CSS within Storybook. Learn more about setting up styling within Storybook.</p>
-      <a href="https://storybook.js.org/docs/react/configure/styling-and-css" target="_blank">Read more on how to set up styling <span className="chevron">&#8250;</span></a>
+      <p>
+        Like with web applications, there are many ways to include CSS within
+        Storybook. Learn more about setting up styling within Storybook.
+      </p>
+      <a
+        href="https://storybook.js.org/docs/react/configure/styling-and-css"
+        target="_blank"
+      >
+        Read more on how to set up styling{" "}
+        <span className="chevron">&#8250;</span>
+      </a>
     </div>
   </div>
   <div className="section-item">
@@ -36,8 +45,19 @@ Because Storybook works separately from your app, you'll need to configure Story
     />
     <div className="block">
       <h3>Provide context and mocking</h3>
-      <p>Often when a story doesn't render, it's because your component is expecting a specific environment or context (like a theme provider) to be available. Learn more about solving these issues by providing context and mocking to Storybook.</p>
-      <a href="https://storybook.js.org/docs/react/writing-stories/decorators#context-for-mocking" target="_blank">Read more on how to set up context <span className="chevron">&#8250;</span></a>
+      <p>
+        Often when a story doesn't render, it's because your component is
+        expecting a specific environment or context (like a theme provider) to
+        be available. Learn more about solving these issues by providing context
+        and mocking to Storybook.
+      </p>
+      <a
+        href="https://storybook.js.org/docs/react/writing-stories/decorators#context-for-mocking"
+        target="_blank"
+      >
+        Read more on how to set up context{" "}
+        <span className="chevron">&#8250;</span>
+      </a>
     </div>
   </div>
   <div className="section-item">
@@ -47,8 +67,14 @@ Because Storybook works separately from your app, you'll need to configure Story
     />
     <div className="block">
       <h3>Load assets and resources</h3>
-      <p>Components often rely on images, videos, fonts, and other assets to render as the user expects. There are many ways to use these assets in your story files.</p>
-      <a href="https://storybook.js.org/docs/" target="_blank">Read more on how to load assets <span className="chevron">&#8250;</span></a>
+      <p>
+        Components often rely on images, videos, fonts, and other assets to
+        render as the user expects. There are many ways to use these assets in
+        your story files.
+      </p>
+      <a href="https://storybook.js.org/docs/" target="_blank">
+        Read more on how to load assets <span className="chevron">&#8250;</span>
+      </a>
     </div>
   </div>
 </section>
@@ -62,53 +88,81 @@ Now that you know the basics, let's explore other parts of Storybook that will i
 <section>
   <div className="features-grid-container">
     <div className="grid-item">
-      <img
-        src={Document}
-      />
+      <img src={Document} />
       <h3>Autodocs</h3>
-      <p>Auto-generate living, interactive reference documentation from your components and stories.</p>
-      <a href="https://storybook.js.org/docs/react/writing-docs/autodocs" target="_blank">Learn more <span className="chevron">&#8250;</span></a>
+      <p>
+        Auto-generate living, interactive reference documentation from your
+        components and stories.
+      </p>
+      <a
+        href="https://storybook.js.org/docs/react/writing-docs/autodocs"
+        target="_blank"
+      >
+        Learn more <span className="chevron">&#8250;</span>
+      </a>
     </div>
     <div className="grid-item">
-      <img
-        src={Checkmark}
-      />
+      <img src={Checkmark} />
       <h3>Testing</h3>
-      <p>Use stories to test a component in all its variations, no matter how complex.</p>
-      <a href="https://storybook.js.org/docs/react/writing-tests/introduction" target="_blank">Learn more <span className="chevron">&#8250;</span></a>
+      <p>
+        Use stories to test a component in all its variations, no matter how
+        complex.
+      </p>
+      <a
+        href="https://storybook.js.org/docs/react/writing-tests/introduction"
+        target="_blank"
+      >
+        Learn more <span className="chevron">&#8250;</span>
+      </a>
     </div>
     <div className="grid-item">
-      <img
-        src={Chromatic}
-      />
+      <img src={Chromatic} />
       <h3>Publish to Chromatic</h3>
-      <p>Publish your Storybook to review and collaborate with your entire team.</p>
-      <a href="https://storybook.js.org/docs/react/sharing/publish-storybook#publish-storybook-with-chromatic" target="_blank">Learn more <span className="chevron">&#8250;</span></a>
+      <p>
+        Publish your Storybook to review and collaborate with your entire team.
+      </p>
+      <a
+        href="https://storybook.js.org/docs/react/sharing/publish-storybook#publish-storybook-with-chromatic"
+        target="_blank"
+      >
+        Learn more <span className="chevron">&#8250;</span>
+      </a>
     </div>
     <div className="grid-item">
-      <img
-        src={Figma}
-      />
+      <img src={Figma} />
       <h3>Figma Plugin</h3>
-      <p>Embed your stories into Figma to cross-reference the design and live implementation in one place.</p>
-      <a href="https://storybook.js.org/docs/react/sharing/design-integrations#embed-storybook-in-figma-with-the-plugin" target="_blank">Learn more <span className="chevron">&#8250;</span></a>
+      <p>
+        Embed your stories into Figma to cross-reference the design and live
+        implementation in one place.
+      </p>
+      <a
+        href="https://storybook.js.org/docs/react/sharing/design-integrations#embed-storybook-in-figma-with-the-plugin"
+        target="_blank"
+      >
+        Learn more <span className="chevron">&#8250;</span>
+      </a>
     </div>
     <div className="grid-item">
-      <img
-        src={Accessibility}
-      />
+      <img src={Accessibility} />
       <h3>Accessibility</h3>
       <p>Automatically test your components for a11y issues as you develop.</p>
-      <a href="https://storybook.js.org/docs/react/writing-tests/accessibility-testing" target="_blank">Learn more <span className="chevron">&#8250;</span></a>
+      <a
+        href="https://storybook.js.org/docs/react/writing-tests/accessibility-testing"
+        target="_blank"
+      >
+        Learn more <span className="chevron">&#8250;</span>
+      </a>
     </div>
     <div className="grid-item">
-      <img
-        src={Typography}
-      />
+      <img src={Typography} />
       <h3>Theming</h3>
-      <p>Lorem ipsum Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-        do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      <a href="https://storybook.js.org/tutorials/" target="_blank">Learn more <span className="chevron">&#8250;</span></a>
+      <p>
+        Lorem ipsum Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+        do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+      <a href="https://storybook.js.org/tutorials/" target="_blank">
+        Learn more <span className="chevron">&#8250;</span>
+      </a>
     </div>
   </div>
 </section>
@@ -121,19 +175,35 @@ Connect with our community on Discord or start contributing directly on Github. 
 
 <section>
   <div className="card-grid-container">
-    <a className="explore-card" href="https://discord.gg/storybook" target="_blank">
+    <a
+      className="explore-card"
+      href="https://discord.gg/storybook"
+      target="_blank"
+    >
       <img src={Discord} />
-      <span>Discord</span>  
+      <span>Discord</span>
     </a>
-    <a className="explore-card" href="https://github.com/storybookjs/storybook" target="_blank">
+    <a
+      className="explore-card"
+      href="https://github.com/storybookjs/storybook"
+      target="_blank"
+    >
       <img src={Github} />
       <span>Github</span>
     </a>
-    <a className="explore-card" href="https://www.youtube.com/@chromaticui" target="_blank">
+    <a
+      className="explore-card"
+      href="https://www.youtube.com/@chromaticui"
+      target="_blank"
+    >
       <img src={Youtube} />
       <span>Youtube</span>
     </a>
-    <a className="explore-card" href="https://storybook.js.org/tutorials/" target="_blank">
+    <a
+      className="explore-card"
+      href="https://storybook.js.org/tutorials/"
+      target="_blank"
+    >
       <img src={Tutorials} />
       <span>Tutorials</span>
     </a>
@@ -143,7 +213,7 @@ Connect with our community on Discord or start contributing directly on Github. 
 <style>
   {`
   section {
-    margin-bottom: 44px;  
+    margin-bottom: 64px;
   }
 
   section img {
@@ -152,6 +222,7 @@ Connect with our community on Discord or start contributing directly on Github. 
   }
 
   .section-item {
+    width: 100%;
     margin-bottom: 20px;
     width: 100%;
     display: flex;

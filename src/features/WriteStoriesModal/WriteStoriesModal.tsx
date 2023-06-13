@@ -82,8 +82,8 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
   const data = isJavascript
     ? dataJavascript
     : project?.data?.framework.name === "@storybook/nextjs"
-      ? dataTypescriptNextjs
-      : dataTypescript;
+    ? dataTypescriptNextjs
+    : dataTypescript;
 
   const copyWarningStory = () => {
     const warningContent = data[4][0].code;
@@ -97,6 +97,7 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
     api.emit(STORYBOOK_ADDON_ONBOARDING_CHANNEL, {
       step: "X:SkippedOnboarding",
       where: `HowToWriteAStoryModal:${step}`,
+      type: "telemetry",
     });
   }, [api, step]);
   return (
@@ -154,8 +155,9 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
                     <div>
                       <h3>Imports</h3>
                       <p>
-                        First, import <SpanHighlight>Meta</SpanHighlight> and <SpanHighlight>StoryObj</SpanHighlight> for type safety and
-                        autocompletion in TypeScript stories.
+                        First, import <SpanHighlight>Meta</SpanHighlight> and{" "}
+                        <SpanHighlight>StoryObj</SpanHighlight> for type safety
+                        and autocompletion in TypeScript stories.
                       </p>
                       <p>
                         Next, import a component. In this case, the Button

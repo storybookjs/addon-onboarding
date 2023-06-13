@@ -3,7 +3,7 @@ import { defineConfig } from "tsup";
 const packageJson = require("./package.json");
 
 export default defineConfig((options) => ({
-  entry: ["src/index.ts", "src/preview.ts", "src/manager.tsx"],
+  entry: ["src/index.ts", "src/preset.ts", "src/manager.tsx"],
   splitting: false,
   minify: !options.watch,
   format: ["cjs", "esm"],
@@ -25,7 +25,7 @@ export default defineConfig((options) => ({
   treeshake: true,
   sourcemap: true,
   clean: true,
-  platform: "browser",
+  platform: "node",
   esbuildOptions(options) {
     options.conditions = ["module"];
     options.loader = {

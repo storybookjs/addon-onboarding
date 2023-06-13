@@ -24,15 +24,10 @@
       "import": "./dist/index.mjs",
       "types": "./dist/index.d.ts"
     },
-    "./manager": {
-      "require": "./dist/manager.js",
-      "import": "./dist/manager.mjs",
-      "types": "./dist/manager.d.ts"
-    },
-    "./preview": {
-      "require": "./dist/preview.js",
-      "import": "./dist/preview.mjs",
-      "types": "./dist/preview.d.ts"
+    "./preset": {
+      "require": "./dist/preset.js",
+      "import": "./dist/preset.mjs",
+      "types": "./dist/preset.d.ts"
     },
     "./package.json": "./package.json"
   },
@@ -73,26 +68,26 @@
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.0.4",
-    "@storybook/telemetry": "^7.0.18",
     "framer-motion": "^6.5.1",
     "react-confetti": "^6.1.0",
     "react-joyride": "^2.5.4",
     "react-use-measure": "^2.1.1"
   },
   "devDependencies": {
-    "@storybook/addon-essentials": "^7.0.18",
-    "@storybook/addon-interactions": "^7.0.18",
-    "@storybook/addon-links": "^7.0.18",
-    "@storybook/blocks": "^7.0.18",
-    "@storybook/components": "^7.0.18",
-    "@storybook/core-events": "^7.0.18",
+    "@storybook/addon-essentials": "^7.1.0-alpha.32",
+    "@storybook/addon-interactions": "^7.1.0-alpha.32",
+    "@storybook/addon-links": "^7.1.0-alpha.32",
+    "@storybook/blocks": "^7.1.0-alpha.32",
+    "@storybook/components": "^7.1.0-alpha.32",
+    "@storybook/core-events": "^7.1.0-alpha.32",
     "@storybook/jest": "^0.1.0",
-    "@storybook/manager-api": "^7.0.18",
-    "@storybook/react": "^7.0.18",
-    "@storybook/react-vite": "^7.0.18",
+    "@storybook/manager-api": "^7.1.0-alpha.32",
+    "@storybook/react": "^7.1.0-alpha.32",
+    "@storybook/react-vite": "^7.1.0-alpha.32",
     "@storybook/testing-library": "^0.0.14-next.1",
-    "@storybook/theming": "^7.0.17",
-    "@storybook/types": "^7.0.17",
+    "@storybook/telemetry": "^7.1.0-alpha.32",
+    "@storybook/theming": "^7.1.0-alpha.32",
+    "@storybook/types": "^7.1.0-alpha.32",
     "@types/lodash.throttle": "^4.1.7",
     "@types/node": "^18.15.0",
     "@types/react": "^18.2.7",
@@ -110,7 +105,7 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "rimraf": "^3.0.2",
-    "storybook": "^7.0.0",
+    "storybook": "^7.1.0-alpha.32",
     "tsup": "^6.6.3",
     "typescript": "^4.9.5",
     "vite": "^4.1.4"

@@ -23,7 +23,7 @@ export const experimental_serverChannel = async (
       STORYBOOK_ADDON_ONBOARDING_CHANNEL,
       ({ type, ...event }: Event) => {
         if (type === "telemetry") {
-          telemetry("addon-onboarding", event);
+          telemetry("addon-onboarding" as any, event);
         }
       }
     );

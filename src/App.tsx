@@ -35,12 +35,14 @@ export default function App({ api }: { api: API }) {
   useEffect(() => {
     api.emit(STORYBOOK_ADDON_ONBOARDING_CHANNEL, {
       step: "1:Welcome",
+      type: "telemetry",
     });
   }, []);
 
   useEffect(() => {
     api.emit(STORYBOOK_ADDON_ONBOARDING_CHANNEL, {
       step,
+      type: "telemetry",
     });
   }, [api, step]);
 
@@ -99,6 +101,7 @@ export default function App({ api }: { api: API }) {
             api.emit(STORYBOOK_ADDON_ONBOARDING_CHANNEL, {
               step: "X:SkippedOnboarding",
               where: "WelcomeModal",
+              type: "telemetry",
             });
           }}
         />
@@ -115,6 +118,7 @@ export default function App({ api }: { api: API }) {
               api.selectStory("configure-your-project--docs");
               api.emit(STORYBOOK_ADDON_ONBOARDING_CHANNEL, {
                 step: "6:FinishedOnboarding",
+                type: "telemetry",
               });
               skipOnboarding();
             }}

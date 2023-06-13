@@ -1,23 +1,14 @@
 {
   "name": "@storybook/addon-onboarding",
-  "version": "0.0.28",
+  "version": "0.0.29",
   "description": "Storybook Addon Onboarding - Introduces a new onboarding experience",
   "keywords": [
     "storybook-addons",
     "addon-onboarding"
   ],
-  "homepage": "https://github.com/storybookjs/addon-onboarding#readme",
-  "bugs": {
-    "url": "https://github.com/storybookjs/addon-onboarding/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/storybookjs/addon-onboarding.git"
-  },
+  "repository": "git+https://github.com/storybookjs/addon-onboarding.git",
+  "author": "@storybookjs/core",
   "license": "MIT",
-  "author": {
-    "name": "@storybookjs/core"
-  },
   "exports": {
     ".": {
       "require": "./dist/index.js",
@@ -43,7 +34,6 @@
   "scripts": {
     "build": "tsup",
     "build:watch": "yarn build --watch",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "run-p build:watch 'storybook --quiet'",
     "release": "yarn build && auto shipit",
     "storybook": "storybook dev -p 6006",
@@ -114,5 +104,9 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/storybookjs/addon-onboarding/issues"
+  },
+  "homepage": "https://github.com/storybookjs/addon-onboarding#readme"
 }

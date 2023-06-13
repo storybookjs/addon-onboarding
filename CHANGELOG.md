@@ -1,3 +1,15 @@
+# v0.0.29 (Tue Jun 13 2023)
+
+#### ⚠️ Pushed to `main`
+
+- cleanup dependencies ([@yannbf](https://github.com/yannbf))
+
+#### Authors: 1
+
+- Yann Braga ([@yannbf](https://github.com/yannbf))
+
+---
+
 # v0.0.28 (Mon Jun 12 2023)
 
 #### 🐛 Bug Fix

@@ -6,6 +6,14 @@ Make sure to use `pnpm`.
 - `pnpm run build` build and package your addon code
 - `pnpm run storybook:watch` runs nodemon in watch mode so it reruns Storybook on changes. This is useful when testing the actual addon (as we cannot have HMR for addon changes) rather than just stories in Storybook
 
+### How to test the addon
+
+To trigger this addon locally, do the following:
+1. run `pnpm install && pnpm run build`
+2. run `pnpm run storybook`
+3. Go to http://localhost:6006/?path=/onboarding
+4. You should now see the onboarding appearing. Have fun 👻
+
 ## Release Management
 
 ### Setup

@@ -1,3 +1,16 @@
+# v0.0.30 (Tue Jun 13 2023)
+
+#### 🐛 Bug Fix
+
+- Add core server events for telemetry [#40](https://github.com/storybookjs/addon-onboarding/pull/40) ([@valentinpalkovic](https://github.com/valentinpalkovic) [@yannbf](https://github.com/yannbf))
+
+#### Authors: 2
+
+- Valentin Palkovic ([@valentinpalkovic](https://github.com/valentinpalkovic))
+- Yann Braga ([@yannbf](https://github.com/yannbf))
+
+---
+
 # v0.0.29 (Tue Jun 13 2023)
 
 #### ⚠️ Pushed to `main`

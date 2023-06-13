@@ -33,16 +33,16 @@
   ],
   "scripts": {
     "build": "tsup",
-    "build:watch": "yarn build --watch",
+    "build:watch": "pnpm run build --watch",
     "start": "run-p build:watch 'storybook --quiet'",
-    "release": "yarn build && auto shipit",
+    "release": "pnpm run build && auto shipit",
     "storybook": "storybook dev -p 6006",
     "storybook:watch": "nodemon",
     "build-storybook": "storybook build",
     "chromatic": "npx chromatic"
   },
   "nodemonConfig": {
-    "exec": "yarn storybook --ci",
+    "exec": "pnpm run storybook --ci",
     "ext": "js,jsx,ts,tsx",
     "ignore": [
       "src/stories",

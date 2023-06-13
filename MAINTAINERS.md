@@ -1,8 +1,18 @@
 ### Development scripts
 
-- `yarn start` runs tsup in watch mode and starts Storybook
-- `yarn build` build and package your addon code
-- `yarn storybook:watch` runs nodemon in watch mode so it reruns Storybook on changes. This is useful when testing the actual addon (as we cannot have HMR for addon changes) rather than just stories in Storybook
+Make sure to use `pnpm`.
+
+- `pnpm run start` runs tsup in watch mode and starts Storybook
+- `pnpm run build` build and package your addon code
+- `pnpm run storybook:watch` runs nodemon in watch mode so it reruns Storybook on changes. This is useful when testing the actual addon (as we cannot have HMR for addon changes) rather than just stories in Storybook
+
+### How to test the addon
+
+To trigger this addon locally, do the following:
+1. run `pnpm install && pnpm run build`
+2. run `pnpm run storybook`
+3. Go to http://localhost:6006/?path=/onboarding
+4. You should now see the onboarding appearing. Have fun 👻
 
 ## Release Management
 
@@ -35,7 +45,7 @@ If you check on GitHub, you’ll now see a set of labels that `auto` would like 
 To create a release locally you can run the following command, otherwise the GitHub action will make the release for you.
 
 ```sh
-yarn release
+pnpm run release
 ```
 
 That will:

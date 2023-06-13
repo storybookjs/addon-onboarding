@@ -1,22 +1,35 @@
 import { defineConfig } from "tsup";
 
-export default defineConfig((options) => ({
-  entry: ["src/index.ts", "src/preview.ts", "src/manager.tsx"],
+const baseConfig = {
   splitting: false,
-  minify: !options.watch,
-  format: ["cjs", "esm"],
   dts: {
     resolve: true,
   },
   treeshake: true,
-  sourcemap: true,
+  sourcemap: false,
   clean: true,
-  platform: "browser",
-  esbuildOptions(options) {
-    options.conditions = ["module"];
-    options.loader = {
-      ...options.loader,
-      ".png": "dataurl",
-    };
+};
+
+export default defineConfig((options) => [
+  {
+    ...baseConfig,
+    entry: ["src/preset.ts"],
+    format: ["cjs"],
+    platform: "node",
+    minify: !options.watch,
   },
-}));
+  {
+    ...baseConfig,
+    entry: ["src/index.ts", "src/manager.tsx"],
+    format: ["esm"],
+    platform: "browser",
+    esbuildOptions(options) {
+      options.conditions = ["module"];
+      options.loader = {
+        ...options.loader,
+        ".png": "dataurl",
+      };
+    },
+    minify: !options.watch,
+  },
+]);

@@ -6,6 +6,7 @@ import { GuidedTour } from "./features/GuidedTour/GuidedTour";
 import { WelcomeModal } from "./features/WelcomeModal/WelcomeModal";
 import { WriteStoriesModal } from "./features/WriteStoriesModal/WriteStoriesModal";
 import { Confetti } from "./components/Confetti/Confetti";
+import { STORYBOOK_ADDON_ONBOARDING_CHANNEL } from "./constants";
 
 type Step =
   | "1:Welcome"
@@ -30,6 +31,20 @@ export default function App({ api }: { api: API }) {
     api.setQueryParams({ onboarding: "false" });
     setEnabled(false);
   }, [setEnabled, api]);
+
+  useEffect(() => {
+    api.emit(STORYBOOK_ADDON_ONBOARDING_CHANNEL, {
+      step: "1:Welcome",
+      type: "telemetry",
+    });
+  }, []);
+
+  useEffect(() => {
+    api.emit(STORYBOOK_ADDON_ONBOARDING_CHANNEL, {
+      step,
+      type: "telemetry",
+    });
+  }, [api, step]);
 
   useEffect(() => {
     let stepTimeout: number;
@@ -58,6 +73,10 @@ export default function App({ api }: { api: API }) {
     }
   }, []);
 
+  if (!enabled) {
+    return null;
+  }
+
   return (
     <ThemeProvider theme={theme}>
       {enabled && showConfetti && (
@@ -73,8 +92,18 @@ export default function App({ api }: { api: API }) {
       )}
       {enabled && step === "1:Welcome" && (
         <WelcomeModal
-          onProceed={() => setStep("2:StorybookTour")}
-          skipOnboarding={skipOnboarding}
+          onProceed={() => {
+            setStep("2:StorybookTour");
+          }}
+          skipOnboarding={() => {
+            skipOnboarding();
+
+            api.emit(STORYBOOK_ADDON_ONBOARDING_CHANNEL, {
+              step: "X:SkippedOnboarding",
+              where: "WelcomeModal",
+              type: "telemetry",
+            });
+          }}
         />
       )}
       {enabled &&
@@ -87,6 +116,10 @@ export default function App({ api }: { api: API }) {
             }}
             onLastTourDone={() => {
               api.selectStory("configure-your-project--docs");
+              api.emit(STORYBOOK_ADDON_ONBOARDING_CHANNEL, {
+                step: "6:FinishedOnboarding",
+                type: "telemetry",
+              });
               skipOnboarding();
             }}
           />

@@ -17,12 +17,19 @@ jobs:
         with:
           node-version: 16.x
 
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 8
+          run_install: false
+
       - name: Install dependencies
-        run: yarn install --ignore-scripts
+        run: pnpm install
 
       - name: Create Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          yarn release
+          pnpm run release

@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { useCallback, useState, type FC } from "react";
 import { Button } from "../../components/Button/Button";
 import { Modal } from "../../components/Modal/Modal";
 import { Icons } from "@storybook/components";
@@ -31,6 +31,7 @@ import dataTypescript from "./code/typescript";
 import dataTypescriptNextjs from "./code/nextjs-typescript";
 import { useGetProject } from "./hooks/useGetFrameworkName";
 import { API, AddonStore } from "@storybook/manager-api";
+import { STORYBOOK_ADDON_ONBOARDING_CHANNEL } from "../../constants";
 
 // TODO: Add warning if backdropBoundary && !warningButtonStatus?.data is not true.
 // backdropBoundary && !warningButtonStatus?.data
@@ -92,9 +93,16 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
     setWarningStoryCopied(true);
   };
 
+  const onModalClose = useCallback(() => {
+    api.emit(STORYBOOK_ADDON_ONBOARDING_CHANNEL, {
+      step: "X:SkippedOnboarding",
+      where: `HowToWriteAStoryModal:${step}`,
+      type: "telemetry",
+    });
+  }, [api, step]);
   return (
     <Modal width={740} height={430} defaultOpen>
-      {({ Title, Description }) => (
+      {({ Title, Description, Close }) => (
         <ModalContent>
           {data ? (
             <SyntaxHighlighter
@@ -131,13 +139,14 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
                   <span>How to write a story</span>
                 </ModalTitle>
               </Title>
-
-              <Icons
-                style={{ cursor: "pointer" }}
-                icon="cross"
-                width={13}
-                onClick={skipOnboarding}
-              />
+              <Close onClick={onModalClose} asChild>
+                <Icons
+                  style={{ cursor: "pointer" }}
+                  icon="cross"
+                  width={13}
+                  onClick={skipOnboarding}
+                />
+              </Close>
             </Header>
             <Description asChild>
               <Content>
@@ -146,8 +155,9 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
                     <div>
                       <h3>Imports</h3>
                       <p>
-                        First, import <SpanHighlight>Meta</SpanHighlight> and <SpanHighlight>StoryObj</SpanHighlight> for type safety and
-                        autocompletion in TypeScript stories.
+                        First, import <SpanHighlight>Meta</SpanHighlight> and{" "}
+                        <SpanHighlight>StoryObj</SpanHighlight> for type safety
+                        and autocompletion in TypeScript stories.
                       </p>
                       <p>
                         Next, import a component. In this case, the Button

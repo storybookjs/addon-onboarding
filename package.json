@@ -70,6 +70,7 @@
     "react-confetti": "^6.1.0",
     "react-joyride": "^2.5.4",
     "react-use-measure": "^2.1.1",
+    "@storybook/channels": "^7.1.0-alpha.32",
     "@storybook/components": "^7.1.0-alpha.32",
     "@storybook/core-events": "^7.1.0-alpha.32",
     "@storybook/manager-api": "^7.1.0-alpha.32",

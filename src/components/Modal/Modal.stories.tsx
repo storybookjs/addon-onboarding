@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Meta, StoryObj } from "@storybook/react";
 import { userEvent, within } from "@storybook/testing-library";
 import { expect } from "@storybook/jest";
+import { useArgs } from "@storybook/preview-api";
 
 import { Modal } from "./Modal";
 
@@ -25,14 +26,15 @@ export const Default: Story = {
   },
   render: (props) => {
     const [isOpen, setOpen] = useState(false);
+
     return (
       <>
         <Modal {...props} open={isOpen}>
           {({ Close }) => (
-            <>
+            <div style={{ padding: 15 }}>
               <div>Hello world!</div>
               <Close onClick={() => setOpen(false)}>Close</Close>
-            </>
+            </div>
           )}
         </Modal>
         <button onClick={() => setOpen(true)}>Open modal</button>
@@ -56,14 +58,15 @@ export const FixedWidth: Story = {
   },
   render: (props) => {
     const [isOpen, setOpen] = useState(false);
+
     return (
       <>
         <Modal {...props} open={isOpen}>
           {({ Close }) => (
-            <>
+            <div style={{ padding: 15 }}>
               <div>Hello world!</div>
               <Close onClick={() => setOpen(false)}>Close</Close>
-            </>
+            </div>
           )}
         </Modal>
         <button onClick={() => setOpen(true)}>Open modal</button>
@@ -87,14 +90,15 @@ export const FixedHeight: Story = {
   },
   render: (props) => {
     const [isOpen, setOpen] = useState(false);
+
     return (
       <>
         <Modal {...props} open={isOpen}>
           {({ Close }) => (
-            <>
+            <div style={{ padding: 15 }}>
               <div>Hello world!</div>
               <Close onClick={() => setOpen(false)}>Close</Close>
-            </>
+            </div>
           )}
         </Modal>
         <button onClick={() => setOpen(true)}>Open modal</button>
@@ -119,14 +123,15 @@ export const FixedWidthAndHeight: Story = {
   },
   render: (props) => {
     const [isOpen, setOpen] = useState(false);
+
     return (
       <>
         <Modal {...props} open={isOpen}>
           {({ Close }) => (
-            <>
+            <div style={{ padding: 15 }}>
               <div>Hello world!</div>
               <Close onClick={() => setOpen(false)}>Close</Close>
-            </>
+            </div>
           )}
         </Modal>
         <button onClick={() => setOpen(true)}>Open modal</button>

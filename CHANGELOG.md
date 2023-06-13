@@ -1,3 +1,115 @@
+# v0.0.28 (Mon Jun 12 2023)
+
+#### 🐛 Bug Fix
+
+- Feat/overall improvements [#49](https://github.com/storybookjs/addon-onboarding/pull/49) ([@yannbf](https://github.com/yannbf) [@cdedreuille](https://github.com/cdedreuille))
+
+#### Authors: 2
+
+- Charles de Dreuille ([@cdedreuille](https://github.com/cdedreuille))
+- Yann Braga ([@yannbf](https://github.com/yannbf))
+
+---
+
+# v0.0.27 (Fri Jun 09 2023)
+
+#### 🐛 Bug Fix
+
+- Add previous button to write stories modal [#48](https://github.com/storybookjs/addon-onboarding/pull/48) ([@yannbf](https://github.com/yannbf) [@cdedreuille](https://github.com/cdedreuille))
+
+#### Authors: 2
+
+- Charles de Dreuille ([@cdedreuille](https://github.com/cdedreuille))
+- Yann Braga ([@yannbf](https://github.com/yannbf))
+
+---
+
+# v0.0.26 (Thu Jun 08 2023)
+
+#### 🐛 Bug Fix
+
+- Remove animation modal [#47](https://github.com/storybookjs/addon-onboarding/pull/47) ([@cdedreuille](https://github.com/cdedreuille))
+
+#### Authors: 1
+
+- Charles de Dreuille ([@cdedreuille](https://github.com/cdedreuille))
+
+---
+
+# v0.0.25 (Thu Jun 08 2023)
+
+#### 🐛 Bug Fix
+
+- Improve addon bootstrapping [#46](https://github.com/storybookjs/addon-onboarding/pull/46) ([@yannbf](https://github.com/yannbf))
+
+#### Authors: 1
+
+- Yann Braga ([@yannbf](https://github.com/yannbf))
+
+---
+
+# v0.0.24 (Thu Jun 08 2023)
+
+#### 🐛 Bug Fix
+
+- Use the correct event to detect args change [#45](https://github.com/storybookjs/addon-onboarding/pull/45) ([@yannbf](https://github.com/yannbf))
+
+#### Authors: 1
+
+- Yann Braga ([@yannbf](https://github.com/yannbf))
+
+---
+
+# v0.0.23 (Thu Jun 08 2023)
+
+#### 🐛 Bug Fix
+
+- Various improvements [#44](https://github.com/storybookjs/addon-onboarding/pull/44) ([@yannbf](https://github.com/yannbf) [@cdedreuille](https://github.com/cdedreuille))
+
+#### Authors: 2
+
+- Charles de Dreuille ([@cdedreuille](https://github.com/cdedreuille))
+- Yann Braga ([@yannbf](https://github.com/yannbf))
+
+---
+
+# v0.0.22 (Thu Jun 08 2023)
+
+#### 🐛 Bug Fix
+
+- Improve confetti colors and shapes [#43](https://github.com/storybookjs/addon-onboarding/pull/43) ([@yannbf](https://github.com/yannbf) [@cdedreuille](https://github.com/cdedreuille))
+
+#### Authors: 2
+
+- Charles de Dreuille ([@cdedreuille](https://github.com/cdedreuille))
+- Yann Braga ([@yannbf](https://github.com/yannbf))
+
+---
+
+# v0.0.21 (Thu Jun 08 2023)
+
+#### 🐛 Bug Fix
+
+- Improve modal animation [#42](https://github.com/storybookjs/addon-onboarding/pull/42) ([@cdedreuille](https://github.com/cdedreuille))
+
+#### Authors: 1
+
+- Charles de Dreuille ([@cdedreuille](https://github.com/cdedreuille))
+
+---
+
+# v0.0.20 (Wed Jun 07 2023)
+
+#### 🐛 Bug Fix
+
+- Change code for Javascript projects [#41](https://github.com/storybookjs/addon-onboarding/pull/41) ([@valentinpalkovic](https://github.com/valentinpalkovic))
+
+#### Authors: 1
+
+- Valentin Palkovic ([@valentinpalkovic](https://github.com/valentinpalkovic))
+
+---
+
 # v0.0.19 (Wed Jun 07 2023)
 
 #### 🐛 Bug Fix

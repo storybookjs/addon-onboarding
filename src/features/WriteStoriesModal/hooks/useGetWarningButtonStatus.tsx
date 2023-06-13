@@ -25,9 +25,14 @@ export const useGetWarningButtonStatus = (
         });
       };
 
-      addonsStore
-        .getServerChannel()
-        .on(STORY_INDEX_INVALIDATED, getWarningButtonStatus);
+      // If the story already exists, we don't need to listen to any events
+      if(api.getData("example-button--warning")) {
+        setStatus({ data: true, error: null });
+      } else {
+        addonsStore
+          .getServerChannel()
+          .on(STORY_INDEX_INVALIDATED, getWarningButtonStatus);
+      }
 
       return () => {
         addonsStore

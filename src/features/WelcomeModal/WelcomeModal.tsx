@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 
 import { Button } from "../../components/Button/Button";
 import { Modal } from "../../components/Modal/Modal";
@@ -16,12 +16,14 @@ import {
   TopContent,
 } from "./WelcomeModal.styled";
 
-export const WelcomeModal = ({
-  onSkip,
-  onProceed,
-}: {
-  onSkip: () => void;
+interface WelcomeModalProps {
   onProceed: () => void;
+  skipOnboarding: () => void;
+}
+
+export const WelcomeModal: FC<WelcomeModalProps> = ({
+  onProceed,
+  skipOnboarding,
 }) => {
   return (
     <Modal width={540} height={430} defaultOpen>
@@ -31,19 +33,17 @@ export const WelcomeModal = ({
             <StorybookLogo />
             <Title>Welcome to Storybook</Title>
             <Description>
-              Storybook helps you develop UI components. Learn the basics in a
+              Storybook helps you develop UI components faster. Learn the basics in a
               few simple steps.
             </Description>
             <Button style={{ marginTop: 4 }} onClick={onProceed}>
               Start your 3 minute tour
             </Button>
           </TopContent>
-          <Close asChild>
-            <SkipButton onClick={onSkip}>
-              Skip tour
-              <StyledIcon icon="arrowright" />
-            </SkipButton>
-          </Close>
+          <SkipButton onClick={skipOnboarding}>
+            Skip tour
+            <StyledIcon icon="arrowright" />
+          </SkipButton>
           <Background>
             <Circle1 />
             <Circle2 />

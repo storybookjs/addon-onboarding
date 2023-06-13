@@ -2,7 +2,7 @@ import { css, styled } from "@storybook/theming";
 import * as Dialog from "@radix-ui/react-dialog";
 import React from "react";
 
-export const StyledOverlay = styled(Dialog.Overlay)`
+export const StyledOverlay = styled.div`
   background-color: rgba(27, 28, 29, 0.48);
   position: fixed;
   inset: 0px;
@@ -10,7 +10,10 @@ export const StyledOverlay = styled(Dialog.Overlay)`
   height: 100%;
 `;
 
-export const StyledContent = styled.div<{ width: number; height: number }>(
+export const StyledContent = styled.div<{
+  width: number;
+  height: number;
+}>(
   ({ width, height }) => css`
     background-color: white;
     border-radius: 6px;

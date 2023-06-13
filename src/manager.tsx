@@ -1,6 +1,7 @@
 import ReactDOM from "react-dom";
 import React, { lazy, Suspense } from "react";
 import { addons } from "@storybook/manager-api";
+import { STORY_SPECIFIED } from "@storybook/core-events";
 
 const App = lazy(() => import("./App"));
 
@@ -11,22 +12,26 @@ addons.register("@storybook/addon-onboarding", async (api) => {
   const urlState = api.getUrlState();
   const isOnboarding = urlState.path === '/onboarding' || urlState.queryParams.onboarding === 'true';
 
-  if (!isOnboarding) {
-    return;
-  }
+  api.once(STORY_SPECIFIED, () => {
+    let hasButtonStories = !!api.getData("example-button--primary") || !!document.getElementById('example-button--primary')
 
-  let hasButtonStories = false;
-  try {
-    const response = await fetch("./index.json");
-    const index = await response.json();
-    hasButtonStories = !!index.entries["example-button--primary"];
-  } catch (e) {}
+    if (!hasButtonStories) {
+      console.warn(`[@storybook/addon-onboarding] It seems like you have finished the onboarding experience in Storybook! Therefore this addon is not necessary anymore and will not be loaded. You are free to remove it from your project. More info: https://github.com/storybookjs/addon-onboarding#uninstalling`);
+      return;
+    }
 
-  if (hasButtonStories) {
+    if (!isOnboarding || window.innerWidth < 730) {
+      return;
+    }
+
+    api.togglePanel(true);
+    api.togglePanelPosition("bottom");
+    api.setSelectedPanel("addon-controls");
+
     // Add a new DOM element to document.body, where we will bootstrap our React app
     const domNode = document.createElement("div");
 
-    domNode.id = "addon-onboarding";
+    domNode.id = "storybook-addon-onboarding";
     // Append the new DOM element to document.body
     document.body.appendChild(domNode);
 
@@ -37,5 +42,5 @@ addons.register("@storybook/addon-onboarding", async (api) => {
       </Suspense>,
       domNode
     );
-  }
+  })
 });

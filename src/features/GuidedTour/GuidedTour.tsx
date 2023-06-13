@@ -4,24 +4,26 @@ import Joyride, { CallBackProps, STATUS, Step } from "react-joyride";
 import { PulsatingEffect } from "../../components/PulsatingEffect/PulsatingEffect";
 import { Confetti } from "../../components/Confetti/Confetti";
 import { API } from "@storybook/manager-api";
-import { STORY_ARGS_UPDATED } from "@storybook/core-events";
-import { Tooltip } from "./Tooltip";
+import { UPDATE_STORY_ARGS } from "@storybook/core-events";
+import { Tooltip, TooltipProps } from "./Tooltip";
 
-type GuidedTourStep = Step & { hideNextButton?: boolean };
+type GuidedTourStep = TooltipProps['step'];
 
 export function GuidedTour({
   api,
   isFinalStep,
   onFirstTourDone,
+  onLastTourDone,
 }: {
   api: API;
   isFinalStep?: boolean;
   onFirstTourDone: () => void;
+  onLastTourDone: () => void;
 }) {
   const [stepIndex, setStepIndex] = useState<number>();
 
   useEffect(() => {
-    api.once(STORY_ARGS_UPDATED, () => {
+    api.once(UPDATE_STORY_ARGS, () => {
       setStepIndex(3);
     });
   }, []);
@@ -29,17 +31,22 @@ export function GuidedTour({
   const steps: GuidedTourStep[] = isFinalStep
     ? [
         {
-          target: "#configure-your-project--docs",
-          title: "Continue setting up your project",
+          target: "#example-button--warning",
+          title: "Congratulations!",
           content:
-            "You nailed the basics. Now get started writing stories for your own components.",
+            <>
+              You just created your first story. You nailed the basics. <br/>
+              Continue setting up your project and start writing stories for your components.
+            </>,
           placement: "right",
           disableOverlay: true,
           disableBeacon: true,
           floaterProps: {
             disableAnimation: true,
           },
-          hideNextButton: true,
+          onNextButtonClick() {
+            onLastTourDone();
+          },
         },
       ]
     : [
@@ -91,9 +98,13 @@ export function GuidedTour({
           title: "Congratulations!",
           content: (
             <>
-              You've learned how to control your stories interactively. Now:
-              let's explore how to write your first story.
-              <Confetti numberOfPieces={100} />
+              You've learned how to control your stories interactively.<br/>
+              Now: let's explore how to write your first story.
+              <Confetti
+                numberOfPieces={800}
+                recycle={false}
+                tweenDuration={20000}
+              />
             </>
           ),
           placement: "right",

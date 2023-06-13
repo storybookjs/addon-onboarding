@@ -1,10 +1,11 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, type FC } from "react";
 import { Button } from "../../components/Button/Button";
 import { Modal } from "../../components/Modal/Modal";
 import { Icons } from "@storybook/components";
 import useMeasure from "react-use-measure";
 import {
   Background,
+  ButtonsWrapper,
   Circle1,
   Circle2,
   Circle3,
@@ -35,15 +36,19 @@ import { STORYBOOK_ADDON_ONBOARDING_CHANNEL } from "../../constants";
 // TODO: Add warning if backdropBoundary && !warningButtonStatus?.data is not true.
 // backdropBoundary && !warningButtonStatus?.data
 
-export function WriteStoriesModal({
-  onFinish,
-  api,
-  addonsStore,
-}: {
+interface WriteStoriesModalProps {
   onFinish: () => void;
   api: API;
   addonsStore: AddonStore;
-}) {
+  skipOnboarding: () => void;
+}
+
+export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
+  onFinish,
+  api,
+  addonsStore,
+  skipOnboarding,
+}) => {
   const [step, setStep] = useState<
     "imports" | "meta" | "story" | "args" | "customStory"
   >("imports");
@@ -77,8 +82,8 @@ export function WriteStoriesModal({
   const data = isJavascript
     ? dataJavascript
     : project?.data?.framework.name === "@storybook/nextjs"
-    ? dataTypescriptNextjs
-    : dataTypescript;
+      ? dataTypescriptNextjs
+      : dataTypescript;
 
   const copyWarningStory = () => {
     const warningContent = data[4][0].code;
@@ -105,26 +110,26 @@ export function WriteStoriesModal({
               width={480}
             />
           ) : null}
-          {backdropBoundary && !warningButtonStatus?.data && (
-            <Button
-              ref={clipboardButtonRef}
-              onClick={() => {
-                copyWarningStory();
-              }}
-              style={{
-                position: "absolute",
-                top: backdropBoundary.top + backdropBoundary.height - 45,
-                left:
-                  backdropBoundary.left +
-                  backdropBoundary.width -
-                  (clipboardButtonBounds.width ?? 0) -
-                  10,
-                zIndex: 1000,
-              }}
-            >
-              {isWarningStoryCopied ? "Copied to clipboard" : "Copy code"}
-            </Button>
-          )}
+          {step === "customStory" &&
+            backdropBoundary &&
+            !warningButtonStatus?.data && (
+              <Button
+                ref={clipboardButtonRef}
+                onClick={() => copyWarningStory()}
+                style={{
+                  position: "absolute",
+                  top: backdropBoundary.top + backdropBoundary.height - 45,
+                  left:
+                    backdropBoundary.left +
+                    backdropBoundary.width -
+                    (clipboardButtonBounds.width ?? 0) -
+                    10,
+                  zIndex: 1000,
+                }}
+              >
+                {isWarningStoryCopied ? "Copied to clipboard" : "Copy code"}
+              </Button>
+            )}
           <Main>
             <Header>
               <Title asChild>
@@ -134,7 +139,12 @@ export function WriteStoriesModal({
                 </ModalTitle>
               </Title>
               <Close onClick={onModalClose} asChild>
-                <Icons style={{ cursor: "pointer" }} icon="cross" width={13} />
+                <Icons
+                  style={{ cursor: "pointer" }}
+                  icon="cross"
+                  width={13}
+                  onClick={skipOnboarding}
+                />
               </Close>
             </Header>
             <Description asChild>
@@ -144,7 +154,7 @@ export function WriteStoriesModal({
                     <div>
                       <h3>Imports</h3>
                       <p>
-                        First, import Meta and StoryObj for type safety and
+                        First, import <SpanHighlight>Meta</SpanHighlight> and <SpanHighlight>StoryObj</SpanHighlight> for type safety and
                         autocompletion in TypeScript stories.
                       </p>
                       <p>
@@ -177,14 +187,15 @@ export function WriteStoriesModal({
                         src={titleSidebarImg}
                       />
                     </div>
-                    <Button
-                      style={{ marginTop: 4 }}
-                      onClick={() => {
-                        setStep("story");
-                      }}
-                    >
-                      Next
-                    </Button>
+                    <ButtonsWrapper>
+                      <Button
+                        variant="secondary"
+                        onClick={() => setStep("imports")}
+                      >
+                        Previous
+                      </Button>
+                      <Button onClick={() => setStep("story")}>Next</Button>
+                    </ButtonsWrapper>
                   </>
                 )}
                 {step === "story" && (
@@ -202,14 +213,15 @@ export function WriteStoriesModal({
                         src={storyNameSidebarImg}
                       />
                     </div>
-                    <Button
-                      style={{ marginTop: 4 }}
-                      onClick={() => {
-                        setStep("args");
-                      }}
-                    >
-                      Next
-                    </Button>
+                    <ButtonsWrapper>
+                      <Button
+                        variant="secondary"
+                        onClick={() => setStep("meta")}
+                      >
+                        Previous
+                      </Button>
+                      <Button onClick={() => setStep("args")}>Next</Button>
+                    </ButtonsWrapper>
                   </>
                 )}
                 {step === "args" && (
@@ -220,7 +232,7 @@ export function WriteStoriesModal({
                         Args are inputs that are passed to the component, which
                         Storybook uses to render the component in different
                         states. In React, args = props. They also specify the
-                        initial control settings for the story.
+                        initial control values for the story.
                       </p>
                       <Image
                         alt="Args mapped to their controls in Storybook"
@@ -228,14 +240,17 @@ export function WriteStoriesModal({
                         src={argsImg}
                       />
                     </div>
-                    <Button
-                      style={{ marginTop: 4 }}
-                      onClick={() => {
-                        setStep("customStory");
-                      }}
-                    >
-                      Next
-                    </Button>
+                    <ButtonsWrapper>
+                      <Button
+                        variant="secondary"
+                        onClick={() => setStep("story")}
+                      >
+                        Previous
+                      </Button>
+                      <Button onClick={() => setStep("customStory")}>
+                        Next
+                      </Button>
+                    </ButtonsWrapper>
                   </>
                 )}
                 {step === "customStory" &&
@@ -272,19 +287,23 @@ export function WriteStoriesModal({
                             isCompleted={warningButtonStatus?.data}
                             index={3}
                           >
-                            Paste it at the bottom of the file
+                            Paste it at the bottom of the file and save
                           </ListItem>
                         </List>
                       </div>
-                      {warningButtonStatus?.data ? (
+                      <ButtonsWrapper>
                         <Button
-                          onClick={() => {
-                            onFinish();
-                          }}
+                          variant="secondary"
+                          onClick={() => setStep("args")}
                         >
-                          Go to story
+                          Previous
                         </Button>
-                      ) : null}
+                        {warningButtonStatus?.data ? (
+                          <Button onClick={() => onFinish()}>
+                            Go to story
+                          </Button>
+                        ) : null}
+                      </ButtonsWrapper>
                     </>
                   ) : null)}
               </Content>
@@ -299,4 +318,4 @@ export function WriteStoriesModal({
       )}
     </Modal>
   );
-}
+};

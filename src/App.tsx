@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { ThemeProvider, ensure, themes } from "@storybook/theming";
-import { STORY_CHANGED, CURRENT_STORY_WAS_SET } from "@storybook/core-events";
 import { addons, type API } from "@storybook/manager-api";
 
 import { GuidedTour } from "./features/GuidedTour/GuidedTour";
@@ -23,23 +22,19 @@ export default function App({ api }: { api: API }) {
   const [showConfetti, setShowConfetti] = useState(false);
   const [step, setStep] = useState<Step>("1:Welcome");
 
-  const skipTour = useCallback(() => {
+  const skipOnboarding = useCallback(() => {
     // remove onboarding query parameter from current url
     const url = new URL(window.location.href);
-    url.searchParams.delete("onboarding");
     const path = decodeURIComponent(url.searchParams.get("path"));
-    url.search = `?path=${path}`;
+    url.search = `?path=${path}&onboarding=false`;
     history.replaceState({}, "", url.href);
+    api.setQueryParams({ onboarding: "false" });
     setEnabled(false);
-  }, [setEnabled]);
+  }, [setEnabled, api]);
 
-  // for some reason the api.emit event is not ready in the very first beginning.
-  // Therefore we wait for a CURRENT_STORY_WAS_SET event to fire the initial step tracking once
   useEffect(() => {
-    api.once(CURRENT_STORY_WAS_SET, () => {
-      api.emit(STORYBOOK_ADDON_ONBOARDING_CHANNEL, {
-        step: "1:Welcome",
-      });
+    api.emit(STORYBOOK_ADDON_ONBOARDING_CHANNEL, {
+      step: "1:Welcome",
     });
   }, []);
 
@@ -64,37 +59,16 @@ export default function App({ api }: { api: API }) {
   }, [step]);
 
   useEffect(() => {
-    api.once(CURRENT_STORY_WAS_SET, ({ storyId }) => {
-      api.setQueryParams({ onboarding: "true" });
-      // make sure the initial state is set correctly:
-      // 1. Selected story is primary button
-      // 2. The addon panel is opened, in the bottom and the controls tab is selected
-      if (storyId !== "example-button--primary") {
-        api.selectStory("example-button--primary", undefined, {
-          ref: undefined,
-        });
-      }
-      api.togglePanel(true);
-      api.togglePanelPosition("bottom");
-      api.setSelectedPanel("addon-controls");
-    });
-  }, []);
-
-  useEffect(() => {
-    const onStoryChanged = (storyId: string) => {
-      if (storyId === "configure-your-project--docs") {
-        skipTour();
-        api.emit(STORYBOOK_ADDON_ONBOARDING_CHANNEL, {
-          step: "6:FinishedOnboarding",
-        });
-      }
-    };
-
-    api.on(STORY_CHANGED, onStoryChanged);
-
-    return () => {
-      api.off(STORY_CHANGED, onStoryChanged);
-    };
+    const storyId = api.getCurrentStoryData()?.id;
+    api.setQueryParams({ onboarding: "true" });
+    // make sure the initial state is set correctly:
+    // 1. Selected story is primary button
+    // 2. The addon panel is opened, in the bottom and the controls tab is selected
+    if (storyId !== "example-button--primary") {
+      api.selectStory("example-button--primary", undefined, {
+        ref: undefined,
+      });
+    }
   }, []);
 
   if (!enabled) {
@@ -103,24 +77,24 @@ export default function App({ api }: { api: API }) {
 
   return (
     <ThemeProvider theme={theme}>
-      {showConfetti && (
+      {enabled && showConfetti && (
         <Confetti
-          numberOfPieces={1000}
-          initialVelocityY={3}
+          numberOfPieces={800}
           recycle={false}
+          tweenDuration={20000}
           onConfettiComplete={(confetti) => {
             confetti.reset();
             setShowConfetti(false);
           }}
         />
       )}
-      {step === "1:Welcome" && (
+      {enabled && step === "1:Welcome" && (
         <WelcomeModal
           onProceed={() => {
             setStep("2:StorybookTour");
           }}
-          onSkip={() => {
-            skipTour();
+          skipOnboarding={() => {
+            skipOnboarding();
 
             api.emit(STORYBOOK_ADDON_ONBOARDING_CHANNEL, {
               step: "X:SkippedOnboarding",
@@ -129,16 +103,24 @@ export default function App({ api }: { api: API }) {
           }}
         />
       )}
-      {(step === "2:StorybookTour" || step === "5:ConfigureYourProject") && (
-        <GuidedTour
-          api={api}
-          isFinalStep={step === "5:ConfigureYourProject"}
-          onFirstTourDone={() => {
-            setStep("3:WriteYourStory");
-          }}
-        />
-      )}
-      {step === "3:WriteYourStory" && (
+      {enabled &&
+        (step === "2:StorybookTour" || step === "5:ConfigureYourProject") && (
+          <GuidedTour
+            api={api}
+            isFinalStep={step === "5:ConfigureYourProject"}
+            onFirstTourDone={() => {
+              setStep("3:WriteYourStory");
+            }}
+            onLastTourDone={() => {
+              api.selectStory("configure-your-project--docs");
+              api.emit(STORYBOOK_ADDON_ONBOARDING_CHANNEL, {
+                step: "6:FinishedOnboarding",
+              });
+              skipOnboarding();
+            }}
+          />
+        )}
+      {enabled && step === "3:WriteYourStory" && (
         <WriteStoriesModal
           api={api}
           addonsStore={addons}
@@ -146,6 +128,7 @@ export default function App({ api }: { api: API }) {
             api.selectStory("example-button--warning");
             setStep("4:VisitNewStory");
           }}
+          skipOnboarding={skipOnboarding}
         />
       )}
     </ThemeProvider>

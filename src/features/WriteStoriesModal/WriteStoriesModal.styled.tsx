@@ -5,6 +5,10 @@ export const ModalContent = styled.div`
   flex-direction: row;
   height: 100%;
   max-height: 85vh;
+
+  &:focus-visible {
+    outline: none;
+  }
 `;
 
 export const Main = styled.div`
@@ -155,4 +159,8 @@ export const ButtonsWrapper = styled.div`
   align-items: center;
   width: 100%;
   margin-top: 4px;
+`;
+
+export const Step2Text = styled.div`
+  margin-bottom: 4px;
 `;

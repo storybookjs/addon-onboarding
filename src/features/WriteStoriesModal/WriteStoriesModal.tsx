@@ -16,6 +16,7 @@ import {
   ModalContent,
   ModalTitle,
   SpanHighlight,
+  Step2Text,
 } from "./WriteStoriesModal.styled";
 import { SyntaxHighlighter } from "../../components/SyntaxHighlighter/SyntaxHighlighter";
 import { List } from "../../components/List/List";
@@ -54,11 +55,11 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
   >("imports");
 
   const stepIndex = {
-    imports: 1,
-    meta: 2,
-    story: 3,
-    args: 4,
-    customStory: 5,
+    imports: 0,
+    meta: 1,
+    story: 2,
+    args: 3,
+    customStory: 4,
   };
 
   const [isWarningStoryCopied, setWarningStoryCopied] = useState(false);
@@ -106,7 +107,7 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
         <ModalContent>
           {data ? (
             <SyntaxHighlighter
-              activeStep={stepIndex[step] || 1}
+              activeStep={stepIndex[step] || 0}
               data={data}
               width={480}
             />
@@ -180,8 +181,8 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
                       <h3>Meta</h3>
                       <p>
                         The default export, Meta, contains metadata about this
-                        component's stories. The title field (optional) controls where
-                        stories appear in the sidebar.
+                        component's stories. The title field (optional) controls
+                        where stories appear in the sidebar.
                       </p>
                       <Image
                         width="204"
@@ -277,13 +278,13 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
                             isCompleted={warningButtonStatus?.data}
                             index={2}
                           >
-                            Open{" "}
-                            {buttonPath?.data ? (
+                            <Step2Text>
+                              Open the Button story in your current working
+                              directory
+                            </Step2Text>
+                            {buttonPath?.data && (
                               <SpanHighlight>{buttonPath.data}</SpanHighlight>
-                            ) : (
-                              <>the Button Story</>
-                            )}{" "}
-                            in your current working directory
+                            )}
                           </ListItem>
                           <ListItem
                             isCompleted={warningButtonStatus?.data}

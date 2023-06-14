@@ -19,11 +19,6 @@ type Story = StoryObj<typeof SyntaxHighlighter>;
 const data = [
   [
     {
-      code: `// Button.stories.tsx`,
-    },
-  ],
-  [
-    {
       code: `import type { Meta, StoryObj } from '@storybook/react';
 
 import { Button } from './Button';`,
@@ -69,7 +64,7 @@ export const Warning: Story = {
 
 export const Default: Story = {
   render: (args) => {
-    const [activeStep, setActiveStep] = React.useState(1);
+    const [activeStep, setActiveStep] = React.useState(0);
 
     return (
       <div>
@@ -88,44 +83,43 @@ export const Default: Story = {
   },
   args: {
     data: data,
-    activeStep: 1,
+    activeStep: 0,
     width: 480,
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-
     const nextButton = canvas.getByText("Next");
-
     const firstElement = await canvas.findByText(
       textContentMatcher(data[0][0].code)
     );
+    await expect(
+      firstElement.closest('[aria-hidden="false"]')
+    ).toBeInTheDocument();
+
     const secondElement = await canvas.findByText(
       textContentMatcher(data[1][0].code)
     );
+    await expect(
+      secondElement.closest('[aria-hidden="true"]')
+    ).toBeInTheDocument();
+
     const thirdElement = await canvas.findByText(
       textContentMatcher(data[2][0].code)
     );
-
-    await expect(
-      firstElement.closest('[aria-hidden="true"]')
-    ).toBeInTheDocument();
-    await expect(
-      secondElement.closest('[aria-hidden="true"]')
-    ).not.toBeInTheDocument();
     await expect(
       thirdElement.closest('[aria-hidden="true"]')
     ).toBeInTheDocument();
 
     await userEvent.click(nextButton);
-
+    
     await expect(
       firstElement.closest('[aria-hidden="true"]')
     ).toBeInTheDocument();
     await expect(
-      secondElement.closest('[aria-hidden="true"]')
+      secondElement.closest('[aria-hidden="false"]')
     ).toBeInTheDocument();
     await expect(
       thirdElement.closest('[aria-hidden="true"]')
-    ).not.toBeInTheDocument();
+    ).toBeInTheDocument();
   },
 };

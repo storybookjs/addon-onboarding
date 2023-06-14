@@ -1,11 +1,6 @@
 export default [
   [
     {
-      code: `// Button.stories.tsx`,
-    },
-  ],
-  [
-    {
       code: `import type { Meta, StoryObj } from '@storybook/react';
     
     import { Button } from './Button';`,
@@ -23,7 +18,11 @@ export default [
     },
   ],
   [
-    { code: `export const Primary: Story = {` },
+    {
+      code: `type Story = StoryObj<Button>;
+      
+    export const Primary: Story = {`,
+    },
     {
       code: `args: {
         primary: true,

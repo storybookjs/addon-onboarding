@@ -27,6 +27,10 @@ export const StyledContent = styled.div<{
     max-width: calc(100% - 40px);
     max-height: 85vh;
     overflow: hidden;
+
+    &:focus-visible {
+      outline: none;
+    }
   `
 );
 

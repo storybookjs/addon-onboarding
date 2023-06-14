@@ -23,7 +23,11 @@ export default [
     },
   ],
   [
-    { code: `export const Primary: Story = {` },
+    {
+      code: `type Story = StoryObj<Button>;
+    
+    export const Primary: Story = {`,
+    },
     {
       code: `args: {
         primary: true,

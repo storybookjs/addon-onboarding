@@ -5,8 +5,15 @@ import React, {
   useMemo,
   useState,
 } from "react";
-import { Backdrop, Code, Container } from "./SyntaxHighlighter.styled";
+import {
+  Backdrop,
+  Code,
+  Container,
+  SnippetWrapper,
+} from "./SyntaxHighlighter.styled";
 import { Snippet } from "./Snippet/Snippet";
+import { ThemeProvider, ensure, themes } from "@storybook/theming";
+import { SyntaxHighlighter as StorybookSyntaxHighlighter } from "@storybook/components";
 
 type SyntaxHighlighterProps = {
   data: { code: string; toggle?: boolean }[][];
@@ -20,8 +27,6 @@ type StepsProps = {
   index: number;
   open: boolean;
 };
-
-const OFFSET = 49;
 
 export const SyntaxHighlighter = ({
   activeStep,
@@ -48,7 +53,7 @@ export const SyntaxHighlighter = ({
       const backdropHeight = refs[i].current!.getBoundingClientRect().height;
       const finalSteps = [
         {
-          yPos: getYPos(i) + OFFSET - 7,
+          yPos: getYPos(i),
           backdropHeight,
           index: i,
           open: false,
@@ -57,7 +62,7 @@ export const SyntaxHighlighter = ({
 
       if (content.length > 1) {
         finalSteps.push({
-          yPos: getYPos(i) + OFFSET - 7,
+          yPos: getYPos(i),
           backdropHeight,
           index: i,
           open: true,
@@ -85,30 +90,45 @@ export const SyntaxHighlighter = ({
     };
   }, []);
 
+  const customStyle = {
+    fontSize: "0.8125rem",
+    lineHeight: "1.1875rem",
+  };
+
   return (
     <Container width={width}>
-      <Code
-        animate={{ y: steps[activeStep]?.yPos ?? 0 }}
-        transition={{ ease: "easeInOut", duration: 0.6 }}
-      >
-        {data.map((content, idx: number) => (
-          <Snippet
-            key={idx}
-            ref={refs[idx]}
-            active={steps[activeStep]?.index === idx}
-            open={
-              steps[activeStep]?.index > idx
-                ? true
-                : steps[activeStep]?.open ?? false
-            }
-            content={content}
-          />
-        ))}
-      </Code>
+      <ThemeProvider theme={ensure(themes.dark)}>
+        <Code
+          animate={{ y: steps[activeStep]?.yPos ?? 0 }}
+          transition={{ ease: "easeInOut", duration: 0.4 }}
+        >
+          <SnippetWrapper>
+            <StorybookSyntaxHighlighter
+              language="typescript"
+              customStyle={customStyle}
+            >
+              // Button.stories.tsx
+            </StorybookSyntaxHighlighter>
+          </SnippetWrapper>
+          {data.map((content, idx: number) => (
+            <Snippet
+              key={idx}
+              ref={refs[idx]}
+              active={steps[activeStep]?.index === idx}
+              open={
+                steps[activeStep]?.index > idx
+                  ? true
+                  : steps[activeStep]?.open ?? false
+              }
+              content={content}
+            />
+          ))}
+        </Code>
+      </ThemeProvider>
       <Backdrop
-        animate={{ height: steps[activeStep]?.backdropHeight ?? 0 }}
-        transition={{ ease: "easeInOut", duration: 0.6 }}
-        style={{ top: OFFSET }}
+        initial={{ height: 81 }}
+        animate={{ height: steps[activeStep]?.backdropHeight ?? 81 }}
+        transition={{ ease: "easeInOut", duration: 0.4 }}
         className="syntax-highlighter-backdrop"
       />
     </Container>

@@ -43,7 +43,7 @@ export const Snippet = forwardRef<HTMLDivElement, Props>(
             <Fragment key={i}>
               {toggle === undefined && (
                 <StorybookSyntaxHighlighter
-                  language="javascript"
+                  language="typescript"
                   customStyle={customStyle}
                 >
                   {code}
@@ -52,7 +52,7 @@ export const Snippet = forwardRef<HTMLDivElement, Props>(
 
               {toggle && !open && (
                 <StorybookSyntaxHighlighter
-                  language="javascript"
+                  language="typescript"
                   customStyle={customStyle}
                 >
                   {`  // ...`}
@@ -66,7 +66,7 @@ export const Snippet = forwardRef<HTMLDivElement, Props>(
                   transition={{ delay: 0.4 }}
                 >
                   <StorybookSyntaxHighlighter
-                    language="javascript"
+                    language="typescript"
                     customStyle={customStyle}
                     codeTagProps={{ style: { paddingLeft: "15px" } }}
                   >

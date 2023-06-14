@@ -5,6 +5,10 @@ export const ModalContent = styled.div`
   flex-direction: row;
   height: 100%;
   max-height: 85vh;
+
+  &:focus-visible {
+    outline: none;
+  }
 `;
 
 export const Main = styled.div`

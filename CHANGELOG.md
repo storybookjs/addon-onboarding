@@ -1,3 +1,16 @@
+# v0.0.32 (Wed Jun 14 2023)
+
+#### 🐛 Bug Fix
+
+- Fixes on syntax highlighter [#51](https://github.com/storybookjs/addon-onboarding/pull/51) ([@cdedreuille](https://github.com/cdedreuille) [@yannbf](https://github.com/yannbf))
+
+#### Authors: 2
+
+- Charles de Dreuille ([@cdedreuille](https://github.com/cdedreuille))
+- Yann Braga ([@yannbf](https://github.com/yannbf))
+
+---
+
 # v0.0.31 (Wed Jun 14 2023)
 
 #### 🐛 Bug Fix

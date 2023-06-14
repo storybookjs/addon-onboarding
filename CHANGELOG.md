@@ -1,3 +1,15 @@
+# v0.0.34 (Wed Jun 14 2023)
+
+#### 🐛 Bug Fix
+
+- Fix configure page's layout [#53](https://github.com/storybookjs/addon-onboarding/pull/53) ([@cdedreuille](https://github.com/cdedreuille))
+
+#### Authors: 1
+
+- Charles de Dreuille ([@cdedreuille](https://github.com/cdedreuille))
+
+---
+
 # v0.0.33 (Wed Jun 14 2023)
 
 #### 🐛 Bug Fix

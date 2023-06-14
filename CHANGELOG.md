@@ -1,3 +1,15 @@
+# v0.0.31 (Wed Jun 14 2023)
+
+#### 🐛 Bug Fix
+
+- Improve instructions [#50](https://github.com/storybookjs/addon-onboarding/pull/50) ([@shilman](https://github.com/shilman))
+
+#### Authors: 1
+
+- Michael Shilman ([@shilman](https://github.com/shilman))
+
+---
+
 # v0.0.30 (Tue Jun 13 2023)
 
 #### 🐛 Bug Fix

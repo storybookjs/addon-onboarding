@@ -106,6 +106,7 @@ export const SyntaxHighlighter = ({
         ))}
       </Code>
       <Backdrop
+        initial={{ height: 81 }}
         animate={{ height: steps[activeStep]?.backdropHeight ?? 0 }}
         transition={{ ease: "easeInOut", duration: 0.6 }}
         style={{ top: OFFSET }}

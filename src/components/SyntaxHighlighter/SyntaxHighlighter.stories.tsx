@@ -87,35 +87,35 @@ export const Default: Story = {
     width: 480,
   },
   play: async ({ canvasElement }) => {
-    // const canvas = within(canvasElement);
-    // const nextButton = canvas.getByText("Next");
-    // const firstElement = await canvas.findByText(
-    //   textContentMatcher(data[0][0].code)
-    // );
-    // const secondElement = await canvas.findByText(
-    //   textContentMatcher(data[1][0].code)
-    // );
-    // const thirdElement = await canvas.findByText(
-    //   textContentMatcher(data[2][0].code)
-    // );
-    // await expect(
-    //   firstElement.closest('[aria-hidden="true"]')
-    // ).toBeInTheDocument();
-    // await expect(
-    //   secondElement.closest('[aria-hidden="true"]')
-    // ).not.toBeInTheDocument();
-    // await expect(
-    //   thirdElement.closest('[aria-hidden="true"]')
-    // ).toBeInTheDocument();
-    // await userEvent.click(nextButton);
-    // await expect(
-    //   firstElement.closest('[aria-hidden="true"]')
-    // ).toBeInTheDocument();
-    // await expect(
-    //   secondElement.closest('[aria-hidden="true"]')
-    // ).toBeInTheDocument();
-    // await expect(
-    //   thirdElement.closest('[aria-hidden="true"]')
-    // ).not.toBeInTheDocument();
+    const canvas = within(canvasElement);
+    const nextButton = canvas.getByText("Next");
+    const firstElement = await canvas.findByText(
+      textContentMatcher(data[0][0].code)
+    );
+    const secondElement = await canvas.findByText(
+      textContentMatcher(data[1][0].code)
+    );
+    const thirdElement = await canvas.findByText(
+      textContentMatcher(data[2][0].code)
+    );
+    await expect(
+      firstElement.closest('[aria-hidden="true"]')
+    ).toBeInTheDocument();
+    await expect(
+      secondElement.closest('[aria-hidden="true"]')
+    ).toBeInTheDocument();
+    await expect(
+      thirdElement.closest('[aria-hidden="true"]')
+    ).toBeInTheDocument();
+    await userEvent.click(nextButton);
+    await expect(
+      firstElement.closest('[aria-hidden="true"]')
+    ).toBeInTheDocument();
+    await expect(
+      secondElement.closest('[aria-hidden="true"]')
+    ).toBeInTheDocument();
+    await expect(
+      thirdElement.closest('[aria-hidden="true"]')
+    ).toBeInTheDocument();
   },
 };

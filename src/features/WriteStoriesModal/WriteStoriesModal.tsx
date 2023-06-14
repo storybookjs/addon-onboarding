@@ -87,7 +87,7 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
     : dataTypescript;
 
   const copyWarningStory = () => {
-    const warningContent = data[4][0].code;
+    const warningContent = data[3][0].code;
     navigator.clipboard.writeText(
       warningContent.replace("// Copy the code below", "")
     );

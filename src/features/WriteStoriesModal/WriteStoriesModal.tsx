@@ -16,6 +16,7 @@ import {
   ModalContent,
   ModalTitle,
   SpanHighlight,
+  Step2Text,
 } from "./WriteStoriesModal.styled";
 import { SyntaxHighlighter } from "../../components/SyntaxHighlighter/SyntaxHighlighter";
 import { List } from "../../components/List/List";
@@ -277,13 +278,13 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
                             isCompleted={warningButtonStatus?.data}
                             index={2}
                           >
-                            Open{" "}
-                            {buttonPath?.data ? (
+                            <Step2Text>
+                              Open the Button story in your current working
+                              directory
+                            </Step2Text>
+                            {buttonPath?.data && (
                               <SpanHighlight>{buttonPath.data}</SpanHighlight>
-                            ) : (
-                              <>the Button Story</>
-                            )}{" "}
-                            in your current working directory
+                            )}
                           </ListItem>
                           <ListItem
                             isCompleted={warningButtonStatus?.data}

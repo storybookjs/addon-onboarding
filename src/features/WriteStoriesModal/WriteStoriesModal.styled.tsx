@@ -160,3 +160,7 @@ export const ButtonsWrapper = styled.div`
   width: 100%;
   margin-top: 4px;
 `;
+
+export const Step2Text = styled.div`
+  margin-bottom: 4px;
+`;

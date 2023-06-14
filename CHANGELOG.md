@@ -1,3 +1,15 @@
+# v0.0.33 (Wed Jun 14 2023)
+
+#### 🐛 Bug Fix
+
+- Improve story detection [#52](https://github.com/storybookjs/addon-onboarding/pull/52) ([@yannbf](https://github.com/yannbf))
+
+#### Authors: 1
+
+- Yann Braga ([@yannbf](https://github.com/yannbf))
+
+---
+
 # v0.0.32 (Wed Jun 14 2023)
 
 #### 🐛 Bug Fix

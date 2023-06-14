@@ -54,7 +54,7 @@ export function GuidedTour({
           target: "#storybook-explorer-tree > div",
           title: "Storybook is built from stories",
           content:
-            "Storybook uses stories to represent the key states supported by each of your components. For example: this Button component has four stories.",
+            "Storybook stories represent the key states of each of your components. For example, this Button component has four stories.",
           placement: "right",
           disableBeacon: true,
           styles: {
@@ -98,8 +98,8 @@ export function GuidedTour({
           title: "Congratulations!",
           content: (
             <>
-              You've learned how to control your stories interactively.<br/>
-              Now: let's explore how to write your first story.
+              You've learned how to control your stories interactively.
+              Now let's explore how to write your first story.
               <Confetti
                 numberOfPieces={800}
                 recycle={false}

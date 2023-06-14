@@ -18,7 +18,7 @@ import Assets from "./assets/assets.jpg";
 
 # Configure your project
 
-Because Storybook works separately from your app, you'll need to configure Storybook for your specific stack and setup. Below, explore guides for configuring Storybook with popular frameworks and tools. If you get stuck, learn how you can ask for help from our community.
+Because Storybook works separately from your app, you'll need to configure it for your specific stack and setup. Below, explore guides for configuring Storybook with popular frameworks and tools. If you get stuck, learn how you can ask for help from our community.
 
 <section>
   <div className="section-item">
@@ -69,10 +69,13 @@ Because Storybook works separately from your app, you'll need to configure Story
       <h3>Load assets and resources</h3>
       <p>
         To link static files (like fonts) to your projects and stories, use the
-        -s path/to/folder flag to specify a static folder to load when starting
-        Storybook.
+        `staticDirs` configuration option to specify folders to load when
+        starting Storybook.
       </p>
-      <a href="https://storybook.js.org/docs/" target="_blank">
+      <a
+        href="https://storybook.js.org/docs/react/configure/images-and-assets"
+        target="_blank"
+      >
         Read more on how to load assets <span className="chevron">&#8250;</span>
       </a>
     </div>
@@ -156,10 +159,11 @@ Now that you know the basics, let's explore other parts of Storybook that will i
     <div className="grid-item">
       <img src={Typography} />
       <h3>Theming</h3>
-      <p>
-        Theme Storybook's UI to personalize it to your project.
-      </p>
-      <a href="https://storybook.js.org/docs/react/configure/theming" target="_blank">
+      <p>Theme Storybook's UI to personalize it to your project.</p>
+      <a
+        href="https://storybook.js.org/docs/react/configure/theming"
+        target="_blank"
+      >
         Learn more <span className="chevron">&#8250;</span>
       </a>
     </div>

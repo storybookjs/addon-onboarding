@@ -180,7 +180,7 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
                       <h3>Meta</h3>
                       <p>
                         The default export, Meta, contains metadata about this
-                        component's stories. The title field controls where
+                        component's stories. The title field (optional) controls where
                         stories appear in the sidebar.
                       </p>
                       <Image

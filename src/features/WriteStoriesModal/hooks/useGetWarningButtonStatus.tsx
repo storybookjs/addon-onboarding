@@ -21,6 +21,8 @@ export const useGetWarningButtonStatus = (
 
           if (out) {
             setStatus({ data: true, error: null });
+          } else {
+            setStatus({ data: false, error: null });
           }
         });
       };
@@ -29,6 +31,7 @@ export const useGetWarningButtonStatus = (
       if(api.getData("example-button--warning")) {
         setStatus({ data: true, error: null });
       } else {
+        // This should probably be changed to getChannel but we'll keep for backwards compatibility in case people end up using this addon with Storybook 7.0.0 and not 7.1.0
         addonsStore
           .getServerChannel()
           .on(STORY_INDEX_INVALIDATED, getWarningButtonStatus);

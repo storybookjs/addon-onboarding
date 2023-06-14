@@ -69,7 +69,7 @@ export const Warning: Story = {
 
 export const Default: Story = {
   render: (args) => {
-    const [activeStep, setActiveStep] = React.useState(1);
+    const [activeStep, setActiveStep] = React.useState(0);
 
     return (
       <div>
@@ -88,7 +88,7 @@ export const Default: Story = {
   },
   args: {
     data: data,
-    activeStep: 1,
+    activeStep: 0,
     width: 480,
   },
   play: async ({ canvasElement }) => {

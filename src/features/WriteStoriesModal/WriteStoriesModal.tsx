@@ -54,11 +54,11 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
   >("imports");
 
   const stepIndex = {
-    imports: 1,
-    meta: 2,
-    story: 3,
-    args: 4,
-    customStory: 5,
+    imports: 0,
+    meta: 1,
+    story: 2,
+    args: 3,
+    customStory: 4,
   };
 
   const [isWarningStoryCopied, setWarningStoryCopied] = useState(false);
@@ -106,7 +106,7 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
         <ModalContent>
           {data ? (
             <SyntaxHighlighter
-              activeStep={stepIndex[step] || 1}
+              activeStep={stepIndex[step] || 0}
               data={data}
               width={480}
             />
@@ -180,8 +180,8 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
                       <h3>Meta</h3>
                       <p>
                         The default export, Meta, contains metadata about this
-                        component's stories. The title field (optional) controls where
-                        stories appear in the sidebar.
+                        component's stories. The title field (optional) controls
+                        where stories appear in the sidebar.
                       </p>
                       <Image
                         width="204"

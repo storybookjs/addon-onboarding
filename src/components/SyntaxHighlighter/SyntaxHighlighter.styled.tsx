@@ -6,6 +6,12 @@ export const Code = styled(motion.div)`
   z-index: 2;
 `;
 
+export const SnippetWrapper = styled(motion.div)`
+  position: relative;
+  padding-top: 12px;
+  padding-bottom: 12px;
+`;
+
 export const Container = styled.div<{ width: number }>`
   position: relative;
   box-sizing: border-box;
@@ -31,6 +37,7 @@ export const Backdrop = styled(motion.div)`
   position: absolute;
   z-index: 1;
   left: 0;
+  top: 48px;
   width: 100%;
-  height: 200px;
+  height: 81px;
 `;

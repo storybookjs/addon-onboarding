@@ -107,7 +107,7 @@ export const SyntaxHighlighter = ({
               language="typescript"
               customStyle={customStyle}
             >
-              // Blawrhw
+              // Button.stories.tsx
             </StorybookSyntaxHighlighter>
           </SnippetWrapper>
           {data.map((content, idx: number) => (

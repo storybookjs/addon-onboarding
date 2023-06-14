@@ -92,27 +92,31 @@ export const Default: Story = {
     const firstElement = await canvas.findByText(
       textContentMatcher(data[0][0].code)
     );
+    await expect(
+      firstElement.closest('[aria-hidden="false"]')
+    ).toBeInTheDocument();
+
     const secondElement = await canvas.findByText(
       textContentMatcher(data[1][0].code)
     );
+    await expect(
+      secondElement.closest('[aria-hidden="true"]')
+    ).toBeInTheDocument();
+
     const thirdElement = await canvas.findByText(
       textContentMatcher(data[2][0].code)
     );
     await expect(
-      firstElement.closest('[aria-hidden="true"]')
-    ).toBeInTheDocument();
-    await expect(
-      secondElement.closest('[aria-hidden="true"]')
-    ).toBeInTheDocument();
-    await expect(
       thirdElement.closest('[aria-hidden="true"]')
     ).toBeInTheDocument();
+
     await userEvent.click(nextButton);
+    
     await expect(
       firstElement.closest('[aria-hidden="true"]')
     ).toBeInTheDocument();
     await expect(
-      secondElement.closest('[aria-hidden="true"]')
+      secondElement.closest('[aria-hidden="false"]')
     ).toBeInTheDocument();
     await expect(
       thirdElement.closest('[aria-hidden="true"]')

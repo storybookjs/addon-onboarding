@@ -7,7 +7,9 @@ const baseConfig = {
   },
   treeshake: true,
   sourcemap: false,
-  clean: true,
+  // There is a bug with having multiple configs (browser+node)
+  // where watch mode doesn't work properly, so we handle cleaning up with rimraf instead
+  clean: false,
 };
 
 export default defineConfig((options) => [

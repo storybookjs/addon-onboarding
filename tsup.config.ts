@@ -7,17 +7,10 @@ const baseConfig = {
   },
   treeshake: true,
   sourcemap: false,
-  clean: true,
+  clean: false,
 };
 
 export default defineConfig((options) => [
-  {
-    ...baseConfig,
-    entry: ["src/preset.ts"],
-    format: ["cjs"],
-    platform: "node",
-    minify: !options.watch,
-  },
   {
     ...baseConfig,
     entry: ["src/index.ts", "src/manager.tsx"],
@@ -30,6 +23,13 @@ export default defineConfig((options) => [
         ".png": "dataurl",
       };
     },
+    minify: !options.watch,
+  },
+  {
+    ...baseConfig,
+    entry: ["src/preset.ts"],
+    format: ["cjs"],
+    platform: "node",
     minify: !options.watch,
   },
 ]);

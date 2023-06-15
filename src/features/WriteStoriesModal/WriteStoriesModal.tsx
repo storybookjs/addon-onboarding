@@ -120,6 +120,7 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
                 onClick={() => copyWarningStory()}
                 style={{
                   position: "absolute",
+                  opacity: clipboardButtonBounds.width ? 1 : 0,
                   top: backdropBoundary.top + backdropBoundary.height - 45,
                   left:
                     backdropBoundary.left +

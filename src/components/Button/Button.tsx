@@ -39,7 +39,9 @@ const StyledButton = styled.button<{ variant: ButtonProps["variant"] }>`
   font-size: 0.8125rem;
   font-weight: 700;
   font-family: ${({ theme }) => theme.typography.fonts.base};
-  transition: all 0.16s ease-in-out;
+  transition: background-color, box-shadow, opacity;
+  transition-duration: 0.16s;
+  transition-timing-function: ease-in-out;
   text-decoration: none;
 
   &:hover {

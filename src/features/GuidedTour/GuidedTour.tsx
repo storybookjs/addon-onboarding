@@ -131,7 +131,9 @@ export function GuidedTour({
       floaterProps={{
         styles: {
           floater: {
-            padding: "8px 0 0 8px",
+            padding: 0,
+            paddingLeft: 8,
+            paddingTop: 8,
             filter:
               "drop-shadow(0px 5px 5px rgba(0,0,0,0.05)) drop-shadow(0 1px 3px rgba(0,0,0,0.1))",
           },

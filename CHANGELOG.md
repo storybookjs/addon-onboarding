@@ -1,3 +1,16 @@
+# v0.0.36 (Fri Jun 16 2023)
+
+#### 🐛 Bug Fix
+
+- Improve dark mode [#58](https://github.com/storybookjs/addon-onboarding/pull/58) ([@cdedreuille](https://github.com/cdedreuille) [@yannbf](https://github.com/yannbf))
+
+#### Authors: 2
+
+- Charles de Dreuille ([@cdedreuille](https://github.com/cdedreuille))
+- Yann Braga ([@yannbf](https://github.com/yannbf))
+
+---
+
 # v0.0.35 (Fri Jun 16 2023)
 
 #### 🐛 Bug Fix

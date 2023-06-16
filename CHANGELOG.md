@@ -1,3 +1,17 @@
+# v0.0.35 (Fri Jun 16 2023)
+
+#### 🐛 Bug Fix
+
+- Add dark mode styles to tooltip [#54](https://github.com/storybookjs/addon-onboarding/pull/54) ([@yannbf](https://github.com/yannbf))
+- UI fixes [#56](https://github.com/storybookjs/addon-onboarding/pull/56) ([@yannbf](https://github.com/yannbf))
+- Fix watch mode [#55](https://github.com/storybookjs/addon-onboarding/pull/55) ([@yannbf](https://github.com/yannbf))
+
+#### Authors: 1
+
+- Yann Braga ([@yannbf](https://github.com/yannbf))
+
+---
+
 # v0.0.34 (Wed Jun 14 2023)
 
 #### 🐛 Bug Fix

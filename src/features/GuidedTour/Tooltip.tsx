@@ -5,7 +5,7 @@ import { Button } from "../../components/Button/Button";
 
 const TooltipBody = styled.div`
   background: ${({ theme }) => {
-    return theme.base === "dark" ? "#292A2C" : theme.background.app;
+    return theme.base === "dark" ? "#292A2C" : theme.color.lightest;
   }};
   width: 260px;
   padding: 15px;

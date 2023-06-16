@@ -22,6 +22,11 @@ export const Container = styled.div<{ width: number }>`
   padding-left: 15px;
   padding-right: 15px;
   padding-top: 6px;
+  border-left: ${({ theme }) => (theme.base === "dark" ? 1 : 0)}px solid #fff2;
+  border-bottom: ${({ theme }) => (theme.base === "dark" ? 1 : 0)}px solid #fff2;
+  border-top: ${({ theme }) => (theme.base === "dark" ? 1 : 0)}px solid #fff2;
+  border-radius: 6px 0 0 6px;
+  overflow: hidden;
 
   && {
     pre {

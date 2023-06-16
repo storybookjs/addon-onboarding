@@ -139,7 +139,9 @@ export function GuidedTour({
             paddingLeft: 8,
             paddingTop: 8,
             filter:
-              "drop-shadow(0px 5px 5px rgba(0,0,0,0.05)) drop-shadow(0 1px 3px rgba(0,0,0,0.1))",
+              theme.base === "light"
+                ? "drop-shadow(0px 5px 5px rgba(0,0,0,0.05)) drop-shadow(0 1px 3px rgba(0,0,0,0.1))"
+                : "drop-shadow(white 0px 0px 0.5px) drop-shadow(white 0px 0px 0.5px)",
           },
         },
       }}

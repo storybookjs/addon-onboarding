@@ -4,7 +4,7 @@ import { TooltipRenderProps } from "react-joyride";
 import { Button } from "../../components/Button/Button";
 
 const TooltipBody = styled.div`
-  background:  ${({ theme }) => theme.background.content};
+  background:  ${({ theme }) => theme.background.app};
   width: 260px;
   padding: 15px;
   border-radius: 5px;

@@ -19,7 +19,7 @@ const StyledButton = styled.button<{ variant: ButtonProps["variant"] }>`
   padding: 0 0.75rem;
   background: ${({ theme, variant }) => {
     if (variant === "primary") return theme.color.secondary;
-    if (variant === "secondary") return theme.background.app;
+    if (variant === "secondary") return theme.color.lighter;
     if (variant === "outline") return "transparent";
     return theme.color.secondary;
   }};
@@ -63,13 +63,13 @@ const StyledButton = styled.button<{ variant: ButtonProps["variant"] }>`
   }
 `;
 
-export const Button: FC<ButtonProps> = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ children, onClick, variant = 'primary', ...rest }, ref) => {
-    return (
-      <StyledButton ref={ref} onClick={onClick} variant={variant} {...rest}>
-        {children}
-      </StyledButton>
-    );
-  }
-);
-
+export const Button: FC<ButtonProps> = forwardRef<
+  HTMLButtonElement,
+  ButtonProps
+>(({ children, onClick, variant = "primary", ...rest }, ref) => {
+  return (
+    <StyledButton ref={ref} onClick={onClick} variant={variant} {...rest}>
+      {children}
+    </StyledButton>
+  );
+});

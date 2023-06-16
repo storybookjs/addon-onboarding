@@ -8,7 +8,7 @@ import { UPDATE_STORY_ARGS } from "@storybook/core-events";
 import { useTheme } from "@storybook/theming";
 import { Tooltip, TooltipProps } from "./Tooltip";
 
-type GuidedTourStep = TooltipProps['step'];
+type GuidedTourStep = TooltipProps["step"];
 
 export function GuidedTour({
   api,
@@ -35,11 +35,13 @@ export function GuidedTour({
         {
           target: "#example-button--warning",
           title: "Congratulations!",
-          content:
+          content: (
             <>
-              You just created your first story. You nailed the basics. <br/>
-              Continue setting up your project and start writing stories for your components.
-            </>,
+              You just created your first story. You nailed the basics. <br />
+              Continue setting up your project and start writing stories for
+              your components.
+            </>
+          ),
           placement: "right",
           disableOverlay: true,
           disableBeacon: true,
@@ -100,8 +102,8 @@ export function GuidedTour({
           title: "Congratulations!",
           content: (
             <>
-              You've learned how to control your stories interactively.
-              Now let's explore how to write your first story.
+              You've learned how to control your stories interactively. Now
+              let's explore how to write your first story.
               <Confetti
                 numberOfPieces={800}
                 recycle={false}
@@ -137,7 +139,9 @@ export function GuidedTour({
             paddingLeft: 8,
             paddingTop: 8,
             filter:
-              "drop-shadow(0px 5px 5px rgba(0,0,0,0.05)) drop-shadow(0 1px 3px rgba(0,0,0,0.1))",
+              theme.base === "light"
+                ? "drop-shadow(0px 5px 5px rgba(0,0,0,0.05)) drop-shadow(0 1px 3px rgba(0,0,0,0.1))"
+                : "drop-shadow(#fff5 0px 0px 0.5px) drop-shadow(#fff5 0px 0px 0.5px)",
           },
         },
       }}
@@ -152,7 +156,7 @@ export function GuidedTour({
         options: {
           zIndex: 10000,
           primaryColor: theme.color.secondary,
-          arrowColor: theme.background.content,
+          arrowColor: theme.base === "dark" ? "#292A2C" : theme.color.lightest,
         },
       }}
     />

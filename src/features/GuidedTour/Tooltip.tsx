@@ -4,7 +4,9 @@ import { TooltipRenderProps } from "react-joyride";
 import { Button } from "../../components/Button/Button";
 
 const TooltipBody = styled.div`
-  background:  ${({ theme }) => theme.background.content};
+  background: ${({ theme }) => {
+    return theme.base === "dark" ? "#292A2C" : theme.color.lightest;
+  }};
   width: 260px;
   padding: 15px;
   border-radius: 5px;
@@ -37,7 +39,10 @@ const TooltipFooter = styled.div`
 `;
 
 export type TooltipProps = TooltipRenderProps & {
-  step: TooltipRenderProps["step"] & { hideNextButton?: boolean; onNextButtonClick?: () => void };
+  step: TooltipRenderProps["step"] & {
+    hideNextButton?: boolean;
+    onNextButtonClick?: () => void;
+  };
 };
 
 export const Tooltip = ({ step, primaryProps, tooltipProps }: TooltipProps) => {
@@ -49,10 +54,16 @@ export const Tooltip = ({ step, primaryProps, tooltipProps }: TooltipProps) => {
       </Wrapper>
       {!step.hideNextButton && (
         <TooltipFooter id="buttonNext">
-          <Button {...{
-            ...primaryProps,
-            ...(step.onNextButtonClick ? { onClick: step.onNextButtonClick } : {})
-          }}>Next</Button>
+          <Button
+            {...{
+              ...primaryProps,
+              ...(step.onNextButtonClick
+                ? { onClick: step.onNextButtonClick }
+                : {}),
+            }}
+          >
+            Next
+          </Button>
         </TooltipFooter>
       )}
     </TooltipBody>

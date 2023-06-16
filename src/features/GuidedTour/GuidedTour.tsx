@@ -35,7 +35,7 @@ export function GuidedTour({
           title: "Congratulations!",
           content:
             <>
-              You just created your first story. You nailed the basics. <br/>
+              You just created your first story. You nailed the basics.
               Continue setting up your project and start writing stories for your components.
             </>,
           placement: "right",

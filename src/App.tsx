@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { ThemeProvider, ensure, themes } from "@storybook/theming";
+import { ThemeProvider, convert } from "@storybook/theming";
 import { addons, type API } from "@storybook/manager-api";
 
 import { GuidedTour } from "./features/GuidedTour/GuidedTour";
@@ -15,7 +15,7 @@ type Step =
   | "4:VisitNewStory"
   | "5:ConfigureYourProject";
 
-const theme = ensure(themes.light);
+const theme = convert();
 
 export default function App({ api }: { api: API }) {
   const [enabled, setEnabled] = useState(true);

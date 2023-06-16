@@ -4,7 +4,7 @@ import { TooltipRenderProps } from "react-joyride";
 import { Button } from "../../components/Button/Button";
 
 const TooltipBody = styled.div`
-  background: #fff;
+  background:  ${({ theme }) => theme.background.content};
   width: 260px;
   padding: 15px;
   border-radius: 5px;
@@ -19,13 +19,13 @@ const Wrapper = styled.div`
 const TooltipTitle = styled.div`
   font-size: 13px;
   font-weight: 700;
-  color: ${({ theme }) => theme.color.darkest};
+  color: ${({ theme }) => theme.color.defaultText};
 `;
 
 const TooltipContent = styled.p`
   font-size: 13px;
   text-align: start;
-  color: ${({ theme }) => theme.color.mediumdark};
+  color: ${({ theme }) => theme.color.defaultText};
   margin: 0;
   margin-top: 5px;
 `;

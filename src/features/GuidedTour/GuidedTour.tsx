@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import Joyride, { CallBackProps, STATUS, Step } from "react-joyride";
+import Joyride, { CallBackProps, STATUS } from "react-joyride";
 
 import { PulsatingEffect } from "../../components/PulsatingEffect/PulsatingEffect";
 import { Confetti } from "../../components/Confetti/Confetti";
 import { API } from "@storybook/manager-api";
 import { UPDATE_STORY_ARGS } from "@storybook/core-events";
+import { useTheme } from "@storybook/theming";
 import { Tooltip, TooltipProps } from "./Tooltip";
 
 type GuidedTourStep = TooltipProps['step'];
@@ -21,6 +22,7 @@ export function GuidedTour({
   onLastTourDone: () => void;
 }) {
   const [stepIndex, setStepIndex] = useState<number>();
+  const theme = useTheme();
 
   useEffect(() => {
     api.once(UPDATE_STORY_ARGS, () => {
@@ -149,7 +151,8 @@ export function GuidedTour({
         },
         options: {
           zIndex: 10000,
-          primaryColor: "#029CFD",
+          primaryColor: theme.color.secondary,
+          arrowColor: theme.background.content,
         },
       }}
     />

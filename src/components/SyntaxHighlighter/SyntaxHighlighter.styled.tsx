@@ -6,6 +6,12 @@ export const Code = styled(motion.div)`
   z-index: 2;
 `;
 
+export const SnippetWrapperFirst = styled(motion.div)`
+  position: relative;
+  padding-top: 10px;
+  padding-bottom: 10px;
+`;
+
 export const SnippetWrapper = styled(motion.div)`
   position: relative;
   padding-top: 12px;
@@ -21,7 +27,7 @@ export const Container = styled.div<{ width: number }>`
   overflow: hidden;
   padding-left: 15px;
   padding-right: 15px;
-  padding-top: 6px;
+  padding-top: 4px;
   border-left: ${({ theme }) => (theme.base === "dark" ? 1 : 0)}px solid #fff2;
   border-bottom: ${({ theme }) => (theme.base === "dark" ? 1 : 0)}px solid #fff2;
   border-top: ${({ theme }) => (theme.base === "dark" ? 1 : 0)}px solid #fff2;
@@ -42,7 +48,7 @@ export const Backdrop = styled(motion.div)`
   position: absolute;
   z-index: 1;
   left: 0;
-  top: 48px;
+  top: 44px;
   width: 100%;
   height: 81px;
 `;

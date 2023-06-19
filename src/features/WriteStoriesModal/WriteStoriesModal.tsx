@@ -33,6 +33,7 @@ import dataTypescriptNextjs from "./code/nextjs-typescript";
 import { useGetProject } from "./hooks/useGetFrameworkName";
 import { API, AddonStore } from "@storybook/manager-api";
 import { STORYBOOK_ADDON_ONBOARDING_CHANNEL } from "../../constants";
+import { useTheme } from "@storybook/theming";
 
 // TODO: Add warning if backdropBoundary && !warningButtonStatus?.data is not true.
 // backdropBoundary && !warningButtonStatus?.data
@@ -53,6 +54,7 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
   const [step, setStep] = useState<
     "imports" | "meta" | "story" | "args" | "customStory"
   >("imports");
+  const theme = useTheme();
 
   const stepIndex = {
     imports: 0,
@@ -101,6 +103,7 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
       type: "telemetry",
     });
   }, [api, step]);
+
   return (
     <Modal width={740} height={430} defaultOpen>
       {({ Title, Description, Close }) => (
@@ -147,6 +150,7 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
                   icon="cross"
                   width={13}
                   onClick={skipOnboarding}
+                  color={theme.color.darkest}
                 />
               </Close>
             </Header>

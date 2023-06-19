@@ -37,9 +37,9 @@ export function GuidedTour({
           title: "Congratulations!",
           content: (
             <>
-              You just created your first story. You nailed the basics. <br />
-              Continue setting up your project and start writing stories for
-              your components.
+              You just created your first story. You nailed the basics. Continue
+              setting up your project and start writing stories for your
+              components.
             </>
           ),
           placement: "right",
@@ -107,8 +107,8 @@ export function GuidedTour({
           title: "Congratulations!",
           content: (
             <>
-              You've learned how to control your stories interactively. Now
-              let's explore how to write your first story.
+              You learned how to control your stories interactively. Now let's
+              explore how to write your first story.
               <Confetti
                 numberOfPieces={800}
                 recycle={false}

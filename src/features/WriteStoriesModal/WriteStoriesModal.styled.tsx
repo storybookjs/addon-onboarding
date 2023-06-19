@@ -26,7 +26,7 @@ export const Header = styled.div`
   align-items: center;
   padding: 0 15px;
   border-bottom: 1px solid ${({ theme }) => theme.appBorderColor};
-  height: 40px;
+  height: 44px;
 `;
 
 export const ModalTitle = styled.div`
@@ -34,16 +34,14 @@ export const ModalTitle = styled.div`
   align-items: center;
   gap: 5px;
   font-size: 13px;
+  line-height: 18px;
   font-weight: bold;
   color: ${({ theme }) => theme.color.darkest};
-
-  span {
-    margin-top: 2px;
-  }
 `;
 
 export const Content = styled.div`
   font-size: 13px;
+  line-height: 18px;
   padding: 15px;
   flex: 1;
   display: flex;
@@ -54,6 +52,7 @@ export const Content = styled.div`
 
   h3 {
     font-size: 13px;
+    line-height: 18px;
     font-weight: bold;
     padding: 0;
     margin: 0;

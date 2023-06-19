@@ -25,7 +25,7 @@ export const Header = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0 15px;
-  border-bottom: 1px solid ${({ theme }) => theme.appBorderColor};
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   height: 44px;
 `;
 

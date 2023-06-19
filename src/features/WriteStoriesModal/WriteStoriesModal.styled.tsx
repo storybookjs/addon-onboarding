@@ -60,15 +60,18 @@ export const Content = styled.div`
 `;
 
 export const SpanHighlight = styled.span`
-  display: inline-block;
+  display: inline-flex;
   border-radius: 3px;
-  padding: 2px 5px;
+  padding: 0 5px;
+  height: 18px;
   opacity: 0.8;
   font-family: ${({ theme }) => theme.typography.fonts.mono};
-  font-size: 12px;
+  font-size: 11px;
   border: 1px solid #ecf4f9;
   color: ${({ theme }) => theme.color.darkest};
   background-color: #f7fafc;
+  box-sizing: border-box;
+  line-height: 17px;
 `;
 
 export const Image = styled.img`

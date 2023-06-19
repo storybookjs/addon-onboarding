@@ -6,11 +6,13 @@ export const ListItemWrapper = styled.li(() => ({
   columnGap: 12,
 }));
 
-export const ListItemContentWrapper = styled.div(({ theme }) => ({
-  fontFamily: theme.typography.fonts.base,
-  color: theme.color.darker,
-  fontSize: "13px",
-}));
+export const ListItemContentWrapper = styled.div`
+  font-family: ${({ theme }) => theme.typography.fonts.base};
+  color: ${({ theme }) => theme.color.darker};
+  font-size: 13px;
+  line-height: 18px;
+  margin-top: 2px;
+`;
 
 export const ListItemIndexWrapper = styled.div<{ isCompleted: boolean }>(
   ({ isCompleted, theme }) => ({

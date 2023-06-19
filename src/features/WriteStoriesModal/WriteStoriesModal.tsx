@@ -277,7 +277,7 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
                             }
                             index={1}
                           >
-                            Copy the Warning story
+                            Copy the Warning story.
                           </ListItem>
                           <ListItem
                             isCompleted={warningButtonStatus?.data}
@@ -285,7 +285,7 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
                           >
                             <Step2Text>
                               Open the Button story in your current working
-                              directory
+                              directory.
                             </Step2Text>
                             {buttonPath?.data && (
                               <SpanHighlight>{buttonPath.data}</SpanHighlight>
@@ -295,7 +295,7 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
                             isCompleted={warningButtonStatus?.data}
                             index={3}
                           >
-                            Paste it at the bottom of the file and save
+                            Paste it at the bottom of the file and save.
                           </ListItem>
                         </List>
                       </div>

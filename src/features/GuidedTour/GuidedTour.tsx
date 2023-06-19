@@ -37,9 +37,8 @@ export function GuidedTour({
           title: "Congratulations!",
           content: (
             <>
-              You just created your first story. You nailed the basics. Continue
-              setting up your project and start writing stories for your
-              components.
+              You just created your first story. Continue setting up your
+              project to write stories for your own components.
             </>
           ),
           placement: "right",
@@ -79,8 +78,8 @@ export function GuidedTour({
           styles: {
             spotlight: {
               borderRadius: 0,
-            }
-          }
+            },
+          },
         },
         {
           target: "#root div[role=main]",
@@ -139,9 +138,9 @@ export function GuidedTour({
       }}
       floaterProps={{
         options: {
-          offset: { 
-            offset: '0, 6',
-          }
+          offset: {
+            offset: "0, 6",
+          },
         },
         styles: {
           floater: {
@@ -158,13 +157,13 @@ export function GuidedTour({
       tooltipComponent={Tooltip}
       styles={{
         overlay: {
-          mixBlendMode: 'unset',
+          mixBlendMode: "unset",
           backgroundColor: "none",
         },
         spotlight: {
-          backgroundColor: 'none',
+          backgroundColor: "none",
           border: `solid 2px ${theme.color.secondary}`,
-          boxShadow: '0px 0px 0px 9999px rgba(0,0,0,0.4)',
+          boxShadow: "0px 0px 0px 9999px rgba(0,0,0,0.4)",
         },
         options: {
           zIndex: 10000,

@@ -19,11 +19,16 @@ export const experimental_serverChannel = async (
   );
 
   if (!disableTelemetry) {
+    const { version: addonVersion } = require("../package.json");
+
     channel.on(
       STORYBOOK_ADDON_ONBOARDING_CHANNEL,
       ({ type, ...event }: Event) => {
         if (type === "telemetry") {
-          telemetry("addon-onboarding" as any, event);
+          telemetry("addon-onboarding" as any, {
+            ...event,
+            addonVersion,
+          });
         }
       }
     );

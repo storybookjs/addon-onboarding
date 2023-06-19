@@ -20,12 +20,14 @@ const Wrapper = styled.div`
 
 const TooltipTitle = styled.div`
   font-size: 13px;
+  line-height: 18px;
   font-weight: 700;
   color: ${({ theme }) => theme.color.defaultText};
 `;
 
 const TooltipContent = styled.p`
   font-size: 13px;
+  line-height: 18px;
   text-align: start;
   color: ${({ theme }) => theme.color.defaultText};
   margin: 0;

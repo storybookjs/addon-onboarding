@@ -10,6 +10,7 @@ import {
   Code,
   Container,
   SnippetWrapper,
+  SnippetWrapperFirst,
 } from "./SyntaxHighlighter.styled";
 import { Snippet } from "./Snippet/Snippet";
 import { ThemeProvider, ensure, themes } from "@storybook/theming";
@@ -102,14 +103,14 @@ export const SyntaxHighlighter = ({
           animate={{ y: steps[activeStep]?.yPos ?? 0 }}
           transition={{ ease: "easeInOut", duration: 0.4 }}
         >
-          <SnippetWrapper>
+          <SnippetWrapperFirst>
             <StorybookSyntaxHighlighter
               language="typescript"
               customStyle={customStyle}
             >
               // Button.stories.tsx
             </StorybookSyntaxHighlighter>
-          </SnippetWrapper>
+          </SnippetWrapperFirst>
           {data.map((content, idx: number) => (
             <Snippet
               key={idx}

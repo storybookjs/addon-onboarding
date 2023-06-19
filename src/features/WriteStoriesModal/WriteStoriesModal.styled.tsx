@@ -25,8 +25,8 @@ export const Header = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0 15px;
-  border-bottom: 1px solid ${({ theme }) => theme.appBorderColor};
-  height: 40px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  height: 44px;
 `;
 
 export const ModalTitle = styled.div`
@@ -34,16 +34,14 @@ export const ModalTitle = styled.div`
   align-items: center;
   gap: 5px;
   font-size: 13px;
+  line-height: 18px;
   font-weight: bold;
   color: ${({ theme }) => theme.color.darkest};
-
-  span {
-    margin-top: 2px;
-  }
 `;
 
 export const Content = styled.div`
   font-size: 13px;
+  line-height: 18px;
   padding: 15px;
   flex: 1;
   display: flex;
@@ -54,6 +52,7 @@ export const Content = styled.div`
 
   h3 {
     font-size: 13px;
+    line-height: 18px;
     font-weight: bold;
     padding: 0;
     margin: 0;
@@ -61,13 +60,18 @@ export const Content = styled.div`
 `;
 
 export const SpanHighlight = styled.span`
-  color: ${({ theme }) => theme.color.secondary};
-  display: inline-block;
-  border-radius: 4px;
-  padding: 0.2em 0.4em;
+  display: inline-flex;
+  border-radius: 3px;
+  padding: 0 5px;
+  height: 18px;
   opacity: 0.8;
-  background-color: ${({ theme }) => theme.color.secondary}20;
-  font-weight: bold;
+  font-family: ${({ theme }) => theme.typography.fonts.mono};
+  font-size: 11px;
+  border: 1px solid #ecf4f9;
+  color: ${({ theme }) => theme.color.darkest};
+  background-color: #f7fafc;
+  box-sizing: border-box;
+  line-height: 17px;
 `;
 
 export const Image = styled.img`

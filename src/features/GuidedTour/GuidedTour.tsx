@@ -76,6 +76,11 @@ export function GuidedTour({
           content:
             "Whenever you modify code or stories, Storybook automatically updates how it previews your components.",
           placement: "bottom",
+          styles: {
+            spotlight: {
+              borderRadius: 0,
+            }
+          }
         },
         {
           target: "#root div[role=main]",
@@ -133,6 +138,11 @@ export function GuidedTour({
         }
       }}
       floaterProps={{
+        options: {
+          offset: { 
+            offset: '0, 6',
+          }
+        },
         styles: {
           floater: {
             padding: 0,
@@ -147,11 +157,14 @@ export function GuidedTour({
       }}
       tooltipComponent={Tooltip}
       styles={{
-        spotlight: {
-          border: "solid 2px #004c7c",
-        },
         overlay: {
-          backgroundColor: "rgba(0, 0, 0, 0.48)",
+          mixBlendMode: 'unset',
+          backgroundColor: "none",
+        },
+        spotlight: {
+          backgroundColor: 'none',
+          border: `solid 2px ${theme.color.secondary}`,
+          boxShadow: '0px 0px 0px 9999px rgba(0,0,0,0.4)',
         },
         options: {
           zIndex: 10000,

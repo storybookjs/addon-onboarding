@@ -1,3 +1,16 @@
+# v0.0.37 (Mon Jun 19 2023)
+
+#### 🐛 Bug Fix
+
+- UI Fixes [#61](https://github.com/storybookjs/addon-onboarding/pull/61) ([@yannbf](https://github.com/yannbf) [@cdedreuille](https://github.com/cdedreuille))
+
+#### Authors: 2
+
+- Charles de Dreuille ([@cdedreuille](https://github.com/cdedreuille))
+- Yann Braga ([@yannbf](https://github.com/yannbf))
+
+---
+
 # v0.0.36 (Fri Jun 16 2023)
 
 #### 🐛 Bug Fix

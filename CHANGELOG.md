@@ -1,3 +1,15 @@
+# v0.0.38 (Mon Jun 19 2023)
+
+#### 🐛 Bug Fix
+
+- Pass addon version in telemetry event [#62](https://github.com/storybookjs/addon-onboarding/pull/62) ([@yannbf](https://github.com/yannbf))
+
+#### Authors: 1
+
+- Yann Braga ([@yannbf](https://github.com/yannbf))
+
+---
+
 # v0.0.37 (Mon Jun 19 2023)
 
 #### 🐛 Bug Fix

@@ -6,21 +6,23 @@
     "storybook-addons",
     "addon-onboarding"
   ],
+  "homepage": "https://github.com/storybookjs/addon-onboarding#readme",
+  "bugs": {
+    "url": "https://github.com/storybookjs/addon-onboarding/issues"
+  },
   "repository": "git+https://github.com/storybookjs/addon-onboarding.git",
-  "author": "@storybookjs/core",
   "license": "MIT",
+  "author": "@storybookjs/core",
   "exports": {
     ".": {
-      "require": "./dist/index.js",
       "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
       "types": "./dist/index.d.ts"
     },
+    "./package.json": "./package.json",
     "./preset": {
-      "require": "./dist/preset.js",
-      "import": "./dist/preset.mjs",
-      "types": "./dist/preset.d.ts"
-    },
-    "./package.json": "./package.json"
+      "require": "./preset.js"
+    }
   },
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -34,13 +36,13 @@
   "scripts": {
     "prebuild": "rimraf ./dist",
     "build": "tsup",
-    "build:watch": "pnpm run build --watch",
-    "start": "run-p build:watch 'storybook --quiet'",
-    "release": "pnpm run build && auto shipit",
-    "storybook": "storybook dev -p 6006",
-    "storybook:watch": "nodemon",
     "build-storybook": "storybook build",
-    "chromatic": "npx chromatic"
+    "build:watch": "pnpm run build --watch",
+    "chromatic": "npx chromatic",
+    "release": "pnpm run build && auto shipit",
+    "start": "run-p build:watch 'storybook --quiet'",
+    "storybook": "storybook dev -p 6006",
+    "storybook:watch": "nodemon"
   },
   "nodemonConfig": {
     "exec": "pnpm run storybook --ci",
@@ -57,13 +59,7 @@
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.0.4",
-    "@storybook/channels": "^7.1.0-alpha.32",
-    "@storybook/components": "^7.1.0-alpha.32",
-    "@storybook/core-events": "^7.1.0-alpha.32",
-    "@storybook/manager-api": "^7.1.0-alpha.32",
     "@storybook/telemetry": "^7.1.0-alpha.32",
-    "@storybook/theming": "^7.1.0-alpha.32",
-    "@storybook/types": "^7.1.0-alpha.32",
     "framer-motion": "^6.5.1",
     "react-confetti": "^6.1.0",
     "react-joyride": "^2.5.4",
@@ -74,10 +70,16 @@
     "@storybook/addon-interactions": "^7.1.0-alpha.32",
     "@storybook/addon-links": "^7.1.0-alpha.32",
     "@storybook/blocks": "^7.1.0-alpha.32",
+    "@storybook/channels": "^7.1.0-alpha.32",
+    "@storybook/components": "^7.1.0-alpha.32",
+    "@storybook/core-events": "^7.1.0-alpha.32",
     "@storybook/jest": "^0.1.0",
+    "@storybook/manager-api": "^7.1.0-alpha.32",
     "@storybook/react": "^7.1.0-alpha.32",
     "@storybook/react-vite": "^7.1.0-alpha.32",
     "@storybook/testing-library": "^0.0.14-next.1",
+    "@storybook/theming": "^7.1.0-alpha.32",
+    "@storybook/types": "^7.1.0-alpha.32",
     "@types/node": "^18.15.0",
     "@types/react": "^18.2.7",
     "@types/react-dom": "^18.2.4",
@@ -97,20 +99,10 @@
     "vite": "^4.1.4"
   },
   "peerDependencies": {
-    "@storybook/blocks": "^7.0.0",
-    "@storybook/components": "^7.0.0",
-    "@storybook/core-events": "^7.0.0",
-    "@storybook/manager-api": "^7.0.0",
-    "@storybook/theming": "^7.0.0",
-    "@storybook/types": "^7.0.0",
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
     "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
   },
   "publishConfig": {
     "access": "public"
-  },
-  "bugs": {
-    "url": "https://github.com/storybookjs/addon-onboarding/issues"
-  },
-  "homepage": "https://github.com/storybookjs/addon-onboarding#readme"
+  }
 }

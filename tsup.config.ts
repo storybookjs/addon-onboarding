@@ -1,4 +1,5 @@
 import { defineConfig } from "tsup";
+const packageJson = require("./package.json");
 
 const baseConfig = {
   splitting: false,
@@ -10,6 +11,19 @@ const baseConfig = {
   // There is a bug with having multiple configs (browser+node)
   // where watch mode doesn't work properly, so we handle cleaning up with rimraf instead
   clean: false,
+  external: Array.from(
+    new Set([
+      ...Object.keys(packageJson.peerDependencies),
+      ...Object.keys(packageJson.dependencies),
+      "@storybook/blocks",
+      "@storybook/channels",
+      "@storybook/components",
+      "@storybook/core-events",
+      "@storybook/manager-api",
+      "@storybook/theming",
+      "@storybook/types",
+    ])
+  ),
 };
 
 export default defineConfig((options) => [

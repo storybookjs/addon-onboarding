@@ -1,5 +1,5 @@
 import { CoreConfig, Options } from "@storybook/types";
-import { Channel } from "@storybook/channels";
+import type { Channel } from "@storybook/channels";
 import { STORYBOOK_ADDON_ONBOARDING_CHANNEL } from "./constants";
 import { telemetry } from "@storybook/telemetry";
 

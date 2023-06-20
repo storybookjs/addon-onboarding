@@ -1,48 +1,51 @@
-export default [
-  [
-    {
-      code: `import type { Meta, StoryObj } from '@storybook/react';
-    
-    import { Button } from './Button';`,
-    },
-  ],
-  [
-    {
-      code: `const meta: Meta<typeof Button> = {
-      title: 'Example/Button',
-      component: Button,
-      // ...
-    };
-        
-    export default meta;`,
-    },
-  ],
-  [
-    {
-      code: `type Story = StoryObj<Button>;
+export default {
+  filename: "Button.stories.tsx",
+  code: [
+    [
+      {
+        code: `import type { Meta, StoryObj } from '@storybook/react';
       
-    export const Primary: Story = {`,
-    },
-    {
-      code: `args: {
-        primary: true,
-        label: 'Click',
-        background: 'red'
-      }`,
-      toggle: true,
-    },
-    { code: `};` },
+      import { Button } from './Button';`,
+      },
+    ],
+    [
+      {
+        code: `const meta: Meta<typeof Button> = {
+        title: 'Example/Button',
+        component: Button,
+        // ...
+      };
+          
+      export default meta;`,
+      },
+    ],
+    [
+      {
+        code: `type Story = StoryObj<Button>;
+        
+      export const Primary: Story = {`,
+      },
+      {
+        code: `args: {
+          primary: true,
+          label: 'Click',
+          background: 'red'
+        }`,
+        toggle: true,
+      },
+      { code: `};` },
+    ],
+    [
+      {
+        code: `// Copy the code below
+  export const Warning: Story = {
+    args: {
+      primary: true,
+      label: 'Delete now',
+      backgroundColor: 'red',
+    }
+  };`,
+      },
+    ],
   ],
-  [
-    {
-      code: `// Copy the code below
-export const Warning: Story = {
-  args: {
-    primary: true,
-    label: 'Delete now',
-    backgroundColor: 'red',
-  }
-};`,
-    },
-  ],
-];
+};

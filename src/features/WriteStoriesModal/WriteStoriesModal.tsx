@@ -89,7 +89,7 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
     : dataTypescript;
 
   const copyWarningStory = () => {
-    const warningContent = data[3][0].code;
+    const warningContent = data.code[3][0].code;
     navigator.clipboard.writeText(
       warningContent.replace("// Copy the code below", "")
     );
@@ -111,8 +111,9 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
           {data ? (
             <SyntaxHighlighter
               activeStep={stepIndex[step] || 0}
-              data={data}
+              data={data.code}
               width={480}
+              filename={data.filename}
             />
           ) : null}
           {step === "customStory" &&

@@ -20,6 +20,7 @@ type SyntaxHighlighterProps = {
   data: { code: string; toggle?: boolean }[][];
   activeStep: number;
   width: number;
+  filename: string;
 };
 
 type StepsProps = {
@@ -33,6 +34,7 @@ export const SyntaxHighlighter = ({
   activeStep,
   data,
   width,
+  filename,
 }: SyntaxHighlighterProps) => {
   const [steps, setSteps] = useState<StepsProps[]>([]);
 
@@ -108,7 +110,7 @@ export const SyntaxHighlighter = ({
               language="typescript"
               customStyle={customStyle}
             >
-              // Button.stories.tsx
+              {"// " + filename}
             </StorybookSyntaxHighlighter>
           </SnippetWrapperFirst>
           {data.map((content, idx: number) => (

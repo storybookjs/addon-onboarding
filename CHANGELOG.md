@@ -1,3 +1,15 @@
+# v0.0.40 (Tue Jun 20 2023)
+
+#### 🐛 Bug Fix
+
+- Fix preset.js entry point [#63](https://github.com/storybookjs/addon-onboarding/pull/63) ([@valentinpalkovic](https://github.com/valentinpalkovic))
+
+#### Authors: 1
+
+- Valentin Palkovic ([@valentinpalkovic](https://github.com/valentinpalkovic))
+
+---
+
 # v0.0.39 (Tue Jun 20 2023)
 
 #### 🐛 Bug Fix

@@ -85,6 +85,7 @@ export const Default: Story = {
     data: data,
     activeStep: 0,
     width: 480,
+    filename: "Button.stories.tsx",
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
@@ -111,7 +112,7 @@ export const Default: Story = {
     ).toBeInTheDocument();
 
     await userEvent.click(nextButton);
-    
+
     await expect(
       firstElement.closest('[aria-hidden="true"]')
     ).toBeInTheDocument();

@@ -1,3 +1,15 @@
+# v0.0.39 (Tue Jun 20 2023)
+
+#### 🐛 Bug Fix
+
+- Fix comment in code section [#64](https://github.com/storybookjs/addon-onboarding/pull/64) ([@valentinpalkovic](https://github.com/valentinpalkovic))
+
+#### Authors: 1
+
+- Valentin Palkovic ([@valentinpalkovic](https://github.com/valentinpalkovic))
+
+---
+
 # v0.0.38 (Mon Jun 19 2023)
 
 #### 🐛 Bug Fix

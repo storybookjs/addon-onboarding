@@ -289,7 +289,8 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
                               directory.
                             </Step2Text>
                             {buttonPath?.data && (
-                              <SpanHighlight>{buttonPath.data}</SpanHighlight>
+                              // Replace '/' by '/<zero-width-place>' to properly break line
+                              <SpanHighlight>{buttonPath.data.replaceAll('/', '/​').replaceAll('\\', '\\​')}</SpanHighlight>
                             )}
                           </ListItem>
                           <ListItem

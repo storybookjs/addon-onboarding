@@ -1,3 +1,15 @@
+# v0.0.42 (Wed Jun 21 2023)
+
+#### 🐛 Bug Fix
+
+- Fix nextjs code steps [#66](https://github.com/storybookjs/addon-onboarding/pull/66) ([@yannbf](https://github.com/yannbf))
+
+#### Authors: 1
+
+- Yann Braga ([@yannbf](https://github.com/yannbf))
+
+---
+
 # v0.0.41 (Wed Jun 21 2023)
 
 #### 🐛 Bug Fix

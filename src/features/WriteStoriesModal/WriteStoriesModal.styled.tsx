@@ -63,7 +63,7 @@ export const SpanHighlight = styled.span`
   display: inline-flex;
   border-radius: 3px;
   padding: 0 5px;
-  height: 18px;
+  margin-bottom: -2px;
   opacity: 0.8;
   font-family: ${({ theme }) => theme.typography.fonts.mono};
   font-size: 11px;

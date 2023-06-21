@@ -98,6 +98,11 @@ export function GuidedTour({
           spotlightClicks: true,
           floaterProps: {
             target: "#control-primary",
+            options: {
+              preventOverflow: {
+                boundariesElement: "window",
+              },
+            },
           },
           hideNextButton: true,
         },
@@ -116,6 +121,13 @@ export function GuidedTour({
             </>
           ),
           placement: "right",
+          floaterProps: {
+            options: {
+              preventOverflow: {
+                boundariesElement: "window",
+              },
+            },
+          },
           disableOverlay: true,
         },
       ];

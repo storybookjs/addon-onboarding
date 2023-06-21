@@ -20,64 +20,49 @@ import Assets from "./assets/assets.jpg";
 
 Because Storybook works separately from your app, you'll need to configure it for your specific stack and setup. Below, explore guides for configuring Storybook with popular frameworks and tools. If you get stuck, learn how you can ask for help from our community.
 
-<div className="section">
-  <div className="section-item">
+<div className="sb-section">
+  <div className="sb-section-item">
     <img
       src={Styling}
       alt="A wall of logos representing different styling technologies"
     />
-    <div className="block">
+    <div className="sb-block">
       <h3>Add styling and CSS</h3>
-      <p>
-        Like with web applications, there are many ways to include CSS within
-        Storybook. Learn more about setting up styling within Storybook.
-      </p>
+      <p>Like with web applications, there are many ways to include CSS within Storybook. Learn more about setting up styling within Storybook.</p>
       <a
-        href="https://storybook.js.org/docs/react/configure/styling-and-css"
+        href="https://storybook.js.org/docs/{{renderer}}/configure/styling-and-css"
         target="_blank"
       >
-        Read more on how to set up styling{" "}
-        <span className="chevron">&#8250;</span>
+        Read more on how to set up styling 
+        <span className="sb-chevron">&#8250;</span>
       </a>
     </div>
   </div>
-  <div className="section-item">
+  <div className="sb-section-item">
     <img
       src={Context}
       alt="An abstraction representing the composition of data for a component"
     />
-    <div className="block">
+    <div className="sb-block">
       <h3>Provide context and mocking</h3>
-      <p>
-        Often when a story doesn't render, it's because your component is
-        expecting a specific environment or context (like a theme provider) to
-        be available. Learn more about solving these issues by providing context
-        and mocking to Storybook.
-      </p>
+      <p>Often when a story doesn't render, it's because your component is
+        expecting a specific environment or context (like a theme provider) to be available. 
+        Learn more about solving these issues by providing context and mocking to Storybook.</p>
       <a
-        href="https://storybook.js.org/docs/react/writing-stories/decorators#context-for-mocking"
+        href="https://storybook.js.org/docs/{{renderer}}/writing-stories/decorators#context-for-mocking"
         target="_blank"
-      >
-        Read more on how to set up context{" "}
-        <span className="chevron">&#8250;</span>
-      </a>
+      >Read more on how to set up context <span className="sb-chevron">&#8250;</span></a>
     </div>
   </div>
-  <div className="section-item">
+  <div className="sb-section-item">
     <img src={Assets} alt="A representation of typography and image assets" />
-    <div className="block">
+    <div className="sb-block">
       <h3>Load assets and resources</h3>
-      <p>
-        To link static files (like fonts) to your projects and stories, use the
-        `staticDirs` configuration option to specify folders to load when
-        starting Storybook.
-      </p>
+      <p>To link static files (like fonts) to your projects and stories, use the `staticDirs` configuration option to specify folders to load when starting Storybook.</p>
       <a
-        href="https://storybook.js.org/docs/react/configure/images-and-assets"
+        href="https://storybook.js.org/docs/{{renderer}}/configure/images-and-assets"
         target="_blank"
-      >
-        Read more on how to load assets <span className="chevron">&#8250;</span>
-      </a>
+      >Read more on how to load assets <span className="sb-chevron">&#8250;</span></a>
     </div>
   </div>
 </div>
@@ -88,84 +73,61 @@ Now that you know the basics, let's explore other parts of Storybook that will i
 
 <br />
 
-<div className="section">
-  <div className="features-grid-container">
-    <div className="grid-item">
-      <img src={Document} />
+<div className="sb-section">
+  <div className="sb-features-grid-container">
+    <div className="sb-grid-item">
+      <img src={Document} alt="Document" />
       <h3>Autodocs</h3>
-      <p>
-        Auto-generate living, interactive reference documentation from your
-        components and stories.
-      </p>
+      <p>Auto-generate living, interactive reference documentation from your components and stories.</p>
       <a
-        href="https://storybook.js.org/docs/react/writing-docs/autodocs"
+        href="https://storybook.js.org/docs/{{renderer}}/writing-docs/autodocs"
         target="_blank"
-      >
-        Learn more <span className="chevron">&#8250;</span>
-      </a>
+      >Learn more <span className="sb-chevron">&#8250;</span></a>
     </div>
-    <div className="grid-item">
-      <img src={Checkmark} />
+    <div className="sb-grid-item">
+      <img src={Checkmark} alt="Checkmark" />
       <h3>Testing</h3>
-      <p>
-        Use stories to test a component in all its variations, no matter how
-        complex.
-      </p>
+      <p>Use stories to test a component in all its variations, no matter how complex.</p>
       <a
-        href="https://storybook.js.org/docs/react/writing-tests/introduction"
+        href="https://storybook.js.org/docs/{{renderer}}/writing-tests/introduction"
         target="_blank"
-      >
-        Learn more <span className="chevron">&#8250;</span>
-      </a>
+      >Learn more <span className="sb-chevron">&#8250;</span></a>
     </div>
-    <div className="grid-item">
-      <img src={Chromatic} />
+    <div className="sb-grid-item">
+      <img src={Chromatic} alt="Chromatic" />
       <h3>Publish to Chromatic</h3>
-      <p>
-        Publish your Storybook to review and collaborate with your entire team.
-      </p>
+      <p>Publish your Storybook to review and collaborate with your entire team.</p>
       <a
-        href="https://storybook.js.org/docs/react/sharing/publish-storybook#publish-storybook-with-chromatic"
+        href="https://storybook.js.org/docs/{{renderer}}/sharing/publish-storybook#publish-storybook-with-chromatic"
         target="_blank"
-      >
-        Learn more <span className="chevron">&#8250;</span>
-      </a>
+      >Learn more <span className="sb-chevron">&#8250;</span></a>
     </div>
-    <div className="grid-item">
-      <img src={Figma} />
+    <div className="sb-grid-item">
+      <img src={Figma} alt="Figma" />
       <h3>Figma Plugin</h3>
-      <p>
-        Embed your stories into Figma to cross-reference the design and live
-        implementation in one place.
-      </p>
+      <p>Embed your stories into Figma to cross-reference the design and live implementation in one place.</p>
       <a
-        href="https://storybook.js.org/docs/react/sharing/design-integrations#embed-storybook-in-figma-with-the-plugin"
+        href="https://storybook.js.org/docs/{{renderer}}/sharing/design-integrations#embed-storybook-in-figma-with-the-plugin"
         target="_blank"
-      >
-        Learn more <span className="chevron">&#8250;</span>
-      </a>
+      >Learn more <span className="sb-chevron">&#8250;</span></a>
     </div>
-    <div className="grid-item">
-      <img src={Accessibility} />
+    <div className="sb-grid-item">
+      <img src={Accessibility} alt="Accessibility" />
       <h3>Accessibility</h3>
       <p>Automatically test your components for a11y issues as you develop.</p>
       <a
-        href="https://storybook.js.org/docs/react/writing-tests/accessibility-testing"
+        href="https://storybook.js.org/docs/{{renderer}}/writing-tests/accessibility-testing"
         target="_blank"
-      >
-        Learn more <span className="chevron">&#8250;</span>
-      </a>
+      >Learn more <span className="sb-chevron">&#8250;</span></a>
     </div>
-    <div className="grid-item">
-      <img src={Typography} />
+    <div className="sb-grid-item">
+      <img src={Typography} alt="Typography" />
       <h3>Theming</h3>
       <p>Theme Storybook's UI to personalize it to your project.</p>
       <a
-        href="https://storybook.js.org/docs/react/configure/theming"
+        href="https://storybook.js.org/docs/{{renderer}}/configure/theming"
         target="_blank"
-      >
-        Learn more <span className="chevron">&#8250;</span>
-      </a>
+      >Learn more <span className="sb-chevron">&#8250;</span></a>
     </div>
   </div>
 </div>
@@ -176,38 +138,38 @@ Connect with our community on Discord or start contributing directly on Github. 
 
 <br />
 
-<div className="section">
-  <div className="card-grid-container">
+<div className="sb-section">
+  <div className="sb-card-grid-container">
     <a
-      className="explore-card"
+      className="sb-explore-card"
       href="https://discord.gg/storybook"
       target="_blank"
     >
-      <img src={Discord} />
+      <img src={Discord} alt="Discord" />
       <span>Discord</span>
     </a>
     <a
-      className="explore-card"
+      className="sb-explore-card"
       href="https://github.com/storybookjs/storybook"
       target="_blank"
     >
-      <img src={Github} />
+      <img src={Github} alt="Github" />
       <span>Github</span>
     </a>
     <a
-      className="explore-card"
+      className="sb-explore-card"
       href="https://www.youtube.com/@chromaticui"
       target="_blank"
     >
-      <img src={Youtube} />
+      <img src={Youtube} alt="Youtube" />
       <span>Youtube</span>
     </a>
     <a
-      className="explore-card"
+      className="sb-explore-card"
       href="https://storybook.js.org/tutorials/"
       target="_blank"
     >
-      <img src={Tutorials} />
+      <img src={Tutorials} alt="Tutorials" />
       <span>Tutorials</span>
     </a>
   </div>
@@ -215,17 +177,17 @@ Connect with our community on Discord or start contributing directly on Github. 
 
 <style>
   {`
-  .section {
+  .sb-section {
     width: 100%;
     margin-bottom: 64px;
   }
 
-  .section img {
+  .sb-section img {
     border-radius: 10px;
     max-height: 170px;
   }
 
-  .section-item {
+  .sb-section-item {
     width: 100%;
     margin-bottom: 20px;
     width: 100%;
@@ -234,48 +196,48 @@ Connect with our community on Discord or start contributing directly on Github. 
     align-items: center;
   }
 
-  .section-item a,
-  .grid-item a {
+  .sb-section-item a,
+  .sb-grid-item a {
     font-size: 13px;
     transition: transform 150ms ease-out,color 150ms ease-out;
   }
 
-  .section-item img {
-    min-width: 297px;
+  .sb-section-item img {
+    width: 297px;
   }
 
-  .section-item a > p,
-  .grid-item a > p {
+  .sb-section-item a > p,
+  .sb-grid-item a > p {
     all: unset;
   }
 
-  .block {
+  .sb-block {
     flex: 1;
     margin-left: 10px;
   }
 
-  .chevron {
+  .sb-chevron {
     margin-left: 5px;
   }
 
-  .features-grid-container {
+  .sb-features-grid-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 40px 20px;
   }
 
-  .grid-item img {
+  .sb-grid-item img {
     max-height: 48px;
     margin-bottom: 12px;
   }
 
-  .card-grid-container {
+  .sb-card-grid-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 20px;
   }
 
-  .explore-card {
+  .sb-explore-card {
     border-radius: 8px;
     border: 2px solid #00000010;
     padding: 20px;
@@ -287,40 +249,36 @@ Connect with our community on Discord or start contributing directly on Github. 
     gap: 8px;
   }
 
-  .explore-card:hover {
+  .sb-explore-card:hover {
     border-color: #1EA7FD50;
     transform: translate3d(0, -3px, 0);
     box-shadow: rgba(0, 0, 0, 0.08) 0 3px 10px 0;
   }
 
-  .explore-card:active {
+  .sb-explore-card:active {
     border-color: #1EA7FD;
     transform: translate3d(0, 0, 0);
   }
 
-  section h3 {
-    font-size: 16px !important;
-  }
-
-  .card-background {
+  .sb-card-background {
     width: 100%;
     height: 150px;
     background-color: #ccc;
   }
 
   @media screen and (max-width: 600px) {
-    .section-item {
+    .sb-section-item {
       flex-direction: column;
       align-items: flex-start;
     }
-    .block {
+    .sb-block {
       margin-left: 0;
       margin-top: 10px;
     }
-    .features-grid-container {
+    .sb-features-grid-container {
       grid-template-columns: repeat(1, 1fr);
     }
-    .card-grid-container {
+    .sb-card-grid-container {
       grid-template-columns: repeat(2, 1fr);
     }
   }

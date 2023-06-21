@@ -3,11 +3,6 @@ export default {
   code: [
     [
       {
-        code: `// Button.stories.tsx`,
-      },
-    ],
-    [
-      {
         code: `import type { Meta, StoryObj } from '@storybook/nextjs';
       
       import { Button } from './Button';`,

@@ -1,6 +1,6 @@
 {
   "name": "@storybook/addon-onboarding",
-  "version": "0.0.42",
+  "version": "0.0.43",
   "description": "Storybook Addon Onboarding - Introduces a new onboarding experience",
   "keywords": [
     "storybook-addons",
@@ -58,14 +58,11 @@
     ]
   },
   "dependencies": {
-    "@radix-ui/react-dialog": "^1.0.4",
     "@storybook/telemetry": "^7.1.0-alpha.32",
-    "framer-motion": "^6.5.1",
-    "react-confetti": "^6.1.0",
-    "react-joyride": "^2.5.4",
-    "react-use-measure": "^2.1.1"
+    "react-confetti": "^6.1.0"
   },
   "devDependencies": {
+    "@radix-ui/react-dialog": "^1.0.4",
     "@storybook/addon-essentials": "^7.1.0-alpha.32",
     "@storybook/addon-interactions": "^7.1.0-alpha.32",
     "@storybook/addon-links": "^7.1.0-alpha.32",
@@ -87,11 +84,14 @@
     "auto": "^10.3.0",
     "chromatic": "^6.17.4",
     "dedent": "^0.7.0",
+    "framer-motion": "^6.5.1",
     "nodemon": "^2.0.22",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.3.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
+    "react-joyride": "^2.5.4",
+    "react-use-measure": "^2.1.1",
     "rimraf": "^5.0.1",
     "storybook": "^7.1.0-alpha.32",
     "tsup": "^6.6.3",

@@ -1,3 +1,17 @@
+# v0.0.43 (Thu Jun 22 2023)
+
+#### 🐛 Bug Fix
+
+- Fix react joyride in yarn pnp mode [#69](https://github.com/storybookjs/addon-onboarding/pull/69) ([@valentinpalkovic](https://github.com/valentinpalkovic))
+- fix links in configure.mdx [#67](https://github.com/storybookjs/addon-onboarding/pull/67) ([@yannbf](https://github.com/yannbf))
+
+#### Authors: 2
+
+- Valentin Palkovic ([@valentinpalkovic](https://github.com/valentinpalkovic))
+- Yann Braga ([@yannbf](https://github.com/yannbf))
+
+---
+
 # v0.0.42 (Wed Jun 21 2023)
 
 #### 🐛 Bug Fix

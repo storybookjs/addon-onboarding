@@ -1,3 +1,15 @@
+# v1.0.2 (Thu Jun 22 2023)
+
+#### 🐛 Bug Fix
+
+- Fix package.json version extraction [#72](https://github.com/storybookjs/addon-onboarding/pull/72) ([@valentinpalkovic](https://github.com/valentinpalkovic))
+
+#### Authors: 1
+
+- Valentin Palkovic ([@valentinpalkovic](https://github.com/valentinpalkovic))
+
+---
+
 # v1.0.1 (Thu Jun 22 2023)
 
 #### 🐛 Bug Fix

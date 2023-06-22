@@ -32,105 +32,105 @@ export function GuidedTour({
 
   const steps: GuidedTourStep[] = isFinalStep
     ? [
-        {
-          target: "#example-button--warning",
-          title: "Congratulations!",
-          content: (
-            <>
-              You just created your first story. Continue setting up your
-              project to write stories for your own components.
-            </>
-          ),
-          placement: "right",
-          disableOverlay: true,
-          disableBeacon: true,
-          floaterProps: {
-            disableAnimation: true,
-          },
-          onNextButtonClick() {
-            onLastTourDone();
-          },
+      {
+        target: "#example-button--warning",
+        title: "Congratulations!",
+        content: (
+          <>
+            You just created your first story. Continue setting up your
+            project to write stories for your own components.
+          </>
+        ),
+        placement: "right",
+        disableOverlay: true,
+        disableBeacon: true,
+        floaterProps: {
+          disableAnimation: true,
         },
-      ]
+        onNextButtonClick() {
+          onLastTourDone();
+        },
+      },
+    ]
     : [
-        {
-          target: "#storybook-explorer-tree > div",
-          title: "Storybook is built from stories",
-          content:
-            "Storybook stories represent the key states of each of your components. For example, this Button component has four stories.",
-          placement: "right",
-          disableBeacon: true,
-          styles: {
-            spotlight: {
-              transform: "translateY(30px)",
-            },
-          },
-          floaterProps: {
-            disableAnimation: true,
+      {
+        target: "#storybook-explorer-tree > div",
+        title: "Storybook is built from stories",
+        content:
+          "Storybook stories represent the key states of each of your components. For example, this Button component has four stories.",
+        placement: "right",
+        disableBeacon: true,
+        styles: {
+          spotlight: {
+            transform: "translateY(30px)",
           },
         },
-        {
-          target: "#storybook-preview-iframe",
-          title: "Storybook previews are interactive",
-          content:
-            "Whenever you modify code or stories, Storybook automatically updates how it previews your components.",
-          placement: "bottom",
-          styles: {
-            spotlight: {
-              borderRadius: 0,
-            },
+        floaterProps: {
+          disableAnimation: true,
+        },
+      },
+      {
+        target: "#storybook-preview-iframe",
+        title: "Storybook previews are interactive",
+        content:
+          "Whenever you modify code or stories, Storybook automatically updates how it previews your components.",
+        placement: "bottom",
+        styles: {
+          spotlight: {
+            borderRadius: 0,
           },
         },
-        {
-          target: "#root div[role=main]",
-          title: "Interactive story playground",
-          content: (
-            <>
-              See how a story renders with different data and state without
-              touching code.
-              <br />
-              <br />
-              Try it out by pressing this button.
-              <PulsatingEffect targetSelector="#control-primary" />
-            </>
-          ),
-          placement: "right",
-          spotlightClicks: true,
-          floaterProps: {
-            target: "#control-primary",
-            options: {
-              preventOverflow: {
-                boundariesElement: "window",
-              },
-            },
-          },
-          hideNextButton: true,
-        },
-        {
+      },
+      {
+        target: "#root div[role=main]",
+        title: "Interactive story playground",
+        content: (
+          <>
+            See how a story renders with different data and state without
+            touching code.
+            <br />
+            <br />
+            Try it out by pressing this button.
+            <PulsatingEffect targetSelector="#control-primary" />
+          </>
+        ),
+        placement: "right",
+        spotlightClicks: true,
+        floaterProps: {
           target: "#control-primary",
-          title: "Congratulations!",
-          content: (
-            <>
-              You learned how to control your stories interactively. Now let's
-              explore how to write your first story.
-              <Confetti
-                numberOfPieces={800}
-                recycle={false}
-                tweenDuration={20000}
-              />
-            </>
-          ),
-          placement: "right",
-          floaterProps: {
-            options: {
-              preventOverflow: {
-                boundariesElement: "window",
-              },
+          options: {
+            preventOverflow: {
+              boundariesElement: "window",
             },
           },
-          disableOverlay: true,
         },
-      ];
+        hideNextButton: true,
+      },
+      {
+        target: "#control-primary",
+        title: "Congratulations!",
+        content: (
+          <>
+            You learned how to control your stories interactively. Now let's
+            explore how to write your first story.
+            <Confetti
+              numberOfPieces={800}
+              recycle={false}
+              tweenDuration={20000}
+            />
+          </>
+        ),
+        placement: "right",
+        floaterProps: {
+          options: {
+            preventOverflow: {
+              boundariesElement: "window",
+            },
+          },
+        },
+        disableOverlay: true,
+      },
+    ];
 
   return (
     <Joyride

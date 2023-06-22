@@ -38,6 +38,7 @@ export default defineConfig((options) => [
     ...baseConfig,
     entry: ["src/index.ts", "src/manager.tsx"],
     format: ["esm"],
+    shims: false,
     platform: "browser",
     esbuildOptions(options) {
       options.conditions = ["module"];

@@ -85,8 +85,8 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
   const data = isJavascript
     ? dataJavascript
     : project?.data?.framework.name === "@storybook/nextjs"
-    ? dataTypescriptNextjs
-    : dataTypescript;
+      ? dataTypescriptNextjs
+      : dataTypescript;
 
   const copyWarningStory = () => {
     const warningContent = data.code[3][0].code;
@@ -161,15 +161,18 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
                   <>
                     <div>
                       <h3>Imports</h3>
-                      <p>
+                      {isJavascript ? (<p>
+                        Import a component. In this case, the Button
+                        component.
+                      </p>) : <><p>
                         First, import <SpanHighlight>Meta</SpanHighlight> and{" "}
                         <SpanHighlight>StoryObj</SpanHighlight> for type safety
                         and autocompletion in TypeScript stories.
                       </p>
-                      <p>
-                        Next, import a component. In this case, the Button
-                        component.
-                      </p>
+                        <p>
+                          Next, import a component. In this case, the Button
+                          component.
+                        </p></>}
                     </div>
                     <Button
                       style={{ marginTop: 4 }}

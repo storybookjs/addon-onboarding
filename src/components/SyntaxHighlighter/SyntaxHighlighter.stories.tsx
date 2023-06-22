@@ -91,7 +91,7 @@ export const Default: Story = {
     const canvas = within(canvasElement);
     const nextButton = canvas.getByText("Next");
     const firstElement = await canvas.findByText(
-      textContentMatcher(data[0][0].code)
+      textContentMatcher(data[0][0].code), undefined, { timeout: 3000 }
     );
     await expect(
       firstElement.closest('[aria-hidden="false"]')

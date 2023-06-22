@@ -40,10 +40,12 @@ export default function App({ api }: { api: API }) {
   }, []);
 
   useEffect(() => {
-    api.emit(STORYBOOK_ADDON_ONBOARDING_CHANNEL, {
-      step,
-      type: "telemetry",
-    });
+    if (step !== '1:Welcome') {
+      api.emit(STORYBOOK_ADDON_ONBOARDING_CHANNEL, {
+        step,
+        type: "telemetry",
+      });
+    }
   }, [api, step]);
 
   useEffect(() => {

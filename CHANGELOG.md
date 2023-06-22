@@ -1,3 +1,19 @@
+# v1.0.0 (Thu Jun 22 2023)
+
+#### 💥 Breaking Change
+
+- Release 1.0.0 [#70](https://github.com/storybookjs/addon-onboarding/pull/70) ([@valentinpalkovic](https://github.com/valentinpalkovic))
+
+#### 🐛 Bug Fix
+
+- Fix text for Javascript Projects [#68](https://github.com/storybookjs/addon-onboarding/pull/68) ([@valentinpalkovic](https://github.com/valentinpalkovic))
+
+#### Authors: 1
+
+- Valentin Palkovic ([@valentinpalkovic](https://github.com/valentinpalkovic))
+
+---
+
 # v0.0.43 (Thu Jun 22 2023)
 
 #### 🐛 Bug Fix

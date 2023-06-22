@@ -19,7 +19,9 @@ export const experimental_serverChannel = async (
   );
 
   if (!disableTelemetry) {
-    const { version: addonVersion } = require("../package.json");
+    // To prevent prebundling a variable is used to require the package.json
+    const packageJsonPath = "../package.json";
+    const { version: addonVersion } = require(packageJsonPath);
 
     channel.on(
       STORYBOOK_ADDON_ONBOARDING_CHANNEL,

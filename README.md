@@ -1,4 +1,4 @@
-# Storybook Addon Addon Onboarding
+# Storybook Addon Onboarding
 
 This addon provides a guided tour in some of Storybook's features, helping you get to know about the basics of Storybook and learn how to write stories!
 

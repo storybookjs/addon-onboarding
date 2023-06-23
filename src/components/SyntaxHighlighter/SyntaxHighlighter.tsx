@@ -17,7 +17,7 @@ import { ThemeProvider, ensure, themes } from "@storybook/theming";
 import { SyntaxHighlighter as StorybookSyntaxHighlighter } from "@storybook/components";
 
 type SyntaxHighlighterProps = {
-  data: { code: string; toggle?: boolean }[][];
+  data: { snippet: string; toggle?: boolean }[][];
   activeStep: number;
   width: number;
   filename: string;

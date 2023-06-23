@@ -1,14 +1,17 @@
-export default {
+import type { CodeSnippets } from './types';
+
+const data: CodeSnippets = {
   filename: "Button.stories.jsx",
+  language: "typescript",
   code: [
     [
       {
-        code: `import { Button } from './Button';`,
+        snippet: `import { Button } from './Button';`,
       },
     ],
     [
       {
-        code: `export default {
+        snippet: `export default {
       title: 'Example/Button',
       component: Button,
       // ...
@@ -16,20 +19,20 @@ export default {
       },
     ],
     [
-      { code: `export const Primary = {` },
+      { snippet: `export const Primary = {` },
       {
-        code: `args: {
+        snippet: `args: {
         primary: true,
         label: 'Click',
         background: 'red'
       }`,
         toggle: true,
       },
-      { code: `};` },
+      { snippet: `};` },
     ],
     [
       {
-        code: `// Copy the code below
+        snippet: `// Copy the code below
 export const Warning = {
   args: {
     primary: true,
@@ -41,3 +44,5 @@ export const Warning = {
     ],
   ],
 };
+
+export default data;

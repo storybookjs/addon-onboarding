@@ -27,13 +27,11 @@ import { useGetBackdropBoundary } from "./hooks/useGetBackdropBoundary";
 import titleSidebarImg from "./assets/01-title-sidebar.png";
 import storyNameSidebarImg from "./assets/02-story-name-sidebar.png";
 import argsImg from "./assets/03-args.png";
-import dataJavascript from "./code/javascript";
-import dataTypescript from "./code/typescript";
-import dataTypescriptNextjs from "./code/nextjs-typescript";
-import { useGetProject } from "./hooks/useGetFrameworkName";
+import { useGetProject } from "./hooks/useGetProject";
 import { API, AddonStore } from "@storybook/manager-api";
 import { STORYBOOK_ADDON_ONBOARDING_CHANNEL } from "../../constants";
 import { useTheme } from "@storybook/theming";
+import { CodeSnippets } from "./code/types";
 
 // TODO: Add warning if backdropBoundary && !warningButtonStatus?.data is not true.
 // backdropBoundary && !warningButtonStatus?.data
@@ -42,6 +40,7 @@ interface WriteStoriesModalProps {
   onFinish: () => void;
   api: API;
   addonsStore: AddonStore;
+  codeSnippets: CodeSnippets;
   skipOnboarding: () => void;
 }
 
@@ -50,6 +49,7 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
   api,
   addonsStore,
   skipOnboarding,
+  codeSnippets,
 }) => {
   const [step, setStep] = useState<
     "imports" | "meta" | "story" | "args" | "customStory"
@@ -79,17 +79,10 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
     step === "customStory"
   );
 
-  const project = useGetProject();
-  const isJavascript = project?.data?.language === "javascript";
-
-  const data = isJavascript
-    ? dataJavascript
-    : project?.data?.framework.name === "@storybook/nextjs"
-      ? dataTypescriptNextjs
-      : dataTypescript;
+  const isJavascript = codeSnippets?.language === 'javascript'
 
   const copyWarningStory = () => {
-    const warningContent = data.code[3][0].code;
+    const warningContent = codeSnippets.code[3][0].snippet;
     navigator.clipboard.writeText(
       warningContent.replace("// Copy the code below", "")
     );
@@ -108,12 +101,12 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
     <Modal width={740} height={430} defaultOpen>
       {({ Title, Description, Close }) => (
         <ModalContent>
-          {data ? (
+          {codeSnippets ? (
             <SyntaxHighlighter
               activeStep={stepIndex[step] || 0}
-              data={data.code}
+              data={codeSnippets.code}
               width={480}
-              filename={data.filename}
+              filename={codeSnippets.filename}
             />
           ) : null}
           {step === "customStory" &&

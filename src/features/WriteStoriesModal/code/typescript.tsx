@@ -1,16 +1,19 @@
-export default {
+import type { CodeSnippets } from './types';
+
+const data: CodeSnippets = {
   filename: "Button.stories.tsx",
+  language: "typescript",
   code: [
     [
       {
-        code: `import type { Meta, StoryObj } from '@storybook/react';
+        snippet: `import type { Meta, StoryObj } from '@storybook/react';
       
       import { Button } from './Button';`,
       },
     ],
     [
       {
-        code: `const meta: Meta<typeof Button> = {
+        snippet: `const meta: Meta<typeof Button> = {
         title: 'Example/Button',
         component: Button,
         // ...
@@ -21,23 +24,23 @@ export default {
     ],
     [
       {
-        code: `type Story = StoryObj<Button>;
+        snippet: `type Story = StoryObj<Button>;
         
       export const Primary: Story = {`,
       },
       {
-        code: `args: {
+        snippet: `args: {
           primary: true,
           label: 'Click',
           background: 'red'
         }`,
         toggle: true,
       },
-      { code: `};` },
+      { snippet: `};` },
     ],
     [
       {
-        code: `// Copy the code below
+        snippet: `// Copy the code below
   export const Warning: Story = {
     args: {
       primary: true,
@@ -49,3 +52,5 @@ export default {
     ],
   ],
 };
+
+export default data;

@@ -7,6 +7,7 @@ import { WelcomeModal } from "./features/WelcomeModal/WelcomeModal";
 import { WriteStoriesModal } from "./features/WriteStoriesModal/WriteStoriesModal";
 import { Confetti } from "./components/Confetti/Confetti";
 import { STORYBOOK_ADDON_ONBOARDING_CHANNEL } from "./constants";
+import { useGetProject } from "./features/WriteStoriesModal/hooks/useGetProject";
 
 type Step =
   | "1:Welcome"
@@ -21,6 +22,7 @@ export default function App({ api }: { api: API }) {
   const [enabled, setEnabled] = useState(true);
   const [showConfetti, setShowConfetti] = useState(false);
   const [step, setStep] = useState<Step>("1:Welcome");
+  const { data: codeSnippets } = useGetProject();
 
   const skipOnboarding = useCallback(() => {
     // remove onboarding query parameter from current url
@@ -116,6 +118,7 @@ export default function App({ api }: { api: API }) {
             onFirstTourDone={() => {
               setStep("3:WriteYourStory");
             }}
+            codeSnippets={codeSnippets}
             onLastTourDone={() => {
               api.selectStory("configure-your-project--docs");
               api.emit(STORYBOOK_ADDON_ONBOARDING_CHANNEL, {
@@ -129,6 +132,7 @@ export default function App({ api }: { api: API }) {
       {enabled && step === "3:WriteYourStory" && (
         <WriteStoriesModal
           api={api}
+          codeSnippets={codeSnippets}
           addonsStore={addons}
           onFinish={() => {
             api.selectStory("example-button--warning");

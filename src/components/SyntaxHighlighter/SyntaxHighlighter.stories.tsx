@@ -4,6 +4,7 @@ import React from "react";
 import { userEvent, within } from "@storybook/testing-library";
 import { expect } from "@storybook/jest";
 import { textContentMatcher } from "../../helpers/textContentMatcher";
+import { CodeSnippets } from "../../features/WriteStoriesModal/code/types";
 
 const meta: Meta<typeof SyntaxHighlighter> = {
   component: SyntaxHighlighter,
@@ -16,17 +17,17 @@ export default meta;
 
 type Story = StoryObj<typeof SyntaxHighlighter>;
 
-const data = [
+const data: CodeSnippets['code'] = [
   [
     {
-      code: `import type { Meta, StoryObj } from '@storybook/react';
+      snippet: `import type { Meta, StoryObj } from '@storybook/react';
 
 import { Button } from './Button';`,
     },
   ],
   [
     {
-      code: `const meta: Meta<typeof Button> = {
+      snippet: `const meta: Meta<typeof Button> = {
   title: 'Example/Button',
   component: Button,
   // ...
@@ -36,20 +37,20 @@ export default meta;`,
     },
   ],
   [
-    { code: `export const Primary: Story = {` },
+    { snippet: `export const Primary: Story = {` },
     {
-      code: `args: {
+      snippet: `args: {
     primary: true,
     label: 'Click',
     background: 'red'
   }`,
       toggle: true,
     },
-    { code: `};` },
+    { snippet: `};` },
   ],
   [
     {
-      code: `// Copy the code below
+      snippet: `// Copy the code below
 
 export const Warning: Story = {
   args: {
@@ -91,21 +92,21 @@ export const Default: Story = {
     const canvas = within(canvasElement);
     const nextButton = canvas.getByText("Next");
     const firstElement = await canvas.findByText(
-      textContentMatcher(data[0][0].code), undefined, { timeout: 3000 }
+      textContentMatcher(data[0][0].snippet), undefined, { timeout: 3000 }
     );
     await expect(
       firstElement.closest('[aria-hidden="false"]')
     ).toBeInTheDocument();
 
     const secondElement = await canvas.findByText(
-      textContentMatcher(data[1][0].code)
+      textContentMatcher(data[1][0].snippet)
     );
     await expect(
       secondElement.closest('[aria-hidden="true"]')
     ).toBeInTheDocument();
 
     const thirdElement = await canvas.findByText(
-      textContentMatcher(data[2][0].code)
+      textContentMatcher(data[2][0].snippet)
     );
     await expect(
       thirdElement.closest('[aria-hidden="true"]')

@@ -27,7 +27,6 @@ import { useGetBackdropBoundary } from "./hooks/useGetBackdropBoundary";
 import titleSidebarImg from "./assets/01-title-sidebar.png";
 import storyNameSidebarImg from "./assets/02-story-name-sidebar.png";
 import argsImg from "./assets/03-args.png";
-import { useGetProject } from "./hooks/useGetProject";
 import { API, AddonStore } from "@storybook/manager-api";
 import { STORYBOOK_ADDON_ONBOARDING_CHANNEL } from "../../constants";
 import { useTheme } from "@storybook/theming";

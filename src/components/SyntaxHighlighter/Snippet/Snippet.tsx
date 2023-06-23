@@ -5,7 +5,7 @@ import React from "react";
 import { SyntaxHighlighter as StorybookSyntaxHighlighter } from "@storybook/components";
 
 interface Props {
-  content: { code: string; toggle?: boolean }[];
+  content: { snippet: string; toggle?: boolean }[];
   active: boolean;
   open?: boolean;
 }
@@ -37,14 +37,14 @@ export const Snippet = forwardRef<HTMLDivElement, Props>(
         variants={wrapperVariants}
         transition={{ ease: "easeInOut", duration: 0.6 }}
       >
-        {content.map(({ toggle, code }, i) => (
+        {content.map(({ toggle, snippet }, i) => (
           <Fragment key={i}>
             {toggle === undefined && (
               <StorybookSyntaxHighlighter
                 language="typescript"
                 customStyle={customStyle}
               >
-                {code}
+                {snippet}
               </StorybookSyntaxHighlighter>
             )}
 
@@ -68,7 +68,7 @@ export const Snippet = forwardRef<HTMLDivElement, Props>(
                   customStyle={customStyle}
                   codeTagProps={{ style: { paddingLeft: "15px" } }}
                 >
-                  {code}
+                  {snippet}
                 </StorybookSyntaxHighlighter>
               </motion.div>
             )}

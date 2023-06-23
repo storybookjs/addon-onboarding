@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Joyride, { CallBackProps, STATUS } from "react-joyride";
-
-import { PulsatingEffect } from "../../components/PulsatingEffect/PulsatingEffect";
-import { Confetti } from "../../components/Confetti/Confetti";
 import { API } from "@storybook/manager-api";
 import { UPDATE_STORY_ARGS } from "@storybook/core-events";
 import { useTheme } from "@storybook/theming";
+
+import { PulsatingEffect } from "../../components/PulsatingEffect/PulsatingEffect";
+import { Confetti } from "../../components/Confetti/Confetti";
 import { Tooltip, TooltipProps } from "./Tooltip";
+import { SpanHighlight } from "../WriteStoriesModal/WriteStoriesModal.styled";
+import { CodeSnippets } from "../WriteStoriesModal/code/types";
 
 type GuidedTourStep = TooltipProps["step"];
 
@@ -15,9 +17,11 @@ export function GuidedTour({
   isFinalStep,
   onFirstTourDone,
   onLastTourDone,
+  codeSnippets,
 }: {
   api: API;
   isFinalStep?: boolean;
+  codeSnippets: CodeSnippets;
   onFirstTourDone: () => void;
   onLastTourDone: () => void;
 }) {
@@ -56,8 +60,22 @@ export function GuidedTour({
       {
         target: "#storybook-explorer-tree > div",
         title: "Storybook is built from stories",
-        content:
-          "Storybook stories represent the key states of each of your components. For example, this Button component has four stories.",
+        content: (
+          <>
+            Storybook stories represent the key states of each of your
+            components.
+            <br />
+            <br />
+            {codeSnippets?.filename && (
+              <>
+                We automatically added four stories for this Button component
+                in this example file:
+                <br />
+                <SpanHighlight>{codeSnippets.filename}</SpanHighlight>
+              </>
+            )}
+          </>
+        ),
         placement: "right",
         disableBeacon: true,
         styles: {

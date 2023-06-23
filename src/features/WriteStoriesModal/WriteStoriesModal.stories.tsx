@@ -1,19 +1,21 @@
 import React from "react";
 import { Meta, StoryObj } from "@storybook/react";
 
-import { WriteStoriesModal } from "./WriteStoriesModal";
 import { waitFor, within } from "@storybook/testing-library";
 import { expect, jest } from "@storybook/jest";
 import {
   STORY_INDEX_INVALIDATED,
   STORY_RENDERED,
 } from "@storybook/core-events";
+import { WriteStoriesModal } from "./WriteStoriesModal";
+import typescriptSnippet from "./code/typescript";
 
 const getData = jest.fn();
 
 const meta: Meta<typeof WriteStoriesModal> = {
   component: WriteStoriesModal,
   args: {
+    codeSnippets: typescriptSnippet,
     api: {
       getData,
     } as any,

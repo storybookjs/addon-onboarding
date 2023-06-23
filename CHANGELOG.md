@@ -1,3 +1,15 @@
+# v1.0.3 (Fri Jun 23 2023)
+
+#### 🐛 Bug Fix
+
+- Display the button story filename in tooltip [#73](https://github.com/storybookjs/addon-onboarding/pull/73) ([@yannbf](https://github.com/yannbf))
+
+#### Authors: 1
+
+- Yann Braga ([@yannbf](https://github.com/yannbf))
+
+---
+
 # v1.0.2 (Thu Jun 22 2023)
 
 #### 🐛 Bug Fix

@@ -1,4 +1,5 @@
 import { Meta } from "@storybook/blocks";
+import { Icons } from "@storybook/components";
 
 import Github from "./assets/github.svg";
 import Discord from "./assets/discord.svg";
@@ -13,6 +14,8 @@ import FigmaPlugin from "./assets/figma-plugin.png";
 import Testing from "./assets/testing.png";
 import Accessibility from "./assets/accessibility.png";
 import Theming from "./assets/theming.png";
+
+export const RightArrow = () => <Icons icon="arrowright" width="8px" style={{ marginLeft: '4px' }}/>
 
 <Meta title="Configure your project" />
 
@@ -34,7 +37,7 @@ import Theming from "./assets/theming.png";
     <a
       href="https://storybook.js.org/docs/react/configure/styling-and-css"
       target="_blank"
-    >Read more on how to set up styling <span className="sb-chevron">&#8250;</span></a>
+    >Read more on how to set up styling<RightArrow /></a>
   </div>
   <div className="sb-section-item">
     <img
@@ -49,7 +52,7 @@ import Theming from "./assets/theming.png";
     <a
       href="https://storybook.js.org/docs/react/writing-stories/decorators#context-for-mocking"
       target="_blank"
-    >Read more on how to set up context<span className="sb-chevron">&#8250;</span></a>
+    >Read more on how to set up context<RightArrow /></a>
   </div>
   <div className="sb-section-item">
     <img src={Assets} alt="A representation of typography and image assets" />
@@ -61,7 +64,7 @@ import Theming from "./assets/theming.png";
       <a
         href="https://storybook.js.org/docs/react/configure/images-and-assets"
         target="_blank"
-      >Read more on how to load assets<span className="sb-chevron">&#8250;</span></a>
+      >Read more on how to load assets<RightArrow /></a>
     </div>
   </div>
 </div>
@@ -82,7 +85,7 @@ import Theming from "./assets/theming.png";
       <a
         href="https://storybook.js.org/docs/react/writing-docs/autodocs"
         target="_blank"
-      >Learn more<span className="sb-chevron">&#8250;</span></a>
+      >Learn more<RightArrow /></a>
     </div>
     <div className="sb-grid-item">
       <img src={Share} alt="A browser window showing a Storybook being published to a chromatic.com URL" />
@@ -91,7 +94,7 @@ import Theming from "./assets/theming.png";
       <a
         href="https://storybook.js.org/docs/react/sharing/publish-storybook#publish-storybook-with-chromatic"
         target="_blank"
-      >Learn more <span className="sb-chevron">&#8250;</span></a>
+      >Learn more<RightArrow /></a>
     </div>
     <div className="sb-grid-item">
       <img src={FigmaPlugin} alt="Windows showing the Storybook plugin in Figma" />
@@ -101,7 +104,7 @@ import Theming from "./assets/theming.png";
       <a
         href="https://storybook.js.org/docs/react/sharing/design-integrations#embed-storybook-in-figma-with-the-plugin"
         target="_blank"
-      >Learn more <span className="sb-chevron">&#8250;</span></a>
+      >Learn more<RightArrow /></a>
     </div>
     <div className="sb-grid-item">
       <img src={Testing} alt="Screenshot of tests passing and failing" />
@@ -111,7 +114,7 @@ import Theming from "./assets/theming.png";
       <a
         href="https://storybook.js.org/docs/react/writing-tests/introduction"
         target="_blank"
-      >Learn more <span className="sb-chevron">&#8250;</span></a>
+      >Learn more<RightArrow /></a>
     </div>
     <div className="sb-grid-item">
       <img src={Accessibility} alt="Screenshot of accessibility tests passing and failing" />
@@ -120,7 +123,7 @@ import Theming from "./assets/theming.png";
       <a
         href="https://storybook.js.org/docs/react/writing-tests/accessibility-testing"
         target="_blank"
-      >Learn more <span className="sb-chevron">&#8250;</span></a>
+      >Learn more<RightArrow /></a>
     </div>
     <div className="sb-grid-item">
       <img src={Theming} alt="Screenshot of Storybook in light and dark mode" />
@@ -129,7 +132,7 @@ import Theming from "./assets/theming.png";
       <a
         href="https://storybook.js.org/docs/react/configure/theming"
         target="_blank"
-      >Learn more <span className="sb-chevron">&#8250;</span></a>
+      >Learn more<RightArrow /></a>
     </div>
   </div>
 </div>
@@ -143,7 +146,7 @@ import Theming from "./assets/theming.png";
       <a
         href="https://github.com/storybookjs/storybook"
         target="_blank"
-      >Star on GitHub <span className="sb-chevron">&#8250;</span></a>
+      >Star on GitHub<RightArrow /></a>
     </div>
     <div className="sb-section-item">
       <img src={Discord} alt="Discord logo" className="sb-explore-image"/>
@@ -153,7 +156,7 @@ import Theming from "./assets/theming.png";
         <a
           href="https://discord.gg/storybook"
           target="_blank"
-        >Join Discord server <span className="sb-chevron">&#8250;</span></a>
+        >Join Discord server<RightArrow /></a>
       </div>
     </div>
     <div className="sb-section-item">
@@ -164,7 +167,7 @@ import Theming from "./assets/theming.png";
         <a
           href="https://www.youtube.com/@chromaticui"
           target="_blank"
-        >Watch on YouTube <span className="sb-chevron">&#8250;</span></a>
+        >Watch on YouTube<RightArrow /></a>
       </div>
     </div>
     <div className="sb-section-item">
@@ -175,7 +178,7 @@ import Theming from "./assets/theming.png";
         <a
           href="https://storybook.js.org/tutorials/"
           target="_blank"
-        >Discover tutorials <span className="sb-chevron">&#8250;</span></a>
+        >Discover tutorials<RightArrow /></a>
       </div>
     </div>
 </div>

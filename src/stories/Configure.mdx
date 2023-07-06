@@ -135,63 +135,62 @@ export const RightArrow = () => <Icons icon="arrowright" width="8px" style={{ ma
     </div>
   </div>
 </div>
-  <div className='sb-addon'>
-    <div className='sb-addon-text'>
-      <h4>Addons</h4>
-      <p className="sb-section-item-paragraph">Integrate your tools with Storybook to connect workflows.</p>
+<div className='sb-addon'>
+  <div className='sb-addon-text'>
+    <h4>Addons</h4>
+    <p className="sb-section-item-paragraph">Integrate your tools with Storybook to connect workflows.</p>
+    <a
+        href="https://storybook.js.org/docs/react/configure/theming"
+        target="_blank"
+      >Discover all addons<RightArrow /></a>
+  </div>
+  <div className='sb-addon-img'>
+    <img src={AddonLibrary} alt="Integrate your tools with Storybook to connect workflows." />
+  </div>
+</div>
+
+<div className="sb-section sb-socials">
+    <div className="sb-section-item">
+      <img src={Github} alt="Github logo" className="sb-explore-image"/>
+      Join our contributors building the future of UI development.
+
       <a
-          href="https://storybook.js.org/docs/react/configure/theming"
-          target="_blank"
-        >Discover all addons<RightArrow /></a>
+        href="https://github.com/storybookjs/storybook"
+        target="_blank"
+      >Star on GitHub<RightArrow /></a>
     </div>
-    <div className='sb-addon-img'>
-      <img src={AddonLibrary} alt="Integrate your tools with Storybook to connect workflows." />
-    </div>
-  </div>
-
-  <div className="sb-section sb-socials">
-      <div className="sb-section-item">
-        <img src={Github} alt="Github logo" className="sb-explore-image"/>
-        Join our contributors building the future of UI development.
+    <div className="sb-section-item">
+      <img src={Discord} alt="Discord logo" className="sb-explore-image"/>
+      <div>
+        Get support and chat with frontend developers.
 
         <a
-          href="https://github.com/storybookjs/storybook"
+          href="https://discord.gg/storybook"
           target="_blank"
-        >Star on GitHub<RightArrow /></a>
+        >Join Discord server<RightArrow /></a>
       </div>
-      <div className="sb-section-item">
-        <img src={Discord} alt="Discord logo" className="sb-explore-image"/>
-        <div>
-          Get support and chat with frontend developers.
-
-          <a
-            href="https://discord.gg/storybook"
-            target="_blank"
-          >Join Discord server<RightArrow /></a>
-        </div>
-      </div>
-      <div className="sb-section-item">
-        <img src={Youtube} alt="Youtube logo" className="sb-explore-image"/>
-        <div>
-          Watch tutorials, feature previews and interviews.
-
-          <a
-            href="https://www.youtube.com/@chromaticui"
-            target="_blank"
-          >Watch on YouTube<RightArrow /></a>
-        </div>
-      </div>
-      <div className="sb-section-item">
-        <img src={Tutorials} alt="A book" className="sb-explore-image"/>
-        <p>Follow guided walkthroughs on for key workflows.</p>
+    </div>
+    <div className="sb-section-item">
+      <img src={Youtube} alt="Youtube logo" className="sb-explore-image"/>
+      <div>
+        Watch tutorials, feature previews and interviews.
 
         <a
-            href="https://storybook.js.org/tutorials/"
-            target="_blank"
-          >Discover tutorials<RightArrow /></a>
+          href="https://www.youtube.com/@chromaticui"
+          target="_blank"
+        >Watch on YouTube<RightArrow /></a>
       </div>
-  </div>
+    </div>
+    <div className="sb-section-item">
+      <img src={Tutorials} alt="A book" className="sb-explore-image"/>
+      <p>Follow guided walkthroughs on for key workflows.</p>
 
+      <a
+          href="https://storybook.js.org/tutorials/"
+          target="_blank"
+        >Discover tutorials<RightArrow /></a>
+    </div>
+</div>
 
 <style>
   {`
@@ -269,10 +268,11 @@ export const RightArrow = () => <Icons icon="arrowright" width="8px" style={{ ma
     background: #EEF3F8;
     height: 180px;
     margin-bottom: 48px;
+    overflow: hidden;
   }
 
   .sb-addon-text {
-    padding-left: 32px;
+    padding-left: 48px;
     max-width: 240px;
   }
 
@@ -282,9 +282,10 @@ export const RightArrow = () => <Icons icon="arrowright" width="8px" style={{ ma
 
   .sb-addon-img {
     position: absolute;
-    right: 0;
+    left: 345px;
     top: 0;
     height: 100%;
+    width: 200%;
     overflow: hidden;
   }
 
@@ -293,6 +294,14 @@ export const RightArrow = () => <Icons icon="arrowright" width="8px" style={{ ma
     transform: rotate(-15deg);
     margin-left: 40px;
     margin-top: -72px;
+    box-shadow: 0 0 1px rgba(255, 255, 255, 0);
+    backface-visibility: hidden;
+  }
+
+  @media screen and (max-width: 800px) {
+    .sb-addon-img {
+      left: 300px;
+    }
   }
 
   @media screen and (max-width: 600px) {
@@ -309,16 +318,20 @@ export const RightArrow = () => <Icons icon="arrowright" width="8px" style={{ ma
     }
 
     .sb-addon {
-      height: 360px;
+      height: 280px;
       align-items: flex-start;
       padding-top: 32px;
       overflow: hidden;
     }
 
+    .sb-addon-text {
+      padding-left: 24px;
+    }
+
     .sb-addon-img {
       right: 0;
       left: 0;
-      top: auto;
+      top: 130px;
       bottom: 0;
       overflow: hidden;
       height: auto;

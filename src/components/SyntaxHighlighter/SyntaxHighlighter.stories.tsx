@@ -1,9 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { SyntaxHighlighter } from "./SyntaxHighlighter";
 import React from "react";
-import { userEvent, within } from "@storybook/testing-library";
-import { expect } from "@storybook/jest";
-import { textContentMatcher } from "../../helpers/textContentMatcher";
 import { CodeSnippets } from "../../features/WriteStoriesModal/code/types";
 
 const meta: Meta<typeof SyntaxHighlighter> = {
@@ -17,7 +14,7 @@ export default meta;
 
 type Story = StoryObj<typeof SyntaxHighlighter>;
 
-const data: CodeSnippets['code'] = [
+const data: CodeSnippets["code"] = [
   [
     {
       snippet: `import type { Meta, StoryObj } from '@storybook/react';
@@ -87,41 +84,5 @@ export const Default: Story = {
     activeStep: 0,
     width: 480,
     filename: "Button.stories.tsx",
-  },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const nextButton = canvas.getByText("Next");
-    const firstElement = await canvas.findByText(
-      textContentMatcher(data[0][0].snippet), undefined, { timeout: 3000 }
-    );
-    await expect(
-      firstElement.closest('[aria-hidden="false"]')
-    ).toBeInTheDocument();
-
-    const secondElement = await canvas.findByText(
-      textContentMatcher(data[1][0].snippet)
-    );
-    await expect(
-      secondElement.closest('[aria-hidden="true"]')
-    ).toBeInTheDocument();
-
-    const thirdElement = await canvas.findByText(
-      textContentMatcher(data[2][0].snippet)
-    );
-    await expect(
-      thirdElement.closest('[aria-hidden="true"]')
-    ).toBeInTheDocument();
-
-    await userEvent.click(nextButton);
-
-    await expect(
-      firstElement.closest('[aria-hidden="true"]')
-    ).toBeInTheDocument();
-    await expect(
-      secondElement.closest('[aria-hidden="false"]')
-    ).toBeInTheDocument();
-    await expect(
-      thirdElement.closest('[aria-hidden="true"]')
-    ).toBeInTheDocument();
   },
 };

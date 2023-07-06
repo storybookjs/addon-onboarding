@@ -1,3 +1,16 @@
+# v1.0.4 (Thu Jul 06 2023)
+
+#### 🐛 Bug Fix
+
+- Update Configure page design [#74](https://github.com/storybookjs/addon-onboarding/pull/74) ([@JReinhold](https://github.com/JReinhold) [@cdedreuille](https://github.com/cdedreuille))
+
+#### Authors: 2
+
+- Charles de Dreuille ([@cdedreuille](https://github.com/cdedreuille))
+- Jeppe Reinhold ([@JReinhold](https://github.com/JReinhold))
+
+---
+
 # v1.0.3 (Fri Jun 23 2023)
 
 #### 🐛 Bug Fix

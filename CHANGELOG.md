@@ -1,3 +1,15 @@
+# v1.0.6 (Mon Jul 10 2023)
+
+#### 🐛 Bug Fix
+
+- Fix language detection [#76](https://github.com/storybookjs/addon-onboarding/pull/76) ([@valentinpalkovic](https://github.com/valentinpalkovic))
+
+#### Authors: 1
+
+- Valentin Palkovic ([@valentinpalkovic](https://github.com/valentinpalkovic))
+
+---
+
 # v1.0.5 (Mon Jul 10 2023)
 
 #### 🐛 Bug Fix

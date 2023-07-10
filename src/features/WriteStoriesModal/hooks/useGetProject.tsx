@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 
-import { Response } from "../../../types/response";
 import dataJavascript from "../code/javascript";
 import dataTypescript from "../code/typescript";
 import { CodeSnippets } from "../code/types";
@@ -22,8 +21,8 @@ export function useGetProject() {
     const getProject = async () => {
       try {
         const response = await fetch("/project.json");
-        const project: Response<Project> = await response.json();
-        const data = project?.data?.language === "javascript" ? dataJavascript : dataTypescript;
+        const project = await response.json() as Project;
+        const data = project?.language === "javascript" ? dataJavascript : dataTypescript;
 
         setProject({
           data,

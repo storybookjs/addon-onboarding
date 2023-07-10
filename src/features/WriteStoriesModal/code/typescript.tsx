@@ -1,7 +1,7 @@
 import type { CodeSnippets } from './types';
 
 const data: CodeSnippets = {
-  filename: "Button.stories.tsx",
+  filename: "Button.stories.ts",
   language: "typescript",
   code: [
     [

@@ -1,3 +1,15 @@
+# v1.0.5 (Mon Jul 10 2023)
+
+#### 🐛 Bug Fix
+
+- Remove nextjs-specific code [#75](https://github.com/storybookjs/addon-onboarding/pull/75) ([@yannbf](https://github.com/yannbf))
+
+#### Authors: 1
+
+- Yann Braga ([@yannbf](https://github.com/yannbf))
+
+---
+
 # v1.0.4 (Thu Jul 06 2023)
 
 #### 🐛 Bug Fix

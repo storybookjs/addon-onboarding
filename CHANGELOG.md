@@ -1,3 +1,15 @@
+# v1.0.7 (Tue Jul 11 2023)
+
+#### 🐛 Bug Fix
+
+- Replace chevron icon on Configure page to avoid @storybook/components usage [#77](https://github.com/storybookjs/addon-onboarding/pull/77) ([@valentinpalkovic](https://github.com/valentinpalkovic))
+
+#### Authors: 1
+
+- Valentin Palkovic ([@valentinpalkovic](https://github.com/valentinpalkovic))
+
+---
+
 # v1.0.6 (Mon Jul 10 2023)
 
 #### 🐛 Bug Fix

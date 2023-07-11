@@ -1,10 +1,10 @@
 import { Meta } from "@storybook/blocks";
-import { Icons } from "@storybook/components";
 
 import Github from "./assets/github.svg";
 import Discord from "./assets/discord.svg";
 import Youtube from "./assets/youtube.svg";
 import Tutorials from "./assets/tutorials.svg";
+import Chevron from './assets/chevron.svg';
 import Styling from "./assets/styling.png";
 import Context from "./assets/context.png";
 import Assets from "./assets/assets.png";
@@ -15,8 +15,6 @@ import Testing from "./assets/testing.png";
 import Accessibility from "./assets/accessibility.png";
 import Theming from "./assets/theming.png";
 import AddonLibrary from "./assets/addon-library.png";
-
-export const RightArrow = () => <Icons icon="arrowright" width="8px" style={{ marginLeft: '4px' }}/>
 
 <Meta title="Configure your project" />
 
@@ -37,7 +35,7 @@ export const RightArrow = () => <Icons icon="arrowright" width="8px" style={{ ma
       <a
         href="https://storybook.js.org/docs/react/configure/styling-and-css"
         target="_blank"
-      >Learn more<RightArrow /></a>
+      >Learn more<img className='sb-chevron' src={Chevron} alt=""/></a>
     </div>
     <div className="sb-section-item">
       <img
@@ -49,7 +47,7 @@ export const RightArrow = () => <Icons icon="arrowright" width="8px" style={{ ma
       <a
         href="https://storybook.js.org/docs/react/writing-stories/decorators#context-for-mocking"
         target="_blank"
-      >Learn more<RightArrow /></a>
+      >Learn more<img className='sb-chevron' src={Chevron} alt=""/></a>
     </div>
     <div className="sb-section-item">
       <img src={Assets} alt="A representation of typography and image assets" />
@@ -61,7 +59,7 @@ export const RightArrow = () => <Icons icon="arrowright" width="8px" style={{ ma
         <a
           href="https://storybook.js.org/docs/react/configure/images-and-assets"
           target="_blank"
-        >Learn more<RightArrow /></a>
+        >Learn more<img className='sb-chevron' src={Chevron} alt=""/></a>
       </div>
     </div>
   </div>
@@ -83,7 +81,7 @@ export const RightArrow = () => <Icons icon="arrowright" width="8px" style={{ ma
         <a
           href="https://storybook.js.org/docs/react/writing-docs/autodocs"
           target="_blank"
-        >Learn more<RightArrow /></a>
+        >Learn more<img className='sb-chevron' src={Chevron} alt=""/></a>
       </div>
       <div className="sb-grid-item">
         <img src={Share} alt="A browser window showing a Storybook being published to a chromatic.com URL" />
@@ -92,7 +90,7 @@ export const RightArrow = () => <Icons icon="arrowright" width="8px" style={{ ma
         <a
           href="https://storybook.js.org/docs/react/sharing/publish-storybook#publish-storybook-with-chromatic"
           target="_blank"
-        >Learn more<RightArrow /></a>
+        >Learn more<img className='sb-chevron' src={Chevron} alt=""/></a>
       </div>
       <div className="sb-grid-item">
         <img src={FigmaPlugin} alt="Windows showing the Storybook plugin in Figma" />
@@ -102,7 +100,7 @@ export const RightArrow = () => <Icons icon="arrowright" width="8px" style={{ ma
         <a
           href="https://storybook.js.org/docs/react/sharing/design-integrations#embed-storybook-in-figma-with-the-plugin"
           target="_blank"
-        >Learn more<RightArrow /></a>
+        >Learn more<img className='sb-chevron' src={Chevron} alt=""/></a>
       </div>
       <div className="sb-grid-item">
         <img src={Testing} alt="Screenshot of tests passing and failing" />
@@ -112,7 +110,7 @@ export const RightArrow = () => <Icons icon="arrowright" width="8px" style={{ ma
         <a
           href="https://storybook.js.org/docs/react/writing-tests/introduction"
           target="_blank"
-        >Learn more<RightArrow /></a>
+        >Learn more<img className='sb-chevron' src={Chevron} alt=""/></a>
       </div>
       <div className="sb-grid-item">
         <img src={Accessibility} alt="Screenshot of accessibility tests passing and failing" />
@@ -121,7 +119,7 @@ export const RightArrow = () => <Icons icon="arrowright" width="8px" style={{ ma
         <a
           href="https://storybook.js.org/docs/react/writing-tests/accessibility-testing"
           target="_blank"
-        >Learn more<RightArrow /></a>
+        >Learn more<img className='sb-chevron' src={Chevron} alt=""/></a>
       </div>
       <div className="sb-grid-item">
         <img src={Theming} alt="Screenshot of Storybook in light and dark mode" />
@@ -130,7 +128,7 @@ export const RightArrow = () => <Icons icon="arrowright" width="8px" style={{ ma
         <a
           href="https://storybook.js.org/docs/react/configure/theming"
           target="_blank"
-        >Learn more<RightArrow /></a>
+        >Learn more<img className='sb-chevron' src={Chevron} alt=""/></a>
       </div>
     </div>
   </div>
@@ -142,7 +140,7 @@ export const RightArrow = () => <Icons icon="arrowright" width="8px" style={{ ma
     <a
         href="https://storybook.js.org/integrations/"
         target="_blank"
-      >Discover all addons<RightArrow /></a>
+      >Discover all addons<img className='sb-chevron' src={Chevron} alt=""/></a>
   </div>
   <div className='sb-addon-img'>
     <img src={AddonLibrary} alt="Integrate your tools with Storybook to connect workflows." />
@@ -157,7 +155,7 @@ export const RightArrow = () => <Icons icon="arrowright" width="8px" style={{ ma
       <a
         href="https://github.com/storybookjs/storybook"
         target="_blank"
-      >Star on GitHub<RightArrow /></a>
+      >Star on GitHub<img className='sb-chevron' src={Chevron} alt=""/></a>
     </div>
     <div className="sb-section-item">
       <img src={Discord} alt="Discord logo" className="sb-explore-image"/>
@@ -167,7 +165,7 @@ export const RightArrow = () => <Icons icon="arrowright" width="8px" style={{ ma
         <a
           href="https://discord.gg/storybook"
           target="_blank"
-        >Join Discord server<RightArrow /></a>
+        >Join Discord server<img className='sb-chevron' src={Chevron} alt=""/></a>
       </div>
     </div>
     <div className="sb-section-item">
@@ -178,7 +176,7 @@ export const RightArrow = () => <Icons icon="arrowright" width="8px" style={{ ma
         <a
           href="https://www.youtube.com/@chromaticui"
           target="_blank"
-        >Watch on YouTube<RightArrow /></a>
+        >Watch on YouTube<img className='sb-chevron' src={Chevron} alt=""/></a>
       </div>
     </div>
     <div className="sb-section-item">
@@ -188,7 +186,7 @@ export const RightArrow = () => <Icons icon="arrowright" width="8px" style={{ ma
       <a
           href="https://storybook.js.org/tutorials/"
           target="_blank"
-        >Discover tutorials<RightArrow /></a>
+        >Discover tutorials<img className='sb-chevron' src={Chevron} alt=""/></a>
     </div>
 </div>
 
@@ -196,6 +194,17 @@ export const RightArrow = () => <Icons icon="arrowright" width="8px" style={{ ma
   {`
   .sb-container {
     margin-bottom: 48px;
+  }
+
+  .sb-chevron {
+    margin-left: 4px;
+    display: inline-block;
+    shape-rendering: inherit;
+    vertical-align: middle;
+    fill: currentColor;
+    path {
+      fill: currentColor;
+    }
   }
 
   .sb-section {

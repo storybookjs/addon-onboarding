@@ -100,7 +100,7 @@ export function GuidedTour({
         },
       },
       {
-        target: "#root div[role=main]",
+        target: "#root > div",
         title: "Interactive story playground",
         content: (
           <>

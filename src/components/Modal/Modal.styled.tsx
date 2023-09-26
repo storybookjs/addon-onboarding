@@ -8,6 +8,7 @@ export const StyledOverlay = styled.div`
   inset: 0px;
   width: 100%;
   height: 100%;
+  z-index: 10;
 `;
 
 export const StyledContent = styled.div<{
@@ -27,6 +28,7 @@ export const StyledContent = styled.div<{
     max-width: calc(100% - 40px);
     max-height: 85vh;
     overflow: hidden;
+    z-index: 11;
 
     &:focus-visible {
       outline: none;

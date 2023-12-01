@@ -1,3 +1,15 @@
+# v1.0.9 (Fri Dec 01 2023)
+
+#### 🐛 Bug Fix
+
+- update telemetry version [#79](https://github.com/storybookjs/addon-onboarding/pull/79) ([@yannbf](https://github.com/yannbf))
+
+#### Authors: 1
+
+- Yann Braga ([@yannbf](https://github.com/yannbf))
+
+---
+
 # v1.0.8 (Thu Jul 20 2023)
 
 #### ⚠️ Pushed to `main`

@@ -1,3 +1,15 @@
+# v1.0.10 (Mon Dec 11 2023)
+
+#### 🐛 Bug Fix
+
+- Fix Yarn remove command in README [#80](https://github.com/storybookjs/addon-onboarding/pull/80) ([@githrdw](https://github.com/githrdw))
+
+#### Authors: 1
+
+- [@githrdw](https://github.com/githrdw)
+
+---
+
 # v1.0.9 (Fri Dec 01 2023)
 
 #### 🐛 Bug Fix

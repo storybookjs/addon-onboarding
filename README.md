@@ -18,7 +18,7 @@ This addon serves to provide you a guided experience on the basics of Storybook.
 yarn:
 
 ```zsh
-yarn remove -D @storybook/addon-onboarding
+yarn remove @storybook/addon-onboarding
 ```
 
 npm:

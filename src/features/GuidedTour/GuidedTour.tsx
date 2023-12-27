@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Joyride, { CallBackProps, STATUS } from "react-joyride";
 import { API } from "@storybook/manager-api";
 import { UPDATE_STORY_ARGS } from "@storybook/core-events";
@@ -33,6 +33,11 @@ export function GuidedTour({
       setStepIndex(3);
     });
   }, []);
+
+
+  const storyPlaygroundElement = useMemo(() => {
+    return (document.querySelector("#root div[role=main]") || document.querySelector("#storybook-panel-root")) as HTMLElement
+  }, [])
 
   const steps: GuidedTourStep[] = isFinalStep
     ? [
@@ -100,7 +105,7 @@ export function GuidedTour({
         },
       },
       {
-        target: "#root div[role=main]",
+        target: storyPlaygroundElement,
         title: "Interactive story playground",
         content: (
           <>

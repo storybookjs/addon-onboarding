@@ -26,31 +26,33 @@ export const WelcomeModal: FC<WelcomeModalProps> = ({
   skipOnboarding,
 }) => {
   return (
-    <Modal width={540} height={430} defaultOpen>
-      {({ Close }) => (
-        <ModalContentWrapper data-chromatic="ignore">
-          <TopContent>
-            <StorybookLogo />
-            <Title>Welcome to Storybook</Title>
-            <Description>
-              Storybook helps you develop UI components faster. Learn the basics in a
-              few simple steps.
-            </Description>
-            <Button style={{ marginTop: 4 }} onClick={onProceed}>
-              Start your 3 minute tour
-            </Button>
-          </TopContent>
-          <SkipButton onClick={skipOnboarding}>
-            Skip tour
-            <StyledIcon icon="arrowright" />
-          </SkipButton>
-          <Background>
-            <Circle1 />
-            <Circle2 />
-            <Circle3 />
-          </Background>
-        </ModalContentWrapper>
-      )}
-    </Modal>
+    <div style={{ zIndex: 10 }}>
+      <Modal width={540} height={430} defaultOpen>
+        {({ Close }) => (
+          <ModalContentWrapper data-chromatic="ignore">
+            <TopContent>
+              <StorybookLogo />
+              <Title>Welcome to Storybook</Title>
+              <Description>
+                Storybook helps you develop UI components faster. Learn the
+                basics in a few simple steps.
+              </Description>
+              <Button style={{ marginTop: 4 }} onClick={onProceed}>
+                Start your 3 minute tour
+              </Button>
+            </TopContent>
+            <SkipButton onClick={skipOnboarding}>
+              Skip tour
+              <StyledIcon icon="arrowright" />
+            </SkipButton>
+            <Background>
+              <Circle1 />
+              <Circle2 />
+              <Circle3 />
+            </Background>
+          </ModalContentWrapper>
+        )}
+      </Modal>
+    </div>
   );
 };

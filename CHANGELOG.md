@@ -1,3 +1,19 @@
+# v1.0.11 (Tue Jan 23 2024)
+
+#### 🐛 Bug Fix
+
+- Fix z-index bug by adding a wrapper [#82](https://github.com/storybookjs/addon-onboarding/pull/82) ([@ndelangen](https://github.com/ndelangen))
+- Make selectors Storybook 8 compatible [#81](https://github.com/storybookjs/addon-onboarding/pull/81) ([@yannbf](https://github.com/yannbf))
+- UI: Fix z-index in modal elements [#78](https://github.com/storybookjs/addon-onboarding/pull/78) ([@cdedreuille](https://github.com/cdedreuille) [@yannbf](https://github.com/yannbf))
+
+#### Authors: 3
+
+- Charles de Dreuille ([@cdedreuille](https://github.com/cdedreuille))
+- Norbert de Langen ([@ndelangen](https://github.com/ndelangen))
+- Yann Braga ([@yannbf](https://github.com/yannbf))
+
+---
+
 # v1.0.10 (Mon Dec 11 2023)
 
 #### 🐛 Bug Fix

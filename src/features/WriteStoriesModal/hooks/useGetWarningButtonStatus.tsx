@@ -27,20 +27,21 @@ export const useGetWarningButtonStatus = (
         });
       };
 
+      const addonStoreChannel: ReturnType<typeof addonsStore.getChannel> =
+        addonsStore.getChannel
+          ? addonsStore.getChannel()
+          : // TODO: Remove getServerChannel once we drop support for Storybook < 8
+            (addonsStore as any).getServerChannel();
+
       // If the story already exists, we don't need to listen to any events
-      if(api.getData("example-button--warning")) {
+      if (api.getData("example-button--warning")) {
         setStatus({ data: true, error: null });
       } else {
-        // This should probably be changed to getChannel but we'll keep for backwards compatibility in case people end up using this addon with Storybook 7.0.0 and not 7.1.0
-        addonsStore
-          .getServerChannel()
-          .on(STORY_INDEX_INVALIDATED, getWarningButtonStatus);
+        addonStoreChannel.on(STORY_INDEX_INVALIDATED, getWarningButtonStatus);
       }
 
       return () => {
-        addonsStore
-          .getServerChannel()
-          .off(STORY_INDEX_INVALIDATED, getWarningButtonStatus);
+        addonStoreChannel.off(STORY_INDEX_INVALIDATED, getWarningButtonStatus);
       };
     }
   }, [active]);

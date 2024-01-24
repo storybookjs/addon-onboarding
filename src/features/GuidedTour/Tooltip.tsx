@@ -1,6 +1,6 @@
 import React from "react";
 import { styled } from "@storybook/theming";
-import { TooltipRenderProps } from "react-joyride";
+import { Step, TooltipRenderProps } from "react-joyride";
 import { Button } from "../../components/Button/Button";
 
 const TooltipBody = styled.div`
@@ -40,11 +40,13 @@ const TooltipFooter = styled.div`
   margin-top: 15px;
 `;
 
-export type TooltipProps = TooltipRenderProps & {
-  step: TooltipRenderProps["step"] & {
+export type TooltipProps = {
+  step: Step & {
     hideNextButton?: boolean;
     onNextButtonClick?: () => void;
   };
+  primaryProps: TooltipRenderProps["primaryProps"]
+  tooltipProps: TooltipRenderProps["tooltipProps"]
 };
 
 export const Tooltip = ({ step, primaryProps, tooltipProps }: TooltipProps) => {

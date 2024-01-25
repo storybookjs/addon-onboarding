@@ -20,9 +20,8 @@
       "types": "./dist/index.d.ts"
     },
     "./package.json": "./package.json",
-    "./preset": {
-      "require": "./preset.js"
-    }
+    "./manager": "./dist/manager.mjs",
+    "./preset": "./dist/preset.js"
   },
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -58,49 +57,58 @@
     ]
   },
   "dependencies": {
-    "@storybook/telemetry": "^7.1.0",
+    "@storybook/telemetry": "next",
     "react-confetti": "^6.1.0"
   },
   "devDependencies": {
-    "@radix-ui/react-dialog": "^1.0.4",
-    "@storybook/addon-essentials": "7.1.0-alpha.38",
-    "@storybook/addon-interactions": "7.1.0-alpha.38",
-    "@storybook/addon-links": "7.1.0-alpha.38",
-    "@storybook/blocks": "7.1.0-alpha.38",
-    "@storybook/channels": "7.1.0-alpha.38",
-    "@storybook/components": "7.1.0-alpha.38",
-    "@storybook/core-events": "7.1.0-alpha.38",
+    "@radix-ui/react-dialog": "^1.0.5",
+    "@storybook/addon-essentials": "next",
+    "@storybook/addon-interactions": "next",
+    "@storybook/addon-links": "next",
+    "@storybook/blocks": "next",
+    "@storybook/channels": "next",
+    "@storybook/components": "next",
+    "@storybook/core-events": "next",
     "@storybook/jest": "^0.2.3",
-    "@storybook/manager-api": "7.1.0-alpha.38",
-    "@storybook/react": "7.1.0-alpha.38",
-    "@storybook/react-vite": "7.1.0-alpha.38",
+    "@storybook/manager": "next",
+    "@storybook/manager-api": "next",
+    "@storybook/preview": "next",
+    "@storybook/react": "next",
+    "@storybook/react-vite": "next",
     "@storybook/testing-library": "^0.2.2",
-    "@storybook/theming": "7.1.0-alpha.38",
-    "@storybook/types": "7.1.0-alpha.38",
-    "@types/node": "^18.15.0",
-    "@types/react": "^18.2.7",
-    "@types/react-dom": "^18.2.4",
-    "@vitejs/plugin-react": "^3.1.0",
-    "auto": "^10.3.0",
-    "chromatic": "^6.17.4",
-    "dedent": "^0.7.0",
-    "framer-motion": "^6.5.1",
-    "nodemon": "^2.0.22",
+    "@storybook/theming": "next",
+    "@storybook/types": "next",
+    "@types/node": "^18",
+    "@types/react": "^18.2.48",
+    "@types/react-dom": "^18.2.18",
+    "@vitejs/plugin-react": "^4.2.1",
+    "auto": "^11.0.4",
+    "chromatic": "^10.5.0",
+    "dedent": "^1.5.1",
+    "framer-motion": "^11.0.3",
+    "nodemon": "^3.0.3",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.3.1",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-joyride": "^2.5.4",
+    "prettier": "^3.2.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-joyride": "^2.7.2",
     "react-use-measure": "^2.1.1",
-    "rimraf": "^5.0.1",
-    "storybook": "7.1.0-alpha.38",
-    "tsup": "^6.6.3",
-    "typescript": "^4.9.5",
-    "vite": "^4.1.4"
+    "rimraf": "^5.0.5",
+    "storybook": "next",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.12"
   },
-  "peerDependencies": {
-    "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
-    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
+  "bundler": {
+    "exportEntries": [
+      "src/index.ts"
+    ],
+    "managerEntries": [
+      "src/manager.tsx"
+    ],
+    "nodeEntries": [
+      "./src/preset.ts"
+    ]
   },
   "publishConfig": {
     "access": "public"

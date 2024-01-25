@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import Joyride, { CallBackProps, STATUS } from "react-joyride";
+import Joyride, { CallBackProps, STATUS, Step } from "react-joyride";
 import { API } from "@storybook/manager-api";
 import { UPDATE_STORY_ARGS } from "@storybook/core-events";
 import { useTheme } from "@storybook/theming";

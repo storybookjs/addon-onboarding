@@ -20,16 +20,12 @@ const meta: Meta<typeof WriteStoriesModal> = {
       getData,
     } as any,
     addonsStore: {
-      getChannel: () => {
-        return {
-          once: (type: string, cb: () => void) => {
-            if (type === STORY_RENDERED) {
-              cb();
-            }
-          },
-        };
-      },
-      getServerChannel: () => ({
+      getChannel: () => ({
+        once: (type: string, cb: () => void) => {
+          if (type === STORY_RENDERED) {
+            cb();
+          }
+        },
         on: (type: string, cb: () => void) => {
           if (type === STORY_INDEX_INVALIDATED) {
             storyIndexInvalidatedCb = cb;

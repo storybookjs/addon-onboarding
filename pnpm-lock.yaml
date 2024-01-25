@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@storybook/icons':
+    specifier: ^1.2.3
+    version: 1.2.3(react-dom@18.2.0)(react@18.2.0)
   '@storybook/telemetry':
     specifier: next
     version: 8.0.0-alpha.14
@@ -3207,7 +3210,6 @@ packages:
     dependencies:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: true
 
   /@storybook/jest@0.2.3:
     resolution: {integrity: sha512-ov5izrmbAFObzKeh9AOC5MlmFxAcf0o5i6YFGae9sDx6DGh6alXsRM+chIbucVkUwVHVlSzdfbLDEFGY/ShaYw==}
@@ -7102,7 +7104,6 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
-    dev: true
 
   /react-element-to-jsx-string@15.0.0(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-UDg4lXB6BzlobN60P8fHWVPX3Kyw8ORrTeBtClmIlGdkOOE+GYQSFvmEU5iLLpwp/6v42DINwNcwOhOLfQ//FQ==}
@@ -7542,7 +7543,6 @@ packages:
     resolution: {integrity: sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==}
     dependencies:
       loose-envify: 1.4.0
-    dev: true
 
   /scroll@3.0.1:
     resolution: {integrity: sha512-pz7y517OVls1maEzlirKO5nPYle9AXsFzTMNJrRGmT951mzpIBy7sNHOg5o/0MQd/NqliCiWnAi0kZneMPFLcg==}

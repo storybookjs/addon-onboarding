@@ -1,10 +1,10 @@
 import React from "react";
-import { Icons } from "@storybook/components";
 import {
   ListItemContentWrapper,
   ListItemIndexWrapper,
   ListItemWrapper,
 } from "./ListItem.styled";
+import { CheckIcon } from "@storybook/icons";
 
 interface ListItemProps {
   children: React.ReactNode;
@@ -20,7 +20,7 @@ export const ListItem = ({ children, index, isCompleted }: ListItemProps) => {
         isCompleted={isCompleted}
       >
         {isCompleted ? (
-          <Icons width={10} height={10} icon="check" color="white" />
+          <CheckIcon width={10} height={10} color="white" />
         ) : (
           index
         )}

@@ -4,8 +4,12 @@ import { globalPackages as globalManagerPackages } from "@storybook/manager/glob
 import { globalPackages as globalPreviewPackages } from "@storybook/preview/globals";
 
 // The current browsers supported by Storybook v7
-const BROWSER_TARGET: Options['target'] = ["chrome100", "safari15", "firefox91"];
-const NODE_TARGET: Options['target'] = ["node16"];
+const BROWSER_TARGET: Options["target"] = [
+  "chrome100",
+  "safari15",
+  "firefox91",
+];
+const NODE_TARGET: Options["target"] = ["node16"];
 
 type BundlerConfig = {
   bundler?: {
@@ -27,7 +31,9 @@ export default defineConfig(async (options) => {
   //     "nodeEntries": ["./src/preset.ts"]
   //   }
   // }
-  const packageJson = await readFile('./package.json', 'utf8').then(JSON.parse) as BundlerConfig;
+  const packageJson = (await readFile("./package.json", "utf8").then(
+    JSON.parse,
+  )) as BundlerConfig;
   const {
     bundler: {
       exportEntries = [],
@@ -57,7 +63,7 @@ export default defineConfig(async (options) => {
       dts: {
         resolve: true,
       },
-      format: ["esm", 'cjs'],
+      format: ["esm", "cjs"],
       target: [...BROWSER_TARGET, ...NODE_TARGET],
       platform: "neutral",
       external: [...globalManagerPackages, ...globalPreviewPackages],
@@ -94,14 +100,14 @@ export default defineConfig(async (options) => {
 
   if (nodeEntries.length > 0) {
     configs.push({
-        ...commonConfig,
-        entry: nodeEntries,
-        format: ['cjs'],
-        target: NODE_TARGET,
-        platform: 'node',
-        external: globalPreviewPackages,
-      });
-    }
+      ...commonConfig,
+      entry: nodeEntries,
+      format: ["cjs"],
+      target: NODE_TARGET,
+      platform: "node",
+      external: globalPreviewPackages,
+    });
+  }
 
   return configs;
 });

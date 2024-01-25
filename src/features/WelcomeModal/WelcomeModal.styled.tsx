@@ -1,4 +1,4 @@
-import { Icons } from "@storybook/components";
+import { ArrowRightIcon } from "@storybook/icons";
 import { keyframes, styled } from "@storybook/theming";
 
 export const ModalContentWrapper = styled.div`
@@ -51,7 +51,7 @@ export const SkipButton = styled.button`
   }
 `;
 
-export const StyledIcon = styled(Icons)`
+export const StyledIcon = styled(ArrowRightIcon)`
   margin-left: 2px;
   height: 10px;
 `;

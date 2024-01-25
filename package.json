@@ -58,6 +58,7 @@
   },
   "dependencies": {
     "@storybook/telemetry": "next",
+    "@storybook/icons": "^1.2.3",
     "react-confetti": "^6.1.0"
   },
   "devDependencies": {

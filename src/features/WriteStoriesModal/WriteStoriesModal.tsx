@@ -1,7 +1,6 @@
 import React, { useCallback, useState, type FC } from "react";
 import { Button } from "../../components/Button/Button";
 import { Modal } from "../../components/Modal/Modal";
-import { Icons } from "@storybook/components";
 import useMeasure from "react-use-measure";
 import {
   Background,
@@ -31,6 +30,7 @@ import { API, AddonStore } from "@storybook/manager-api";
 import { STORYBOOK_ADDON_ONBOARDING_CHANNEL } from "../../constants";
 import { useTheme } from "@storybook/theming";
 import { CodeSnippets } from "./code/types";
+import { BookmarkHollowIcon, CrossIcon } from "@storybook/icons";
 
 // TODO: Add warning if backdropBoundary && !warningButtonStatus?.data is not true.
 // backdropBoundary && !warningButtonStatus?.data
@@ -71,19 +71,19 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
   const warningButtonStatus = useGetWarningButtonStatus(
     step === "customStory",
     api,
-    addonsStore
+    addonsStore,
   );
   const backdropBoundary = useGetBackdropBoundary(
     "syntax-highlighter-backdrop",
-    step === "customStory"
+    step === "customStory",
   );
 
-  const isJavascript = codeSnippets?.language === 'javascript'
+  const isJavascript = codeSnippets?.language === "javascript";
 
   const copyWarningStory = () => {
     const warningContent = codeSnippets.code[3][0].snippet;
     navigator.clipboard.writeText(
-      warningContent.replace("// Copy the code below", "")
+      warningContent.replace("// Copy the code below", ""),
     );
     setWarningStoryCopied(true);
   };
@@ -133,14 +133,13 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
             <Header>
               <Title asChild>
                 <ModalTitle>
-                  <Icons icon="bookmarkhollow" width={13} />
+                  <BookmarkHollowIcon width={13} />
                   <span>How to write a story</span>
                 </ModalTitle>
               </Title>
               <Close onClick={onModalClose} asChild>
-                <Icons
+                <CrossIcon
                   style={{ cursor: "pointer" }}
-                  icon="cross"
                   width={13}
                   onClick={skipOnboarding}
                   color={theme.color.darkest}
@@ -153,18 +152,24 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
                   <>
                     <div>
                       <h3>Imports</h3>
-                      {isJavascript ? (<p>
-                        Import a component. In this case, the Button
-                        component.
-                      </p>) : <><p>
-                        First, import <SpanHighlight>Meta</SpanHighlight> and{" "}
-                        <SpanHighlight>StoryObj</SpanHighlight> for type safety
-                        and autocompletion in TypeScript stories.
-                      </p>
+                      {isJavascript ? (
                         <p>
-                          Next, import a component. In this case, the Button
+                          Import a component. In this case, the Button
                           component.
-                        </p></>}
+                        </p>
+                      ) : (
+                        <>
+                          <p>
+                            First, import <SpanHighlight>Meta</SpanHighlight>{" "}
+                            and <SpanHighlight>StoryObj</SpanHighlight> for type
+                            safety and autocompletion in TypeScript stories.
+                          </p>
+                          <p>
+                            Next, import a component. In this case, the Button
+                            component.
+                          </p>
+                        </>
+                      )}
                     </div>
                     <Button
                       style={{ marginTop: 4 }}
@@ -285,7 +290,11 @@ export const WriteStoriesModal: FC<WriteStoriesModalProps> = ({
                             </Step2Text>
                             {buttonPath?.data && (
                               // Replace '/' by '/<zero-width-place>' to properly break line
-                              <SpanHighlight>{buttonPath.data.replaceAll('/', '/​').replaceAll('\\', '\\​')}</SpanHighlight>
+                              <SpanHighlight>
+                                {buttonPath.data
+                                  .replaceAll("/", "/​")
+                                  .replaceAll("\\", "\\​")}
+                              </SpanHighlight>
                             )}
                           </ListItem>
                           <ListItem

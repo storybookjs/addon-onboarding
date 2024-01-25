@@ -43,7 +43,7 @@ export const WelcomeModal: FC<WelcomeModalProps> = ({
             </TopContent>
             <SkipButton onClick={skipOnboarding}>
               Skip tour
-              <StyledIcon icon="arrowright" />
+              <StyledIcon />
             </SkipButton>
             <Background>
               <Circle1 />

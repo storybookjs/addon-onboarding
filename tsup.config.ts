@@ -81,6 +81,13 @@ export default defineConfig(async (options) => {
       target: BROWSER_TARGET,
       platform: "browser",
       external: globalManagerPackages,
+      esbuildOptions(options) {
+        options.conditions = ["module"];
+        options.loader = {
+          ...options.loader,
+          ".png": "dataurl",
+        };
+      },
     });
   }
 
